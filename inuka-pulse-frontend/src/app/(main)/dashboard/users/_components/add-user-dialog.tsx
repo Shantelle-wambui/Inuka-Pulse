@@ -19,7 +19,7 @@ import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { createUser, fetchRoles } from "@/lib/inuka-pulse/api";
-import type { SentinelRole, SentinelUser } from "@/lib/inuka-pulse/auth-types";
+import type { InukaRole, InukaUser } from "@/lib/inuka-pulse/auth-types";
 import { useAuthStore } from "@/stores/auth/auth-store";
 
 const schema = z.object({
@@ -34,12 +34,12 @@ type FormValues = z.infer<typeof schema>;
 interface AddUserDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onUserCreated: (user: SentinelUser) => void;
+  onUserCreated: (user: InukaUser) => void;
 }
 
 export function AddUserDialog({ open, onOpenChange, onUserCreated }: AddUserDialogProps) {
   const token = useAuthStore((s) => s.user?.token ?? "");
-  const [roles, setRoles] = useState<SentinelRole[]>([]);
+  const [roles, setRoles] = useState<InukaRole[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<FormValues>({

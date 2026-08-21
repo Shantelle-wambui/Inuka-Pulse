@@ -1,19 +1,16 @@
 import type { ReactNode } from "react";
 
-import Image from "next/image";
-
 export default function Layout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <main>
       <div className="grid h-dvh justify-center p-2 lg:grid-cols-2">
         {/* ── Side panel ───────────────────────────────────────────────── */}
         <div className="relative order-2 hidden h-full overflow-hidden rounded-3xl lg:flex">
-          <Image
-            src="/login-background.jpg"
-            alt="Inuka Foundation — empowering youth across Kenya"
-            fill
-            className="object-cover"
-            priority
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/login-background.svg"
+            alt="Inuka Pulse dashboard — cohort risk map, dropout prediction scores, and live alerts across Kenya"
+            className="absolute inset-0 h-full w-full object-cover object-top"
           />
 
           {/* Gradient overlay */}

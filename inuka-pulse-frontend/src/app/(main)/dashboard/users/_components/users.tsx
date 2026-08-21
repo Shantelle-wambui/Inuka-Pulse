@@ -24,7 +24,7 @@ import { Kbd } from "@/components/ui/kbd";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fetchUsers } from "@/lib/inuka-pulse/api";
-import type { SentinelUser } from "@/lib/inuka-pulse/auth-types";
+import type { InukaUser } from "@/lib/inuka-pulse/auth-types";
 import { useAuthStore } from "@/stores/auth/auth-store";
 
 import { filters, type UserRow } from "./data";
@@ -32,8 +32,8 @@ import { usersColumns } from "./users-columns";
 import { UsersTable } from "./users-table";
 import { AddUserDialog } from "./add-user-dialog";
 
-/** Map backend SentinelUser → frontend UserRow for the existing table columns */
-function toUserRow(u: SentinelUser): UserRow {
+/** Map backend InukaUser → frontend UserRow for the existing table columns */
+function toUserRow(u: InukaUser): UserRow {
   let joinedDate = "—";
   try {
     joinedDate = format(parseISO(u.joinedAt), "dd MMM yyyy, h:mm a");
@@ -52,7 +52,7 @@ function toUserRow(u: SentinelUser): UserRow {
     }
   }
 
-  // Map Sentinel role → team label
+  // Map Inuka role → team label
   const teamMap: Record<string, UserRow["team"]> = {
     Admin: "Platform",
     "Program Director": "Platform",
@@ -73,7 +73,7 @@ function toUserRow(u: SentinelUser): UserRow {
       ? status
       : "Active",
     team: teamMap[u.role] ?? "Internal Tools",
-    workspace: ["Sentinel"],
+    workspace: ["Inuka Pulse"],
   };
 }
 
@@ -144,7 +144,7 @@ export function Users() {
     table.setPageIndex(0);
   }
 
-  function handleUserCreated(user: SentinelUser) {
+  function handleUserCreated(user: InukaUser) {
     setRows((prev) => [toUserRow(user), ...prev]);
   }
 

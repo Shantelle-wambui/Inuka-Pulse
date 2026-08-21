@@ -46,7 +46,7 @@ export function NotificationBell({ alerts }: NotificationBellProps) {
         <div className="flex items-center justify-between border-b px-4 py-3">
           <div className="flex items-center gap-2">
             <ShieldAlert className="size-4 text-muted-foreground" />
-            <span className="font-medium text-sm">Sentinel Alerts</span>
+            <span className="font-medium text-sm">Inuka Pulse Alerts</span>
           </div>
           <span className="rounded-full bg-red-500/10 px-2 py-0.5 text-red-700 text-xs dark:text-red-400">
             {activeCount} active

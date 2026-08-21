@@ -14,7 +14,7 @@ export interface NewAlertInfo {
   title: string;
 }
 
-interface UseSentinelAlertsResult {
+interface UseInukaAlertsResult {
   newAlerts: NewAlertInfo[];
   activeCount: number;
   clearNew: () => void;
@@ -43,7 +43,7 @@ interface UseSentinelAlertsResult {
  *   3. On subsequent fetches, find Critical/High alert IDs not seen before
  *   4. Fire sound for those new beneficiary alerts
  */
-export function useInukaAlerts(): UseSentinelAlertsResult {
+export function useInukaAlerts(): UseInukaAlertsResult {
   const [newAlerts, setNewAlerts]   = useState<NewAlertInfo[]>([]);
   const [activeCount, setActiveCount] = useState(0);
 

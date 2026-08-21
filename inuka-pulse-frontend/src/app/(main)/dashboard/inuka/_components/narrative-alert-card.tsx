@@ -292,7 +292,7 @@ export function NarrativeAlertCard({
               <div className="h-px flex-1 bg-slate-200 dark:bg-slate-700" />
               <div className="flex items-center gap-1.5">
                 <span className="text-[9px] font-bold tracking-[0.15em] text-slate-400 dark:text-slate-500 uppercase">
-                  Sentinel Intelligence Report
+                  Inuka Intelligence Report
                 </span>
                 {alert.narrativeUpdatedAt && (
                   <span

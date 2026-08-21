@@ -34,7 +34,7 @@ export function BackendError({ message, kind = "connection" }: BackendErrorProps
         <p>{message}</p>
         {isConnection && (
           <p className="text-xs opacity-75">
-            Make sure the Sentinel backend is running on{" "}
+            Make sure the Inuka Pulse backend is running on{" "}
             <code className="rounded bg-destructive/10 px-1 py-0.5 font-mono text-xs">
               {process.env.NEXT_PUBLIC_INUKA_API_URL ?? "http://localhost:8080"}
             </code>{" "}

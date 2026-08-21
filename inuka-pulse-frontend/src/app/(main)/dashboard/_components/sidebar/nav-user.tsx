@@ -27,7 +27,7 @@ export function NavUser() {
   );
 
   // Fallback while store hydrates on first render
-  const displayName = user?.name ?? "Sentinel User";
+  const displayName = user?.name ?? "Inuka User";
   const displayEmail = user?.email ?? "";
   const displayRole = user?.role ?? "";
 

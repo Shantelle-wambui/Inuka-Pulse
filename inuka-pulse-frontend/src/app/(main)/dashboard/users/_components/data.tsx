@@ -295,7 +295,7 @@ export const filters = {
   ],
   team: ["All", ...teamValues],
   status: ["All", "Active", "Pending invite", "Deactivated", "Locked", "Suspended"],
-  workspace: ["All", "Sentinel", "Weblabs Studio", "Sandbox", "Internal Tools", "Acme Inc."],
+  workspace: ["All", "Inuka Pulse", "Weblabs Studio", "Sandbox", "Internal Tools", "Acme Inc."],
 };
 
 export const statusMeta: Record<UserStatus, { badgeClass: string; dotClass: string }> = {

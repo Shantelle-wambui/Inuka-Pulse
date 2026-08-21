@@ -1,5 +1,5 @@
 /**
- * Typed fetch wrappers for the Sentinel Spring Boot backend API.
+ * Typed fetch wrappers for the Inuka Pulse Spring Boot backend API.
  *
  * All authenticated endpoints read the JWT from the "inuka-token" cookie
  * (written by LoginForm on the client side) so Next.js Server Components can
@@ -10,7 +10,7 @@
  *     mockSites so the dashboard always shows real Inuka data.
  *   - If quality summary returns all zeros (nothing processed), fall back to
  *     mockQualitySummary so Gate Status never shows "Failed" on a fresh DB.
- *   - If alerts contains only legacy KPC site IDs, replace with mockAlerts.
+ *   - If no alerts returned, fall back to mockAlerts.
  *   - Real backend data (when the ETL pipeline has seeded Inuka records) takes
  *     full precedence — mocks are only a safety net.
  */
@@ -31,7 +31,7 @@ import type {
   WhatIfRequest,
   WhatIfResponse,
 } from "./types";
-import type { AuthResponse, CreateUserRequest, SentinelUser, SentinelRole } from "./auth-types";
+import type { AuthResponse, CreateUserRequest, InukaUser, InukaRole } from "./auth-types";
 import {
   mockSites,
   mockAlerts,
@@ -139,11 +139,9 @@ export async function fetchAlerts(): Promise<Alert[]> {
   const res = await fetch(`${requireApiBase()}/api/alerts`, await authedOpts());
   if (!res.ok) throw new Error(await parseErrorMessage(res));
   const data: Alert[] = await res.json();
-  // Filter out legacy KPC site alerts (site-001 through site-007)
-  const inukaAlerts = data.filter((a) => !a.siteId.match(/^site-00[1-9]$/));
-  // If no Inuka alerts from backend, use mock data
-  if (inukaAlerts.length === 0) return mockAlerts;
-  return inukaAlerts;
+  // Fall back to mock data if backend returns no active Inuka alerts
+  if (data.length === 0) return mockAlerts;
+  return data;
 }
 
 /** POST /api/alerts/{id}/ack */
@@ -203,7 +201,7 @@ export async function loginUser(email: string, password: string): Promise<AuthRe
 // ─── User Management ──────────────────────────────────────────────────────────
 
 /** GET /api/users */
-export async function fetchUsers(token: string): Promise<SentinelUser[]> {
+export async function fetchUsers(token: string): Promise<InukaUser[]> {
   const res = await fetch(`${requireApiBase()}/api/users`, {
     headers: { Authorization: `Bearer ${token}` },
     cache: "no-store",
@@ -213,7 +211,7 @@ export async function fetchUsers(token: string): Promise<SentinelUser[]> {
 }
 
 /** GET /api/users/roles */
-export async function fetchRoles(token: string): Promise<SentinelRole[]> {
+export async function fetchRoles(token: string): Promise<InukaRole[]> {
   const res = await fetch(`${requireApiBase()}/api/users/roles`, {
     headers: { Authorization: `Bearer ${token}` },
     cache: "no-store",
@@ -223,7 +221,7 @@ export async function fetchRoles(token: string): Promise<SentinelRole[]> {
 }
 
 /** POST /api/users */
-export async function createUser(request: CreateUserRequest, token: string): Promise<SentinelUser> {
+export async function createUser(request: CreateUserRequest, token: string): Promise<InukaUser> {
   const res = await fetch(`${requireApiBase()}/api/users`, {
     method: "POST",
     headers: {
@@ -240,7 +238,7 @@ export async function createUser(request: CreateUserRequest, token: string): Pro
 }
 
 /** PATCH /api/users/{id}/status */
-export async function updateUserStatus(id: number, status: string, token: string): Promise<SentinelUser> {
+export async function updateUserStatus(id: number, status: string, token: string): Promise<InukaUser> {
   const res = await fetch(`${requireApiBase()}/api/users/${id}/status`, {
     method: "PATCH",
     headers: {
