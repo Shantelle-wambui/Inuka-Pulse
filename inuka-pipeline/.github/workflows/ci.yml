@@ -1,0 +1,37 @@
+name: Inuka Pulse Pipeline CI
+
+on:
+  push:
+    branches: [development, main]
+  pull_request:
+    branches: [development, main]
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r inuka-pipeline/requirements.txt
+        working-directory: .
+
+      - name: Generate Inuka synthetic data
+        run: python3 src/generate_inuka_data.py
+        working-directory: inuka-pipeline
+
+      - name: Run dropout prediction model
+        run: python3 src/inuka_predict.py
+        working-directory: inuka-pipeline
+
+      - name: Run diagnostics
+        run: python3 src/inuka_diagnostics.py
+        working-directory: inuka-pipeline

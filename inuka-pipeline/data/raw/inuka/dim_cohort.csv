@@ -1,0 +1,21 @@
+cohort_id,cohort_name,pillar,county,county_code,region,risk_profile,latitude,longitude,target_size,program_officer
+COHORT-SC-001,Scholarship — Nairobi,Scholarship,Nairobi,001,Nairobi,normal,-1.2721,36.7695,115,Patrick Njenga
+COHORT-SC-002,Scholarship — Mombasa,Scholarship,Mombasa,002,Coast,normal,-4.079,39.6282,149,Felix Nyambura
+COHORT-SC-003,Scholarship — Nakuru,Scholarship,Nakuru,003,Rift Valley,normal,-0.3498,36.0394,109,Gladys Omondi
+COHORT-SC-007,Scholarship — Kisumu,Scholarship,Kisumu,007,Nyanza,normal,-0.0959,34.7836,149,Aisha Njenga
+COHORT-SC-026,Scholarship — Eldoret,Scholarship,Eldoret,026,North Rift,normal,0.5119,35.2458,80,Kezia Nyambura
+COHORT-PL-001,Plus — Nairobi,Plus,Nairobi,001,Nairobi,normal,-1.302,36.7825,123,Grace Njoroge
+COHORT-PL-002,Plus — Mombasa,Plus,Mombasa,002,Coast,normal,-4.055,39.6539,124,Maurice Kariuki
+COHORT-PL-003,Plus — Nakuru,Plus,Nakuru,003,Rift Valley,normal,-0.2723,36.103,148,Hassan Musyoka
+COHORT-PL-007,Plus — Kisumu,Plus,Kisumu,007,Nyanza,normal,-0.1441,34.7413,126,Kendi Adhiambo
+COHORT-PL-026,Plus — Eldoret,Plus,Eldoret,026,North Rift,normal,0.5375,35.2226,109,Seun Njoroge
+COHORT-VN-001,Vocational — Nairobi,Vocational,Nairobi,001,Nairobi,normal,-1.2505,36.8536,128,Raphael Kiprotich
+COHORT-VN-002,Vocational — Mombasa,Vocational,Mombasa,002,Coast,normal,-4.0294,39.6545,127,Wanjiku Githinji
+COHORT-VN-003,Vocational — Nakuru,Vocational,Nakuru,003,Rift Valley,high,-0.286,36.1002,89,Maurice Mutua
+COHORT-VN-007,Vocational — Kisumu,Vocational,Kisumu,007,Nyanza,normal,-0.0986,34.7365,139,Yvonne Odongo
+COHORT-VN-026,Vocational — Eldoret,Vocational,Eldoret,026,North Rift,normal,0.566,35.282,108,Rose Gichuki
+COHORT-TC-001,Tech — Nairobi,Tech,Nairobi,001,Nairobi,normal,-1.2517,36.8446,109,Cynthia Gichuki
+COHORT-TC-002,Tech — Mombasa,Tech,Mombasa,002,Coast,normal,-4.0529,39.6246,120,Nicholas Mutinda
+COHORT-TC-003,Tech — Nakuru,Tech,Nakuru,003,Rift Valley,normal,-0.3134,36.1215,138,James Kariuki
+COHORT-TC-007,Tech — Kisumu,Tech,Kisumu,007,Nyanza,high,-0.138,34.7865,148,Queen Nyambura
+COHORT-TC-026,Tech — Eldoret,Tech,Eldoret,026,North Rift,normal,0.5568,35.2579,108,Irene Kiplagat

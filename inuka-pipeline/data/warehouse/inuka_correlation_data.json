@@ -1,0 +1,134 @@
+{
+  "x_label": "Avg Disbursement Delay (days)",
+  "y_label": "Dropout Rate",
+  "pearson_r": 0.4053,
+  "p_value": 0.0762,
+  "n": 20,
+  "points": [
+    {
+      "cohort_id": "COHORT-PL-001",
+      "avg_delay_days": 2.0,
+      "dropout_rate": 0.0642,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-PL-002",
+      "avg_delay_days": 1.8,
+      "dropout_rate": 0.101,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-PL-003",
+      "avg_delay_days": 1.6,
+      "dropout_rate": 0.0893,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-PL-007",
+      "avg_delay_days": 1.8,
+      "dropout_rate": 0.0404,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-PL-026",
+      "avg_delay_days": 2.1,
+      "dropout_rate": 0.0391,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-SC-001",
+      "avg_delay_days": 2.0,
+      "dropout_rate": 0.0331,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-SC-002",
+      "avg_delay_days": 1.9,
+      "dropout_rate": 0.0561,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-SC-003",
+      "avg_delay_days": 1.7,
+      "dropout_rate": 0.0734,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-SC-007",
+      "avg_delay_days": 1.7,
+      "dropout_rate": 0.0465,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-SC-026",
+      "avg_delay_days": 2.2,
+      "dropout_rate": 0.0417,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-TC-001",
+      "avg_delay_days": 1.7,
+      "dropout_rate": 0.0652,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-TC-002",
+      "avg_delay_days": 1.8,
+      "dropout_rate": 0.0625,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-TC-003",
+      "avg_delay_days": 1.8,
+      "dropout_rate": 0.0543,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-TC-007",
+      "avg_delay_days": 5.1,
+      "dropout_rate": 0.0745,
+      "is_high_risk": true
+    },
+    {
+      "cohort_id": "COHORT-TC-026",
+      "avg_delay_days": 1.7,
+      "dropout_rate": 0.0435,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-VN-001",
+      "avg_delay_days": 1.8,
+      "dropout_rate": 0.0777,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-VN-002",
+      "avg_delay_days": 1.8,
+      "dropout_rate": 0.0598,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-VN-003",
+      "avg_delay_days": 3.9,
+      "dropout_rate": 0.1379,
+      "is_high_risk": true
+    },
+    {
+      "cohort_id": "COHORT-VN-007",
+      "avg_delay_days": 1.5,
+      "dropout_rate": 0.0424,
+      "is_high_risk": false
+    },
+    {
+      "cohort_id": "COHORT-VN-026",
+      "avg_delay_days": 1.7,
+      "dropout_rate": 0.0794,
+      "is_high_risk": false
+    }
+  ],
+  "headline": {
+    "r": 0.4053,
+    "p": 0.0762,
+    "interpretation": "Pearson r = 0.405 between disbursement delay and dropout rate (p = 0.076, n = 20 cohorts). Moderate correlation. Larger sample would strengthen the finding."
+  }
+}

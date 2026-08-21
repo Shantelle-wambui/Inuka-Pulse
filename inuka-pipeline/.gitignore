@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+.venv/
+venv/
+*.egg-info/
+
+# Data — raw inputs are committed; generated warehouse outputs are not
+# (except the Inuka analytics JSONs which are pre-generated and committed)
+data/warehouse/*.parquet
+data/warehouse/*.duckdb
+data/quarantine/*.parquet
+data/quarantine/*.csv
+
+# Keep these warehouse outputs committed (pre-generated analytics for dashboard)
+!data/warehouse/inuka_predictions_export.json
+!data/warehouse/inuka_backtest_report.json
+!data/warehouse/inuka_feature_importance.json
+!data/warehouse/inuka_control_chart_data.json
+!data/warehouse/inuka_correlation_data.json
+!data/warehouse/inuka_survival_curve_data.json
+
+# live_batch.json is runtime-generated — do not commit
+data/warehouse/live_batch.json
+
+# Models — large files, commit only the trained Inuka model
+models/*.pkl
+!models/inuka_logreg_v1.pkl
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
