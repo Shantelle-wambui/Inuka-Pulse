@@ -491,3 +491,190 @@ export async function fetchModelComparison(
   if (!res.ok) throw new Error(await parseErrorMessage(res));
   return res.json();
 }
+
+// ─── Beneficiary Predictions ──────────────────────────────────────────────────
+//
+// These endpoints are backed by the beneficiary_prediction table populated by
+// the Python pipeline's inuka_predictions_export.json via EtlReloadService.
+
+export interface BeneficiaryPrediction {
+  beneficiaryId: string;
+  cohortId: string | null;
+  pillar: string | null;
+  county: string | null;
+  asOfDate: string;
+  dropoutProb: number;
+  dropoutProbPct: string;     // e.g. "78.9%" — formatted by backend
+  predictedBand: "Active" | "At-Risk" | "Disengaged" | "Dropout";
+  riskLevel: string;          // human-friendly label from BeneficiaryPredictionDto
+  topFeatures: string | null; // pipe-delimited raw string
+  topFeaturesList: string[];  // parsed list — ready to render
+}
+
+export interface BeneficiarySummary {
+  total: number;
+  active: number;
+  atRisk: number;
+  disengaged: number;
+  dropout: number;
+  lastUpdated: string | null;
+  counties: string[];
+  pillars: string[];
+}
+
+export interface PagedBeneficiaries {
+  content: BeneficiaryPrediction[];
+  totalElements: number;
+  totalPages: number;
+  number: number;   // current page (0-indexed)
+  size: number;
+}
+
+/**
+ * GET /api/beneficiaries/predictions/summary
+ *
+ * KPI counts (total, active, atRisk, disengaged, dropout) + meta.
+ * Used by: Director KPI strip, Analyst overview.
+ */
+export async function fetchBeneficiarySummary(): Promise<BeneficiarySummary> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/summary`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/breakdown/county
+ *
+ * Band counts per county: { "Nairobi": { "Active": 300, "At-Risk": 120, ... } }
+ * Used by: Director county comparison chart.
+ */
+export async function fetchBreakdownByCounty(): Promise<Record<string, Record<string, number>>> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/breakdown/county`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/breakdown/pillar
+ *
+ * Band counts per pillar: { "Scholarship": { "Active": 500, ... } }
+ * Used by: Director pillar comparison chart.
+ */
+export async function fetchBreakdownByPillar(): Promise<Record<string, Record<string, number>>> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/breakdown/pillar`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/list?band=&county=&pillar=&cohort=&page=0&size=50
+ *
+ * Paginated, filterable list of all beneficiary predictions.
+ * Used by: Analyst beneficiary table, Director at-risk list.
+ */
+export async function fetchBeneficiaryList(params?: {
+  band?: string;
+  county?: string;
+  pillar?: string;
+  cohort?: string;
+  page?: number;
+  size?: number;
+}): Promise<PagedBeneficiaries> {
+  const url = new URL(`${requireApiBase()}/api/beneficiaries/predictions/list`);
+  if (params?.band)   url.searchParams.set("band",   params.band);
+  if (params?.county) url.searchParams.set("county", params.county);
+  if (params?.pillar) url.searchParams.set("pillar", params.pillar);
+  if (params?.cohort) url.searchParams.set("cohort", params.cohort);
+  url.searchParams.set("page", String(params?.page ?? 0));
+  url.searchParams.set("size", String(params?.size ?? 50));
+  const res = await fetch(url.toString(), await authedOpts());
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/top-risk?band=At-Risk&n=20
+ *
+ * Top N highest-risk beneficiaries for a given band.
+ * Used by: Director at-risk / dropout panels.
+ */
+export async function fetchTopRisk(band = "At-Risk", n = 20): Promise<BeneficiaryPrediction[]> {
+  const url = new URL(`${requireApiBase()}/api/beneficiaries/predictions/top-risk`);
+  url.searchParams.set("band", band);
+  url.searchParams.set("n", String(n));
+  const res = await fetch(url.toString(), await authedOpts());
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/cohort/{cohortId}
+ *
+ * All beneficiaries in a cohort, high-risk first.
+ * Used by: Case Manager caseload view.
+ */
+export async function fetchCohortBeneficiaries(cohortId: string): Promise<BeneficiaryPrediction[]> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/cohort/${encodeURIComponent(cohortId)}`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/{beneficiaryId}
+ *
+ * Latest prediction for one beneficiary.
+ * Used by: beneficiary detail page.
+ */
+export async function fetchBeneficiaryDetail(beneficiaryId: string): Promise<BeneficiaryPrediction | null> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/${encodeURIComponent(beneficiaryId)}`,
+    await authedOpts(),
+  );
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+// ─── Analytics: Model Backtest Report ────────────────────────────────────────
+
+export interface BacktestReport {
+  model_type?: string;
+  precision?: number;
+  recall?: number;
+  f1?: number;
+  train_rows?: number;
+  test_rows?: number;
+  train_positive_rate?: number;
+  test_positive_rate?: number;
+  split_date?: string;
+  threshold?: number;
+  // allow any additional fields the pipeline may add
+  [key: string]: unknown;
+}
+
+/**
+ * GET /api/analytics/backtest
+ *
+ * Logistic regression backtest metrics (precision, recall, F1, train/test split).
+ * Used by: Analyst model performance card.
+ */
+export async function fetchBacktestReport(): Promise<BacktestReport> {
+  const res = await fetch(
+    `${requireApiBase()}/api/analytics/backtest`,
+    { cache: "no-store", signal: makeTimeoutSignal() },
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
