@@ -1,14 +1,17 @@
-import { LayoutDashboard, Users, TrendingDown, AlertTriangle, CheckCircle2, RefreshCw } from "lucide-react";
+import { LayoutDashboard, Users, TrendingDown, AlertTriangle, CheckCircle2, RefreshCw, TrendingUp } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import {
   fetchBeneficiarySummary,
   fetchBreakdownByCounty,
   fetchBreakdownByPillar,
   fetchTopRisk,
+  fetchDirectorOverview,
   type BeneficiarySummary,
 } from "@/lib/inuka-pulse/api";
 import { RiskGroupedBarChart, RiskDonutChart } from "@/components/risk-distribution-chart";
 import { DirectorAtRiskPanel } from "./_components/at-risk-panel";
+import { RiskTrendChart } from "@/components/risk-trend-chart";
+import { InterventionSummaryPanel, WelfareSummaryCard } from "@/components/director-panels";
 
 /**
  * Programme Director Dashboard — /dashboard/director
@@ -18,12 +21,13 @@ import { DirectorAtRiskPanel } from "./_components/at-risk-panel";
  */
 export default async function DirectorDashboardPage() {
   // ── Parallel data fetches ──────────────────────────────────────────────────
-  const [summaryResult, countyResult, pillarResult, dropoutResult, atRiskResult] = await Promise.allSettled([
+  const [summaryResult, countyResult, pillarResult, dropoutResult, atRiskResult, overviewResult] = await Promise.allSettled([
     fetchBeneficiarySummary(),
     fetchBreakdownByCounty(),
     fetchBreakdownByPillar(),
     fetchTopRisk("Dropout", 10),
     fetchTopRisk("At-Risk", 10),
+    fetchDirectorOverview(),
   ]);
 
   const summary: BeneficiarySummary | null =
@@ -37,6 +41,8 @@ export default async function DirectorDashboardPage() {
 
   const topDropout = dropoutResult.status === "fulfilled" ? dropoutResult.value : [];
   const topAtRisk  = atRiskResult.status  === "fulfilled" ? atRiskResult.value  : [];
+
+  const overview = overviewResult.status === "fulfilled" ? overviewResult.value : null;
 
   const hasData = summary !== null && summary.total > 0;
 
@@ -262,6 +268,43 @@ export default async function DirectorDashboardPage() {
             </span>
           )}
         </div>
+      )}
+
+      {/* ── Risk Trend Over Time ────────────────────────────────────────────── */}
+      {overview?.riskTrend && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base flex items-center gap-2">
+              <TrendingUp className="size-4" />
+              Risk Trend Over Time
+            </CardTitle>
+            <CardDescription className="text-xs">
+              How the number of beneficiaries in each risk band has changed across
+              prediction pipeline snapshots —{" "}
+              {overview.riskTrend.snapshotCount === 1
+                ? "1 snapshot so far, trend accumulates as pipeline runs daily"
+                : `${overview.riskTrend.snapshotCount} snapshots`}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <RiskTrendChart trend={overview.riskTrend} />
+          </CardContent>
+        </Card>
+      )}
+
+      {/* ── Intervention Summary ────────────────────────────────────────────── */}
+      {overview?.interventions && (
+        <div className="space-y-2">
+          <h2 className="text-sm font-medium text-muted-foreground">
+            Follow-up & Intervention Activity
+          </h2>
+          <InterventionSummaryPanel data={overview.interventions} />
+        </div>
+      )}
+
+      {/* ── Welfare Concerns ────────────────────────────────────────────────── */}
+      {overview?.welfareConcerns && (
+        <WelfareSummaryCard data={overview.welfareConcerns} />
       )}
 
       {/* ── Disclaimer ─────────────────────────────────────────────────────── */}

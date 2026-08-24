@@ -141,4 +141,22 @@ public interface BeneficiaryPredictionRepository extends JpaRepository<Beneficia
     /** Most recent as_of_date across all records — tells you when the last prediction run was. */
     @Query("SELECT MAX(b.asOfDate) FROM BeneficiaryPredictionEntity b")
     Optional<LocalDate> findLatestAsOfDate();
+
+    /**
+     * Risk trend: band counts grouped by as_of_date, ordered ascending by date.
+     * Returns rows of [as_of_date, predicted_band, count].
+     * Used by the Director risk trend line chart to show how each risk band
+     * has changed across prediction pipeline snapshots over time.
+     */
+    @Query("""
+            SELECT b.asOfDate, b.predictedBand, COUNT(b)
+            FROM BeneficiaryPredictionEntity b
+            GROUP BY b.asOfDate, b.predictedBand
+            ORDER BY b.asOfDate ASC
+            """)
+    List<Object[]> countByBandPerDate();
+
+    /** All distinct prediction snapshot dates, ascending. */
+    @Query("SELECT DISTINCT b.asOfDate FROM BeneficiaryPredictionEntity b ORDER BY b.asOfDate ASC")
+    List<LocalDate> findDistinctDates();
 }
