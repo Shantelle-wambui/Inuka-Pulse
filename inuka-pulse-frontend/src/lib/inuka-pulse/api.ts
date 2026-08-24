@@ -685,6 +685,65 @@ export async function fetchBeneficiaryDetail(beneficiaryId: string): Promise<Ben
   return res.json();
 }
 
+// ─── Beneficiary Follow-ups ───────────────────────────────────────────────────
+
+export interface BeneficiaryFollowUp {
+  id: number;
+  beneficiaryId: string;
+  officerId: number;
+  contactType: string;
+  contactTypeLabel: string;
+  outcome: string;
+  outcomeLabel: string;
+  notes: string | null;
+  followUpDate: string;
+  nextAction: string | null;
+  createdAt: string;
+}
+
+export interface RecordFollowUpPayload {
+  contactType: "phone_call" | "home_visit" | "sms" | "email" | "other";
+  outcome: "reached" | "no_answer" | "left_message" | "escalated";
+  notes?: string;
+  followUpDate?: string;   // yyyy-MM-dd, defaults to today on backend
+  nextAction?: string;
+}
+
+/**
+ * GET /api/beneficiaries/{beneficiaryId}/follow-ups
+ * Full follow-up history for a beneficiary, newest first.
+ */
+export async function fetchFollowUps(beneficiaryId: string): Promise<BeneficiaryFollowUp[]> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/${encodeURIComponent(beneficiaryId)}/follow-ups`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * POST /api/beneficiaries/{beneficiaryId}/follow-ups
+ * Record a new follow-up action. Officer ID is set from the JWT on the backend.
+ */
+export async function recordFollowUp(
+  beneficiaryId: string,
+  payload: RecordFollowUpPayload,
+): Promise<BeneficiaryFollowUp> {
+  const opts = await authedOpts();
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/${encodeURIComponent(beneficiaryId)}/follow-ups`,
+    {
+      ...opts,
+      method: "POST",
+      headers: { ...(opts.headers as Record<string, string>), "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    },
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
 // ─── Analytics: Model Backtest Report ────────────────────────────────────────
 
 export interface BacktestReport {
