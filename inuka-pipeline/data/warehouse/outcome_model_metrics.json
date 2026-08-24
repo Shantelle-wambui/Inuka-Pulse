@@ -1,0 +1,54 @@
+{
+  "accuracy": 0.8276,
+  "precision": 0.8668,
+  "recall": 0.9326,
+  "f1": 0.8985,
+  "auc_roc": 0.7827,
+  "model_type": "GradientBoosting",
+  "trained_at": "2026-08-23T12:43:49.016130",
+  "n_samples": 2173,
+  "n_features": 16,
+  "positive_rate": 0.8191,
+  "feature_importance": [
+    {
+      "feature": "days_since_last_contact",
+      "importance": 0.356
+    },
+    {
+      "feature": "engagement_score",
+      "importance": 0.2665
+    },
+    {
+      "feature": "assessment_score_latest",
+      "importance": 0.124
+    },
+    {
+      "feature": "attendance_rate_30d",
+      "importance": 0.0605
+    },
+    {
+      "feature": "days_in_program",
+      "importance": 0.0499
+    },
+    {
+      "feature": "field_visit_gap_days",
+      "importance": 0.0313
+    },
+    {
+      "feature": "county_code",
+      "importance": 0.029
+    },
+    {
+      "feature": "pillar_code",
+      "importance": 0.028
+    },
+    {
+      "feature": "sessions_total_30d",
+      "importance": 0.0175
+    },
+    {
+      "feature": "missed_sessions_14d",
+      "importance": 0.0138
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "generated_at": "2026-08-23T11:37:31.881041",
+  "count": 25,
+  "donors": [
+    {
+      "donor_id": "DONOR-dcf1ff15",
+      "name": "Gates Foundation Kenya",
+      "contact_email": "partnerships@gatesfoundation.org",
+      "donor_type": "Government",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-56477b32",
+      "name": "USAID Kenya",
+      "contact_email": "partnerships@usaidkenya.org",
+      "donor_type": "Government",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-206d1532",
+      "name": "DFID East Africa",
+      "contact_email": "partnerships@dfideastafrica.org",
+      "donor_type": "Bilateral",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-25e63543",
+      "name": "Mastercard Foundation",
+      "contact_email": "partnerships@mastercardfound.org",
+      "donor_type": "Corporate",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-bec3088f",
+      "name": "Safaricom Foundation",
+      "contact_email": "partnerships@safaricomfounda.org",
+      "donor_type": "Corporate",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-2eba112c",
+      "name": "Kenya Commercial Bank Foundation",
+      "contact_email": "partnerships@kenyacommercial.org",
+      "donor_type": "NGO",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-41e4a318",
+      "name": "Equity Group Foundation",
+      "contact_email": "partnerships@equitygroupfoun.org",
+      "donor_type": "Corporate",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-a9bfc7a5",
+      "name": "Standard Chartered Foundation",
+      "contact_email": "partnerships@standardcharter.org",
+      "donor_type": "Government",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-fe1cf3bd",
+      "name": "World Bank Kenya",
+      "contact_email": "partnerships@worldbankkenya.org",
+      "donor_type": "Bilateral",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-60bba210",
+      "name": "African Development Bank",
+      "contact_email": "partnerships@africandevelopm.org",
+      "donor_type": "NGO",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-f800b7de",
+      "name": "UNICEF Kenya",
+      "contact_email": "partnerships@unicefkenya.org",
+      "donor_type": "Foundation",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-98a66706",
+      "name": "Save the Children Kenya",
+      "contact_email": "partnerships@savethechildren.org",
+      "donor_type": "Government",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-230e0b32",
+      "name": "Plan International Kenya",
+      "contact_email": "partnerships@planinternation.org",
+      "donor_type": "NGO",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-a47761f8",
+      "name": "Aga Khan Foundation",
+      "contact_email": "partnerships@agakhanfoundati.org",
+      "donor_type": "Bilateral",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-529c747b",
+      "name": "Ford Foundation Africa",
+      "contact_email": "partnerships@fordfoundationa.org",
+      "donor_type": "Bilateral",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-cb8d611d",
+      "name": "Rockefeller Foundation",
+      "contact_email": "partnerships@rockefellerfoun.org",
+      "donor_type": "Government",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-9a615fd3",
+      "name": "Michael and Susan Dell Foundation",
+      "contact_email": "partnerships@michaelandsusan.org",
+      "donor_type": "NGO",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-7a4ec3fe",
+      "name": "IKEA Foundation",
+      "contact_email": "partnerships@ikeafoundation.org",
+      "donor_type": "Government",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-29e9ab7f",
+      "name": "Skoll Foundation",
+      "contact_email": "partnerships@skollfoundation.org",
+      "donor_type": "Corporate",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-0ae96fd3",
+      "name": "Omidyar Network",
+      "contact_email": "partnerships@omidyarnetwork.org",
+      "donor_type": "Corporate",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-03b9c314",
+      "name": "Acumen Fund",
+      "contact_email": "partnerships@acumenfund.org",
+      "donor_type": "Bilateral",
+      "is_active": false
+    },
+    {
+      "donor_id": "DONOR-20aa625a",
+      "name": "TechnoServe Kenya",
+      "contact_email": "partnerships@technoservekeny.org",
+      "donor_type": "Bilateral",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-aa568b30",
+      "name": "GIZ Kenya",
+      "contact_email": "partnerships@gizkenya.org",
+      "donor_type": "Bilateral",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-08c21a3c",
+      "name": "JICA Kenya",
+      "contact_email": "partnerships@jicakenya.org",
+      "donor_type": "Corporate",
+      "is_active": true
+    },
+    {
+      "donor_id": "DONOR-faf240b8",
+      "name": "KOICA Kenya",
+      "contact_email": "partnerships@koicakenya.org",
+      "donor_type": "Foundation",
+      "is_active": true
+    }
+  ]
+}

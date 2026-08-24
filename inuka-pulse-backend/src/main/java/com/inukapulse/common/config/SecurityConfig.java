@@ -62,7 +62,9 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                // Public endpoints — auth flows, API docs, and health check
+                // ══════════════════════════════════════════════════════════════
+                // PUBLIC ENDPOINTS — No auth required
+                // ══════════════════════════════════════════════════════════════
                 .requestMatchers(
                     "/api/auth/**",
                     "/actuator/health",
@@ -71,8 +73,11 @@ public class SecurityConfig {
                     "/v3/api-docs/**",
                     "/api/etl/push"        // ETL push — authenticated via X-ETL-Api-Key header
                 ).permitAll()
+                
+                // Public API for Foundation website embed — NO PII, cached
+                .requestMatchers("/api/v1/public/**").permitAll()
+                
                 // Read-only dashboard endpoints — no auth required
-                // (alerts, risk heatmap, sites, quality, ingestion, analytics)
                 .requestMatchers(
                     "/api/alerts",
                     "/api/sites/**",
@@ -82,24 +87,56 @@ public class SecurityConfig {
                     "/api/analytics/**",
                     "/api/ml/champion-artifact-path"
                 ).permitAll()
-                // Welfare reports — any authenticated user can submit; Programme Directors can list
+                
+                // ══════════════════════════════════════════════════════════════
+                // V1 ANALYTICS API — Requires auth, role-scoped via @PreAuthorize
+                // ══════════════════════════════════════════════════════════════
+                .requestMatchers("/api/v1/analytics/**").authenticated()
+                
+                // ══════════════════════════════════════════════════════════════
+                // PROGRAM & DONOR MANAGEMENT
+                // ══════════════════════════════════════════════════════════════
+                .requestMatchers(HttpMethod.GET, "/api/v1/programs/**").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR", "DATA_ANALYST", "EXECUTIVE", "DONOR")
+                .requestMatchers(HttpMethod.POST, "/api/v1/programs/**").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR")
+                .requestMatchers(HttpMethod.PATCH, "/api/v1/programs/**").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR")
+                
+                .requestMatchers(HttpMethod.GET, "/api/v1/donors/**").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR", "EXECUTIVE", "DONOR")
+                
+                // ══════════════════════════════════════════════════════════════
+                // RESOURCE ALLOCATION (Model 5 workflow)
+                // ══════════════════════════════════════════════════════════════
+                .requestMatchers(HttpMethod.GET, "/api/v1/allocations/**").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR", "EXECUTIVE")
+                .requestMatchers(HttpMethod.POST, "/api/v1/allocations/*/approve").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR", "EXECUTIVE")
+                .requestMatchers(HttpMethod.POST, "/api/v1/allocations/*/reject").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR", "EXECUTIVE")
+                .requestMatchers(HttpMethod.POST, "/api/v1/allocations/generate").hasRole("ADMIN")
+                
+                // ══════════════════════════════════════════════════════════════
+                // EXISTING ENDPOINTS (unchanged)
+                // ══════════════════════════════════════════════════════════════
+                // Welfare reports
                 .requestMatchers(HttpMethod.POST, "/api/hazard-reports").authenticated()
                 .requestMatchers(HttpMethod.GET, "/api/hazard-reports/**").authenticated()
                 .requestMatchers(HttpMethod.PATCH, "/api/hazard-reports/**").authenticated()
-                // CAPAs (Programme Interventions) — Programme Director and Coordinator create; any auth reads/updates
+                
+                // CAPAs (Programme Interventions)
                 .requestMatchers(HttpMethod.POST, "/api/capas").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR", "COORDINATOR")
                 .requestMatchers("/api/capas/**").authenticated()
+                
                 // Work Orders (Field Visit Scheduling)
                 .requestMatchers(HttpMethod.POST, "/api/work-orders").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR", "COORDINATOR", "FIELD_OFFICER")
                 .requestMatchers(HttpMethod.PATCH, "/api/work-orders/**").authenticated()
                 .requestMatchers(HttpMethod.GET, "/api/work-orders/**").authenticated()
-                // Field Officers (technician profiles — kept for structural compatibility)
+                
+                // Field Officers
                 .requestMatchers("/api/technicians/**").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR", "COORDINATOR")
-                // ML Admin — all endpoints require ML_ADMIN or ADMIN
+                
+                // ML Admin
                 .requestMatchers("/api/ml/**").hasAnyRole("ADMIN", "ML_ADMIN")
-                // User management requires Admin role
+                
+                // User management
                 .requestMatchers("/api/users/**").hasAnyRole("ADMIN")
                 .requestMatchers("/api/roles/**").hasAnyRole("ADMIN")
+                
                 // Everything else requires auth
                 .anyRequest().authenticated()
             )

@@ -1,0 +1,26 @@
+donor_id,name,contact_email,donor_type,is_active
+DONOR-dcf1ff15,Gates Foundation Kenya,partnerships@gatesfoundation.org,Government,True
+DONOR-56477b32,USAID Kenya,partnerships@usaidkenya.org,Government,True
+DONOR-206d1532,DFID East Africa,partnerships@dfideastafrica.org,Bilateral,True
+DONOR-25e63543,Mastercard Foundation,partnerships@mastercardfound.org,Corporate,True
+DONOR-bec3088f,Safaricom Foundation,partnerships@safaricomfounda.org,Corporate,True
+DONOR-2eba112c,Kenya Commercial Bank Foundation,partnerships@kenyacommercial.org,NGO,True
+DONOR-41e4a318,Equity Group Foundation,partnerships@equitygroupfoun.org,Corporate,True
+DONOR-a9bfc7a5,Standard Chartered Foundation,partnerships@standardcharter.org,Government,True
+DONOR-fe1cf3bd,World Bank Kenya,partnerships@worldbankkenya.org,Bilateral,True
+DONOR-60bba210,African Development Bank,partnerships@africandevelopm.org,NGO,True
+DONOR-f800b7de,UNICEF Kenya,partnerships@unicefkenya.org,Foundation,True
+DONOR-98a66706,Save the Children Kenya,partnerships@savethechildren.org,Government,True
+DONOR-230e0b32,Plan International Kenya,partnerships@planinternation.org,NGO,True
+DONOR-a47761f8,Aga Khan Foundation,partnerships@agakhanfoundati.org,Bilateral,True
+DONOR-529c747b,Ford Foundation Africa,partnerships@fordfoundationa.org,Bilateral,True
+DONOR-cb8d611d,Rockefeller Foundation,partnerships@rockefellerfoun.org,Government,True
+DONOR-9a615fd3,Michael and Susan Dell Foundation,partnerships@michaelandsusan.org,NGO,True
+DONOR-7a4ec3fe,IKEA Foundation,partnerships@ikeafoundation.org,Government,True
+DONOR-29e9ab7f,Skoll Foundation,partnerships@skollfoundation.org,Corporate,True
+DONOR-0ae96fd3,Omidyar Network,partnerships@omidyarnetwork.org,Corporate,True
+DONOR-03b9c314,Acumen Fund,partnerships@acumenfund.org,Bilateral,False
+DONOR-20aa625a,TechnoServe Kenya,partnerships@technoservekeny.org,Bilateral,True
+DONOR-aa568b30,GIZ Kenya,partnerships@gizkenya.org,Bilateral,True
+DONOR-08c21a3c,JICA Kenya,partnerships@jicakenya.org,Corporate,True
+DONOR-faf240b8,KOICA Kenya,partnerships@koicakenya.org,Foundation,True

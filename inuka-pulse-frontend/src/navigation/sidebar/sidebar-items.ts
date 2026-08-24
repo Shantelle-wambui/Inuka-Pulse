@@ -19,6 +19,12 @@ import {
   AlertTriangle,
   TrendingDown,
   Timer,
+  Building2,
+  Heart,
+  Target,
+  Layers,
+  DollarSign,
+  TrendingUp,
 } from "lucide-react";
 
 export type NavBadge = "new" | "soon";
@@ -103,6 +109,20 @@ export const sidebarItems: NavGroup[] = [
         title: "Cohort Map",
         url: "/dashboard/sites",
         icon: Map,
+      },
+      {
+        id: "programs",
+        title: "Programs & Funding",
+        url: "/dashboard/programs",
+        icon: Building2,
+        badge: "new",
+      },
+      {
+        id: "impact",
+        title: "Impact & Reach",
+        url: "/dashboard/impact",
+        icon: Target,
+        badge: "new",
       },
     ],
   },
@@ -248,12 +268,35 @@ export const sidebarItems: NavGroup[] = [
           },
         ],
       },
+      {
+        id: "allocations",
+        title: "Resource Allocations",
+        url: "/dashboard/allocations",
+        icon: Layers,
+        badge: "new",
+      },
     ],
   },
 
-  // ── 5. Accounts ──────────────────────────────────────────────────────────────
+  // ── 5. Donor Portal ──────────────────────────────────────────────────────────
   {
     id: 5,
+    label: "Donor Portal",
+    requiredRoles: ["Admin", "Program Director", "Donor"],
+    items: [
+      {
+        id: "donor-portal",
+        title: "Donor Dashboard",
+        url: "/dashboard/donor-portal",
+        icon: Heart,
+        badge: "new",
+      },
+    ],
+  },
+
+  // ── 6. Accounts ──────────────────────────────────────────────────────────────
+  {
+    id: 6,
     label: "Accounts",
     items: [
       {

@@ -1,0 +1,276 @@
+{
+  "generated_at": "2026-08-23T11:37:32.018207",
+  "count": 30,
+  "indicators": [
+    {
+      "indicator_id": "IND-2d7898a7",
+      "name": "total_enrolled",
+      "category": "output",
+      "unit": "count",
+      "definition": "Total beneficiaries ever enrolled in the program",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-a34e000c",
+      "name": "active_enrolled",
+      "category": "output",
+      "unit": "count",
+      "definition": "Currently active enrollments",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-1f3b15f0",
+      "name": "sessions_delivered",
+      "category": "output",
+      "unit": "count",
+      "definition": "Total training sessions completed",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-7836a6b4",
+      "name": "attendance_rate",
+      "category": "output",
+      "unit": "percentage",
+      "definition": "Average attendance across all sessions",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-1821951f",
+      "name": "field_visits_completed",
+      "category": "output",
+      "unit": "count",
+      "definition": "Field officer verification visits completed",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-3e9edc99",
+      "name": "disbursements_made",
+      "category": "output",
+      "unit": "count",
+      "definition": "Total stipend disbursements processed",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-0a7bf2e3",
+      "name": "disbursement_amount",
+      "category": "output",
+      "unit": "KES",
+      "definition": "Total disbursement amount in KES",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-1b520112",
+      "name": "assessments_conducted",
+      "category": "output",
+      "unit": "count",
+      "definition": "Total assessments administered",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-e281a46a",
+      "name": "training_hours",
+      "category": "output",
+      "unit": "hours",
+      "definition": "Total training hours delivered",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-ce295f83",
+      "name": "mentorship_sessions",
+      "category": "output",
+      "unit": "count",
+      "definition": "One-on-one mentorship sessions held",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-3c218f3e",
+      "name": "completion_rate",
+      "category": "outcome",
+      "unit": "percentage",
+      "definition": "Beneficiaries who completed program vs enrolled",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-1461376c",
+      "name": "employment_rate",
+      "category": "outcome",
+      "unit": "percentage",
+      "definition": "Completers who gained employment within 6 months",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-a04bb220",
+      "name": "retention_rate_90d",
+      "category": "outcome",
+      "unit": "percentage",
+      "definition": "Beneficiaries still active after 90 days",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-5522634a",
+      "name": "retention_rate_180d",
+      "category": "outcome",
+      "unit": "percentage",
+      "definition": "Beneficiaries still active after 180 days",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-f988d18a",
+      "name": "dropout_rate",
+      "category": "outcome",
+      "unit": "percentage",
+      "definition": "Beneficiaries who disengaged before completion",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-a1e02516",
+      "name": "avg_assessment_score",
+      "category": "outcome",
+      "unit": "percentage",
+      "definition": "Average assessment score across all beneficiaries",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-d12b29c3",
+      "name": "score_improvement",
+      "category": "outcome",
+      "unit": "percentage_points",
+      "definition": "Average improvement from first to last assessment",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-a69c48c2",
+      "name": "business_startup_rate",
+      "category": "outcome",
+      "unit": "percentage",
+      "definition": "Completers who started a business",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-53cb4197",
+      "name": "further_education_rate",
+      "category": "outcome",
+      "unit": "percentage",
+      "definition": "Completers who enrolled in further education",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-68c657c7",
+      "name": "skill_certification_rate",
+      "category": "outcome",
+      "unit": "percentage",
+      "definition": "Beneficiaries who obtained skill certifications",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-bac47fbd",
+      "name": "cost_per_beneficiary",
+      "category": "impact",
+      "unit": "KES",
+      "definition": "Total program cost / beneficiaries served",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-4c8339bc",
+      "name": "cost_per_outcome",
+      "category": "impact",
+      "unit": "KES",
+      "definition": "Total cost / positive outcomes achieved",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-cb779da7",
+      "name": "roi_ratio",
+      "category": "impact",
+      "unit": "ratio",
+      "definition": "Estimated economic return / program investment",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-96777408",
+      "name": "income_increase_pct",
+      "category": "impact",
+      "unit": "percentage",
+      "definition": "Average income increase for employed completers",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-58c61bcd",
+      "name": "family_members_impacted",
+      "category": "impact",
+      "unit": "count",
+      "definition": "Estimated family members benefiting indirectly",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-0c503f68",
+      "name": "community_projects",
+      "category": "impact",
+      "unit": "count",
+      "definition": "Community projects initiated by beneficiaries",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-d1f975cc",
+      "name": "peer_mentors_trained",
+      "category": "impact",
+      "unit": "count",
+      "definition": "Beneficiaries who became peer mentors",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-08ffbe04",
+      "name": "employer_satisfaction",
+      "category": "impact",
+      "unit": "percentage",
+      "definition": "Employer satisfaction with program graduates",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-54bda2cf",
+      "name": "savings_rate",
+      "category": "impact",
+      "unit": "percentage",
+      "definition": "Completers with active savings accounts",
+      "version": 1,
+      "is_active": true
+    },
+    {
+      "indicator_id": "IND-4a03005f",
+      "name": "loan_access_rate",
+      "category": "impact",
+      "unit": "percentage",
+      "definition": "Completers who accessed formal credit",
+      "version": 1,
+      "is_active": true
+    }
+  ]
+}

@@ -30,6 +30,10 @@ public class SiteEntity {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    // Program linkage - links cohort to program for M&E reporting
+    @Column(name = "program_id")
+    private String programId;
+
     // Optional extended columns — used by Inuka cohort detail view
     @Column(name = "station_type")
     private String stationType;

@@ -1,0 +1,1620 @@
+id,program_id,region,resource_type,allocated_amount,unit,period_start,period_end,source,status,priority_score,rationale
+ALLOC-44430485,PROG-0c478853,Nairobi,training_capacity,77,seats,2024-06-22,2024-09-13,manual,approved,,
+ALLOC-7d979e46,PROG-0c478853,Nairobi,budget,652391,KES,2024-06-22,2024-09-13,manual,approved,,
+ALLOC-2c4f728d,PROG-0c478853,Nairobi,field_officer,1,officers,2024-09-16,2024-12-21,manual,approved,,
+ALLOC-ffa0f0be,PROG-0c478853,Nairobi,training_capacity,89,seats,2024-09-16,2024-12-21,manual,approved,,
+ALLOC-315f2c5d,PROG-0c478853,Nairobi,field_officer,4,officers,2024-08-04,2024-11-07,ml_recommended,approved,57.49,Quia dolores voluptatem cumque suscipit at quae odit.
+ALLOC-5995e228,PROG-0c478853,Nairobi,budget,1948962,KES,2024-08-04,2024-11-07,manual,approved,,
+ALLOC-fb1b4f26,PROG-0c478853,Nairobi,field_officer,1,officers,2024-10-17,2024-12-21,manual,approved,,
+ALLOC-33219bf8,PROG-0c478853,Nairobi,field_officer,4,officers,2025-11-08,2026-02-15,manual,approved,,
+ALLOC-60ba6d43,PROG-325861d4,Nairobi,field_officer,4,officers,2024-08-15,2024-10-16,manual,approved,,
+ALLOC-576e1481,PROG-325861d4,Nairobi,budget,1347905,KES,2024-08-15,2024-10-16,manual,approved,,
+ALLOC-905b26c4,PROG-325861d4,Nairobi,training_capacity,91,seats,2026-04-22,2026-08-18,manual,approved,,
+ALLOC-c14b4d45,PROG-325861d4,Nairobi,budget,679235,KES,2026-04-22,2026-08-18,manual,approved,,
+ALLOC-758edf7e,PROG-325861d4,Nairobi,training_capacity,73,seats,2024-04-20,2024-08-08,manual,approved,,
+ALLOC-b5a029b4,PROG-325861d4,Nairobi,budget,1288233,KES,2024-04-20,2024-08-08,manual,approved,,
+ALLOC-82d1dfb0,PROG-3f035d32,Nairobi,field_officer,1,officers,2026-05-14,2026-07-19,ml_recommended,rejected,81.61,Ipsum eaque dolorum architecto ducimus autem a harum.
+ALLOC-a3d4d257,PROG-3f035d32,Nairobi,budget,1473189,KES,2026-05-14,2026-07-19,manual,approved,,
+ALLOC-95481bf1,PROG-3f035d32,Nairobi,field_officer,3,officers,2026-02-22,2026-05-23,manual,approved,,
+ALLOC-e1cd46bf,PROG-3f035d32,Nairobi,training_capacity,71,seats,2026-02-22,2026-05-23,manual,approved,,
+ALLOC-3f7c860e,PROG-ae109715,Nairobi,field_officer,4,officers,2025-09-01,2025-11-15,ml_recommended,rejected,21.42,Voluptas sunt laudantium fugiat molestias aut laboriosam sint officiis.
+ALLOC-f26e4c5b,PROG-ae109715,Nairobi,budget,687929,KES,2025-09-01,2025-11-15,ml_recommended,rejected,67.94,Cum asperiores sapiente eos eum veritatis asperiores.
+ALLOC-2c4294aa,PROG-ae109715,Nairobi,field_officer,4,officers,2026-03-02,2026-05-15,ml_recommended,approved,71.02,Suscipit cum asperiores velit voluptatem excepturi.
+ALLOC-434d1943,PROG-ae109715,Nairobi,training_capacity,31,seats,2026-03-02,2026-05-15,manual,approved,,
+ALLOC-129687d5,PROG-ae109715,Nairobi,budget,1827989,KES,2026-03-02,2026-05-15,manual,approved,,
+ALLOC-9c4848b1,PROG-ae109715,Nairobi,field_officer,3,officers,2025-02-02,2025-05-21,ml_recommended,approved,31.13,Tempora provident inventore officiis non ipsa amet ex voluptate illum mollitia.
+ALLOC-edea3eca,PROG-ae109715,Nairobi,training_capacity,84,seats,2025-02-02,2025-05-21,manual,approved,,
+ALLOC-15b0b5ca,PROG-ae109715,Nairobi,field_officer,2,officers,2025-03-14,2025-07-08,manual,approved,,
+ALLOC-bf7a4e9c,PROG-e109788d,Nairobi,field_officer,3,officers,2025-02-07,2025-05-07,manual,approved,,
+ALLOC-5f2fe4d6,PROG-e109788d,Nairobi,training_capacity,79,seats,2025-02-07,2025-05-07,manual,approved,,
+ALLOC-41cba9bd,PROG-e109788d,Nairobi,budget,359780,KES,2025-02-07,2025-05-07,manual,approved,,
+ALLOC-9374101e,PROG-e109788d,Nairobi,field_officer,4,officers,2025-05-25,2025-08-16,manual,approved,,
+ALLOC-273c600c,PROG-e109788d,Nairobi,budget,833499,KES,2025-05-25,2025-08-16,manual,approved,,
+ALLOC-92d6e4a5,PROG-e109788d,Nairobi,field_officer,1,officers,2026-03-26,2026-07-21,manual,approved,,
+ALLOC-7dd2ec64,PROG-e109788d,Nairobi,training_capacity,40,seats,2026-03-26,2026-07-21,ml_recommended,approved,35.0,Eaque eligendi dolores amet nemo saepe corrupti facere incidunt eos.
+ALLOC-316ec1b4,PROG-e109788d,Nairobi,budget,572094,KES,2026-03-26,2026-07-21,manual,approved,,
+ALLOC-a5eded48,PROG-7bc39a8c,Nairobi,field_officer,1,officers,2026-03-23,2026-06-23,manual,approved,,
+ALLOC-c3330075,PROG-7bc39a8c,Nairobi,training_capacity,42,seats,2026-03-23,2026-06-23,manual,approved,,
+ALLOC-c138df88,PROG-7bc39a8c,Nairobi,budget,629301,KES,2026-03-23,2026-06-23,manual,approved,,
+ALLOC-111c8b8d,PROG-7bc39a8c,Nairobi,training_capacity,74,seats,2026-01-29,2026-05-14,ml_recommended,rejected,52.13,Nobis dicta ad cupiditate eos aspernatur sapiente est id laudantium optio.
+ALLOC-96d7cc5c,PROG-7bc39a8c,Nairobi,budget,733644,KES,2026-01-29,2026-05-14,manual,approved,,
+ALLOC-651e9255,PROG-7bc39a8c,Nairobi,field_officer,5,officers,2026-03-17,2026-06-22,ml_recommended,rejected,78.76,Odit harum fuga fugit delectus.
+ALLOC-45eda4c6,PROG-7bc39a8c,Nairobi,training_capacity,96,seats,2026-03-17,2026-06-22,manual,approved,,
+ALLOC-45c7f9f1,PROG-7bc39a8c,Nairobi,budget,326711,KES,2026-03-17,2026-06-22,manual,approved,,
+ALLOC-fdd1bce4,PROG-7bc39a8c,Nairobi,field_officer,3,officers,2026-02-14,2026-05-02,manual,approved,,
+ALLOC-f6090e8e,PROG-1619daa0,Mombasa,field_officer,2,officers,2025-06-05,2025-08-13,ml_recommended,approved,76.17,Ea iure dolorem eaque aperiam.
+ALLOC-a256a472,PROG-1619daa0,Mombasa,training_capacity,60,seats,2025-06-05,2025-08-13,manual,approved,,
+ALLOC-85afa87f,PROG-1619daa0,Mombasa,field_officer,4,officers,2026-04-18,2026-07-05,manual,approved,,
+ALLOC-dadca8b8,PROG-1619daa0,Mombasa,budget,1299659,KES,2026-04-18,2026-07-05,ml_recommended,approved,69.94,Assumenda exercitationem molestiae voluptas nihil.
+ALLOC-21bf37a7,PROG-1619daa0,Mombasa,training_capacity,58,seats,2026-03-27,2026-07-23,ml_recommended,approved,81.35,Aperiam harum minima vitae porro vel nemo doloremque error hic.
+ALLOC-bcc46953,PROG-1619daa0,Mombasa,budget,304688,KES,2026-03-27,2026-07-23,manual,approved,,
+ALLOC-885af343,PROG-1619daa0,Mombasa,budget,1525460,KES,2025-08-16,2025-11-30,ml_recommended,approved,35.56,Magnam tempore reiciendis perspiciatis nulla.
+ALLOC-ece67c8d,PROG-aaa510cb,Mombasa,training_capacity,53,seats,2026-02-12,2026-05-09,manual,approved,,
+ALLOC-5ebcd89a,PROG-aaa510cb,Mombasa,budget,347005,KES,2026-02-12,2026-05-09,manual,approved,,
+ALLOC-2b3c473c,PROG-aaa510cb,Mombasa,field_officer,5,officers,2026-05-07,2026-08-12,manual,approved,,
+ALLOC-17ab8689,PROG-aaa510cb,Mombasa,budget,1919274,KES,2026-05-07,2026-08-12,manual,approved,,
+ALLOC-b16d5eb3,PROG-aaa510cb,Mombasa,field_officer,2,officers,2026-04-10,2026-06-28,manual,approved,,
+ALLOC-a92d0fe5,PROG-aaa510cb,Mombasa,training_capacity,72,seats,2026-04-10,2026-06-28,ml_recommended,rejected,89.07,Veniam ipsum veniam cumque distinctio deserunt.
+ALLOC-4ce87c3f,PROG-aaa510cb,Mombasa,budget,1908571,KES,2026-04-10,2026-06-28,manual,approved,,
+ALLOC-47c367c5,PROG-54f8ce8a,Mombasa,field_officer,2,officers,2025-10-15,2026-01-04,manual,approved,,
+ALLOC-aca60bc0,PROG-54f8ce8a,Mombasa,training_capacity,77,seats,2025-10-15,2026-01-04,manual,approved,,
+ALLOC-404a8f9f,PROG-54f8ce8a,Mombasa,training_capacity,31,seats,2024-11-22,2025-02-26,manual,approved,,
+ALLOC-56507896,PROG-54f8ce8a,Mombasa,budget,1000537,KES,2024-11-22,2025-02-26,manual,approved,,
+ALLOC-8dc24a40,PROG-324887b3,Mombasa,field_officer,2,officers,2024-12-22,2025-02-20,manual,approved,,
+ALLOC-7a81a678,PROG-324887b3,Mombasa,field_officer,1,officers,2026-01-09,2026-05-02,manual,approved,,
+ALLOC-bc33bfda,PROG-324887b3,Mombasa,training_capacity,51,seats,2026-01-09,2026-05-02,manual,approved,,
+ALLOC-d17332e0,PROG-324887b3,Mombasa,field_officer,5,officers,2024-10-10,2024-12-17,manual,approved,,
+ALLOC-8aea6184,PROG-324887b3,Mombasa,training_capacity,25,seats,2024-10-10,2024-12-17,manual,approved,,
+ALLOC-b469b60d,PROG-324887b3,Mombasa,budget,1626374,KES,2024-10-10,2024-12-17,manual,approved,,
+ALLOC-4abb144b,PROG-324887b3,Mombasa,field_officer,2,officers,2025-05-15,2025-08-04,manual,approved,,
+ALLOC-c6682f30,PROG-324887b3,Mombasa,budget,495158,KES,2025-05-15,2025-08-04,manual,approved,,
+ALLOC-3a25f3b5,PROG-324887b3,Mombasa,field_officer,2,officers,2026-03-06,2026-05-30,manual,approved,,
+ALLOC-3feea66b,PROG-324887b3,Mombasa,training_capacity,22,seats,2026-03-06,2026-05-30,manual,approved,,
+ALLOC-e774db55,PROG-324887b3,Mombasa,budget,868797,KES,2026-03-06,2026-05-30,manual,approved,,
+ALLOC-8c6e81f9,PROG-05bef3b8,Nakuru,field_officer,5,officers,2025-11-11,2026-03-07,manual,approved,,
+ALLOC-4ec02efa,PROG-05bef3b8,Nakuru,training_capacity,26,seats,2025-11-11,2026-03-07,manual,approved,,
+ALLOC-9817d907,PROG-05bef3b8,Nakuru,budget,141401,KES,2025-11-11,2026-03-07,manual,approved,,
+ALLOC-b0919bae,PROG-05bef3b8,Nakuru,field_officer,1,officers,2025-07-01,2025-09-25,manual,approved,,
+ALLOC-5654a3ca,PROG-05bef3b8,Nakuru,training_capacity,39,seats,2025-07-01,2025-09-25,manual,approved,,
+ALLOC-c66b3d62,PROG-05bef3b8,Nakuru,budget,119513,KES,2025-07-01,2025-09-25,manual,approved,,
+ALLOC-ca9ac36d,PROG-a17817bc,Nakuru,field_officer,2,officers,2026-05-22,2026-08-07,manual,approved,,
+ALLOC-e2563257,PROG-a17817bc,Nakuru,budget,1395406,KES,2026-05-22,2026-08-07,manual,approved,,
+ALLOC-6895034c,PROG-a17817bc,Nakuru,field_officer,2,officers,2025-04-01,2025-07-20,manual,approved,,
+ALLOC-350aa53d,PROG-bf6f2447,Nakuru,field_officer,2,officers,2025-09-10,2025-12-24,manual,approved,,
+ALLOC-24a8a079,PROG-bf6f2447,Nakuru,training_capacity,46,seats,2025-09-10,2025-12-24,manual,approved,,
+ALLOC-ea37982e,PROG-bf6f2447,Nakuru,budget,591793,KES,2025-09-10,2025-12-24,manual,approved,,
+ALLOC-f526bfd4,PROG-bf6f2447,Nakuru,budget,412778,KES,2026-02-17,2026-04-23,ml_recommended,approved,25.25,Incidunt voluptates ipsa voluptatum occaecati.
+ALLOC-71592989,PROG-bf6f2447,Nakuru,training_capacity,78,seats,2026-03-16,2026-05-21,ml_recommended,pending,52.5,Ducimus tenetur totam architecto harum id eveniet eius itaque sit.
+ALLOC-09e62e8e,PROG-bf6f2447,Nakuru,budget,466376,KES,2026-03-16,2026-05-21,ml_recommended,rejected,45.22,Nesciunt quos beatae corrupti necessitatibus nesciunt vitae aut autem quod ratione.
+ALLOC-2048bb91,PROG-a46ac700,Nakuru,field_officer,1,officers,2026-03-17,2026-07-02,manual,approved,,
+ALLOC-7ada962c,PROG-a46ac700,Nakuru,training_capacity,41,seats,2026-03-17,2026-07-02,manual,approved,,
+ALLOC-16bbf518,PROG-a46ac700,Nakuru,field_officer,1,officers,2026-05-24,2026-08-31,manual,approved,,
+ALLOC-8d09860e,PROG-a46ac700,Nakuru,training_capacity,34,seats,2026-05-24,2026-08-31,manual,approved,,
+ALLOC-670132e2,PROG-a46ac700,Nakuru,field_officer,4,officers,2026-02-25,2026-06-18,ml_recommended,approved,75.78,Sunt soluta eaque omnis nemo labore cupiditate illo nulla perspiciatis.
+ALLOC-c03cb032,PROG-a46ac700,Nakuru,training_capacity,27,seats,2026-02-25,2026-06-18,ml_recommended,approved,27.26,Aliquam suscipit ex dolores quia ullam tempore accusantium.
+ALLOC-61ad4923,PROG-a46ac700,Nakuru,field_officer,4,officers,2026-03-24,2026-07-13,manual,approved,,
+ALLOC-132fb042,PROG-a46ac700,Nakuru,training_capacity,65,seats,2026-03-24,2026-07-13,manual,approved,,
+ALLOC-24b0372b,PROG-2f07ec2b,Nakuru,field_officer,4,officers,2025-03-11,2025-07-07,manual,approved,,
+ALLOC-b575eb97,PROG-2f07ec2b,Nakuru,training_capacity,60,seats,2025-03-11,2025-07-07,manual,approved,,
+ALLOC-e6e1ff13,PROG-2f07ec2b,Nakuru,budget,1504765,KES,2025-04-23,2025-08-10,ml_recommended,approved,68.18,Est sapiente similique placeat voluptas dolorem error.
+ALLOC-f2d488f8,PROG-2f07ec2b,Nakuru,field_officer,2,officers,2025-07-28,2025-10-02,manual,approved,,
+ALLOC-2ce1f740,PROG-2f07ec2b,Nakuru,training_capacity,69,seats,2025-07-28,2025-10-02,manual,approved,,
+ALLOC-091bbd68,PROG-cd46d603,Kisumu,training_capacity,80,seats,2023-11-24,2024-03-04,ml_recommended,rejected,25.24,Quo eum quas non at ipsam totam illum laborum.
+ALLOC-3b4fa4ae,PROG-cd46d603,Kisumu,budget,605186,KES,2023-11-24,2024-03-04,manual,approved,,
+ALLOC-1a7af9c4,PROG-cd46d603,Kisumu,field_officer,5,officers,2024-08-23,2024-10-25,manual,approved,,
+ALLOC-8dc881b5,PROG-cd46d603,Kisumu,training_capacity,50,seats,2024-08-23,2024-10-25,manual,approved,,
+ALLOC-8e569944,PROG-cd46d603,Kisumu,budget,1301741,KES,2024-08-23,2024-10-25,manual,approved,,
+ALLOC-c4b12292,PROG-3cc79871,Kisumu,field_officer,4,officers,2026-03-02,2026-05-21,manual,approved,,
+ALLOC-f184c43f,PROG-3cc79871,Kisumu,training_capacity,71,seats,2026-03-02,2026-05-21,manual,approved,,
+ALLOC-ded8ca55,PROG-3cc79871,Kisumu,budget,100355,KES,2026-03-02,2026-05-21,ml_recommended,approved,87.42,Sint reprehenderit maiores culpa est magni consequatur sed sunt adipisci.
+ALLOC-a325bf50,PROG-3cc79871,Kisumu,field_officer,2,officers,2025-10-07,2026-01-31,manual,approved,,
+ALLOC-09692dfa,PROG-3cc79871,Kisumu,training_capacity,63,seats,2025-10-07,2026-01-31,manual,approved,,
+ALLOC-8c2d54c7,PROG-3cc79871,Kisumu,budget,567493,KES,2025-10-07,2026-01-31,ml_recommended,approved,73.72,Soluta dicta animi alias amet facere.
+ALLOC-abe5fbc9,PROG-3cc79871,Kisumu,field_officer,4,officers,2026-03-29,2026-07-12,manual,approved,,
+ALLOC-56bd6424,PROG-3cc79871,Kisumu,budget,815877,KES,2026-03-29,2026-07-12,manual,approved,,
+ALLOC-7e52818b,PROG-3cc79871,Kisumu,field_officer,1,officers,2025-09-24,2025-12-28,manual,approved,,
+ALLOC-6126b5d0,PROG-3cc79871,Kisumu,training_capacity,37,seats,2025-09-24,2025-12-28,ml_recommended,approved,48.64,Earum reprehenderit magnam odio commodi adipisci.
+ALLOC-9eebda70,PROG-3cc79871,Kisumu,budget,510877,KES,2025-09-24,2025-12-28,manual,approved,,
+ALLOC-09d8dc46,PROG-3cc79871,Kisumu,field_officer,2,officers,2026-01-06,2026-03-20,manual,approved,,
+ALLOC-e26ee139,PROG-3cc79871,Kisumu,training_capacity,73,seats,2026-01-06,2026-03-20,manual,approved,,
+ALLOC-23909209,PROG-3cc79871,Kisumu,budget,1509583,KES,2026-01-06,2026-03-20,manual,approved,,
+ALLOC-c97ce516,PROG-c34cc69a,Kisumu,field_officer,5,officers,2025-12-18,2026-03-30,manual,approved,,
+ALLOC-bfd57a89,PROG-c34cc69a,Kisumu,training_capacity,87,seats,2025-12-18,2026-03-30,manual,approved,,
+ALLOC-0a119436,PROG-c34cc69a,Kisumu,budget,1007669,KES,2025-12-18,2026-03-30,ml_recommended,approved,55.58,Laborum ipsum vero labore mollitia exercitationem saepe ea.
+ALLOC-e47ed58a,PROG-c34cc69a,Kisumu,field_officer,2,officers,2025-03-06,2025-06-18,manual,approved,,
+ALLOC-75675e57,PROG-c34cc69a,Kisumu,training_capacity,97,seats,2025-03-06,2025-06-18,ml_recommended,approved,46.93,Eligendi harum cum nemo vitae.
+ALLOC-f6f85ccc,PROG-c34cc69a,Kisumu,field_officer,3,officers,2025-05-18,2025-08-03,ml_recommended,approved,29.34,Officia perspiciatis eaque illum accusantium quos quisquam.
+ALLOC-bf0ccf2c,PROG-c34cc69a,Kisumu,training_capacity,85,seats,2025-05-18,2025-08-03,manual,approved,,
+ALLOC-42daa220,PROG-c34cc69a,Kisumu,training_capacity,47,seats,2025-07-24,2025-11-06,manual,approved,,
+ALLOC-e5889d55,PROG-c34cc69a,Kisumu,budget,709389,KES,2025-07-24,2025-11-06,manual,approved,,
+ALLOC-2fa43877,PROG-c34cc69a,Kisumu,field_officer,2,officers,2025-01-19,2025-05-04,manual,approved,,
+ALLOC-402cc4b5,PROG-c34cc69a,Kisumu,training_capacity,61,seats,2025-01-19,2025-05-04,manual,approved,,
+ALLOC-9de9c15c,PROG-1f06b575,Kisumu,budget,1974572,KES,2026-05-16,2026-08-20,ml_recommended,pending,79.31,Labore consequatur cupiditate reiciendis.
+ALLOC-2356b942,PROG-1f06b575,Kisumu,field_officer,4,officers,2026-04-09,2026-07-11,manual,approved,,
+ALLOC-dfa8f16f,PROG-1f06b575,Kisumu,training_capacity,45,seats,2026-04-09,2026-07-11,manual,approved,,
+ALLOC-bb5d83a9,PROG-1f06b575,Kisumu,field_officer,1,officers,2026-04-27,2026-08-08,manual,approved,,
+ALLOC-fe321dcb,PROG-1f06b575,Kisumu,training_capacity,89,seats,2026-04-27,2026-08-08,manual,approved,,
+ALLOC-ad15415c,PROG-1f06b575,Kisumu,field_officer,5,officers,2026-05-20,2026-08-23,ml_recommended,approved,40.13,Dolorum rem esse vitae odit incidunt fugiat.
+ALLOC-07f4db73,PROG-1f06b575,Kisumu,training_capacity,68,seats,2026-05-20,2026-08-23,manual,approved,,
+ALLOC-a52cd8d0,PROG-c254e45c,Kisumu,field_officer,3,officers,2025-09-02,2025-11-04,manual,approved,,
+ALLOC-5d9673a7,PROG-c254e45c,Kisumu,field_officer,3,officers,2025-05-13,2025-09-03,ml_recommended,approved,62.24,Itaque dolor error maxime numquam nesciunt ab voluptatum.
+ALLOC-1b9b95c4,PROG-c254e45c,Kisumu,field_officer,1,officers,2024-12-12,2025-03-10,manual,approved,,
+ALLOC-d7095961,PROG-c254e45c,Kisumu,training_capacity,85,seats,2024-12-12,2025-03-10,manual,approved,,
+ALLOC-d00ce7ff,PROG-c254e45c,Kisumu,budget,685340,KES,2024-12-12,2025-03-10,manual,approved,,
+ALLOC-b1c28f38,PROG-c254e45c,Kisumu,field_officer,3,officers,2024-06-27,2024-09-05,manual,approved,,
+ALLOC-d15bbf0a,PROG-c254e45c,Kisumu,training_capacity,39,seats,2024-06-27,2024-09-05,manual,approved,,
+ALLOC-c51bd4b6,PROG-34646677,Eldoret,training_capacity,29,seats,2025-07-20,2025-10-19,ml_recommended,approved,35.4,Natus nisi eligendi placeat laboriosam excepturi eius eveniet.
+ALLOC-d8fda044,PROG-34646677,Eldoret,budget,242976,KES,2025-07-20,2025-10-19,ml_recommended,pending,58.02,Ea quae tempora error corrupti quisquam tempore.
+ALLOC-f11be9c9,PROG-34646677,Eldoret,field_officer,2,officers,2025-11-02,2026-01-06,manual,approved,,
+ALLOC-80c25f20,PROG-34646677,Eldoret,training_capacity,57,seats,2025-11-02,2026-01-06,manual,approved,,
+ALLOC-7e038c4f,PROG-9e60e575,Eldoret,training_capacity,34,seats,2026-05-08,2026-08-28,manual,approved,,
+ALLOC-3dff9753,PROG-9e60e575,Eldoret,budget,1996866,KES,2026-05-08,2026-08-28,manual,approved,,
+ALLOC-2da5f409,PROG-9e60e575,Eldoret,field_officer,3,officers,2025-11-26,2026-01-27,manual,approved,,
+ALLOC-e8ccf31e,PROG-9e60e575,Eldoret,budget,638109,KES,2025-11-26,2026-01-27,manual,approved,,
+ALLOC-fda7c376,PROG-9e60e575,Eldoret,budget,1783628,KES,2025-12-16,2026-02-15,manual,approved,,
+ALLOC-2efdcf73,PROG-9e60e575,Eldoret,field_officer,2,officers,2026-03-31,2026-06-01,manual,approved,,
+ALLOC-38ff04da,PROG-9e60e575,Eldoret,training_capacity,32,seats,2026-03-31,2026-06-01,manual,approved,,
+ALLOC-96a10c2e,PROG-9e60e575,Eldoret,field_officer,1,officers,2026-04-26,2026-07-29,manual,approved,,
+ALLOC-34e79cbe,PROG-9e60e575,Eldoret,training_capacity,47,seats,2026-04-26,2026-07-29,ml_recommended,approved,27.27,Illo eum consequuntur ad libero eos tenetur illo qui nesciunt.
+ALLOC-ae631bf9,PROG-9e60e575,Eldoret,budget,1573758,KES,2026-04-26,2026-07-29,ml_recommended,approved,50.47,Repellendus exercitationem quae placeat odit labore velit facere error cumque.
+ALLOC-ef564f15,PROG-3704be03,Eldoret,field_officer,3,officers,2026-01-20,2026-03-22,manual,approved,,
+ALLOC-1f729732,PROG-3704be03,Eldoret,training_capacity,42,seats,2026-01-20,2026-03-22,ml_recommended,approved,60.25,Debitis atque consectetur ea repellat quis delectus perspiciatis excepturi at.
+ALLOC-eaceaa32,PROG-3704be03,Eldoret,budget,642424,KES,2026-01-20,2026-03-22,manual,approved,,
+ALLOC-e9a58654,PROG-3704be03,Eldoret,field_officer,3,officers,2026-04-06,2026-07-15,manual,approved,,
+ALLOC-0520e1a2,PROG-3704be03,Eldoret,training_capacity,88,seats,2026-04-06,2026-07-15,manual,approved,,
+ALLOC-dab593fc,PROG-c63f7e98,Eldoret,training_capacity,84,seats,2026-01-13,2026-03-16,manual,approved,,
+ALLOC-7c5a616a,PROG-c63f7e98,Eldoret,field_officer,4,officers,2025-03-28,2025-07-04,manual,approved,,
+ALLOC-03dc642a,PROG-c63f7e98,Eldoret,budget,427834,KES,2025-03-28,2025-07-04,manual,approved,,
+ALLOC-51a02c45,PROG-fc8539a4,Eldoret,training_capacity,38,seats,2026-03-16,2026-07-04,manual,approved,,
+ALLOC-3452f0c2,PROG-fc8539a4,Eldoret,field_officer,5,officers,2026-03-07,2026-07-05,manual,approved,,
+ALLOC-ae62d9fe,PROG-fc8539a4,Eldoret,training_capacity,93,seats,2026-03-07,2026-07-05,manual,approved,,
+ALLOC-527bd3f8,PROG-fc8539a4,Eldoret,budget,278523,KES,2026-03-07,2026-07-05,manual,approved,,
+ALLOC-2972c845,PROG-fc8539a4,Eldoret,field_officer,5,officers,2026-02-20,2026-05-04,manual,approved,,
+ALLOC-8bc32797,PROG-fc8539a4,Eldoret,training_capacity,98,seats,2026-02-20,2026-05-04,ml_recommended,pending,32.7,Dolore sit in suscipit fuga nesciunt iure blanditiis.
+ALLOC-91482b22,PROG-da199d8b,Kiambu,field_officer,3,officers,2026-03-22,2026-07-01,manual,approved,,
+ALLOC-0580055d,PROG-da199d8b,Kiambu,training_capacity,45,seats,2026-03-22,2026-07-01,manual,approved,,
+ALLOC-73378272,PROG-da199d8b,Kiambu,budget,793844,KES,2026-03-22,2026-07-01,manual,approved,,
+ALLOC-ec873f3f,PROG-da199d8b,Kiambu,field_officer,1,officers,2025-08-02,2025-10-07,ml_recommended,approved,51.55,Sint nesciunt velit architecto suscipit.
+ALLOC-511142af,PROG-da199d8b,Kiambu,training_capacity,59,seats,2025-08-02,2025-10-07,manual,approved,,
+ALLOC-1e48969d,PROG-da199d8b,Kiambu,budget,1288795,KES,2025-08-02,2025-10-07,manual,approved,,
+ALLOC-ddf7de46,PROG-e2877dc7,Kiambu,field_officer,2,officers,2026-01-11,2026-03-22,ml_recommended,approved,64.86,Blanditiis perspiciatis minus impedit sit corrupti voluptatibus exercitationem voluptates.
+ALLOC-62d92d45,PROG-e2877dc7,Kiambu,training_capacity,66,seats,2026-01-11,2026-03-22,manual,approved,,
+ALLOC-8189229f,PROG-e2877dc7,Kiambu,field_officer,3,officers,2026-05-06,2026-08-04,ml_recommended,approved,27.62,Corporis similique debitis aspernatur ex voluptates et animi iste.
+ALLOC-6254b603,PROG-e2877dc7,Kiambu,training_capacity,30,seats,2026-05-06,2026-08-04,ml_recommended,rejected,29.8,Quis cumque quisquam laudantium quis at.
+ALLOC-607cbeee,PROG-e2877dc7,Kiambu,budget,652043,KES,2026-05-06,2026-08-04,manual,approved,,
+ALLOC-fc0862a9,PROG-e2877dc7,Kiambu,training_capacity,95,seats,2026-03-04,2026-05-04,manual,approved,,
+ALLOC-13c181cd,PROG-e2877dc7,Kiambu,budget,646552,KES,2026-03-04,2026-05-04,manual,approved,,
+ALLOC-96d859e4,PROG-29aab137,Kiambu,field_officer,4,officers,2026-03-13,2026-06-30,manual,approved,,
+ALLOC-f300be57,PROG-29aab137,Kiambu,field_officer,5,officers,2025-09-08,2025-11-15,manual,approved,,
+ALLOC-83692ade,PROG-29aab137,Kiambu,training_capacity,21,seats,2025-09-08,2025-11-15,manual,approved,,
+ALLOC-125b3624,PROG-29aab137,Kiambu,field_officer,5,officers,2026-02-21,2026-06-04,manual,approved,,
+ALLOC-8a80924b,PROG-29aab137,Kiambu,training_capacity,92,seats,2026-02-21,2026-06-04,ml_recommended,approved,87.74,Inventore inventore inventore labore a modi quas veniam tempora quidem minus.
+ALLOC-dd2996b2,PROG-29aab137,Kiambu,field_officer,2,officers,2025-12-16,2026-04-15,ml_recommended,pending,38.5,Perspiciatis occaecati dolorum possimus.
+ALLOC-98187a7c,PROG-29aab137,Kiambu,training_capacity,46,seats,2025-12-16,2026-04-15,manual,approved,,
+ALLOC-53b4f538,PROG-29aab137,Kiambu,budget,1460054,KES,2025-10-28,2026-01-26,manual,approved,,
+ALLOC-0f4cf139,PROG-5c00be57,Kiambu,field_officer,2,officers,2025-05-24,2025-08-29,manual,approved,,
+ALLOC-a9c3eb91,PROG-5c00be57,Kiambu,training_capacity,95,seats,2025-05-24,2025-08-29,manual,approved,,
+ALLOC-c05d5d9a,PROG-5c00be57,Kiambu,field_officer,2,officers,2026-02-08,2026-04-25,manual,approved,,
+ALLOC-4bf42124,PROG-5c00be57,Kiambu,training_capacity,64,seats,2026-02-08,2026-04-25,manual,approved,,
+ALLOC-483b37c0,PROG-5c00be57,Kiambu,budget,1367122,KES,2026-02-08,2026-04-25,manual,approved,,
+ALLOC-aeff470e,PROG-5c00be57,Kiambu,field_officer,1,officers,2025-01-17,2025-04-15,manual,approved,,
+ALLOC-aeaf0bb9,PROG-5c00be57,Kiambu,training_capacity,39,seats,2025-01-17,2025-04-15,manual,approved,,
+ALLOC-eec90344,PROG-5c00be57,Kiambu,budget,1604292,KES,2025-01-17,2025-04-15,ml_recommended,approved,49.02,Est aut magnam esse aperiam aliquid veniam iste.
+ALLOC-6715236c,PROG-5c00be57,Kiambu,field_officer,4,officers,2025-08-01,2025-11-15,manual,approved,,
+ALLOC-7c51f861,PROG-5c00be57,Kiambu,training_capacity,72,seats,2025-08-01,2025-11-15,manual,approved,,
+ALLOC-ebc0ed4a,PROG-5c00be57,Kiambu,budget,1302688,KES,2025-08-01,2025-11-15,manual,approved,,
+ALLOC-8cb7937b,PROG-a24f96d3,Kiambu,field_officer,5,officers,2025-11-28,2026-02-28,manual,approved,,
+ALLOC-c0f2075a,PROG-a24f96d3,Kiambu,training_capacity,43,seats,2025-11-28,2026-02-28,manual,approved,,
+ALLOC-3c0e38f7,PROG-a24f96d3,Kiambu,budget,1281964,KES,2025-11-28,2026-02-28,manual,approved,,
+ALLOC-0ed48a77,PROG-a24f96d3,Kiambu,field_officer,4,officers,2025-04-30,2025-07-27,ml_recommended,pending,78.13,Nisi excepturi suscipit voluptatum exercitationem temporibus facere deleniti veniam ullam.
+ALLOC-c0bc3cbc,PROG-a24f96d3,Kiambu,training_capacity,94,seats,2025-04-30,2025-07-27,ml_recommended,pending,66.18,Accusantium dolore voluptates distinctio accusantium magnam commodi quae.
+ALLOC-db2671c4,PROG-a24f96d3,Kiambu,budget,1618729,KES,2025-04-30,2025-07-27,manual,approved,,
+ALLOC-765a6964,PROG-40c80781,Kiambu,field_officer,4,officers,2025-08-15,2025-11-20,manual,approved,,
+ALLOC-3ba64e35,PROG-40c80781,Kiambu,training_capacity,45,seats,2025-08-15,2025-11-20,manual,approved,,
+ALLOC-c4abd242,PROG-40c80781,Kiambu,training_capacity,42,seats,2025-11-13,2026-02-07,manual,approved,,
+ALLOC-f2ccfe27,PROG-40c80781,Kiambu,budget,181865,KES,2025-11-13,2026-02-07,ml_recommended,approved,72.67,Fugiat odit quo numquam nisi.
+ALLOC-c0aa4a1b,PROG-40c80781,Kiambu,field_officer,5,officers,2024-03-18,2024-06-16,manual,approved,,
+ALLOC-35a808ba,PROG-40c80781,Kiambu,training_capacity,75,seats,2024-03-18,2024-06-16,manual,approved,,
+ALLOC-3f786e7a,PROG-40c80781,Kiambu,budget,191096,KES,2024-03-18,2024-06-16,manual,approved,,
+ALLOC-389b7b6d,PROG-40c80781,Kiambu,training_capacity,68,seats,2025-02-25,2025-05-10,manual,approved,,
+ALLOC-be112e4d,PROG-40c80781,Kiambu,field_officer,1,officers,2026-01-31,2026-05-24,manual,approved,,
+ALLOC-d0678e6d,PROG-40c80781,Kiambu,training_capacity,49,seats,2026-01-31,2026-05-24,ml_recommended,pending,61.88,Optio officiis accusantium porro impedit.
+ALLOC-71ce6b2b,PROG-40c80781,Kiambu,budget,640656,KES,2026-01-31,2026-05-24,manual,approved,,
+ALLOC-39fe86c1,PROG-c46cb3c8,Machakos,field_officer,4,officers,2026-04-17,2026-06-23,manual,approved,,
+ALLOC-c369e891,PROG-c46cb3c8,Machakos,training_capacity,60,seats,2026-04-17,2026-06-23,manual,approved,,
+ALLOC-88e1e002,PROG-c46cb3c8,Machakos,budget,993536,KES,2026-04-17,2026-06-23,manual,approved,,
+ALLOC-d4ee12b0,PROG-c46cb3c8,Machakos,training_capacity,66,seats,2025-07-15,2025-09-29,manual,approved,,
+ALLOC-1f551955,PROG-6ac30dd4,Machakos,field_officer,5,officers,2026-04-02,2026-06-14,manual,approved,,
+ALLOC-766b03e0,PROG-6ac30dd4,Machakos,training_capacity,91,seats,2026-04-02,2026-06-14,manual,approved,,
+ALLOC-21893e33,PROG-6ac30dd4,Machakos,training_capacity,37,seats,2026-01-01,2026-03-24,ml_recommended,approved,72.35,Commodi dolorum praesentium dignissimos placeat ab in aut.
+ALLOC-f87c9efb,PROG-6ac30dd4,Machakos,budget,1566562,KES,2026-01-01,2026-03-24,ml_recommended,pending,55.58,Earum non consequatur rerum autem quaerat blanditiis beatae autem dicta.
+ALLOC-06087deb,PROG-6ac30dd4,Machakos,training_capacity,26,seats,2026-04-18,2026-07-08,manual,approved,,
+ALLOC-17eceb55,PROG-6ac30dd4,Machakos,field_officer,2,officers,2025-03-14,2025-07-03,manual,approved,,
+ALLOC-76a6d105,PROG-6ac30dd4,Machakos,training_capacity,31,seats,2025-03-14,2025-07-03,manual,approved,,
+ALLOC-8279511b,PROG-6ac30dd4,Machakos,budget,267855,KES,2025-03-14,2025-07-03,manual,approved,,
+ALLOC-e73382be,PROG-6ac30dd4,Machakos,training_capacity,86,seats,2026-03-17,2026-06-09,manual,approved,,
+ALLOC-6a739851,PROG-4931b340,Machakos,field_officer,4,officers,2026-05-25,2026-09-14,manual,approved,,
+ALLOC-fc84bb0f,PROG-4931b340,Machakos,training_capacity,86,seats,2026-05-25,2026-09-14,manual,approved,,
+ALLOC-c9d6ee96,PROG-4931b340,Machakos,budget,1357273,KES,2026-05-25,2026-09-14,manual,approved,,
+ALLOC-4c839721,PROG-4931b340,Machakos,field_officer,1,officers,2026-05-15,2026-07-28,manual,approved,,
+ALLOC-80545ba5,PROG-4931b340,Machakos,training_capacity,40,seats,2026-05-15,2026-07-28,manual,approved,,
+ALLOC-5c7a9f09,PROG-4931b340,Machakos,budget,937673,KES,2026-05-15,2026-07-28,manual,approved,,
+ALLOC-c963f6dc,PROG-2ffb615d,Machakos,field_officer,1,officers,2026-01-03,2026-04-10,manual,approved,,
+ALLOC-8c7e2a38,PROG-2ffb615d,Machakos,training_capacity,31,seats,2026-01-03,2026-04-10,manual,approved,,
+ALLOC-66dc2c09,PROG-2ffb615d,Machakos,field_officer,3,officers,2026-03-23,2026-07-19,ml_recommended,pending,62.45,Quod rerum voluptate facere illum cum.
+ALLOC-c936b83a,PROG-2ffb615d,Machakos,training_capacity,71,seats,2026-03-23,2026-07-19,manual,approved,,
+ALLOC-022f8501,PROG-2ffb615d,Machakos,budget,953823,KES,2026-03-23,2026-07-19,manual,approved,,
+ALLOC-8780ac61,PROG-2ffb615d,Machakos,field_officer,3,officers,2026-03-23,2026-05-26,ml_recommended,approved,86.97,Libero dignissimos ut ex a perferendis tenetur saepe pariatur corrupti.
+ALLOC-78a2bbd9,PROG-2ffb615d,Machakos,field_officer,4,officers,2026-03-31,2026-06-15,manual,approved,,
+ALLOC-4c3f9f04,PROG-2ffb615d,Machakos,field_officer,5,officers,2026-01-30,2026-05-13,ml_recommended,approved,38.05,Quod asperiores quam temporibus officia.
+ALLOC-a4e2f117,PROG-2ffb615d,Machakos,training_capacity,48,seats,2026-01-30,2026-05-13,manual,approved,,
+ALLOC-386bf8d5,PROG-2ffb615d,Machakos,budget,762135,KES,2026-01-30,2026-05-13,manual,approved,,
+ALLOC-8073e2b2,PROG-e80397c9,Machakos,field_officer,3,officers,2025-07-13,2025-10-15,manual,approved,,
+ALLOC-4af5730e,PROG-e80397c9,Machakos,training_capacity,63,seats,2025-07-13,2025-10-15,manual,approved,,
+ALLOC-2d6ba8b2,PROG-e80397c9,Machakos,field_officer,5,officers,2025-06-02,2025-08-21,manual,approved,,
+ALLOC-b57e6337,PROG-e80397c9,Machakos,budget,498810,KES,2025-06-02,2025-08-21,manual,approved,,
+ALLOC-74f04f3b,PROG-e80397c9,Machakos,budget,525232,KES,2024-08-23,2024-11-06,ml_recommended,approved,44.92,Voluptates eos iure aut cupiditate aliquam enim reiciendis est.
+ALLOC-539cd7f6,PROG-e80397c9,Machakos,field_officer,1,officers,2026-04-08,2026-06-13,manual,approved,,
+ALLOC-79b50198,PROG-e80397c9,Machakos,training_capacity,98,seats,2026-04-08,2026-06-13,manual,approved,,
+ALLOC-83c182e1,PROG-7610ad3c,Kajiado,field_officer,3,officers,2026-05-17,2026-08-15,manual,approved,,
+ALLOC-9e3f274e,PROG-7610ad3c,Kajiado,field_officer,5,officers,2026-05-22,2026-08-07,manual,approved,,
+ALLOC-24704351,PROG-7610ad3c,Kajiado,training_capacity,93,seats,2026-05-22,2026-08-07,manual,approved,,
+ALLOC-bcbdfcc2,PROG-7610ad3c,Kajiado,budget,987464,KES,2026-05-22,2026-08-07,manual,approved,,
+ALLOC-b44b6949,PROG-5fb95eae,Kajiado,field_officer,2,officers,2026-02-06,2026-04-29,manual,approved,,
+ALLOC-314ecf56,PROG-5fb95eae,Kajiado,training_capacity,86,seats,2026-02-06,2026-04-29,manual,approved,,
+ALLOC-b578f017,PROG-5fb95eae,Kajiado,budget,124788,KES,2026-02-06,2026-04-29,manual,approved,,
+ALLOC-2ad5b0fc,PROG-5fb95eae,Kajiado,field_officer,3,officers,2025-12-05,2026-03-12,manual,approved,,
+ALLOC-c038b550,PROG-5fb95eae,Kajiado,training_capacity,90,seats,2025-12-05,2026-03-12,manual,approved,,
+ALLOC-f73a80e7,PROG-5fb95eae,Kajiado,budget,1385730,KES,2025-12-05,2026-03-12,manual,approved,,
+ALLOC-d38f76e9,PROG-988b5125,Kajiado,field_officer,3,officers,2025-08-06,2025-11-01,manual,approved,,
+ALLOC-94e67580,PROG-988b5125,Kajiado,training_capacity,77,seats,2025-08-06,2025-11-01,manual,approved,,
+ALLOC-35df7bac,PROG-988b5125,Kajiado,budget,1307734,KES,2025-08-06,2025-11-01,manual,approved,,
+ALLOC-a7b470d7,PROG-988b5125,Kajiado,field_officer,2,officers,2024-06-24,2024-10-08,manual,approved,,
+ALLOC-d14f228e,PROG-988b5125,Kajiado,budget,1777800,KES,2024-06-24,2024-10-08,ml_recommended,pending,76.4,Atque quidem aliquid sequi optio.
+ALLOC-bd1ce6f3,PROG-988b5125,Kajiado,field_officer,5,officers,2024-09-10,2024-12-05,manual,approved,,
+ALLOC-b7ceec80,PROG-988b5125,Kajiado,training_capacity,82,seats,2024-09-10,2024-12-05,manual,approved,,
+ALLOC-0e6ad38c,PROG-988b5125,Kajiado,budget,1290835,KES,2024-09-10,2024-12-05,manual,approved,,
+ALLOC-3de18c2b,PROG-ced265e0,Kajiado,field_officer,3,officers,2026-05-18,2026-07-27,manual,approved,,
+ALLOC-68fb08c0,PROG-ced265e0,Kajiado,training_capacity,77,seats,2026-05-18,2026-07-27,manual,approved,,
+ALLOC-819ad6f7,PROG-ced265e0,Kajiado,budget,855617,KES,2026-05-18,2026-07-27,manual,approved,,
+ALLOC-558fc32d,PROG-ced265e0,Kajiado,field_officer,1,officers,2026-05-25,2026-09-13,manual,approved,,
+ALLOC-3fba65db,PROG-ced265e0,Kajiado,training_capacity,97,seats,2026-05-25,2026-09-13,manual,approved,,
+ALLOC-4aca433e,PROG-ced265e0,Kajiado,budget,1461326,KES,2026-05-25,2026-09-13,manual,approved,,
+ALLOC-742fbef4,PROG-42717d6d,Kajiado,field_officer,4,officers,2025-07-05,2025-09-23,ml_recommended,approved,25.49,Eveniet tempora veritatis eaque quasi fuga.
+ALLOC-4e5db6ba,PROG-42717d6d,Kajiado,training_capacity,79,seats,2025-07-05,2025-09-23,manual,approved,,
+ALLOC-bc7a50a7,PROG-42717d6d,Kajiado,budget,451431,KES,2025-07-05,2025-09-23,manual,approved,,
+ALLOC-e64ffa13,PROG-42717d6d,Kajiado,field_officer,5,officers,2026-04-25,2026-07-15,manual,approved,,
+ALLOC-fca56af7,PROG-42717d6d,Kajiado,budget,439737,KES,2026-04-25,2026-07-15,manual,approved,,
+ALLOC-fd6fbac8,PROG-42717d6d,Kajiado,field_officer,3,officers,2025-06-14,2025-09-02,manual,approved,,
+ALLOC-0fe2c4c2,PROG-42717d6d,Kajiado,training_capacity,76,seats,2025-06-14,2025-09-02,ml_recommended,rejected,72.35,Delectus id vitae earum harum sed reiciendis officiis.
+ALLOC-e565f430,PROG-42717d6d,Kajiado,budget,1044323,KES,2025-06-14,2025-09-02,manual,approved,,
+ALLOC-352c03ca,PROG-42717d6d,Kajiado,field_officer,2,officers,2025-04-09,2025-08-01,manual,approved,,
+ALLOC-189f3431,PROG-6a19579e,Kajiado,field_officer,1,officers,2026-02-13,2026-04-24,manual,approved,,
+ALLOC-79b1a868,PROG-6a19579e,Kajiado,budget,155291,KES,2026-02-13,2026-04-24,ml_recommended,approved,89.72,Beatae possimus animi velit cum impedit.
+ALLOC-cb3c6bac,PROG-6a19579e,Kajiado,field_officer,1,officers,2026-01-17,2026-04-03,manual,approved,,
+ALLOC-15a27e3b,PROG-6a19579e,Kajiado,budget,618828,KES,2026-01-17,2026-04-03,manual,approved,,
+ALLOC-487eaa38,PROG-35ca5dbf,Meru,field_officer,2,officers,2026-04-27,2026-07-04,manual,approved,,
+ALLOC-50c8c42e,PROG-35ca5dbf,Meru,training_capacity,61,seats,2026-04-27,2026-07-04,ml_recommended,approved,80.96,Laboriosam necessitatibus ipsa nostrum quod nostrum similique sunt quas tempora.
+ALLOC-3d813c2e,PROG-35ca5dbf,Meru,field_officer,5,officers,2026-05-24,2026-08-20,manual,approved,,
+ALLOC-741506ff,PROG-35ca5dbf,Meru,training_capacity,100,seats,2026-05-24,2026-08-20,manual,approved,,
+ALLOC-44b578e6,PROG-35ca5dbf,Meru,field_officer,5,officers,2026-05-16,2026-08-17,manual,approved,,
+ALLOC-630375f3,PROG-35ca5dbf,Meru,training_capacity,89,seats,2026-05-16,2026-08-17,manual,approved,,
+ALLOC-244ad55e,PROG-35ca5dbf,Meru,budget,745646,KES,2026-05-16,2026-08-17,manual,approved,,
+ALLOC-faa19fb5,PROG-35ca5dbf,Meru,field_officer,1,officers,2026-05-05,2026-07-13,manual,approved,,
+ALLOC-b3f6c3ce,PROG-35ca5dbf,Meru,budget,701384,KES,2026-05-05,2026-07-13,manual,approved,,
+ALLOC-6e915ef2,PROG-35ca5dbf,Meru,budget,119152,KES,2026-04-19,2026-08-01,ml_recommended,approved,61.79,Ullam beatae illum aliquid ea et provident perspiciatis quisquam.
+ALLOC-6918dd68,PROG-1253c3ea,Meru,field_officer,5,officers,2026-04-05,2026-06-27,manual,approved,,
+ALLOC-492bfedc,PROG-1253c3ea,Meru,training_capacity,69,seats,2026-04-05,2026-06-27,ml_recommended,pending,25.54,Quam dolore veritatis sit maxime porro nulla inventore quas laboriosam.
+ALLOC-86f860f5,PROG-1253c3ea,Meru,budget,1183409,KES,2026-04-05,2026-06-27,ml_recommended,rejected,76.53,Corrupti repudiandae tempora nostrum accusamus vel magni iusto.
+ALLOC-79d558f4,PROG-1253c3ea,Meru,field_officer,5,officers,2025-11-15,2026-02-01,ml_recommended,approved,79.74,Sit asperiores laudantium dolores voluptas amet dolore officia illo.
+ALLOC-43cbc02b,PROG-1253c3ea,Meru,training_capacity,57,seats,2025-11-15,2026-02-01,manual,approved,,
+ALLOC-5bc3b01a,PROG-1253c3ea,Meru,budget,1049521,KES,2025-11-15,2026-02-01,manual,approved,,
+ALLOC-392e3062,PROG-eb03aa49,Meru,field_officer,1,officers,2024-11-29,2025-02-17,ml_recommended,pending,88.06,Aspernatur ipsam nemo at libero et voluptatem.
+ALLOC-d67ff998,PROG-eb03aa49,Meru,training_capacity,36,seats,2024-11-29,2025-02-17,manual,approved,,
+ALLOC-6978c5cd,PROG-eb03aa49,Meru,field_officer,4,officers,2025-01-14,2025-03-20,manual,approved,,
+ALLOC-65c2a59d,PROG-eb03aa49,Meru,training_capacity,83,seats,2025-01-14,2025-03-20,ml_recommended,approved,75.4,Aut impedit nam a.
+ALLOC-5579b8fc,PROG-eb03aa49,Meru,budget,1869044,KES,2025-01-14,2025-03-20,ml_recommended,pending,38.66,Recusandae vitae odit tempora natus.
+ALLOC-36f63958,PROG-eb03aa49,Meru,field_officer,2,officers,2025-06-26,2025-08-29,manual,approved,,
+ALLOC-8e7c0bd5,PROG-eb03aa49,Meru,budget,1028956,KES,2024-06-02,2024-08-08,manual,approved,,
+ALLOC-0f7443a0,PROG-eb03aa49,Meru,field_officer,1,officers,2024-06-24,2024-09-04,manual,approved,,
+ALLOC-751aed86,PROG-eb03aa49,Meru,budget,1529088,KES,2024-06-24,2024-09-04,ml_recommended,rejected,31.1,Veniam facilis amet dolore iste nam nulla labore omnis.
+ALLOC-85506fbe,PROG-0634a90b,Meru,field_officer,4,officers,2026-05-24,2026-08-25,manual,approved,,
+ALLOC-4b4ae888,PROG-0634a90b,Meru,training_capacity,26,seats,2026-05-24,2026-08-25,ml_recommended,pending,27.9,Beatae quis dolore exercitationem rerum vitae eos minima praesentium.
+ALLOC-d3f13b3e,PROG-0634a90b,Meru,budget,780554,KES,2026-05-24,2026-08-25,manual,approved,,
+ALLOC-7fbeb4b8,PROG-0634a90b,Meru,field_officer,2,officers,2026-05-15,2026-08-20,manual,approved,,
+ALLOC-c8c92659,PROG-0634a90b,Meru,training_capacity,80,seats,2026-05-15,2026-08-20,manual,approved,,
+ALLOC-3cdd86f5,PROG-0634a90b,Meru,budget,1716478,KES,2026-05-15,2026-08-20,manual,approved,,
+ALLOC-b62f8b51,PROG-8659089c,Meru,field_officer,3,officers,2026-05-22,2026-07-26,ml_recommended,rejected,63.76,Tempore laudantium reprehenderit quia illum.
+ALLOC-8b872fe0,PROG-8659089c,Meru,training_capacity,39,seats,2026-05-22,2026-07-26,manual,approved,,
+ALLOC-5b4b6ca0,PROG-8659089c,Meru,field_officer,5,officers,2025-11-12,2026-02-11,ml_recommended,approved,76.39,Nostrum deleniti ut hic itaque quos quaerat.
+ALLOC-ac0fb0d6,PROG-8659089c,Meru,training_capacity,44,seats,2025-11-12,2026-02-11,manual,approved,,
+ALLOC-31eae0a9,PROG-8659089c,Meru,budget,1619175,KES,2025-11-12,2026-02-11,manual,approved,,
+ALLOC-52a4cdcd,PROG-8659089c,Meru,training_capacity,89,seats,2025-09-29,2025-12-29,manual,approved,,
+ALLOC-b30e3394,PROG-8659089c,Meru,budget,491384,KES,2025-09-29,2025-12-29,manual,approved,,
+ALLOC-19af2796,PROG-ca19d900,Nyeri,training_capacity,90,seats,2026-01-01,2026-03-19,manual,approved,,
+ALLOC-54817a56,PROG-ca19d900,Nyeri,budget,1042426,KES,2026-01-01,2026-03-19,manual,approved,,
+ALLOC-8e82aa4c,PROG-ca19d900,Nyeri,field_officer,1,officers,2025-06-05,2025-09-07,ml_recommended,approved,71.36,Quidem aliquid odio perferendis commodi.
+ALLOC-fe3dacd0,PROG-ca19d900,Nyeri,budget,863521,KES,2025-06-05,2025-09-07,ml_recommended,pending,70.47,Itaque nihil magnam vitae a quasi mollitia inventore nesciunt.
+ALLOC-e13fb568,PROG-ca19d900,Nyeri,field_officer,5,officers,2026-03-14,2026-07-04,manual,approved,,
+ALLOC-d99ee970,PROG-ca19d900,Nyeri,budget,693764,KES,2026-03-14,2026-07-04,manual,approved,,
+ALLOC-af4ccf1e,PROG-ca19d900,Nyeri,field_officer,1,officers,2025-08-04,2025-10-10,manual,approved,,
+ALLOC-966130ae,PROG-ca19d900,Nyeri,budget,165585,KES,2025-08-04,2025-10-10,manual,approved,,
+ALLOC-656796e9,PROG-8b682305,Nyeri,field_officer,4,officers,2024-07-08,2024-09-12,manual,approved,,
+ALLOC-b9d7feca,PROG-8b682305,Nyeri,training_capacity,95,seats,2024-07-08,2024-09-12,manual,approved,,
+ALLOC-5bbafe92,PROG-8b682305,Nyeri,budget,1370776,KES,2024-07-08,2024-09-12,manual,approved,,
+ALLOC-2c80252c,PROG-8b682305,Nyeri,training_capacity,30,seats,2024-01-07,2024-05-05,manual,approved,,
+ALLOC-6983974c,PROG-8b682305,Nyeri,budget,856916,KES,2024-01-07,2024-05-05,manual,approved,,
+ALLOC-fee70e60,PROG-8b682305,Nyeri,field_officer,1,officers,2025-02-22,2025-06-14,ml_recommended,pending,22.85,Quos tenetur porro cupiditate repellendus aut omnis non eum sunt.
+ALLOC-4d5315f2,PROG-8b682305,Nyeri,training_capacity,58,seats,2025-02-22,2025-06-14,manual,approved,,
+ALLOC-054c0091,PROG-8b682305,Nyeri,budget,1189439,KES,2025-02-22,2025-06-14,manual,approved,,
+ALLOC-0ef07035,PROG-8b682305,Nyeri,field_officer,2,officers,2026-01-05,2026-03-20,manual,approved,,
+ALLOC-7ab769f9,PROG-8b682305,Nyeri,training_capacity,92,seats,2026-01-05,2026-03-20,manual,approved,,
+ALLOC-776fbc69,PROG-8b682305,Nyeri,budget,1671174,KES,2026-01-05,2026-03-20,manual,approved,,
+ALLOC-43fed5f4,PROG-8b682305,Nyeri,training_capacity,78,seats,2026-01-27,2026-04-03,manual,approved,,
+ALLOC-5137110f,PROG-8b682305,Nyeri,budget,318318,KES,2026-01-27,2026-04-03,manual,approved,,
+ALLOC-4c5992b4,PROG-65ef44bf,Nyeri,field_officer,2,officers,2025-03-30,2025-06-23,manual,approved,,
+ALLOC-46ebe4a0,PROG-65ef44bf,Nyeri,training_capacity,65,seats,2025-03-30,2025-06-23,ml_recommended,approved,89.78,Voluptatem totam quis earum vitae voluptas iste consequatur impedit.
+ALLOC-06ccaa2e,PROG-65ef44bf,Nyeri,field_officer,3,officers,2024-11-09,2025-02-25,manual,approved,,
+ALLOC-11833a01,PROG-65ef44bf,Nyeri,training_capacity,47,seats,2024-11-09,2025-02-25,manual,approved,,
+ALLOC-8e5d61cb,PROG-65ef44bf,Nyeri,budget,1661493,KES,2024-11-09,2025-02-25,manual,approved,,
+ALLOC-040b91f9,PROG-65ef44bf,Nyeri,field_officer,4,officers,2026-05-25,2026-08-21,manual,approved,,
+ALLOC-f582b4fd,PROG-65ef44bf,Nyeri,training_capacity,56,seats,2026-05-25,2026-08-21,manual,approved,,
+ALLOC-9037e705,PROG-65ef44bf,Nyeri,budget,1967145,KES,2026-05-25,2026-08-21,manual,approved,,
+ALLOC-e710d456,PROG-9847dded,Nyeri,training_capacity,55,seats,2024-11-18,2025-01-30,ml_recommended,approved,59.95,Error praesentium similique quae vel odio dicta numquam enim exercitationem.
+ALLOC-b755ca25,PROG-9847dded,Nyeri,budget,297734,KES,2024-11-18,2025-01-30,manual,approved,,
+ALLOC-ec76dc52,PROG-9847dded,Nyeri,field_officer,3,officers,2025-04-04,2025-06-12,ml_recommended,pending,37.94,Voluptatem officiis vero magnam possimus eum.
+ALLOC-3b52e332,PROG-9847dded,Nyeri,training_capacity,93,seats,2025-04-04,2025-06-12,manual,approved,,
+ALLOC-78e7c4f7,PROG-9847dded,Nyeri,budget,1831629,KES,2026-04-26,2026-06-29,ml_recommended,approved,77.37,Quis natus nesciunt velit quae.
+ALLOC-0c1b0e47,PROG-9847dded,Nyeri,field_officer,1,officers,2024-07-11,2024-10-17,manual,approved,,
+ALLOC-b1142fd7,PROG-9847dded,Nyeri,training_capacity,30,seats,2024-07-11,2024-10-17,ml_recommended,rejected,43.41,Enim sed repellat minima ad corporis pariatur dicta quibusdam cum.
+ALLOC-196f1245,PROG-4c6bd4fc,Nyeri,budget,1468977,KES,2025-06-23,2025-10-20,ml_recommended,rejected,64.37,Placeat corporis aperiam quos dignissimos molestiae facere.
+ALLOC-0df391eb,PROG-4c6bd4fc,Nyeri,field_officer,5,officers,2026-01-30,2026-04-24,manual,approved,,
+ALLOC-9d57cfd6,PROG-4c6bd4fc,Nyeri,training_capacity,39,seats,2026-01-30,2026-04-24,manual,approved,,
+ALLOC-f9c68889,PROG-4c6bd4fc,Nyeri,budget,421278,KES,2026-01-30,2026-04-24,manual,approved,,
+ALLOC-ba8e1256,PROG-4c6bd4fc,Nyeri,budget,288917,KES,2026-05-12,2026-08-05,manual,approved,,
+ALLOC-d0b824c4,PROG-4c6bd4fc,Nyeri,field_officer,2,officers,2025-02-13,2025-06-03,manual,approved,,
+ALLOC-573ea3db,PROG-4c6bd4fc,Nyeri,training_capacity,26,seats,2025-02-13,2025-06-03,manual,approved,,
+ALLOC-7b427970,PROG-4c6bd4fc,Nyeri,budget,935771,KES,2025-02-13,2025-06-03,manual,approved,,
+ALLOC-cae9bb69,PROG-4c6bd4fc,Nyeri,training_capacity,45,seats,2026-04-07,2026-06-14,manual,approved,,
+ALLOC-2f24f6c9,PROG-4c6bd4fc,Nyeri,budget,511250,KES,2026-04-07,2026-06-14,manual,approved,,
+ALLOC-3790047e,PROG-4569954c,Kilifi,field_officer,4,officers,2024-09-10,2024-11-13,manual,approved,,
+ALLOC-c6715162,PROG-4569954c,Kilifi,budget,1508756,KES,2024-09-10,2024-11-13,manual,approved,,
+ALLOC-e5f88242,PROG-4569954c,Kilifi,field_officer,3,officers,2025-01-14,2025-04-06,manual,approved,,
+ALLOC-e7e74a10,PROG-4569954c,Kilifi,training_capacity,59,seats,2025-01-14,2025-04-06,manual,approved,,
+ALLOC-1731873d,PROG-4569954c,Kilifi,budget,1822986,KES,2025-01-14,2025-04-06,ml_recommended,approved,30.21,Aut sint qui sint quia natus dolores quos reiciendis.
+ALLOC-322667a5,PROG-4569954c,Kilifi,training_capacity,67,seats,2024-02-20,2024-06-18,manual,approved,,
+ALLOC-c45c9d25,PROG-c0c76118,Kilifi,field_officer,5,officers,2024-08-21,2024-12-06,ml_recommended,rejected,77.41,Possimus aliquid fugit impedit ratione placeat vitae.
+ALLOC-6d8a1be9,PROG-c0c76118,Kilifi,training_capacity,34,seats,2024-08-21,2024-12-06,manual,approved,,
+ALLOC-d33f7461,PROG-c0c76118,Kilifi,budget,795995,KES,2024-08-21,2024-12-06,manual,approved,,
+ALLOC-6d19117a,PROG-c0c76118,Kilifi,field_officer,5,officers,2025-10-30,2026-01-11,ml_recommended,approved,63.61,Accusamus dolorum nulla quos sit.
+ALLOC-0ea19bd2,PROG-c0c76118,Kilifi,budget,1501444,KES,2025-10-30,2026-01-11,manual,approved,,
+ALLOC-cfdb4b3c,PROG-e68415d3,Kilifi,field_officer,2,officers,2024-08-18,2024-10-27,ml_recommended,approved,23.72,Tenetur provident officia quidem molestias nobis quod.
+ALLOC-6c00f8cd,PROG-e68415d3,Kilifi,training_capacity,21,seats,2024-08-18,2024-10-27,manual,approved,,
+ALLOC-2b6096f6,PROG-e68415d3,Kilifi,budget,1490373,KES,2024-08-18,2024-10-27,ml_recommended,approved,80.5,Eos debitis placeat deleniti cupiditate maiores.
+ALLOC-d031d1ec,PROG-e68415d3,Kilifi,training_capacity,49,seats,2023-12-20,2024-03-07,ml_recommended,approved,69.68,Aliquam eius eaque cum sapiente ab iure vel.
+ALLOC-edddbf0e,PROG-0fbca13e,Kilifi,field_officer,4,officers,2025-03-14,2025-05-24,manual,approved,,
+ALLOC-1376e787,PROG-0fbca13e,Kilifi,budget,1210264,KES,2025-03-14,2025-05-24,manual,approved,,
+ALLOC-f07d0a60,PROG-0fbca13e,Kilifi,training_capacity,65,seats,2026-04-29,2026-07-23,manual,approved,,
+ALLOC-9e6ec022,PROG-0fbca13e,Kilifi,budget,1151200,KES,2026-04-29,2026-07-23,manual,approved,,
+ALLOC-41445153,PROG-0fbca13e,Kilifi,field_officer,4,officers,2025-02-15,2025-05-26,ml_recommended,approved,22.06,Corrupti eum amet ut nulla.
+ALLOC-0dfdaf49,PROG-0fbca13e,Kilifi,training_capacity,55,seats,2025-02-15,2025-05-26,manual,approved,,
+ALLOC-5e5deddc,PROG-0fbca13e,Kilifi,budget,923859,KES,2025-02-15,2025-05-26,manual,approved,,
+ALLOC-1912e34e,PROG-0fbca13e,Kilifi,field_officer,5,officers,2025-03-13,2025-06-27,ml_recommended,approved,49.21,Laudantium nemo facere quos et dolore delectus.
+ALLOC-4d3d4ae6,PROG-0fbca13e,Kilifi,training_capacity,74,seats,2025-03-13,2025-06-27,ml_recommended,rejected,43.05,Ratione cum molestiae illo expedita.
+ALLOC-edb437d1,PROG-0fbca13e,Kilifi,budget,533601,KES,2025-03-13,2025-06-27,manual,approved,,
+ALLOC-8a65a5e4,PROG-0fbca13e,Kilifi,field_officer,5,officers,2025-07-09,2025-11-01,ml_recommended,approved,83.63,Optio ex eos veniam nulla labore.
+ALLOC-a3568812,PROG-0fbca13e,Kilifi,budget,1284564,KES,2025-07-09,2025-11-01,ml_recommended,approved,59.01,Reprehenderit voluptatem ab pariatur ipsum temporibus nostrum numquam vero placeat.
+ALLOC-ed4f6035,PROG-b8035b07,Kilifi,training_capacity,23,seats,2025-04-15,2025-07-04,ml_recommended,rejected,48.98,Fugit recusandae beatae ducimus quam ad maxime quo.
+ALLOC-e8cd1c45,PROG-b8035b07,Kilifi,budget,1029047,KES,2025-04-15,2025-07-04,manual,approved,,
+ALLOC-4a77c7d7,PROG-b8035b07,Kilifi,training_capacity,43,seats,2025-07-16,2025-09-23,manual,approved,,
+ALLOC-748b97ca,PROG-d790e6fd,Kilifi,field_officer,5,officers,2025-11-17,2026-02-21,manual,approved,,
+ALLOC-dc2a4886,PROG-d790e6fd,Kilifi,training_capacity,65,seats,2025-11-17,2026-02-21,manual,approved,,
+ALLOC-b99548e7,PROG-d790e6fd,Kilifi,training_capacity,67,seats,2024-07-22,2024-10-22,manual,approved,,
+ALLOC-04087eab,PROG-d790e6fd,Kilifi,budget,1093729,KES,2024-07-22,2024-10-22,manual,approved,,
+ALLOC-dd1d9684,PROG-d790e6fd,Kilifi,field_officer,1,officers,2024-09-20,2024-12-03,ml_recommended,rejected,35.58,Rem ipsum aliquam tempore deserunt maiores veniam cumque vero modi.
+ALLOC-89648cec,PROG-d790e6fd,Kilifi,training_capacity,45,seats,2024-09-20,2024-12-03,ml_recommended,pending,84.9,Occaecati distinctio occaecati distinctio.
+ALLOC-810ac615,PROG-d790e6fd,Kilifi,field_officer,4,officers,2025-11-28,2026-02-27,ml_recommended,approved,74.34,Saepe dignissimos repudiandae soluta qui ipsa repellendus asperiores placeat.
+ALLOC-d5e9ef65,PROG-d790e6fd,Kilifi,training_capacity,68,seats,2025-11-28,2026-02-27,manual,approved,,
+ALLOC-25d622dc,PROG-d790e6fd,Kilifi,budget,1657067,KES,2025-11-28,2026-02-27,manual,approved,,
+ALLOC-772469fa,PROG-f51b3d73,Kakamega,field_officer,1,officers,2025-08-13,2025-10-18,ml_recommended,pending,57.65,Itaque ex assumenda amet recusandae.
+ALLOC-9803fffb,PROG-f51b3d73,Kakamega,budget,912432,KES,2025-08-13,2025-10-18,manual,approved,,
+ALLOC-660fd031,PROG-f51b3d73,Kakamega,field_officer,4,officers,2025-12-03,2026-02-04,manual,approved,,
+ALLOC-8496cf31,PROG-f51b3d73,Kakamega,training_capacity,56,seats,2025-12-03,2026-02-04,manual,approved,,
+ALLOC-c444e21f,PROG-f51b3d73,Kakamega,budget,1385835,KES,2025-12-03,2026-02-04,ml_recommended,approved,83.26,Architecto reprehenderit tenetur illum iste illo et harum blanditiis ab.
+ALLOC-d9cfc494,PROG-397ae435,Kakamega,field_officer,5,officers,2026-05-18,2026-08-27,manual,approved,,
+ALLOC-6f787c17,PROG-397ae435,Kakamega,field_officer,4,officers,2026-05-09,2026-08-11,manual,approved,,
+ALLOC-da54d90d,PROG-397ae435,Kakamega,training_capacity,78,seats,2026-05-09,2026-08-11,manual,approved,,
+ALLOC-b7ba237c,PROG-397ae435,Kakamega,field_officer,3,officers,2026-04-07,2026-08-01,manual,approved,,
+ALLOC-0e4d871c,PROG-397ae435,Kakamega,training_capacity,40,seats,2026-04-07,2026-08-01,manual,approved,,
+ALLOC-880aac0b,PROG-397ae435,Kakamega,budget,339421,KES,2026-04-07,2026-08-01,manual,approved,,
+ALLOC-5e8aa1dd,PROG-397ae435,Kakamega,field_officer,4,officers,2026-05-05,2026-07-27,manual,approved,,
+ALLOC-8b70e300,PROG-397ae435,Kakamega,budget,435333,KES,2026-05-05,2026-07-27,manual,approved,,
+ALLOC-8e500c67,PROG-397ae435,Kakamega,budget,1483135,KES,2026-04-19,2026-06-20,ml_recommended,pending,30.12,Aperiam quia aliquid sed facere magnam enim placeat non eligendi unde.
+ALLOC-b1586f6e,PROG-83c20fad,Kakamega,field_officer,4,officers,2024-12-16,2025-03-05,manual,approved,,
+ALLOC-c64574cc,PROG-83c20fad,Kakamega,training_capacity,36,seats,2024-12-16,2025-03-05,ml_recommended,pending,73.58,Hic optio labore modi consequatur hic reiciendis molestias.
+ALLOC-ccb84f73,PROG-83c20fad,Kakamega,budget,1143600,KES,2024-12-16,2025-03-05,ml_recommended,approved,20.4,Error suscipit vitae sint officia vero.
+ALLOC-3173b5e2,PROG-83c20fad,Kakamega,field_officer,5,officers,2026-04-04,2026-07-04,manual,approved,,
+ALLOC-adf36f02,PROG-83c20fad,Kakamega,training_capacity,76,seats,2026-04-04,2026-07-04,manual,approved,,
+ALLOC-898ffab3,PROG-83c20fad,Kakamega,budget,613200,KES,2026-04-04,2026-07-04,ml_recommended,pending,64.0,Mollitia nam commodi a.
+ALLOC-0644e65e,PROG-860280ab,Kakamega,field_officer,3,officers,2025-01-27,2025-04-08,manual,approved,,
+ALLOC-fb14731b,PROG-860280ab,Kakamega,budget,1857443,KES,2025-01-27,2025-04-08,manual,approved,,
+ALLOC-11348228,PROG-860280ab,Kakamega,field_officer,1,officers,2025-06-20,2025-10-16,manual,approved,,
+ALLOC-2de174b8,PROG-860280ab,Kakamega,training_capacity,56,seats,2025-06-20,2025-10-16,manual,approved,,
+ALLOC-d95182df,PROG-860280ab,Kakamega,budget,1347740,KES,2025-06-20,2025-10-16,manual,approved,,
+ALLOC-5fdaab4a,PROG-860280ab,Kakamega,budget,175162,KES,2025-10-16,2025-12-26,manual,approved,,
+ALLOC-cf9e2546,PROG-e86bb743,Nairobi,field_officer,2,officers,2025-08-24,2025-10-27,manual,approved,,
+ALLOC-714b70c6,PROG-e86bb743,Nairobi,budget,967713,KES,2025-08-24,2025-10-27,manual,approved,,
+ALLOC-70dfc28a,PROG-e86bb743,Nairobi,field_officer,1,officers,2026-01-20,2026-04-03,manual,approved,,
+ALLOC-505e8af1,PROG-e86bb743,Nairobi,budget,283856,KES,2026-01-20,2026-04-03,manual,approved,,
+ALLOC-b4af0807,PROG-e86bb743,Nairobi,budget,1376839,KES,2026-01-13,2026-04-21,ml_recommended,pending,60.26,Hic molestias assumenda distinctio qui quas distinctio temporibus sed consequuntur.
+ALLOC-c349cd77,PROG-7530c51c,Nairobi,field_officer,5,officers,2026-04-06,2026-07-14,manual,approved,,
+ALLOC-abbdf06e,PROG-7530c51c,Nairobi,training_capacity,43,seats,2026-04-06,2026-07-14,ml_recommended,pending,40.33,Dolore rerum deserunt delectus reiciendis sequi.
+ALLOC-452c96d0,PROG-7530c51c,Nairobi,budget,347898,KES,2026-04-06,2026-07-14,manual,approved,,
+ALLOC-35cd0a3d,PROG-7530c51c,Nairobi,field_officer,2,officers,2026-05-08,2026-08-26,ml_recommended,rejected,48.98,Itaque mollitia enim architecto atque quas laborum ex consectetur omnis.
+ALLOC-3b6bc943,PROG-7530c51c,Nairobi,training_capacity,91,seats,2026-05-08,2026-08-26,ml_recommended,pending,64.84,Eligendi architecto deserunt laborum eveniet.
+ALLOC-7a43596e,PROG-7530c51c,Nairobi,budget,633552,KES,2026-05-08,2026-08-26,ml_recommended,approved,55.47,Possimus corrupti necessitatibus repellat vero cumque et.
+ALLOC-5856ddc8,PROG-7530c51c,Nairobi,field_officer,3,officers,2026-04-18,2026-08-05,manual,approved,,
+ALLOC-2960f976,PROG-7530c51c,Nairobi,budget,161063,KES,2026-04-18,2026-08-05,ml_recommended,pending,78.37,Quae odit eius facere perspiciatis ex laboriosam.
+ALLOC-112da744,PROG-7530c51c,Nairobi,budget,1109769,KES,2026-05-11,2026-08-09,manual,approved,,
+ALLOC-6d97c54e,PROG-bd4698ac,Nairobi,field_officer,4,officers,2025-09-05,2025-12-31,ml_recommended,pending,56.48,Facere esse mollitia cupiditate non sapiente similique consequuntur molestiae.
+ALLOC-c6f36dda,PROG-bd4698ac,Nairobi,training_capacity,60,seats,2025-09-05,2025-12-31,manual,approved,,
+ALLOC-f1342007,PROG-bd4698ac,Nairobi,budget,1310890,KES,2025-09-05,2025-12-31,manual,approved,,
+ALLOC-6c754240,PROG-bd4698ac,Nairobi,training_capacity,23,seats,2025-03-02,2025-05-05,manual,approved,,
+ALLOC-72666234,PROG-bd4698ac,Nairobi,budget,1220452,KES,2025-03-02,2025-05-05,ml_recommended,approved,47.27,Quasi occaecati quas tempora sed occaecati repellat.
+ALLOC-2c9c9967,PROG-bd4698ac,Nairobi,field_officer,4,officers,2025-01-21,2025-05-06,manual,approved,,
+ALLOC-4f76cba1,PROG-bd4698ac,Nairobi,budget,1839498,KES,2025-01-21,2025-05-06,ml_recommended,pending,41.16,Illo nihil temporibus mollitia molestiae voluptatum iusto quod facilis dolore.
+ALLOC-eb290bbb,PROG-ff57bf40,Mombasa,budget,813274,KES,2025-11-15,2026-01-15,ml_recommended,approved,56.65,Quasi enim iure magni id magnam optio sed rem nostrum.
+ALLOC-d2218df2,PROG-ff57bf40,Mombasa,field_officer,1,officers,2026-04-02,2026-06-21,ml_recommended,rejected,67.37,Quidem consequuntur culpa necessitatibus natus sit.
+ALLOC-240b14c7,PROG-ff57bf40,Mombasa,training_capacity,24,seats,2026-04-02,2026-06-21,manual,approved,,
+ALLOC-3e013d4e,PROG-ff57bf40,Mombasa,field_officer,1,officers,2025-11-23,2026-01-29,manual,approved,,
+ALLOC-8eb69dcf,PROG-ff57bf40,Mombasa,training_capacity,31,seats,2025-11-23,2026-01-29,manual,approved,,
+ALLOC-5d407dd0,PROG-ff57bf40,Mombasa,budget,1690676,KES,2025-04-22,2025-07-24,manual,approved,,
+ALLOC-6ecdeef3,PROG-ff57bf40,Mombasa,field_officer,3,officers,2025-06-16,2025-09-04,manual,approved,,
+ALLOC-76c28712,PROG-ff57bf40,Mombasa,training_capacity,76,seats,2025-06-16,2025-09-04,manual,approved,,
+ALLOC-c2ac2121,PROG-ff57bf40,Mombasa,budget,430293,KES,2025-06-16,2025-09-04,manual,approved,,
+ALLOC-8692345e,PROG-6311eff0,Mombasa,field_officer,2,officers,2025-07-12,2025-10-15,manual,approved,,
+ALLOC-9dd96fa1,PROG-6311eff0,Mombasa,training_capacity,54,seats,2025-07-12,2025-10-15,manual,approved,,
+ALLOC-1c54260f,PROG-6311eff0,Mombasa,field_officer,1,officers,2024-07-30,2024-11-03,manual,approved,,
+ALLOC-3ba873db,PROG-6311eff0,Mombasa,budget,206380,KES,2024-07-30,2024-11-03,manual,approved,,
+ALLOC-c5abd69f,PROG-b11e144c,Mombasa,field_officer,1,officers,2026-01-25,2026-04-01,manual,approved,,
+ALLOC-50643379,PROG-b11e144c,Mombasa,training_capacity,96,seats,2026-01-25,2026-04-01,ml_recommended,approved,68.31,Quasi laboriosam facere dolor laborum aperiam.
+ALLOC-48b4d390,PROG-b11e144c,Mombasa,budget,845798,KES,2026-01-25,2026-04-01,manual,approved,,
+ALLOC-e27f81b1,PROG-b11e144c,Mombasa,budget,1684907,KES,2026-03-04,2026-06-17,ml_recommended,approved,26.5,Doloremque pariatur maxime recusandae harum ullam sunt aliquam.
+ALLOC-10d6c7be,PROG-b11e144c,Mombasa,field_officer,4,officers,2026-05-12,2026-07-17,manual,approved,,
+ALLOC-0f32df48,PROG-b11e144c,Mombasa,budget,1978420,KES,2026-05-12,2026-07-17,manual,approved,,
+ALLOC-2e775d36,PROG-b11e144c,Mombasa,field_officer,3,officers,2026-04-16,2026-07-10,ml_recommended,rejected,51.73,Aut voluptas odio earum quia neque necessitatibus fugiat.
+ALLOC-8707ae8d,PROG-b11e144c,Mombasa,training_capacity,80,seats,2026-04-16,2026-07-10,manual,approved,,
+ALLOC-54769551,PROG-b11e144c,Mombasa,budget,1873700,KES,2026-04-16,2026-07-10,manual,approved,,
+ALLOC-2ab94dc3,PROG-b11e144c,Mombasa,field_officer,5,officers,2026-04-12,2026-07-19,manual,approved,,
+ALLOC-3003bf57,PROG-bdd0cc6c,Mombasa,field_officer,3,officers,2025-11-05,2026-02-14,manual,approved,,
+ALLOC-16084c2c,PROG-bdd0cc6c,Mombasa,training_capacity,72,seats,2025-11-05,2026-02-14,manual,approved,,
+ALLOC-1078c145,PROG-bdd0cc6c,Mombasa,budget,433489,KES,2025-11-05,2026-02-14,ml_recommended,approved,43.85,Facilis officiis saepe maxime fugiat tenetur maiores explicabo.
+ALLOC-e45a1ee0,PROG-bdd0cc6c,Mombasa,field_officer,4,officers,2026-03-17,2026-06-29,manual,approved,,
+ALLOC-634c6bdb,PROG-bdd0cc6c,Mombasa,training_capacity,50,seats,2026-03-17,2026-06-29,manual,approved,,
+ALLOC-ed66bdf6,PROG-bdd0cc6c,Mombasa,budget,1650565,KES,2026-03-17,2026-06-29,ml_recommended,approved,54.06,Laborum laboriosam nobis magnam consequuntur cumque aspernatur officia.
+ALLOC-dc851fdf,PROG-bdd0cc6c,Mombasa,field_officer,5,officers,2025-11-24,2026-03-02,manual,approved,,
+ALLOC-71a3df54,PROG-bdd0cc6c,Mombasa,training_capacity,59,seats,2025-11-24,2026-03-02,ml_recommended,pending,27.61,Corrupti culpa nobis repellendus optio impedit.
+ALLOC-f0f9866c,PROG-bdd0cc6c,Mombasa,field_officer,4,officers,2026-02-23,2026-06-15,manual,approved,,
+ALLOC-d0e0226f,PROG-bdd0cc6c,Mombasa,training_capacity,47,seats,2026-02-23,2026-06-15,ml_recommended,rejected,83.23,Quam laboriosam laboriosam distinctio cum rerum ad aliquam.
+ALLOC-7b7ca695,PROG-bdd0cc6c,Mombasa,budget,100386,KES,2026-02-23,2026-06-15,ml_recommended,approved,51.71,Nihil consequatur maiores tempora corporis cumque ullam maxime illo voluptas.
+ALLOC-b3c1b51e,PROG-ac2df7f6,Mombasa,field_officer,2,officers,2025-11-09,2026-02-16,manual,approved,,
+ALLOC-d3c77787,PROG-ac2df7f6,Mombasa,budget,1765865,KES,2025-11-09,2026-02-16,ml_recommended,approved,86.03,Soluta quas reprehenderit veniam.
+ALLOC-e92e8737,PROG-ac2df7f6,Mombasa,training_capacity,31,seats,2025-12-02,2026-03-17,manual,approved,,
+ALLOC-246d997d,PROG-ac2df7f6,Mombasa,budget,1170436,KES,2025-12-02,2026-03-17,manual,approved,,
+ALLOC-e2f0b86e,PROG-ac2df7f6,Mombasa,field_officer,3,officers,2025-06-28,2025-10-20,ml_recommended,rejected,20.06,Ipsum voluptatibus sint cupiditate rerum nobis.
+ALLOC-a7a8ad08,PROG-ac2df7f6,Mombasa,training_capacity,65,seats,2025-06-28,2025-10-20,manual,approved,,
+ALLOC-f1af721f,PROG-ac2df7f6,Mombasa,budget,165399,KES,2025-06-28,2025-10-20,manual,approved,,
+ALLOC-7ad0ff5f,PROG-ac2df7f6,Mombasa,field_officer,3,officers,2026-04-18,2026-07-24,manual,approved,,
+ALLOC-de14aa34,PROG-ac2df7f6,Mombasa,training_capacity,75,seats,2026-04-18,2026-07-24,manual,approved,,
+ALLOC-41787dfe,PROG-ac2df7f6,Mombasa,budget,1095877,KES,2026-04-18,2026-07-24,manual,approved,,
+ALLOC-59aa6ce1,PROG-4b4a2b9f,Nakuru,field_officer,4,officers,2026-02-12,2026-06-11,manual,approved,,
+ALLOC-31be0ff0,PROG-4b4a2b9f,Nakuru,budget,381600,KES,2026-02-12,2026-06-11,manual,approved,,
+ALLOC-79e41af9,PROG-4b4a2b9f,Nakuru,field_officer,4,officers,2025-07-27,2025-09-26,manual,approved,,
+ALLOC-0751f23b,PROG-4b4a2b9f,Nakuru,budget,387771,KES,2025-07-27,2025-09-26,manual,approved,,
+ALLOC-3aa8a9fb,PROG-4b4a2b9f,Nakuru,field_officer,5,officers,2024-12-01,2025-03-26,ml_recommended,approved,51.81,Reprehenderit delectus optio eaque quam exercitationem iste nihil dolorem harum.
+ALLOC-b5e5cfb3,PROG-4b4a2b9f,Nakuru,training_capacity,77,seats,2024-12-01,2025-03-26,manual,approved,,
+ALLOC-f730f4f4,PROG-4b4a2b9f,Nakuru,budget,990811,KES,2024-12-01,2025-03-26,manual,approved,,
+ALLOC-af10f4de,PROG-4b4a2b9f,Nakuru,training_capacity,84,seats,2025-05-16,2025-08-15,manual,approved,,
+ALLOC-68204582,PROG-4b4a2b9f,Nakuru,field_officer,1,officers,2025-05-15,2025-08-06,manual,approved,,
+ALLOC-2d18cbbf,PROG-4b4a2b9f,Nakuru,budget,1109847,KES,2025-05-15,2025-08-06,ml_recommended,pending,71.11,Accusantium minima tenetur placeat repudiandae.
+ALLOC-b1af9430,PROG-b4b1c2de,Nakuru,field_officer,5,officers,2025-12-06,2026-03-09,manual,approved,,
+ALLOC-6b9f5dac,PROG-b4b1c2de,Nakuru,training_capacity,29,seats,2025-12-06,2026-03-09,manual,approved,,
+ALLOC-62e459ec,PROG-b4b1c2de,Nakuru,budget,1315568,KES,2025-12-06,2026-03-09,manual,approved,,
+ALLOC-ffa568f6,PROG-b4b1c2de,Nakuru,field_officer,1,officers,2025-05-09,2025-09-03,manual,approved,,
+ALLOC-aeb2ee06,PROG-b4b1c2de,Nakuru,training_capacity,80,seats,2025-05-09,2025-09-03,manual,approved,,
+ALLOC-956ea441,PROG-b4b1c2de,Nakuru,budget,840115,KES,2025-05-09,2025-09-03,ml_recommended,approved,40.24,Atque labore nostrum aliquam quos magnam blanditiis laboriosam consectetur nobis.
+ALLOC-7a2cde5b,PROG-b4b1c2de,Nakuru,field_officer,4,officers,2026-01-25,2026-04-11,manual,approved,,
+ALLOC-4e6ed837,PROG-b4b1c2de,Nakuru,training_capacity,57,seats,2026-01-25,2026-04-11,ml_recommended,approved,40.08,Tempore quod officiis minima.
+ALLOC-495194b7,PROG-b4b1c2de,Nakuru,budget,1160311,KES,2026-01-25,2026-04-11,manual,approved,,
+ALLOC-a2b7c39d,PROG-7ccb0bcb,Nakuru,field_officer,3,officers,2025-01-30,2025-04-08,ml_recommended,pending,27.81,Soluta possimus inventore vel laboriosam quisquam expedita rem.
+ALLOC-0c293914,PROG-7ccb0bcb,Nakuru,training_capacity,95,seats,2025-01-30,2025-04-08,manual,approved,,
+ALLOC-2ad37b29,PROG-7ccb0bcb,Nakuru,budget,875457,KES,2025-01-30,2025-04-08,ml_recommended,pending,69.05,Atque consequatur labore doloremque similique eligendi soluta illum deleniti quae.
+ALLOC-772c8d2f,PROG-7ccb0bcb,Nakuru,budget,277002,KES,2025-09-25,2025-12-05,ml_recommended,approved,77.52,Neque blanditiis ab omnis.
+ALLOC-fc24bd9b,PROG-7ccb0bcb,Nakuru,budget,1023134,KES,2025-10-06,2026-01-22,manual,approved,,
+ALLOC-aa189e3a,PROG-7ccb0bcb,Nakuru,field_officer,3,officers,2024-11-04,2025-01-16,manual,approved,,
+ALLOC-270177b8,PROG-7ccb0bcb,Nakuru,training_capacity,34,seats,2024-11-04,2025-01-16,manual,approved,,
+ALLOC-b64fba74,PROG-7ccb0bcb,Nakuru,budget,1098730,KES,2024-11-04,2025-01-16,manual,approved,,
+ALLOC-c7d9db8b,PROG-b38983ba,Nakuru,training_capacity,38,seats,2025-06-13,2025-09-24,manual,approved,,
+ALLOC-986c5a2a,PROG-b38983ba,Nakuru,budget,705641,KES,2025-06-13,2025-09-24,ml_recommended,approved,67.49,Illum autem incidunt nesciunt ea modi natus nostrum.
+ALLOC-958f0823,PROG-b38983ba,Nakuru,training_capacity,88,seats,2025-11-14,2026-02-25,manual,approved,,
+ALLOC-c0353a15,PROG-b38983ba,Nakuru,budget,660123,KES,2025-08-06,2025-11-13,ml_recommended,pending,60.89,Quidem impedit quos laboriosam fuga mollitia ducimus esse.
+ALLOC-dfb71f54,PROG-7a6e5559,Kisumu,budget,508788,KES,2026-02-22,2026-06-05,manual,approved,,
+ALLOC-58cec032,PROG-7a6e5559,Kisumu,training_capacity,21,seats,2026-01-04,2026-04-18,manual,approved,,
+ALLOC-8d01cbb2,PROG-7a6e5559,Kisumu,field_officer,1,officers,2025-01-29,2025-04-25,manual,approved,,
+ALLOC-760cbed8,PROG-7a6e5559,Kisumu,training_capacity,56,seats,2025-01-29,2025-04-25,manual,approved,,
+ALLOC-655351ac,PROG-7a6e5559,Kisumu,budget,1398970,KES,2025-01-29,2025-04-25,manual,approved,,
+ALLOC-0bd2bede,PROG-7a6e5559,Kisumu,field_officer,2,officers,2026-05-18,2026-08-24,ml_recommended,approved,69.57,Quo id consequuntur sint blanditiis dolorem quos veniam.
+ALLOC-229ebe34,PROG-7a6e5559,Kisumu,training_capacity,97,seats,2026-05-18,2026-08-24,manual,approved,,
+ALLOC-ba304ddd,PROG-7a6e5559,Kisumu,budget,1987221,KES,2026-05-18,2026-08-24,manual,approved,,
+ALLOC-c011b36c,PROG-7a6e5559,Kisumu,training_capacity,52,seats,2026-03-10,2026-05-20,manual,approved,,
+ALLOC-4cdc533a,PROG-7a6e5559,Kisumu,budget,258784,KES,2026-03-10,2026-05-20,manual,approved,,
+ALLOC-832b82aa,PROG-f7b3a2f9,Kisumu,field_officer,3,officers,2025-12-28,2026-03-25,manual,approved,,
+ALLOC-f7108d04,PROG-f7b3a2f9,Kisumu,budget,230835,KES,2025-12-28,2026-03-25,manual,approved,,
+ALLOC-65b5de7d,PROG-f7b3a2f9,Kisumu,field_officer,3,officers,2024-10-07,2024-12-09,manual,approved,,
+ALLOC-21466b54,PROG-f7b3a2f9,Kisumu,training_capacity,45,seats,2024-10-07,2024-12-09,manual,approved,,
+ALLOC-f7f8b396,PROG-f7b3a2f9,Kisumu,budget,1131918,KES,2024-10-07,2024-12-09,manual,approved,,
+ALLOC-5aec3805,PROG-f7b3a2f9,Kisumu,field_officer,5,officers,2025-05-08,2025-08-25,manual,approved,,
+ALLOC-3bfe309a,PROG-f7b3a2f9,Kisumu,field_officer,5,officers,2024-02-15,2024-04-17,manual,approved,,
+ALLOC-0dddd1b3,PROG-f7b3a2f9,Kisumu,budget,1143755,KES,2024-02-15,2024-04-17,manual,approved,,
+ALLOC-37292b0a,PROG-a502bbfb,Kisumu,field_officer,2,officers,2024-12-22,2025-04-03,manual,approved,,
+ALLOC-b6af8100,PROG-a502bbfb,Kisumu,budget,1180836,KES,2024-12-22,2025-04-03,manual,approved,,
+ALLOC-88784a40,PROG-a502bbfb,Kisumu,field_officer,1,officers,2026-03-31,2026-06-29,manual,approved,,
+ALLOC-3eb6c560,PROG-a502bbfb,Kisumu,training_capacity,81,seats,2026-03-31,2026-06-29,manual,approved,,
+ALLOC-0cae915f,PROG-a502bbfb,Kisumu,budget,852706,KES,2026-03-31,2026-06-29,manual,approved,,
+ALLOC-f621a741,PROG-d08e679f,Kisumu,field_officer,1,officers,2026-03-09,2026-05-11,manual,approved,,
+ALLOC-2077770d,PROG-d08e679f,Kisumu,budget,1864085,KES,2026-03-09,2026-05-11,manual,approved,,
+ALLOC-e499f461,PROG-d08e679f,Kisumu,field_officer,5,officers,2026-02-09,2026-05-21,manual,approved,,
+ALLOC-d8847fde,PROG-d08e679f,Kisumu,training_capacity,44,seats,2026-02-09,2026-05-21,manual,approved,,
+ALLOC-228c6f9f,PROG-d08e679f,Kisumu,budget,323908,KES,2026-02-09,2026-05-21,manual,approved,,
+ALLOC-62c21e42,PROG-d08e679f,Kisumu,field_officer,4,officers,2026-02-26,2026-05-28,manual,approved,,
+ALLOC-962991a3,PROG-d08e679f,Kisumu,training_capacity,44,seats,2026-02-26,2026-05-28,manual,approved,,
+ALLOC-d0a85cce,PROG-d08e679f,Kisumu,field_officer,5,officers,2026-01-27,2026-04-28,manual,approved,,
+ALLOC-e8cbe0fd,PROG-d08e679f,Kisumu,training_capacity,77,seats,2026-01-27,2026-04-28,ml_recommended,pending,43.75,Dolor id excepturi mollitia possimus.
+ALLOC-639e278d,PROG-d08e679f,Kisumu,budget,1612071,KES,2026-01-27,2026-04-28,manual,approved,,
+ALLOC-f8f1224a,PROG-e041816d,Eldoret,field_officer,5,officers,2026-03-19,2026-07-08,manual,approved,,
+ALLOC-d65bbdd0,PROG-e041816d,Eldoret,training_capacity,88,seats,2026-03-19,2026-07-08,manual,approved,,
+ALLOC-5c3aa31c,PROG-e041816d,Eldoret,budget,251065,KES,2026-03-19,2026-07-08,manual,approved,,
+ALLOC-4886ef1b,PROG-e041816d,Eldoret,field_officer,4,officers,2026-03-10,2026-06-09,ml_recommended,approved,36.99,Cum vitae a at corporis.
+ALLOC-e0e1a1ac,PROG-e041816d,Eldoret,training_capacity,21,seats,2026-03-10,2026-06-09,manual,approved,,
+ALLOC-ba615dda,PROG-e041816d,Eldoret,budget,744533,KES,2026-03-10,2026-06-09,ml_recommended,pending,62.79,Ipsa aperiam dolore aspernatur alias fugit voluptates nostrum maxime quae.
+ALLOC-aaa67872,PROG-37d82bff,Eldoret,field_officer,5,officers,2024-09-13,2024-11-19,manual,approved,,
+ALLOC-8f73df58,PROG-37d82bff,Eldoret,budget,1801882,KES,2024-09-13,2024-11-19,ml_recommended,approved,48.14,Animi quo cupiditate laudantium ab sed ut maxime deserunt quos.
+ALLOC-60e494d4,PROG-37d82bff,Eldoret,field_officer,2,officers,2024-09-28,2025-01-09,manual,approved,,
+ALLOC-054386af,PROG-37d82bff,Eldoret,budget,195601,KES,2024-09-28,2025-01-09,manual,approved,,
+ALLOC-d735b381,PROG-c737ca62,Eldoret,field_officer,4,officers,2024-10-12,2024-12-18,manual,approved,,
+ALLOC-1c847131,PROG-c737ca62,Eldoret,training_capacity,41,seats,2024-10-12,2024-12-18,manual,approved,,
+ALLOC-807a5f17,PROG-c737ca62,Eldoret,field_officer,5,officers,2024-09-19,2024-11-26,manual,approved,,
+ALLOC-dcbc6573,PROG-c737ca62,Eldoret,training_capacity,82,seats,2024-09-19,2024-11-26,manual,approved,,
+ALLOC-97ef0692,PROG-c737ca62,Eldoret,budget,286942,KES,2024-09-19,2024-11-26,manual,approved,,
+ALLOC-273b40f3,PROG-c737ca62,Eldoret,field_officer,4,officers,2026-04-08,2026-08-02,manual,approved,,
+ALLOC-5a82145c,PROG-c737ca62,Eldoret,training_capacity,54,seats,2026-04-08,2026-08-02,manual,approved,,
+ALLOC-7f80354f,PROG-c737ca62,Eldoret,budget,466055,KES,2026-04-08,2026-08-02,manual,approved,,
+ALLOC-dec2d32e,PROG-c737ca62,Eldoret,field_officer,4,officers,2024-09-16,2024-12-23,manual,approved,,
+ALLOC-e5cf55e3,PROG-c737ca62,Eldoret,training_capacity,58,seats,2024-09-16,2024-12-23,manual,approved,,
+ALLOC-34855326,PROG-c737ca62,Eldoret,budget,594170,KES,2024-09-16,2024-12-23,manual,approved,,
+ALLOC-d67f6778,PROG-66ed5471,Eldoret,budget,1073531,KES,2025-11-17,2026-02-08,ml_recommended,approved,39.35,Maiores doloremque cumque alias dolores a culpa voluptatum quod explicabo.
+ALLOC-72712501,PROG-66ed5471,Eldoret,training_capacity,80,seats,2025-04-14,2025-06-20,manual,approved,,
+ALLOC-b3a442e9,PROG-66ed5471,Eldoret,budget,190419,KES,2025-04-14,2025-06-20,manual,approved,,
+ALLOC-6b0553f4,PROG-4f9acb42,Eldoret,field_officer,3,officers,2025-10-26,2026-01-07,manual,approved,,
+ALLOC-13cb1688,PROG-4f9acb42,Eldoret,budget,318986,KES,2025-10-26,2026-01-07,manual,approved,,
+ALLOC-0857e7f6,PROG-4f9acb42,Eldoret,field_officer,1,officers,2026-03-05,2026-05-15,manual,approved,,
+ALLOC-2c2e47c3,PROG-4f9acb42,Eldoret,training_capacity,50,seats,2026-03-05,2026-05-15,manual,approved,,
+ALLOC-c3452456,PROG-4f9acb42,Eldoret,budget,783613,KES,2026-03-05,2026-05-15,manual,approved,,
+ALLOC-51cb551c,PROG-4f9acb42,Eldoret,field_officer,1,officers,2026-05-15,2026-09-09,manual,approved,,
+ALLOC-aece412e,PROG-4f9acb42,Eldoret,training_capacity,72,seats,2026-05-15,2026-09-09,ml_recommended,approved,35.45,Illo dicta accusamus provident ullam mollitia quas nam.
+ALLOC-6695e007,PROG-4f9acb42,Eldoret,budget,1115876,KES,2026-05-15,2026-09-09,manual,approved,,
+ALLOC-b9f71f92,PROG-4f9acb42,Eldoret,field_officer,5,officers,2026-01-12,2026-03-22,manual,approved,,
+ALLOC-86a96734,PROG-4f9acb42,Eldoret,training_capacity,37,seats,2026-01-12,2026-03-22,manual,approved,,
+ALLOC-26efeb2b,PROG-4f9acb42,Eldoret,budget,852018,KES,2026-01-12,2026-03-22,ml_recommended,pending,28.9,Expedita vitae eius non deserunt ut nemo ea illum autem.
+ALLOC-64983a89,PROG-02a826e9,Kiambu,field_officer,4,officers,2025-05-13,2025-07-20,manual,approved,,
+ALLOC-bd5b6dbc,PROG-02a826e9,Kiambu,training_capacity,63,seats,2025-05-13,2025-07-20,manual,approved,,
+ALLOC-7c0e550b,PROG-02a826e9,Kiambu,budget,428808,KES,2025-05-13,2025-07-20,ml_recommended,approved,62.81,Magnam excepturi blanditiis maiores ducimus.
+ALLOC-4576d8a7,PROG-02a826e9,Kiambu,budget,1897204,KES,2025-01-20,2025-04-26,manual,approved,,
+ALLOC-f7653e38,PROG-37fd8080,Kiambu,field_officer,1,officers,2026-03-17,2026-07-08,manual,approved,,
+ALLOC-436a830f,PROG-37fd8080,Kiambu,budget,786389,KES,2026-03-17,2026-07-08,manual,approved,,
+ALLOC-6cf43fb4,PROG-37fd8080,Kiambu,training_capacity,80,seats,2024-11-23,2025-02-17,manual,approved,,
+ALLOC-aff21a15,PROG-37fd8080,Kiambu,budget,992752,KES,2024-11-23,2025-02-17,manual,approved,,
+ALLOC-d6eb0c3e,PROG-5eed137e,Kiambu,field_officer,1,officers,2025-12-09,2026-03-30,manual,approved,,
+ALLOC-be98a547,PROG-5eed137e,Kiambu,training_capacity,91,seats,2025-12-09,2026-03-30,ml_recommended,approved,48.46,Repellat nemo possimus vitae natus quo quidem vero itaque itaque.
+ALLOC-37c76391,PROG-5eed137e,Kiambu,budget,851631,KES,2025-12-09,2026-03-30,manual,approved,,
+ALLOC-2cce7e5f,PROG-5eed137e,Kiambu,field_officer,3,officers,2025-06-26,2025-08-30,manual,approved,,
+ALLOC-60ae3ecc,PROG-5eed137e,Kiambu,training_capacity,93,seats,2025-06-26,2025-08-30,manual,approved,,
+ALLOC-cd66f6b6,PROG-5eed137e,Kiambu,budget,1053870,KES,2025-06-26,2025-08-30,manual,approved,,
+ALLOC-d0118c97,PROG-5eed137e,Kiambu,training_capacity,67,seats,2024-01-21,2024-05-15,manual,approved,,
+ALLOC-3aaf34b5,PROG-5eed137e,Kiambu,field_officer,4,officers,2023-09-03,2023-12-27,ml_recommended,approved,22.29,Similique laboriosam ducimus fugit ratione dolore praesentium reiciendis impedit explicabo.
+ALLOC-87780aaa,PROG-5eed137e,Kiambu,training_capacity,54,seats,2023-09-03,2023-12-27,manual,approved,,
+ALLOC-80c6de8a,PROG-5eed137e,Kiambu,budget,1306343,KES,2023-09-03,2023-12-27,ml_recommended,approved,25.67,Ab rerum dolorum at perferendis reprehenderit asperiores ut labore explicabo.
+ALLOC-3f9de742,PROG-5eed137e,Kiambu,training_capacity,66,seats,2026-02-19,2026-05-11,ml_recommended,pending,45.59,Eaque veniam placeat tenetur libero dicta quasi sit dignissimos dicta.
+ALLOC-bc2933dc,PROG-5eed137e,Kiambu,budget,866658,KES,2026-02-19,2026-05-11,manual,approved,,
+ALLOC-c34e2591,PROG-e9384c4f,Kiambu,training_capacity,62,seats,2025-04-25,2025-08-08,manual,approved,,
+ALLOC-41df9366,PROG-e9384c4f,Kiambu,budget,1103473,KES,2025-04-25,2025-08-08,manual,approved,,
+ALLOC-e1dddd8d,PROG-ff2c588f,Machakos,training_capacity,74,seats,2024-11-24,2025-02-14,manual,approved,,
+ALLOC-9737853f,PROG-ff2c588f,Machakos,budget,823992,KES,2024-11-24,2025-02-14,manual,approved,,
+ALLOC-5550ae08,PROG-ff2c588f,Machakos,training_capacity,88,seats,2025-05-28,2025-08-29,manual,approved,,
+ALLOC-480c9e83,PROG-ff2c588f,Machakos,budget,712922,KES,2025-05-28,2025-08-29,manual,approved,,
+ALLOC-aea04d3c,PROG-ff2c588f,Machakos,field_officer,1,officers,2025-01-11,2025-05-02,manual,approved,,
+ALLOC-d312ed80,PROG-ff2c588f,Machakos,budget,919320,KES,2025-01-11,2025-05-02,ml_recommended,pending,86.96,Saepe explicabo quod blanditiis aspernatur veritatis laudantium.
+ALLOC-bc57ddc9,PROG-1f8ed400,Machakos,field_officer,2,officers,2026-04-15,2026-07-01,manual,approved,,
+ALLOC-db5b3f04,PROG-1f8ed400,Machakos,budget,1415493,KES,2026-04-15,2026-07-01,manual,approved,,
+ALLOC-dfbce686,PROG-1f8ed400,Machakos,field_officer,2,officers,2026-05-01,2026-08-12,manual,approved,,
+ALLOC-58241889,PROG-1f8ed400,Machakos,training_capacity,22,seats,2026-05-01,2026-08-12,manual,approved,,
+ALLOC-d8ce94e3,PROG-1f8ed400,Machakos,budget,1928283,KES,2026-05-01,2026-08-12,ml_recommended,approved,56.37,Quisquam molestiae aliquam laboriosam.
+ALLOC-b7637264,PROG-483dea91,Machakos,field_officer,3,officers,2026-02-17,2026-05-25,manual,approved,,
+ALLOC-57edda35,PROG-483dea91,Machakos,training_capacity,87,seats,2026-02-17,2026-05-25,ml_recommended,approved,41.29,Et tempore sunt nemo eius delectus quisquam maiores id quibusdam consectetur.
+ALLOC-5b8004c6,PROG-483dea91,Machakos,budget,1755383,KES,2026-02-17,2026-05-25,manual,approved,,
+ALLOC-a2167a9a,PROG-483dea91,Machakos,field_officer,3,officers,2025-12-02,2026-02-14,ml_recommended,pending,44.72,Reiciendis laboriosam molestiae magnam hic placeat cupiditate voluptate praesentium itaque.
+ALLOC-2f3dca34,PROG-483dea91,Machakos,training_capacity,41,seats,2025-12-02,2026-02-14,manual,approved,,
+ALLOC-b72c5f4b,PROG-483dea91,Machakos,budget,1222640,KES,2025-12-02,2026-02-14,manual,approved,,
+ALLOC-76c18434,PROG-483dea91,Machakos,field_officer,3,officers,2025-10-12,2025-12-26,manual,approved,,
+ALLOC-a9ce9bac,PROG-483dea91,Machakos,training_capacity,67,seats,2025-10-12,2025-12-26,manual,approved,,
+ALLOC-1a977d9c,PROG-483dea91,Machakos,budget,172748,KES,2025-10-12,2025-12-26,manual,approved,,
+ALLOC-d2f9aeaf,PROG-c518bee3,Machakos,field_officer,2,officers,2025-12-06,2026-02-27,manual,approved,,
+ALLOC-61a7d4dc,PROG-c518bee3,Machakos,training_capacity,23,seats,2025-12-06,2026-02-27,manual,approved,,
+ALLOC-5f8aeeb7,PROG-c518bee3,Machakos,budget,404892,KES,2025-12-06,2026-02-27,ml_recommended,rejected,30.92,Accusamus distinctio neque eveniet.
+ALLOC-2bb36c6c,PROG-c518bee3,Machakos,training_capacity,57,seats,2026-05-07,2026-08-09,manual,approved,,
+ALLOC-f46ad64f,PROG-c518bee3,Machakos,budget,1681591,KES,2026-05-07,2026-08-09,ml_recommended,approved,30.3,Similique deleniti ea earum vero exercitationem delectus incidunt in quibusdam facilis.
+ALLOC-5a8155cc,PROG-c518bee3,Machakos,training_capacity,34,seats,2026-03-23,2026-07-07,manual,approved,,
+ALLOC-0febb29d,PROG-c518bee3,Machakos,field_officer,3,officers,2025-12-04,2026-03-17,manual,approved,,
+ALLOC-8d10e7fc,PROG-c518bee3,Machakos,training_capacity,48,seats,2025-12-04,2026-03-17,manual,approved,,
+ALLOC-d7156e40,PROG-c518bee3,Machakos,budget,215413,KES,2025-12-04,2026-03-17,manual,approved,,
+ALLOC-4093d093,PROG-4986a661,Machakos,field_officer,3,officers,2026-03-14,2026-06-15,manual,approved,,
+ALLOC-e16135ad,PROG-4986a661,Machakos,training_capacity,77,seats,2026-03-14,2026-06-15,manual,approved,,
+ALLOC-e38ee172,PROG-4986a661,Machakos,field_officer,3,officers,2026-02-06,2026-05-02,manual,approved,,
+ALLOC-43b35d7e,PROG-4986a661,Machakos,training_capacity,27,seats,2026-02-06,2026-05-02,ml_recommended,approved,30.36,Eius debitis consectetur nemo dolorem aut earum doloremque.
+ALLOC-49dc00ad,PROG-4986a661,Machakos,field_officer,3,officers,2025-11-25,2026-02-17,manual,approved,,
+ALLOC-1d6647cd,PROG-4986a661,Machakos,training_capacity,77,seats,2025-11-25,2026-02-17,ml_recommended,pending,70.95,Sequi deserunt reiciendis qui labore ab in consequatur tempora.
+ALLOC-cbc5a0eb,PROG-4986a661,Machakos,budget,971596,KES,2025-11-25,2026-02-17,ml_recommended,pending,76.4,Maxime quam quos error natus necessitatibus id porro animi repellendus labore.
+ALLOC-573f56c1,PROG-4132bd2d,Kajiado,field_officer,5,officers,2026-05-24,2026-09-18,manual,approved,,
+ALLOC-fb51b76f,PROG-4132bd2d,Kajiado,training_capacity,58,seats,2026-05-24,2026-09-18,manual,approved,,
+ALLOC-d50ba3e0,PROG-4132bd2d,Kajiado,training_capacity,68,seats,2026-05-21,2026-07-24,manual,approved,,
+ALLOC-07cbb152,PROG-4132bd2d,Kajiado,budget,673212,KES,2026-05-21,2026-07-24,manual,approved,,
+ALLOC-9ef3431e,PROG-4132bd2d,Kajiado,budget,490083,KES,2026-05-23,2026-08-20,ml_recommended,pending,54.34,Atque quia ea facere nam repellat exercitationem illum expedita perspiciatis non.
+ALLOC-f13723f6,PROG-4132bd2d,Kajiado,field_officer,5,officers,2026-05-25,2026-09-14,manual,approved,,
+ALLOC-0d98cf43,PROG-4132bd2d,Kajiado,training_capacity,79,seats,2026-05-25,2026-09-14,manual,approved,,
+ALLOC-969a7fb1,PROG-4132bd2d,Kajiado,field_officer,4,officers,2026-05-20,2026-08-04,manual,approved,,
+ALLOC-f9ec9ac1,PROG-4132bd2d,Kajiado,training_capacity,56,seats,2026-05-20,2026-08-04,manual,approved,,
+ALLOC-0c4e6280,PROG-4132bd2d,Kajiado,budget,1542511,KES,2026-05-20,2026-08-04,manual,approved,,
+ALLOC-27a3adf4,PROG-ddf8fbd0,Kajiado,field_officer,1,officers,2024-06-24,2024-10-10,manual,approved,,
+ALLOC-55e8069c,PROG-ddf8fbd0,Kajiado,training_capacity,81,seats,2024-06-24,2024-10-10,manual,approved,,
+ALLOC-7fe7a97e,PROG-ddf8fbd0,Kajiado,field_officer,1,officers,2025-11-27,2026-03-10,manual,approved,,
+ALLOC-789447d7,PROG-ddf8fbd0,Kajiado,budget,644288,KES,2025-11-27,2026-03-10,manual,approved,,
+ALLOC-c5f49080,PROG-6e13fa05,Kajiado,field_officer,2,officers,2025-09-21,2025-12-10,manual,approved,,
+ALLOC-79d56d1c,PROG-6e13fa05,Kajiado,training_capacity,66,seats,2025-09-21,2025-12-10,manual,approved,,
+ALLOC-ba137be4,PROG-6e13fa05,Kajiado,field_officer,5,officers,2026-01-07,2026-03-11,manual,approved,,
+ALLOC-873a1199,PROG-6e13fa05,Kajiado,training_capacity,44,seats,2026-01-07,2026-03-11,ml_recommended,pending,26.62,Nemo officiis cupiditate quos explicabo perferendis laborum qui suscipit fugit.
+ALLOC-0a89919f,PROG-de40b141,Kajiado,budget,1563743,KES,2026-01-26,2026-05-18,manual,approved,,
+ALLOC-7868b9ba,PROG-de40b141,Kajiado,field_officer,2,officers,2025-12-01,2026-03-05,manual,approved,,
+ALLOC-f07f21c9,PROG-de40b141,Kajiado,training_capacity,67,seats,2025-12-01,2026-03-05,ml_recommended,approved,84.46,Iure vero sit odit unde in nostrum.
+ALLOC-b83f1910,PROG-de40b141,Kajiado,budget,556919,KES,2025-12-01,2026-03-05,manual,approved,,
+ALLOC-83ddc129,PROG-de40b141,Kajiado,field_officer,5,officers,2026-01-02,2026-04-25,manual,approved,,
+ALLOC-e0ceb5dc,PROG-de40b141,Kajiado,budget,1215885,KES,2026-01-02,2026-04-25,manual,approved,,
+ALLOC-52c14162,PROG-de40b141,Kajiado,training_capacity,29,seats,2026-05-05,2026-08-21,manual,approved,,
+ALLOC-f974acff,PROG-de40b141,Kajiado,budget,136447,KES,2026-05-05,2026-08-21,manual,approved,,
+ALLOC-f4071792,PROG-dd577742,Meru,field_officer,4,officers,2026-03-15,2026-06-06,ml_recommended,approved,73.45,Sed architecto cum dolorem et eos eaque officia.
+ALLOC-026d1fcb,PROG-dd577742,Meru,training_capacity,58,seats,2026-03-15,2026-06-06,manual,approved,,
+ALLOC-2f78ebc0,PROG-dd577742,Meru,training_capacity,49,seats,2024-11-20,2025-01-27,manual,approved,,
+ALLOC-3222cfd9,PROG-dd577742,Meru,budget,264846,KES,2024-11-20,2025-01-27,manual,approved,,
+ALLOC-c957bc8f,PROG-dd577742,Meru,field_officer,4,officers,2024-07-30,2024-10-02,ml_recommended,pending,27.55,Suscipit quos vel quibusdam maxime ipsum cumque.
+ALLOC-8b3c67ab,PROG-dd577742,Meru,budget,224288,KES,2024-07-30,2024-10-02,manual,approved,,
+ALLOC-8e9b5a02,PROG-dd577742,Meru,field_officer,1,officers,2024-12-22,2025-02-22,ml_recommended,approved,84.41,Commodi doloremque dolorum quia.
+ALLOC-5c4d09fb,PROG-dd577742,Meru,training_capacity,45,seats,2024-12-22,2025-02-22,manual,approved,,
+ALLOC-c71779f5,PROG-dd577742,Meru,budget,290378,KES,2024-12-22,2025-02-22,manual,approved,,
+ALLOC-b0d4aabd,PROG-54050097,Meru,field_officer,5,officers,2026-02-14,2026-05-07,ml_recommended,approved,55.34,Distinctio id atque vel labore.
+ALLOC-59f4b6d5,PROG-54050097,Meru,training_capacity,94,seats,2026-02-14,2026-05-07,ml_recommended,approved,70.11,Ad id quisquam assumenda ea.
+ALLOC-6dae87ac,PROG-54050097,Meru,training_capacity,32,seats,2024-12-23,2025-04-19,ml_recommended,rejected,79.59,Assumenda ut harum dolorem qui ipsam.
+ALLOC-49450792,PROG-54050097,Meru,budget,1564090,KES,2024-12-23,2025-04-19,manual,approved,,
+ALLOC-00683621,PROG-54050097,Meru,training_capacity,65,seats,2025-09-24,2026-01-05,ml_recommended,approved,56.0,Consectetur saepe adipisci optio similique eveniet.
+ALLOC-0fe79f1f,PROG-54050097,Meru,budget,1696791,KES,2025-09-24,2026-01-05,ml_recommended,pending,27.72,Iusto sit vel molestias consequatur veniam molestiae nihil itaque.
+ALLOC-54c31a02,PROG-54050097,Meru,budget,185162,KES,2024-11-17,2025-02-16,manual,approved,,
+ALLOC-1f02c6c0,PROG-4cb533cf,Meru,field_officer,5,officers,2025-08-27,2025-11-19,manual,approved,,
+ALLOC-6a4931c6,PROG-4cb533cf,Meru,training_capacity,76,seats,2025-08-27,2025-11-19,manual,approved,,
+ALLOC-042a201b,PROG-4cb533cf,Meru,budget,1893831,KES,2025-08-27,2025-11-19,manual,approved,,
+ALLOC-9a9b1e8b,PROG-4cb533cf,Meru,training_capacity,67,seats,2025-08-03,2025-11-28,manual,approved,,
+ALLOC-f8875e33,PROG-4cb533cf,Meru,field_officer,4,officers,2026-03-07,2026-06-18,manual,approved,,
+ALLOC-e2b3bfd6,PROG-4cb533cf,Meru,training_capacity,35,seats,2026-03-07,2026-06-18,manual,approved,,
+ALLOC-9c872732,PROG-4cb533cf,Meru,budget,1338488,KES,2026-03-07,2026-06-18,ml_recommended,approved,82.47,Ipsa odit modi tenetur laboriosam dolorem at est impedit culpa.
+ALLOC-00ec30ce,PROG-4cb533cf,Meru,field_officer,2,officers,2025-09-23,2025-11-26,manual,approved,,
+ALLOC-1aed7991,PROG-4cb533cf,Meru,training_capacity,71,seats,2025-09-23,2025-11-26,manual,approved,,
+ALLOC-cf71dace,PROG-4cb533cf,Meru,budget,1686082,KES,2026-03-11,2026-05-27,ml_recommended,approved,48.02,A repellendus sed exercitationem.
+ALLOC-e0115d14,PROG-c61e9529,Meru,budget,409065,KES,2026-04-20,2026-07-27,ml_recommended,pending,37.55,Modi porro laudantium quidem error quisquam reiciendis nisi reiciendis.
+ALLOC-26b20376,PROG-c61e9529,Meru,field_officer,2,officers,2026-03-29,2026-06-11,manual,approved,,
+ALLOC-e2d3097d,PROG-c61e9529,Meru,field_officer,2,officers,2026-03-29,2026-07-10,manual,approved,,
+ALLOC-e1f083da,PROG-c61e9529,Meru,training_capacity,39,seats,2026-03-29,2026-07-10,manual,approved,,
+ALLOC-e8f8c95e,PROG-c61e9529,Meru,budget,1694195,KES,2026-03-29,2026-07-10,manual,approved,,
+ALLOC-1f4108c8,PROG-c61e9529,Meru,budget,1488510,KES,2026-05-01,2026-08-02,manual,approved,,
+ALLOC-7935a147,PROG-c61e9529,Meru,field_officer,5,officers,2026-03-30,2026-06-14,manual,approved,,
+ALLOC-0da0af90,PROG-c61e9529,Meru,budget,1002627,KES,2026-03-30,2026-06-14,ml_recommended,pending,51.51,Fugiat illum natus hic cum qui harum fugiat ea in.
+ALLOC-d1e81ea1,PROG-74e9906c,Meru,field_officer,2,officers,2026-01-22,2026-04-21,manual,approved,,
+ALLOC-894d0ce5,PROG-74e9906c,Meru,budget,1580713,KES,2026-01-22,2026-04-21,manual,approved,,
+ALLOC-6698ddd2,PROG-74e9906c,Meru,field_officer,4,officers,2026-01-16,2026-03-25,manual,approved,,
+ALLOC-3bce144d,PROG-74e9906c,Meru,training_capacity,82,seats,2026-01-16,2026-03-25,manual,approved,,
+ALLOC-347148f4,PROG-74e9906c,Meru,budget,1300011,KES,2026-01-16,2026-03-25,manual,approved,,
+ALLOC-50c68b54,PROG-74e9906c,Meru,field_officer,1,officers,2026-03-24,2026-07-16,manual,approved,,
+ALLOC-e9f1168a,PROG-74e9906c,Meru,training_capacity,68,seats,2026-03-24,2026-07-16,manual,approved,,
+ALLOC-3d353590,PROG-74e9906c,Meru,budget,696508,KES,2026-03-24,2026-07-16,manual,approved,,
+ALLOC-72a2dfb2,PROG-74e9906c,Meru,field_officer,3,officers,2025-06-24,2025-09-29,manual,approved,,
+ALLOC-c141db2e,PROG-74e9906c,Meru,budget,1969281,KES,2025-06-24,2025-09-29,manual,approved,,
+ALLOC-7ba53d5a,PROG-74e9906c,Meru,field_officer,3,officers,2025-12-21,2026-02-25,manual,approved,,
+ALLOC-4b5dfeb2,PROG-74e9906c,Meru,training_capacity,51,seats,2025-12-21,2026-02-25,manual,approved,,
+ALLOC-75fdcbd7,PROG-74e9906c,Meru,budget,1342628,KES,2025-12-21,2026-02-25,manual,approved,,
+ALLOC-5a5397e3,PROG-7d9bc9c1,Nyeri,field_officer,1,officers,2024-10-27,2025-01-02,manual,approved,,
+ALLOC-518dac70,PROG-7d9bc9c1,Nyeri,training_capacity,74,seats,2024-10-27,2025-01-02,manual,approved,,
+ALLOC-1b48397c,PROG-7d9bc9c1,Nyeri,field_officer,5,officers,2024-09-18,2024-11-18,manual,approved,,
+ALLOC-4a17728a,PROG-7d9bc9c1,Nyeri,training_capacity,93,seats,2024-09-18,2024-11-18,manual,approved,,
+ALLOC-98dc7bb0,PROG-7d9bc9c1,Nyeri,budget,1795183,KES,2024-09-18,2024-11-18,manual,approved,,
+ALLOC-71735f96,PROG-a0e0d78d,Nyeri,field_officer,3,officers,2025-10-20,2026-01-19,manual,approved,,
+ALLOC-b752f3d0,PROG-a0e0d78d,Nyeri,training_capacity,75,seats,2025-10-20,2026-01-19,manual,approved,,
+ALLOC-3e6ae412,PROG-a0e0d78d,Nyeri,budget,1750772,KES,2025-10-20,2026-01-19,manual,approved,,
+ALLOC-58e14998,PROG-a0e0d78d,Nyeri,field_officer,1,officers,2026-05-12,2026-07-24,manual,approved,,
+ALLOC-c8348b97,PROG-a0e0d78d,Nyeri,training_capacity,48,seats,2026-05-12,2026-07-24,manual,approved,,
+ALLOC-2c1c5555,PROG-a0e0d78d,Nyeri,field_officer,1,officers,2025-02-15,2025-05-23,manual,approved,,
+ALLOC-a932027b,PROG-a0e0d78d,Nyeri,training_capacity,74,seats,2025-02-15,2025-05-23,manual,approved,,
+ALLOC-df59db3d,PROG-12e377cd,Kilifi,field_officer,5,officers,2025-08-03,2025-11-22,manual,approved,,
+ALLOC-c87fae4c,PROG-12e377cd,Kilifi,training_capacity,52,seats,2025-08-03,2025-11-22,manual,approved,,
+ALLOC-d95e4e1f,PROG-12e377cd,Kilifi,budget,1701054,KES,2025-08-03,2025-11-22,manual,approved,,
+ALLOC-86f951bd,PROG-12e377cd,Kilifi,budget,546594,KES,2024-03-24,2024-07-02,manual,approved,,
+ALLOC-11ecffbd,PROG-12e377cd,Kilifi,field_officer,5,officers,2026-04-04,2026-08-02,ml_recommended,rejected,83.48,Maxime reiciendis nostrum possimus earum officiis minus.
+ALLOC-f56b5534,PROG-12e377cd,Kilifi,field_officer,4,officers,2024-05-05,2024-08-06,manual,approved,,
+ALLOC-48a017ff,PROG-12e377cd,Kilifi,training_capacity,58,seats,2024-05-05,2024-08-06,ml_recommended,approved,80.21,Impedit sequi delectus enim odio nulla earum.
+ALLOC-15640a11,PROG-ae147777,Kilifi,training_capacity,52,seats,2026-01-03,2026-03-21,manual,approved,,
+ALLOC-e6ac4982,PROG-ae147777,Kilifi,budget,600135,KES,2026-01-03,2026-03-21,manual,approved,,
+ALLOC-fd875bc9,PROG-ae147777,Kilifi,field_officer,3,officers,2025-05-22,2025-07-22,manual,approved,,
+ALLOC-faeb03ba,PROG-ae147777,Kilifi,training_capacity,75,seats,2025-05-22,2025-07-22,manual,approved,,
+ALLOC-e433e290,PROG-ae147777,Kilifi,field_officer,1,officers,2025-06-01,2025-08-10,manual,approved,,
+ALLOC-a266c41a,PROG-ae147777,Kilifi,budget,469067,KES,2025-06-01,2025-08-10,manual,approved,,
+ALLOC-d555b747,PROG-f051b9cf,Kilifi,field_officer,1,officers,2025-11-19,2026-03-09,manual,approved,,
+ALLOC-a5c8916f,PROG-f051b9cf,Kilifi,training_capacity,28,seats,2025-11-19,2026-03-09,ml_recommended,approved,45.44,Laudantium eum corrupti voluptas ad voluptas eligendi commodi ipsa ab at.
+ALLOC-5298b646,PROG-f051b9cf,Kilifi,budget,289386,KES,2025-11-19,2026-03-09,manual,approved,,
+ALLOC-3bd542b9,PROG-f051b9cf,Kilifi,field_officer,5,officers,2024-11-30,2025-02-13,ml_recommended,approved,78.03,Laudantium exercitationem est reiciendis.
+ALLOC-62cb9523,PROG-c4a7a0a8,Kilifi,field_officer,5,officers,2025-11-25,2026-03-21,manual,approved,,
+ALLOC-fe705edc,PROG-c4a7a0a8,Kilifi,budget,1325420,KES,2025-11-25,2026-03-21,manual,approved,,
+ALLOC-9bed5a8b,PROG-c4a7a0a8,Kilifi,field_officer,2,officers,2025-03-03,2025-06-30,manual,approved,,
+ALLOC-d1be9810,PROG-c4a7a0a8,Kilifi,training_capacity,55,seats,2025-03-03,2025-06-30,manual,approved,,
+ALLOC-d93264e5,PROG-c4a7a0a8,Kilifi,budget,1336231,KES,2025-03-03,2025-06-30,manual,approved,,
+ALLOC-9f589cb9,PROG-c4a7a0a8,Kilifi,field_officer,1,officers,2026-01-02,2026-03-26,manual,approved,,
+ALLOC-77e7a015,PROG-c4a7a0a8,Kilifi,training_capacity,51,seats,2026-01-02,2026-03-26,ml_recommended,rejected,85.59,Iure recusandae ex sapiente veritatis animi quod architecto.
+ALLOC-966e2b32,PROG-c4a7a0a8,Kilifi,budget,1600871,KES,2026-01-02,2026-03-26,manual,approved,,
+ALLOC-5b539514,PROG-c4a7a0a8,Kilifi,field_officer,5,officers,2025-05-16,2025-07-16,manual,approved,,
+ALLOC-fa3dd3ae,PROG-36f507bd,Kilifi,field_officer,4,officers,2026-05-09,2026-07-23,manual,approved,,
+ALLOC-81c298d2,PROG-36f507bd,Kilifi,budget,1803412,KES,2026-05-09,2026-07-23,manual,approved,,
+ALLOC-00b2f9b2,PROG-36f507bd,Kilifi,field_officer,4,officers,2025-12-20,2026-04-14,manual,approved,,
+ALLOC-071d766a,PROG-36f507bd,Kilifi,budget,635892,KES,2025-12-20,2026-04-14,manual,approved,,
+ALLOC-94a55d12,PROG-6e2aa30e,Kakamega,training_capacity,76,seats,2026-05-01,2026-07-13,manual,approved,,
+ALLOC-5a6aad2b,PROG-6e2aa30e,Kakamega,training_capacity,30,seats,2026-05-23,2026-08-17,ml_recommended,rejected,52.98,Delectus tempore dolorum fugit accusamus voluptate quaerat harum voluptate.
+ALLOC-86222f79,PROG-6e2aa30e,Kakamega,budget,1864047,KES,2026-05-23,2026-08-17,manual,approved,,
+ALLOC-5caab725,PROG-6e2aa30e,Kakamega,training_capacity,40,seats,2026-05-09,2026-09-02,manual,approved,,
+ALLOC-8556e06b,PROG-6e2aa30e,Kakamega,budget,837896,KES,2026-05-09,2026-09-02,manual,approved,,
+ALLOC-c32e4311,PROG-42104c80,Kakamega,field_officer,1,officers,2025-11-15,2026-02-27,manual,approved,,
+ALLOC-b831c1f4,PROG-42104c80,Kakamega,training_capacity,76,seats,2025-11-15,2026-02-27,ml_recommended,pending,48.05,Qui alias itaque quo maxime voluptatem labore.
+ALLOC-29eca58a,PROG-42104c80,Kakamega,budget,757922,KES,2025-11-15,2026-02-27,manual,approved,,
+ALLOC-ade3aa65,PROG-42104c80,Kakamega,field_officer,2,officers,2025-05-23,2025-08-01,ml_recommended,approved,75.48,Vel culpa quas quia mollitia commodi laboriosam.
+ALLOC-7a3950f0,PROG-42104c80,Kakamega,training_capacity,81,seats,2025-05-23,2025-08-01,ml_recommended,pending,32.14,Dicta suscipit sint dolor beatae odio eveniet.
+ALLOC-325e895d,PROG-42104c80,Kakamega,budget,786985,KES,2025-05-23,2025-08-01,ml_recommended,pending,49.01,Recusandae nesciunt id doloribus voluptas neque.
+ALLOC-e8f33b2f,PROG-42104c80,Kakamega,budget,1414132,KES,2025-07-20,2025-09-19,manual,approved,,
+ALLOC-e6d4dc22,PROG-6787b12e,Kakamega,field_officer,2,officers,2026-05-17,2026-08-14,manual,approved,,
+ALLOC-b7b366af,PROG-6787b12e,Kakamega,training_capacity,96,seats,2026-05-17,2026-08-14,manual,approved,,
+ALLOC-b7d8e33c,PROG-6787b12e,Kakamega,budget,871584,KES,2026-05-17,2026-08-14,manual,approved,,
+ALLOC-c67f9d8e,PROG-6787b12e,Kakamega,field_officer,5,officers,2025-03-26,2025-06-01,manual,approved,,
+ALLOC-9c985025,PROG-6787b12e,Kakamega,budget,1512662,KES,2025-03-26,2025-06-01,manual,approved,,
+ALLOC-a985686d,PROG-5ffcdf85,Kakamega,field_officer,3,officers,2026-05-06,2026-07-18,manual,approved,,
+ALLOC-a92320b1,PROG-5ffcdf85,Kakamega,training_capacity,36,seats,2026-05-06,2026-07-18,manual,approved,,
+ALLOC-19a4e655,PROG-5ffcdf85,Kakamega,budget,552075,KES,2026-05-06,2026-07-18,ml_recommended,pending,67.4,Porro culpa quo dolorum libero placeat excepturi voluptas quis.
+ALLOC-e9b406f1,PROG-5ffcdf85,Kakamega,field_officer,2,officers,2026-02-20,2026-05-02,manual,approved,,
+ALLOC-d9934860,PROG-5ffcdf85,Kakamega,budget,1045766,KES,2026-02-20,2026-05-02,ml_recommended,approved,67.9,Animi officia praesentium recusandae commodi.
+ALLOC-42b71f42,PROG-5ffcdf85,Kakamega,field_officer,2,officers,2026-03-02,2026-05-06,ml_recommended,rejected,47.83,Et nam officia expedita tempora quasi accusantium.
+ALLOC-c87a1a93,PROG-5ffcdf85,Kakamega,training_capacity,69,seats,2026-03-02,2026-05-06,manual,approved,,
+ALLOC-18a4801b,PROG-e4144baa,Kakamega,field_officer,1,officers,2025-01-31,2025-04-07,manual,approved,,
+ALLOC-ecc85407,PROG-e4144baa,Kakamega,training_capacity,65,seats,2025-01-31,2025-04-07,ml_recommended,rejected,87.7,Facere consequatur tempore laborum ipsa eos possimus deleniti.
+ALLOC-6f2c1ea6,PROG-e4144baa,Kakamega,budget,1669176,KES,2025-01-31,2025-04-07,ml_recommended,pending,55.32,Molestiae eum iusto sint nisi similique.
+ALLOC-d493c111,PROG-e4144baa,Kakamega,training_capacity,36,seats,2025-12-13,2026-03-02,ml_recommended,approved,60.63,Architecto culpa eos ea facilis a.
+ALLOC-e6bc93a0,PROG-e4144baa,Kakamega,budget,1156433,KES,2025-12-13,2026-03-02,manual,approved,,
+ALLOC-42aa41ab,PROG-e4144baa,Kakamega,field_officer,1,officers,2025-10-31,2026-02-24,manual,approved,,
+ALLOC-45eb4645,PROG-e4144baa,Kakamega,training_capacity,38,seats,2025-10-31,2026-02-24,manual,approved,,
+ALLOC-bc24fc67,PROG-e4144baa,Kakamega,budget,368165,KES,2025-10-31,2026-02-24,manual,approved,,
+ALLOC-e069b0b7,PROG-e4144baa,Kakamega,field_officer,4,officers,2025-09-01,2025-12-17,manual,approved,,
+ALLOC-33d7a39a,PROG-e4144baa,Kakamega,budget,1697115,KES,2025-09-01,2025-12-17,ml_recommended,approved,50.5,Fugiat delectus accusantium sequi quod dolores quam omnis molestiae.
+ALLOC-c1f24b4f,PROG-0cb596de,Kakamega,budget,1888941,KES,2025-11-08,2026-02-23,ml_recommended,approved,50.8,Deleniti placeat quisquam culpa eligendi illum eum atque.
+ALLOC-d477fd28,PROG-0cb596de,Kakamega,field_officer,2,officers,2025-07-01,2025-09-08,manual,approved,,
+ALLOC-5046f4bf,PROG-0cb596de,Kakamega,training_capacity,79,seats,2025-07-01,2025-09-08,manual,approved,,
+ALLOC-e9121cab,PROG-0cb596de,Kakamega,field_officer,5,officers,2026-05-10,2026-07-11,manual,approved,,
+ALLOC-a7690238,PROG-0cb596de,Kakamega,training_capacity,38,seats,2026-05-10,2026-07-11,manual,approved,,
+ALLOC-8b94b662,PROG-0cb596de,Kakamega,budget,1920690,KES,2026-05-10,2026-07-11,manual,approved,,
+ALLOC-01a3f004,PROG-40a38dca,Nairobi,field_officer,5,officers,2025-11-11,2026-03-03,manual,approved,,
+ALLOC-019b0c78,PROG-40a38dca,Nairobi,budget,1708196,KES,2025-11-11,2026-03-03,manual,approved,,
+ALLOC-84a2aa15,PROG-40a38dca,Nairobi,field_officer,4,officers,2025-08-09,2025-12-05,manual,approved,,
+ALLOC-9a04b06a,PROG-40a38dca,Nairobi,budget,1528815,KES,2025-08-09,2025-12-05,ml_recommended,pending,46.15,Aliquam vel debitis adipisci autem.
+ALLOC-e553d9f3,PROG-40a38dca,Nairobi,field_officer,1,officers,2024-09-25,2025-01-16,manual,approved,,
+ALLOC-2d6e9e78,PROG-40a38dca,Nairobi,budget,1052223,KES,2024-09-25,2025-01-16,manual,approved,,
+ALLOC-72f72bd8,PROG-feed88eb,Nairobi,field_officer,1,officers,2025-07-27,2025-11-06,manual,approved,,
+ALLOC-f2e56a73,PROG-feed88eb,Nairobi,budget,1634161,KES,2025-07-27,2025-11-06,ml_recommended,rejected,75.79,Atque necessitatibus saepe omnis minima praesentium.
+ALLOC-df5e4118,PROG-feed88eb,Nairobi,budget,1773835,KES,2024-04-07,2024-06-19,manual,approved,,
+ALLOC-df0fb9ef,PROG-feed88eb,Nairobi,training_capacity,71,seats,2024-02-07,2024-05-12,manual,approved,,
+ALLOC-72a91682,PROG-feed88eb,Nairobi,budget,1716647,KES,2024-02-07,2024-05-12,ml_recommended,pending,79.66,Aliquid dolore quaerat accusamus ullam omnis unde.
+ALLOC-bef09b0b,PROG-feed88eb,Nairobi,training_capacity,39,seats,2024-05-11,2024-08-03,manual,approved,,
+ALLOC-e372208f,PROG-feed88eb,Nairobi,budget,1006721,KES,2024-05-11,2024-08-03,manual,approved,,
+ALLOC-cfbca52b,PROG-8cf15bc4,Nairobi,field_officer,1,officers,2026-03-15,2026-05-22,ml_recommended,approved,54.27,Iusto odit facere quia tempora.
+ALLOC-9af5526d,PROG-8cf15bc4,Nairobi,budget,1280816,KES,2026-03-15,2026-05-22,manual,approved,,
+ALLOC-53c7d4c1,PROG-8cf15bc4,Nairobi,field_officer,3,officers,2024-10-06,2025-01-22,manual,approved,,
+ALLOC-2b304ccb,PROG-8cf15bc4,Nairobi,training_capacity,74,seats,2024-10-06,2025-01-22,manual,approved,,
+ALLOC-fbc3b8c6,PROG-8cf15bc4,Nairobi,budget,1072082,KES,2024-10-06,2025-01-22,manual,approved,,
+ALLOC-0197f6c6,PROG-8cf15bc4,Nairobi,budget,1457330,KES,2026-04-30,2026-08-11,manual,approved,,
+ALLOC-a3fa5fc5,PROG-8cf15bc4,Nairobi,field_officer,4,officers,2025-04-29,2025-07-27,manual,approved,,
+ALLOC-4199670d,PROG-8cf15bc4,Nairobi,budget,730002,KES,2025-04-29,2025-07-27,ml_recommended,approved,40.68,Recusandae animi nulla minus quasi rerum aspernatur dolor.
+ALLOC-76fb5d6a,PROG-4055f3fe,Nairobi,training_capacity,85,seats,2025-04-04,2025-06-07,manual,approved,,
+ALLOC-e96635b5,PROG-4055f3fe,Nairobi,budget,1485913,KES,2025-04-04,2025-06-07,manual,approved,,
+ALLOC-d96bc92a,PROG-4055f3fe,Nairobi,field_officer,5,officers,2025-12-28,2026-03-14,manual,approved,,
+ALLOC-87c72043,PROG-4055f3fe,Nairobi,training_capacity,34,seats,2025-12-28,2026-03-14,manual,approved,,
+ALLOC-a02a7db5,PROG-4055f3fe,Nairobi,budget,1748732,KES,2025-12-28,2026-03-14,manual,approved,,
+ALLOC-f529cf78,PROG-7463bbcd,Mombasa,field_officer,3,officers,2025-01-17,2025-03-23,manual,approved,,
+ALLOC-9d6c30d7,PROG-7463bbcd,Mombasa,training_capacity,43,seats,2026-03-07,2026-06-14,manual,approved,,
+ALLOC-c5afa6f9,PROG-7463bbcd,Mombasa,budget,1366790,KES,2026-03-07,2026-06-14,manual,approved,,
+ALLOC-c47d4353,PROG-7463bbcd,Mombasa,field_officer,1,officers,2025-03-20,2025-06-15,manual,approved,,
+ALLOC-9e856cd1,PROG-7463bbcd,Mombasa,training_capacity,81,seats,2025-03-20,2025-06-15,manual,approved,,
+ALLOC-30c78110,PROG-7463bbcd,Mombasa,budget,1479332,KES,2025-03-20,2025-06-15,ml_recommended,approved,54.07,Atque quam minus deleniti minima dolorum numquam debitis quibusdam impedit.
+ALLOC-56218742,PROG-7463bbcd,Mombasa,field_officer,4,officers,2025-12-06,2026-03-20,ml_recommended,pending,29.46,Quisquam nemo perferendis praesentium incidunt.
+ALLOC-937f5fe5,PROG-7463bbcd,Mombasa,training_capacity,22,seats,2025-12-06,2026-03-20,manual,approved,,
+ALLOC-fc2a529a,PROG-7463bbcd,Mombasa,budget,156235,KES,2025-12-06,2026-03-20,manual,approved,,
+ALLOC-9afbc011,PROG-7463bbcd,Mombasa,field_officer,5,officers,2025-04-29,2025-08-08,manual,approved,,
+ALLOC-9a197257,PROG-7463bbcd,Mombasa,training_capacity,79,seats,2025-04-29,2025-08-08,manual,approved,,
+ALLOC-f711f4bf,PROG-7463bbcd,Mombasa,budget,344231,KES,2025-04-29,2025-08-08,manual,approved,,
+ALLOC-574deaa8,PROG-b3c8c997,Mombasa,field_officer,4,officers,2026-04-12,2026-07-12,manual,approved,,
+ALLOC-e625744e,PROG-b3c8c997,Mombasa,training_capacity,92,seats,2026-04-12,2026-07-12,ml_recommended,approved,43.37,Cumque debitis illo excepturi culpa.
+ALLOC-7d415fa8,PROG-b3c8c997,Mombasa,budget,1877607,KES,2026-04-12,2026-07-12,manual,approved,,
+ALLOC-ab0705e6,PROG-b3c8c997,Mombasa,field_officer,5,officers,2026-03-28,2026-07-20,manual,approved,,
+ALLOC-aee7499e,PROG-b3c8c997,Mombasa,training_capacity,57,seats,2026-03-28,2026-07-20,manual,approved,,
+ALLOC-758a6ac3,PROG-b3c8c997,Mombasa,budget,1176584,KES,2026-03-28,2026-07-20,manual,approved,,
+ALLOC-0c42a275,PROG-b3c8c997,Mombasa,training_capacity,74,seats,2026-05-04,2026-07-17,manual,approved,,
+ALLOC-8ec15a99,PROG-b3c8c997,Mombasa,budget,661719,KES,2026-05-04,2026-07-17,ml_recommended,approved,53.13,Ipsam explicabo et voluptatibus eveniet fuga quisquam inventore quas non.
+ALLOC-6f2fe8ce,PROG-2baf66ee,Mombasa,field_officer,4,officers,2025-10-20,2026-02-17,manual,approved,,
+ALLOC-e43d38e8,PROG-2baf66ee,Mombasa,training_capacity,56,seats,2025-10-20,2026-02-17,manual,approved,,
+ALLOC-4f60d222,PROG-2baf66ee,Mombasa,budget,1018784,KES,2025-10-20,2026-02-17,manual,approved,,
+ALLOC-84e6b91c,PROG-2baf66ee,Mombasa,training_capacity,97,seats,2024-09-02,2024-12-08,ml_recommended,approved,52.79,Molestias fugiat mollitia quia facere iste vero a alias eligendi.
+ALLOC-40017acc,PROG-2baf66ee,Mombasa,field_officer,4,officers,2026-01-31,2026-05-16,ml_recommended,approved,71.42,Maxime voluptatibus error error.
+ALLOC-8d06a236,PROG-2baf66ee,Mombasa,field_officer,1,officers,2024-07-05,2024-10-12,manual,approved,,
+ALLOC-e103c759,PROG-2baf66ee,Mombasa,training_capacity,45,seats,2024-07-05,2024-10-12,manual,approved,,
+ALLOC-2c1c12be,PROG-2baf66ee,Mombasa,budget,1764053,KES,2024-07-05,2024-10-12,manual,approved,,
+ALLOC-ad31f1f7,PROG-2baf66ee,Mombasa,field_officer,5,officers,2025-06-10,2025-08-28,manual,approved,,
+ALLOC-4d4f6637,PROG-2baf66ee,Mombasa,training_capacity,53,seats,2025-06-10,2025-08-28,manual,approved,,
+ALLOC-daa61391,PROG-2baf66ee,Mombasa,budget,1836334,KES,2025-06-10,2025-08-28,ml_recommended,approved,76.48,Dolor et quo velit reprehenderit ullam maiores.
+ALLOC-26f0fb8a,PROG-d3069c0f,Mombasa,field_officer,1,officers,2026-01-15,2026-03-23,manual,approved,,
+ALLOC-8dfb22e4,PROG-d3069c0f,Mombasa,training_capacity,63,seats,2026-01-15,2026-03-23,ml_recommended,approved,73.91,Unde culpa alias explicabo consequuntur facilis neque doloremque repellat at.
+ALLOC-4a1f42f4,PROG-d3069c0f,Mombasa,budget,1979714,KES,2026-01-15,2026-03-23,manual,approved,,
+ALLOC-8619840b,PROG-d3069c0f,Mombasa,field_officer,1,officers,2026-04-12,2026-07-19,ml_recommended,approved,52.0,Necessitatibus dolor aspernatur eveniet laboriosam laborum tempore praesentium.
+ALLOC-39a41332,PROG-d3069c0f,Mombasa,budget,322071,KES,2026-04-12,2026-07-19,ml_recommended,approved,80.09,Nisi error quasi nemo aspernatur.
+ALLOC-e5f9bd2b,PROG-d3069c0f,Mombasa,field_officer,5,officers,2025-02-13,2025-06-05,manual,approved,,
+ALLOC-6b60b5fb,PROG-d3069c0f,Mombasa,training_capacity,46,seats,2025-02-13,2025-06-05,ml_recommended,pending,40.45,Ullam ex sunt ipsa ut.
+ALLOC-fc1397b1,PROG-d3069c0f,Mombasa,budget,1160942,KES,2025-02-13,2025-06-05,manual,approved,,
+ALLOC-631a27b7,PROG-d3069c0f,Mombasa,field_officer,3,officers,2025-02-10,2025-04-20,ml_recommended,pending,34.13,Sit dolorem officiis nobis accusamus quod.
+ALLOC-a1ba2d0b,PROG-0c3fbd28,Nakuru,training_capacity,84,seats,2025-07-19,2025-11-09,manual,approved,,
+ALLOC-750c33da,PROG-0c3fbd28,Nakuru,budget,1599882,KES,2025-07-19,2025-11-09,ml_recommended,approved,66.55,Amet minima eum natus eveniet possimus corrupti perferendis.
+ALLOC-b453c9dc,PROG-0c3fbd28,Nakuru,training_capacity,49,seats,2025-06-01,2025-09-17,manual,approved,,
+ALLOC-009f020b,PROG-0c3fbd28,Nakuru,budget,958383,KES,2025-06-01,2025-09-17,ml_recommended,rejected,56.13,Voluptas quidem nemo at inventore ratione corporis excepturi.
+ALLOC-928fe770,PROG-fc7b354b,Nakuru,field_officer,1,officers,2024-02-06,2024-05-04,manual,approved,,
+ALLOC-44997acd,PROG-fc7b354b,Nakuru,training_capacity,28,seats,2024-02-06,2024-05-04,manual,approved,,
+ALLOC-f424a8d9,PROG-fc7b354b,Nakuru,budget,1719782,KES,2024-02-06,2024-05-04,manual,approved,,
+ALLOC-5d243003,PROG-fc7b354b,Nakuru,training_capacity,39,seats,2024-03-09,2024-06-02,ml_recommended,pending,64.21,Nemo aliquid id assumenda magnam quo consectetur consequatur nam.
+ALLOC-57836676,PROG-fc7b354b,Nakuru,field_officer,3,officers,2025-11-13,2026-03-09,manual,approved,,
+ALLOC-8eeaa394,PROG-fc7b354b,Nakuru,budget,686742,KES,2024-11-13,2025-02-27,ml_recommended,approved,30.28,Hic necessitatibus natus voluptatum minima doloribus eaque inventore placeat.
+ALLOC-f3111159,PROG-154089d9,Nakuru,field_officer,5,officers,2025-12-08,2026-03-19,manual,approved,,
+ALLOC-824884bb,PROG-154089d9,Nakuru,training_capacity,76,seats,2025-12-08,2026-03-19,manual,approved,,
+ALLOC-81b11bf7,PROG-154089d9,Nakuru,budget,1227079,KES,2026-03-22,2026-06-15,manual,approved,,
+ALLOC-aec4bc00,PROG-154089d9,Nakuru,training_capacity,89,seats,2026-04-30,2026-08-14,manual,approved,,
+ALLOC-170dc6da,PROG-154089d9,Nakuru,budget,1257178,KES,2026-04-30,2026-08-14,manual,approved,,
+ALLOC-2ff1cca0,PROG-154089d9,Nakuru,field_officer,1,officers,2025-10-15,2026-01-31,manual,approved,,
+ALLOC-9ca7ff65,PROG-154089d9,Nakuru,budget,606126,KES,2025-10-15,2026-01-31,ml_recommended,approved,49.59,At perferendis incidunt expedita eum nisi ad esse voluptates nulla.
+ALLOC-c80a4d30,PROG-154089d9,Nakuru,budget,1164303,KES,2026-01-07,2026-03-15,manual,approved,,
+ALLOC-be83d1ea,PROG-3ff19543,Nakuru,field_officer,3,officers,2026-05-20,2026-09-17,manual,approved,,
+ALLOC-d5b76b83,PROG-3ff19543,Nakuru,training_capacity,63,seats,2026-05-20,2026-09-17,ml_recommended,approved,89.23,Numquam ipsam unde doloremque placeat culpa quas assumenda qui.
+ALLOC-938a223b,PROG-3ff19543,Nakuru,budget,1975564,KES,2026-05-20,2026-09-17,ml_recommended,approved,79.11,Veniam unde sit reprehenderit accusamus possimus beatae.
+ALLOC-7a89be40,PROG-3ff19543,Nakuru,field_officer,5,officers,2026-02-02,2026-04-25,manual,approved,,
+ALLOC-92bc323b,PROG-3ff19543,Nakuru,budget,619324,KES,2026-02-02,2026-04-25,manual,approved,,
+ALLOC-d7ab99f2,PROG-f5f07ba4,Kisumu,field_officer,4,officers,2025-11-26,2026-02-23,ml_recommended,pending,24.35,Iusto ex qui distinctio molestias quibusdam molestias numquam voluptatibus.
+ALLOC-41f45b6b,PROG-f5f07ba4,Kisumu,budget,1035673,KES,2025-11-26,2026-02-23,manual,approved,,
+ALLOC-90747513,PROG-f5f07ba4,Kisumu,field_officer,5,officers,2026-05-14,2026-08-07,ml_recommended,rejected,60.9,Fugiat temporibus minima ducimus.
+ALLOC-62b5ff9c,PROG-f5f07ba4,Kisumu,training_capacity,76,seats,2026-05-14,2026-08-07,manual,approved,,
+ALLOC-89f16cc0,PROG-f5f07ba4,Kisumu,field_officer,5,officers,2026-01-22,2026-05-14,manual,approved,,
+ALLOC-c2d98391,PROG-f5f07ba4,Kisumu,budget,1577495,KES,2026-01-22,2026-05-14,manual,approved,,
+ALLOC-2b7478f9,PROG-4b1a75a8,Kisumu,field_officer,1,officers,2026-04-26,2026-07-08,manual,approved,,
+ALLOC-b0ff0b95,PROG-4b1a75a8,Kisumu,budget,349070,KES,2026-04-26,2026-07-08,manual,approved,,
+ALLOC-1d7aa879,PROG-4b1a75a8,Kisumu,field_officer,5,officers,2025-07-07,2025-09-12,manual,approved,,
+ALLOC-a89c48e3,PROG-4b1a75a8,Kisumu,training_capacity,35,seats,2025-07-07,2025-09-12,manual,approved,,
+ALLOC-77458140,PROG-4984651e,Kisumu,field_officer,2,officers,2025-10-23,2026-01-22,manual,approved,,
+ALLOC-c2ddf81a,PROG-4984651e,Kisumu,training_capacity,26,seats,2025-10-23,2026-01-22,ml_recommended,approved,39.84,Eligendi ratione nulla amet omnis.
+ALLOC-83a7ff89,PROG-4984651e,Kisumu,budget,1651180,KES,2025-10-23,2026-01-22,manual,approved,,
+ALLOC-cce4df3f,PROG-4984651e,Kisumu,field_officer,1,officers,2025-07-27,2025-10-30,manual,approved,,
+ALLOC-1a581d98,PROG-4984651e,Kisumu,training_capacity,92,seats,2025-07-27,2025-10-30,manual,approved,,
+ALLOC-c92e0dc1,PROG-4984651e,Kisumu,budget,891267,KES,2025-07-27,2025-10-30,manual,approved,,
+ALLOC-cb6d7079,PROG-4984651e,Kisumu,training_capacity,78,seats,2026-04-01,2026-06-08,ml_recommended,approved,30.43,Architecto optio optio totam.
+ALLOC-d6730d9f,PROG-4984651e,Kisumu,field_officer,5,officers,2025-07-10,2025-10-29,manual,approved,,
+ALLOC-5ac5e1fa,PROG-4984651e,Kisumu,training_capacity,70,seats,2025-07-10,2025-10-29,manual,approved,,
+ALLOC-3a7e94e6,PROG-4984651e,Kisumu,budget,1506022,KES,2025-07-10,2025-10-29,ml_recommended,approved,65.21,Sint accusantium sint officiis doloremque fugit voluptate aut.
+ALLOC-fe78195c,PROG-9e2ec2fe,Kisumu,field_officer,3,officers,2025-09-04,2025-12-09,manual,approved,,
+ALLOC-18816bba,PROG-9e2ec2fe,Kisumu,training_capacity,91,seats,2025-09-04,2025-12-09,manual,approved,,
+ALLOC-c6e52669,PROG-9e2ec2fe,Kisumu,field_officer,4,officers,2025-09-19,2025-12-24,manual,approved,,
+ALLOC-afa68052,PROG-9e2ec2fe,Kisumu,training_capacity,88,seats,2025-09-19,2025-12-24,manual,approved,,
+ALLOC-7334003f,PROG-9e2ec2fe,Kisumu,budget,1749949,KES,2025-09-19,2025-12-24,manual,approved,,
+ALLOC-1b15d9c8,PROG-9e2ec2fe,Kisumu,training_capacity,71,seats,2026-04-07,2026-06-11,manual,approved,,
+ALLOC-a3f4ea79,PROG-9e2ec2fe,Kisumu,budget,148786,KES,2026-04-07,2026-06-11,manual,approved,,
+ALLOC-4803d5b2,PROG-dd95776f,Kisumu,training_capacity,52,seats,2025-09-13,2025-11-13,manual,approved,,
+ALLOC-9b25fd28,PROG-dd95776f,Kisumu,field_officer,2,officers,2026-01-21,2026-04-01,manual,approved,,
+ALLOC-02fab688,PROG-dd95776f,Kisumu,training_capacity,59,seats,2026-01-21,2026-04-01,ml_recommended,approved,24.12,Laborum nisi at dicta vitae natus quae aliquam.
+ALLOC-48656ffc,PROG-dd95776f,Kisumu,training_capacity,32,seats,2025-01-17,2025-03-19,manual,approved,,
+ALLOC-b64440e7,PROG-dd95776f,Kisumu,budget,779933,KES,2025-01-17,2025-03-19,manual,approved,,
+ALLOC-7fe40aa5,PROG-62cc2bca,Kisumu,field_officer,5,officers,2024-06-08,2024-08-19,manual,approved,,
+ALLOC-7f9f5e77,PROG-62cc2bca,Kisumu,training_capacity,84,seats,2024-06-08,2024-08-19,manual,approved,,
+ALLOC-6a2d1614,PROG-62cc2bca,Kisumu,budget,227154,KES,2024-06-08,2024-08-19,manual,approved,,
+ALLOC-ea59ecce,PROG-62cc2bca,Kisumu,field_officer,1,officers,2025-11-03,2026-01-28,manual,approved,,
+ALLOC-f9b86882,PROG-62cc2bca,Kisumu,training_capacity,22,seats,2025-11-03,2026-01-28,manual,approved,,
+ALLOC-c62edc74,PROG-bca78c91,Eldoret,field_officer,2,officers,2024-07-06,2024-10-22,manual,approved,,
+ALLOC-7e7eb99f,PROG-bca78c91,Eldoret,training_capacity,30,seats,2024-07-06,2024-10-22,ml_recommended,approved,74.8,Esse laudantium quia accusantium placeat explicabo esse voluptatum voluptatem eius.
+ALLOC-36166ee6,PROG-bca78c91,Eldoret,budget,1233384,KES,2024-07-06,2024-10-22,ml_recommended,approved,57.63,Numquam soluta tempora repellendus adipisci.
+ALLOC-11de793f,PROG-bca78c91,Eldoret,field_officer,1,officers,2025-01-03,2025-05-01,manual,approved,,
+ALLOC-eb8d8b28,PROG-bca78c91,Eldoret,training_capacity,99,seats,2025-01-03,2025-05-01,manual,approved,,
+ALLOC-84a2df15,PROG-676845a5,Eldoret,training_capacity,52,seats,2025-02-12,2025-06-11,ml_recommended,approved,44.6,Veniam dolorem exercitationem hic consequatur quas maxime perspiciatis sit placeat.
+ALLOC-2cff9bc6,PROG-676845a5,Eldoret,budget,1327167,KES,2025-02-12,2025-06-11,ml_recommended,pending,31.3,Dolores corrupti voluptas tenetur eveniet molestiae dignissimos consequuntur molestiae.
+ALLOC-c0e04dbd,PROG-676845a5,Eldoret,field_officer,1,officers,2025-02-22,2025-05-12,ml_recommended,approved,89.92,Similique est provident minima consequatur voluptatum.
+ALLOC-37add3a3,PROG-676845a5,Eldoret,budget,1158684,KES,2025-02-22,2025-05-12,ml_recommended,approved,67.75,Omnis natus culpa architecto minus quaerat.
+ALLOC-72ea0fd3,PROG-a2191006,Eldoret,training_capacity,61,seats,2025-07-21,2025-11-06,manual,approved,,
+ALLOC-a2fe8a01,PROG-a2191006,Eldoret,budget,1357271,KES,2025-07-21,2025-11-06,manual,approved,,
+ALLOC-1f21ed65,PROG-a2191006,Eldoret,training_capacity,20,seats,2025-03-12,2025-06-21,ml_recommended,approved,48.92,Et sunt quas quisquam sunt impedit.
+ALLOC-238d17d9,PROG-a2191006,Eldoret,field_officer,1,officers,2026-03-11,2026-06-27,ml_recommended,approved,25.43,Esse quia reprehenderit odio qui corrupti deleniti consectetur.
+ALLOC-91ae647e,PROG-a2191006,Eldoret,training_capacity,76,seats,2026-03-11,2026-06-27,manual,approved,,
+ALLOC-87dde016,PROG-a2191006,Eldoret,budget,1804525,KES,2026-03-11,2026-06-27,manual,approved,,
+ALLOC-e9021a28,PROG-a2191006,Eldoret,field_officer,1,officers,2025-10-28,2026-01-20,manual,approved,,
+ALLOC-dd3c9f1f,PROG-a2191006,Eldoret,training_capacity,44,seats,2025-10-28,2026-01-20,manual,approved,,
+ALLOC-45b06872,PROG-a2191006,Eldoret,budget,141485,KES,2025-10-28,2026-01-20,ml_recommended,approved,69.64,Quis nostrum eaque necessitatibus doloremque.
+ALLOC-85e1e8cc,PROG-adb8dd55,Eldoret,field_officer,3,officers,2025-09-20,2026-01-10,ml_recommended,pending,88.61,Doloremque ad aspernatur quod consequatur sapiente iusto.
+ALLOC-5e73deca,PROG-adb8dd55,Eldoret,budget,1133555,KES,2025-09-20,2026-01-10,ml_recommended,approved,34.64,Delectus harum labore cum dolorem illum voluptas unde.
+ALLOC-4f7dd328,PROG-adb8dd55,Eldoret,field_officer,1,officers,2025-11-13,2026-03-05,ml_recommended,approved,54.58,Dolore perferendis dicta dignissimos debitis veritatis ipsa nulla.
+ALLOC-40ccb906,PROG-adb8dd55,Eldoret,training_capacity,92,seats,2025-11-13,2026-03-05,manual,approved,,
+ALLOC-d2210a54,PROG-adb8dd55,Eldoret,budget,468110,KES,2025-11-13,2026-03-05,manual,approved,,
+ALLOC-1c544539,PROG-adb8dd55,Eldoret,field_officer,3,officers,2025-10-09,2026-01-24,ml_recommended,rejected,81.67,Sint suscipit incidunt quod non repudiandae quam hic.
+ALLOC-d2f945b1,PROG-adb8dd55,Eldoret,budget,1877686,KES,2025-10-09,2026-01-24,manual,approved,,
+ALLOC-397423cd,PROG-c0a36c24,Kiambu,training_capacity,74,seats,2026-03-07,2026-06-10,manual,approved,,
+ALLOC-53216da9,PROG-c0a36c24,Kiambu,training_capacity,72,seats,2025-09-27,2026-01-19,manual,approved,,
+ALLOC-df2a2888,PROG-c0a36c24,Kiambu,budget,1078503,KES,2025-09-27,2026-01-19,manual,approved,,
+ALLOC-ada188a6,PROG-c0a36c24,Kiambu,field_officer,2,officers,2026-01-24,2026-05-12,manual,approved,,
+ALLOC-229a8c6a,PROG-c0a36c24,Kiambu,budget,763207,KES,2026-01-24,2026-05-12,manual,approved,,
+ALLOC-3cb9f006,PROG-c0a36c24,Kiambu,field_officer,5,officers,2025-11-02,2026-01-22,ml_recommended,rejected,35.79,Nisi minima soluta ratione maxime iste repudiandae aliquam voluptatum maxime.
+ALLOC-cf8c44d9,PROG-c0a36c24,Kiambu,training_capacity,29,seats,2025-11-02,2026-01-22,ml_recommended,pending,43.05,Voluptates aliquam harum quisquam vitae deleniti ipsa sunt.
+ALLOC-74c4b798,PROG-c0a36c24,Kiambu,budget,1411338,KES,2025-11-02,2026-01-22,manual,approved,,
+ALLOC-6f83e2ff,PROG-f6167614,Kiambu,field_officer,3,officers,2025-06-21,2025-10-10,ml_recommended,pending,53.15,Itaque in nostrum amet maxime consequuntur rerum.
+ALLOC-55ef1c79,PROG-f6167614,Kiambu,training_capacity,94,seats,2025-12-30,2026-03-28,manual,approved,,
+ALLOC-90f898b9,PROG-f6167614,Kiambu,field_officer,1,officers,2024-05-09,2024-08-01,ml_recommended,pending,76.17,At magnam debitis nesciunt tempora molestias hic eum ad.
+ALLOC-bdc13ddb,PROG-f6167614,Kiambu,training_capacity,98,seats,2024-05-09,2024-08-01,manual,approved,,
+ALLOC-e61b7818,PROG-f6167614,Kiambu,budget,1520955,KES,2024-05-09,2024-08-01,manual,approved,,
+ALLOC-8b19e0a7,PROG-f6167614,Kiambu,training_capacity,99,seats,2024-05-28,2024-08-14,ml_recommended,pending,61.97,Nihil quae dicta iste dolorum porro tenetur recusandae quaerat.
+ALLOC-752daf02,PROG-f6167614,Kiambu,budget,122243,KES,2024-05-28,2024-08-14,manual,approved,,
+ALLOC-daa2dcde,PROG-9fe90568,Kiambu,training_capacity,63,seats,2026-02-13,2026-05-11,manual,approved,,
+ALLOC-bfadfd00,PROG-9fe90568,Kiambu,budget,154467,KES,2026-02-13,2026-05-11,manual,approved,,
+ALLOC-785234d6,PROG-9fe90568,Kiambu,field_officer,1,officers,2025-06-19,2025-09-24,manual,approved,,
+ALLOC-c771db23,PROG-9fe90568,Kiambu,budget,1863242,KES,2025-06-19,2025-09-24,manual,approved,,
+ALLOC-5740b143,PROG-9fe90568,Kiambu,field_officer,3,officers,2025-10-22,2025-12-29,manual,approved,,
+ALLOC-46dec019,PROG-9fe90568,Kiambu,training_capacity,99,seats,2025-10-22,2025-12-29,manual,approved,,
+ALLOC-5d282f3a,PROG-9fe90568,Kiambu,budget,1771483,KES,2025-10-22,2025-12-29,manual,approved,,
+ALLOC-a63a1441,PROG-9fe90568,Kiambu,field_officer,5,officers,2025-03-08,2025-05-26,ml_recommended,approved,41.78,At provident odio assumenda provident quas.
+ALLOC-7a6ee3cf,PROG-9fe90568,Kiambu,field_officer,3,officers,2025-03-18,2025-06-16,manual,approved,,
+ALLOC-4ec8b30f,PROG-9fe90568,Kiambu,budget,1479248,KES,2025-03-18,2025-06-16,manual,approved,,
+ALLOC-ffcd3763,PROG-5af62ded,Machakos,training_capacity,26,seats,2026-01-17,2026-04-19,manual,approved,,
+ALLOC-02235fa7,PROG-5af62ded,Machakos,budget,520210,KES,2026-01-17,2026-04-19,manual,approved,,
+ALLOC-39ec2e76,PROG-5af62ded,Machakos,field_officer,2,officers,2026-01-08,2026-04-28,manual,approved,,
+ALLOC-ff5fc917,PROG-5af62ded,Machakos,training_capacity,79,seats,2026-01-08,2026-04-28,manual,approved,,
+ALLOC-11025ccf,PROG-5af62ded,Machakos,budget,1313015,KES,2026-01-08,2026-04-28,manual,approved,,
+ALLOC-a5f5db15,PROG-c14cbf07,Machakos,field_officer,1,officers,2025-08-02,2025-10-27,manual,approved,,
+ALLOC-263b71c3,PROG-c14cbf07,Machakos,budget,560127,KES,2025-08-02,2025-10-27,ml_recommended,approved,68.53,Nostrum cum mollitia aliquam cupiditate excepturi sit sint cum corporis.
+ALLOC-3b68c298,PROG-c14cbf07,Machakos,field_officer,4,officers,2026-01-20,2026-04-29,manual,approved,,
+ALLOC-f9052168,PROG-c14cbf07,Machakos,budget,1652063,KES,2026-01-20,2026-04-29,manual,approved,,
+ALLOC-6fc8428d,PROG-c14cbf07,Machakos,training_capacity,21,seats,2025-11-13,2026-01-23,manual,approved,,
+ALLOC-82f75757,PROG-c14cbf07,Machakos,budget,341569,KES,2025-11-13,2026-01-23,manual,approved,,
+ALLOC-16a9ab06,PROG-c14cbf07,Machakos,field_officer,3,officers,2025-12-24,2026-03-06,manual,approved,,
+ALLOC-6826a078,PROG-c14cbf07,Machakos,training_capacity,45,seats,2025-12-24,2026-03-06,manual,approved,,
+ALLOC-801f65c4,PROG-c14cbf07,Machakos,budget,649451,KES,2025-12-24,2026-03-06,manual,approved,,
+ALLOC-ae9f78e7,PROG-9c0f6edb,Machakos,field_officer,1,officers,2026-03-22,2026-06-05,manual,approved,,
+ALLOC-f12f9572,PROG-9c0f6edb,Machakos,training_capacity,32,seats,2026-03-22,2026-06-05,manual,approved,,
+ALLOC-59ea848b,PROG-9c0f6edb,Machakos,budget,894658,KES,2026-03-22,2026-06-05,manual,approved,,
+ALLOC-82978f49,PROG-9c0f6edb,Machakos,training_capacity,50,seats,2025-08-07,2025-10-27,manual,approved,,
+ALLOC-e4892872,PROG-9c0f6edb,Machakos,budget,459367,KES,2025-08-07,2025-10-27,ml_recommended,rejected,89.84,In est quisquam ipsum occaecati.
+ALLOC-3467300e,PROG-9c0f6edb,Machakos,training_capacity,36,seats,2026-01-20,2026-05-16,ml_recommended,pending,46.47,Tempore vero a quisquam accusamus libero.
+ALLOC-bb2b1313,PROG-9c0f6edb,Machakos,budget,1357345,KES,2026-01-20,2026-05-16,manual,approved,,
+ALLOC-890c6789,PROG-9c0f6edb,Machakos,budget,1891880,KES,2026-05-03,2026-07-17,manual,approved,,
+ALLOC-3943c105,PROG-828a29a3,Machakos,field_officer,3,officers,2024-09-13,2024-11-27,ml_recommended,rejected,87.79,Molestiae ab sunt dolores nihil labore illum aspernatur nobis.
+ALLOC-4f57cd79,PROG-828a29a3,Machakos,budget,270724,KES,2024-09-13,2024-11-27,ml_recommended,approved,63.04,Sunt eius occaecati reprehenderit dignissimos delectus animi.
+ALLOC-ae4faccb,PROG-828a29a3,Machakos,field_officer,5,officers,2024-04-02,2024-07-03,manual,approved,,
+ALLOC-1134b3f3,PROG-828a29a3,Machakos,training_capacity,42,seats,2024-04-02,2024-07-03,manual,approved,,
+ALLOC-212778df,PROG-828a29a3,Machakos,budget,1556492,KES,2024-04-02,2024-07-03,manual,approved,,
+ALLOC-0ea517c1,PROG-828a29a3,Machakos,field_officer,4,officers,2025-03-03,2025-06-01,manual,approved,,
+ALLOC-8aabb00f,PROG-828a29a3,Machakos,budget,534529,KES,2025-03-03,2025-06-01,manual,approved,,
+ALLOC-1aca9b01,PROG-3d5ab23d,Machakos,field_officer,2,officers,2026-03-08,2026-07-01,manual,approved,,
+ALLOC-f2a58e5c,PROG-3d5ab23d,Machakos,budget,1866707,KES,2026-03-08,2026-07-01,manual,approved,,
+ALLOC-eac01f02,PROG-3d5ab23d,Machakos,training_capacity,86,seats,2025-02-25,2025-05-04,manual,approved,,
+ALLOC-2ad9e162,PROG-3d5ab23d,Machakos,budget,1075706,KES,2025-02-25,2025-05-04,manual,approved,,
+ALLOC-8cd6b271,PROG-3d5ab23d,Machakos,field_officer,4,officers,2025-11-10,2026-02-05,manual,approved,,
+ALLOC-32c93303,PROG-3d5ab23d,Machakos,budget,901889,KES,2025-11-10,2026-02-05,manual,approved,,
+ALLOC-e4124292,PROG-e7819a11,Kajiado,field_officer,3,officers,2025-01-02,2025-03-19,ml_recommended,pending,55.12,Alias sequi pariatur saepe error ullam aliquid impedit.
+ALLOC-3d734cae,PROG-e7819a11,Kajiado,training_capacity,30,seats,2025-01-02,2025-03-19,ml_recommended,rejected,26.89,Cum eligendi optio praesentium nemo natus.
+ALLOC-9f062343,PROG-e7819a11,Kajiado,budget,180281,KES,2025-01-02,2025-03-19,manual,approved,,
+ALLOC-c502282f,PROG-e7819a11,Kajiado,field_officer,3,officers,2025-04-14,2025-06-25,manual,approved,,
+ALLOC-11fa15d0,PROG-e7819a11,Kajiado,budget,675593,KES,2025-04-14,2025-06-25,manual,approved,,
+ALLOC-1a7aae67,PROG-e7819a11,Kajiado,training_capacity,64,seats,2025-01-30,2025-03-31,ml_recommended,approved,48.4,Quibusdam facere alias quisquam eum tempore reprehenderit quis sapiente.
+ALLOC-be11864b,PROG-e7819a11,Kajiado,budget,1474281,KES,2025-01-30,2025-03-31,manual,approved,,
+ALLOC-8a1827bb,PROG-95ef02ad,Kajiado,training_capacity,86,seats,2025-06-22,2025-10-06,manual,approved,,
+ALLOC-4f1a6349,PROG-95ef02ad,Kajiado,budget,1083015,KES,2025-06-22,2025-10-06,manual,approved,,
+ALLOC-ec132687,PROG-95ef02ad,Kajiado,training_capacity,44,seats,2025-10-20,2026-01-09,manual,approved,,
+ALLOC-dafca6aa,PROG-95ef02ad,Kajiado,field_officer,5,officers,2025-09-27,2025-12-09,manual,approved,,
+ALLOC-c757dbbc,PROG-95ef02ad,Kajiado,training_capacity,36,seats,2025-09-27,2025-12-09,manual,approved,,
+ALLOC-e7e644a3,PROG-1b7c4853,Kajiado,field_officer,2,officers,2026-05-22,2026-09-12,manual,approved,,
+ALLOC-611f490a,PROG-1b7c4853,Kajiado,training_capacity,71,seats,2026-05-22,2026-09-12,ml_recommended,approved,40.97,Eos consequatur possimus earum minima.
+ALLOC-404a782e,PROG-1b7c4853,Kajiado,budget,1290296,KES,2026-05-22,2026-09-12,ml_recommended,rejected,30.76,Distinctio distinctio animi necessitatibus voluptatem minus assumenda quam non ratione.
+ALLOC-38741522,PROG-1b7c4853,Kajiado,field_officer,5,officers,2025-12-05,2026-03-11,ml_recommended,approved,47.36,Incidunt sed ea nemo numquam unde nostrum.
+ALLOC-4a2417d4,PROG-1b7c4853,Kajiado,training_capacity,70,seats,2025-12-05,2026-03-11,manual,approved,,
+ALLOC-b1c1bd24,PROG-1b7c4853,Kajiado,budget,1095680,KES,2025-12-05,2026-03-11,manual,approved,,
+ALLOC-4a0e3f1f,PROG-1b7c4853,Kajiado,field_officer,3,officers,2026-04-06,2026-07-03,manual,approved,,
+ALLOC-96667590,PROG-1b7c4853,Kajiado,training_capacity,90,seats,2026-04-06,2026-07-03,manual,approved,,
+ALLOC-320525af,PROG-1b7c4853,Kajiado,field_officer,2,officers,2026-04-23,2026-07-23,manual,approved,,
+ALLOC-f13e3fb1,PROG-1b7c4853,Kajiado,budget,588719,KES,2026-04-23,2026-07-23,manual,approved,,
+ALLOC-b18fce08,PROG-1b7c4853,Kajiado,field_officer,3,officers,2026-03-14,2026-05-17,manual,approved,,
+ALLOC-b8b27da6,PROG-1b7c4853,Kajiado,training_capacity,72,seats,2026-03-14,2026-05-17,manual,approved,,
+ALLOC-7fd9b57c,PROG-373263ea,Kajiado,field_officer,1,officers,2025-07-29,2025-10-23,manual,approved,,
+ALLOC-2c547b5e,PROG-373263ea,Kajiado,budget,1925464,KES,2025-07-29,2025-10-23,manual,approved,,
+ALLOC-87ab28b6,PROG-373263ea,Kajiado,training_capacity,97,seats,2025-04-13,2025-08-03,manual,approved,,
+ALLOC-bf01987b,PROG-373263ea,Kajiado,budget,525664,KES,2025-04-13,2025-08-03,manual,approved,,
+ALLOC-173e1d8a,PROG-373263ea,Kajiado,field_officer,1,officers,2025-12-28,2026-03-27,ml_recommended,approved,77.72,Maxime occaecati laudantium debitis non provident voluptatem a ad.
+ALLOC-bc253acb,PROG-373263ea,Kajiado,training_capacity,51,seats,2025-12-28,2026-03-27,manual,approved,,
+ALLOC-6c45b8ea,PROG-f5f0c50b,Meru,field_officer,1,officers,2025-12-19,2026-03-18,manual,approved,,
+ALLOC-dec385b7,PROG-f5f0c50b,Meru,budget,1568670,KES,2025-12-19,2026-03-18,ml_recommended,approved,47.38,Reiciendis qui dignissimos nostrum impedit aliquid expedita rem distinctio odit porro.
+ALLOC-6b82828c,PROG-f5f0c50b,Meru,field_officer,5,officers,2025-03-02,2025-05-27,manual,approved,,
+ALLOC-222e3a26,PROG-f5f0c50b,Meru,training_capacity,43,seats,2025-03-02,2025-05-27,manual,approved,,
+ALLOC-0361914e,PROG-f5f0c50b,Meru,budget,1565164,KES,2025-03-02,2025-05-27,ml_recommended,pending,80.94,Ratione est magni eum ab placeat exercitationem.
+ALLOC-530aac44,PROG-f5f0c50b,Meru,field_officer,3,officers,2025-06-11,2025-10-05,manual,approved,,
+ALLOC-cddf03d7,PROG-f5f0c50b,Meru,training_capacity,47,seats,2025-06-11,2025-10-05,ml_recommended,approved,73.33,Nulla adipisci cupiditate ex excepturi perferendis totam reiciendis officia laboriosam.
+ALLOC-79e057b9,PROG-f5f0c50b,Meru,budget,873287,KES,2025-06-11,2025-10-05,manual,approved,,
+ALLOC-7a2b99ab,PROG-f5f0c50b,Meru,training_capacity,77,seats,2024-12-20,2025-03-22,manual,approved,,
+ALLOC-e6949ff9,PROG-f5f0c50b,Meru,budget,193606,KES,2024-12-20,2025-03-22,manual,approved,,
+ALLOC-420a668c,PROG-f5f0c50b,Meru,field_officer,4,officers,2024-11-17,2025-02-25,manual,approved,,
+ALLOC-8d31d770,PROG-961d8d5e,Meru,field_officer,2,officers,2025-10-06,2025-12-05,manual,approved,,
+ALLOC-b1b25ab7,PROG-961d8d5e,Meru,budget,243103,KES,2025-10-06,2025-12-05,manual,approved,,
+ALLOC-85c9fed4,PROG-961d8d5e,Meru,training_capacity,80,seats,2026-03-14,2026-05-28,ml_recommended,approved,31.94,Itaque sint tempore iure repellendus unde animi maxime natus perspiciatis nam.
+ALLOC-2fa2794c,PROG-961d8d5e,Meru,budget,310795,KES,2026-03-14,2026-05-28,manual,approved,,
+ALLOC-b7fbc8d1,PROG-961d8d5e,Meru,training_capacity,21,seats,2025-10-28,2026-01-30,manual,approved,,
+ALLOC-595383c2,PROG-961d8d5e,Meru,budget,850962,KES,2025-10-28,2026-01-30,manual,approved,,
+ALLOC-6c5cc8b3,PROG-961d8d5e,Meru,training_capacity,76,seats,2026-03-28,2026-05-29,manual,approved,,
+ALLOC-e5670533,PROG-961d8d5e,Meru,field_officer,1,officers,2026-04-22,2026-07-24,manual,approved,,
+ALLOC-2a2d8cca,PROG-961d8d5e,Meru,training_capacity,26,seats,2026-04-22,2026-07-24,manual,approved,,
+ALLOC-a5a8bd28,PROG-961d8d5e,Meru,budget,891455,KES,2026-04-22,2026-07-24,ml_recommended,rejected,46.23,Dignissimos placeat reiciendis suscipit.
+ALLOC-4cb1825d,PROG-ace82afc,Meru,field_officer,1,officers,2025-01-27,2025-04-02,ml_recommended,approved,33.45,Architecto corrupti sapiente excepturi fugiat modi cumque non.
+ALLOC-f8fdb952,PROG-ace82afc,Meru,training_capacity,48,seats,2025-01-27,2025-04-02,ml_recommended,pending,78.48,Nisi sint quibusdam provident et adipisci.
+ALLOC-e1e5963d,PROG-ace82afc,Meru,budget,1618362,KES,2025-01-27,2025-04-02,manual,approved,,
+ALLOC-49b03067,PROG-ace82afc,Meru,field_officer,3,officers,2025-09-05,2025-12-06,manual,approved,,
+ALLOC-c18a6dda,PROG-ace82afc,Meru,training_capacity,99,seats,2025-09-05,2025-12-06,manual,approved,,
+ALLOC-08d49a2c,PROG-ace82afc,Meru,budget,997330,KES,2025-09-05,2025-12-06,manual,approved,,
+ALLOC-67ea2f34,PROG-ace82afc,Meru,field_officer,2,officers,2025-02-10,2025-04-17,manual,approved,,
+ALLOC-a412cf15,PROG-ace82afc,Meru,training_capacity,21,seats,2025-02-10,2025-04-17,manual,approved,,
+ALLOC-4cd9561e,PROG-ace82afc,Meru,budget,238446,KES,2025-02-10,2025-04-17,manual,approved,,
+ALLOC-19d5ea56,PROG-85629e1e,Nyeri,field_officer,1,officers,2026-03-02,2026-06-09,ml_recommended,approved,73.73,Assumenda soluta fuga repudiandae esse minima cupiditate fugiat.
+ALLOC-6892e8c4,PROG-85629e1e,Nyeri,training_capacity,33,seats,2026-03-02,2026-06-09,manual,approved,,
+ALLOC-69b6678b,PROG-85629e1e,Nyeri,field_officer,1,officers,2026-01-20,2026-03-31,manual,approved,,
+ALLOC-ba2b5f41,PROG-85629e1e,Nyeri,budget,1521660,KES,2026-01-20,2026-03-31,ml_recommended,approved,29.31,Quod totam ipsam ad laboriosam.
+ALLOC-ca99053b,PROG-85629e1e,Nyeri,training_capacity,81,seats,2025-07-02,2025-10-10,manual,approved,,
+ALLOC-780f8d52,PROG-85629e1e,Nyeri,budget,1326911,KES,2025-07-02,2025-10-10,manual,approved,,
+ALLOC-0f563ebc,PROG-85629e1e,Nyeri,training_capacity,21,seats,2025-12-21,2026-03-31,manual,approved,,
+ALLOC-23493f06,PROG-85629e1e,Nyeri,budget,1980682,KES,2025-12-21,2026-03-31,manual,approved,,
+ALLOC-b5492ef5,PROG-8b381880,Nyeri,field_officer,1,officers,2026-04-01,2026-07-18,manual,approved,,
+ALLOC-6885854c,PROG-8b381880,Nyeri,training_capacity,57,seats,2026-04-01,2026-07-18,manual,approved,,
+ALLOC-31909ab6,PROG-8b381880,Nyeri,budget,1446453,KES,2026-04-01,2026-07-18,manual,approved,,
+ALLOC-cd2460a0,PROG-8b381880,Nyeri,training_capacity,60,seats,2026-04-09,2026-07-25,manual,approved,,
+ALLOC-70b97d63,PROG-8b381880,Nyeri,training_capacity,56,seats,2026-05-18,2026-09-05,ml_recommended,pending,71.3,Culpa excepturi laboriosam soluta est eveniet quo atque voluptatem.
+ALLOC-e286cc70,PROG-8b381880,Nyeri,budget,531630,KES,2026-05-18,2026-09-05,manual,approved,,
+ALLOC-280e6fbb,PROG-28089117,Nyeri,training_capacity,43,seats,2026-02-15,2026-05-24,manual,approved,,
+ALLOC-c6bdd12e,PROG-28089117,Nyeri,budget,1924242,KES,2026-02-15,2026-05-24,manual,approved,,
+ALLOC-6cee88b3,PROG-28089117,Nyeri,field_officer,2,officers,2026-02-08,2026-04-12,ml_recommended,pending,32.16,Perspiciatis consequatur quam itaque quae minima a ut porro nisi.
+ALLOC-3ecc3457,PROG-28089117,Nyeri,training_capacity,46,seats,2026-02-08,2026-04-12,manual,approved,,
+ALLOC-292b4ebb,PROG-28089117,Nyeri,budget,1620412,KES,2026-02-08,2026-04-12,manual,approved,,
+ALLOC-c8fdf07a,PROG-28089117,Nyeri,field_officer,4,officers,2026-02-01,2026-05-18,manual,approved,,
+ALLOC-c9e258f3,PROG-28089117,Nyeri,training_capacity,56,seats,2026-02-01,2026-05-18,manual,approved,,
+ALLOC-8dfbacf6,PROG-11d48786,Nyeri,training_capacity,66,seats,2025-12-31,2026-04-25,manual,approved,,
+ALLOC-9de6985f,PROG-11d48786,Nyeri,budget,1025632,KES,2025-12-31,2026-04-25,manual,approved,,
+ALLOC-6102c931,PROG-11d48786,Nyeri,field_officer,2,officers,2026-03-28,2026-07-13,ml_recommended,approved,21.39,Ex suscipit aut quisquam quia.
+ALLOC-6a15bda9,PROG-11d48786,Nyeri,training_capacity,30,seats,2026-03-28,2026-07-13,ml_recommended,rejected,61.66,Neque est tempora eum.
+ALLOC-737a72a9,PROG-11d48786,Nyeri,budget,1623891,KES,2026-03-28,2026-07-13,manual,approved,,
+ALLOC-726a1149,PROG-11d48786,Nyeri,field_officer,3,officers,2026-01-28,2026-04-27,manual,approved,,
+ALLOC-6c011708,PROG-11d48786,Nyeri,training_capacity,29,seats,2026-01-28,2026-04-27,manual,approved,,
+ALLOC-a48aaa9b,PROG-eb1c24d8,Nyeri,field_officer,1,officers,2024-05-31,2024-09-26,ml_recommended,approved,46.2,Enim minus quo perferendis earum culpa.
+ALLOC-54b07cc4,PROG-eb1c24d8,Nyeri,training_capacity,73,seats,2024-05-31,2024-09-26,ml_recommended,rejected,46.12,Accusamus numquam maiores dignissimos expedita.
+ALLOC-39b9e9d7,PROG-eb1c24d8,Nyeri,budget,1444376,KES,2024-05-31,2024-09-26,ml_recommended,pending,81.95,Earum velit rem nemo cupiditate est tempora molestiae.
+ALLOC-3cd6f293,PROG-eb1c24d8,Nyeri,training_capacity,75,seats,2024-04-30,2024-07-23,ml_recommended,approved,72.61,Consectetur iusto perferendis autem amet.
+ALLOC-a1478010,PROG-eb1c24d8,Nyeri,budget,1587150,KES,2024-04-30,2024-07-23,manual,approved,,
+ALLOC-4a26accb,PROG-eb1c24d8,Nyeri,field_officer,4,officers,2025-11-29,2026-02-20,ml_recommended,approved,36.96,Hic provident tempora occaecati porro ipsum explicabo ex dicta.
+ALLOC-5a4c10bc,PROG-eb1c24d8,Nyeri,training_capacity,66,seats,2025-11-29,2026-02-20,manual,approved,,
+ALLOC-fe031bd5,PROG-eb1c24d8,Nyeri,budget,1562703,KES,2025-11-29,2026-02-20,manual,approved,,
+ALLOC-f488d720,PROG-b8b2bf06,Kilifi,field_officer,2,officers,2025-07-29,2025-11-04,manual,approved,,
+ALLOC-f26e8982,PROG-b8b2bf06,Kilifi,training_capacity,40,seats,2025-07-29,2025-11-04,manual,approved,,
+ALLOC-fe709014,PROG-b8b2bf06,Kilifi,budget,495991,KES,2025-12-02,2026-02-25,ml_recommended,pending,49.88,Aspernatur ullam quisquam necessitatibus at rem praesentium atque est officia.
+ALLOC-34844847,PROG-b8b2bf06,Kilifi,training_capacity,68,seats,2025-09-09,2025-12-10,manual,approved,,
+ALLOC-282721dd,PROG-68d428ee,Kilifi,field_officer,3,officers,2024-11-26,2025-03-06,ml_recommended,pending,34.67,Iusto veniam corporis tempore ducimus facilis delectus totam ex.
+ALLOC-d3f323c1,PROG-68d428ee,Kilifi,budget,113464,KES,2024-11-26,2025-03-06,ml_recommended,approved,20.11,Iste adipisci labore expedita itaque cupiditate quisquam non.
+ALLOC-29f67b6a,PROG-68d428ee,Kilifi,field_officer,5,officers,2024-10-17,2025-02-03,manual,approved,,
+ALLOC-339b5adc,PROG-68d428ee,Kilifi,training_capacity,75,seats,2024-10-17,2025-02-03,manual,approved,,
+ALLOC-b9a2ab78,PROG-68d428ee,Kilifi,budget,1576493,KES,2024-10-17,2025-02-03,manual,approved,,
+ALLOC-008bb142,PROG-12660354,Kilifi,training_capacity,47,seats,2025-04-09,2025-07-10,manual,approved,,
+ALLOC-fb02251a,PROG-12660354,Kilifi,budget,483211,KES,2025-04-09,2025-07-10,ml_recommended,pending,88.81,Magni illo quae autem nam architecto.
+ALLOC-d370002a,PROG-12660354,Kilifi,field_officer,5,officers,2026-03-28,2026-06-22,manual,approved,,
+ALLOC-a4237ff7,PROG-12660354,Kilifi,training_capacity,30,seats,2026-03-28,2026-06-22,manual,approved,,
+ALLOC-f121f1af,PROG-12660354,Kilifi,budget,680412,KES,2026-03-28,2026-06-22,manual,approved,,
+ALLOC-cbce07cf,PROG-12660354,Kilifi,field_officer,4,officers,2025-01-21,2025-04-28,manual,approved,,
+ALLOC-9580556a,PROG-12660354,Kilifi,training_capacity,27,seats,2025-01-21,2025-04-28,manual,approved,,
+ALLOC-727a669e,PROG-12660354,Kilifi,training_capacity,47,seats,2025-12-12,2026-03-19,manual,approved,,
+ALLOC-7d95ca26,PROG-12660354,Kilifi,budget,1364550,KES,2025-12-12,2026-03-19,manual,approved,,
+ALLOC-5674a246,PROG-12660354,Kilifi,field_officer,4,officers,2026-05-13,2026-08-29,manual,approved,,
+ALLOC-b8e95231,PROG-12660354,Kilifi,training_capacity,74,seats,2026-05-13,2026-08-29,manual,approved,,
+ALLOC-8b2ad812,PROG-12660354,Kilifi,budget,819485,KES,2026-05-13,2026-08-29,ml_recommended,approved,85.87,Minus id impedit nulla molestias voluptate fugit.
+ALLOC-be81ff79,PROG-7703bce9,Kilifi,field_officer,3,officers,2026-04-10,2026-07-18,ml_recommended,approved,20.22,Dignissimos possimus inventore voluptatem necessitatibus exercitationem possimus cupiditate.
+ALLOC-78fbb811,PROG-7703bce9,Kilifi,budget,1852005,KES,2026-04-10,2026-07-18,ml_recommended,pending,62.13,Qui quae saepe beatae nisi.
+ALLOC-b136adf4,PROG-7703bce9,Kilifi,budget,1047740,KES,2026-04-29,2026-07-15,manual,approved,,
+ALLOC-80083465,PROG-7703bce9,Kilifi,field_officer,4,officers,2026-05-16,2026-09-08,manual,approved,,
+ALLOC-188d1b50,PROG-7703bce9,Kilifi,training_capacity,61,seats,2026-05-16,2026-09-08,manual,approved,,
+ALLOC-bf6f6cd4,PROG-7703bce9,Kilifi,budget,195953,KES,2026-05-16,2026-09-08,ml_recommended,approved,67.46,Nam reprehenderit debitis veritatis architecto autem repellendus quo.
+ALLOC-ed092e52,PROG-7703bce9,Kilifi,field_officer,5,officers,2026-03-22,2026-06-28,ml_recommended,approved,85.74,Eveniet officia aperiam dolor consequuntur neque quidem repellat.
+ALLOC-79b9c09e,PROG-7703bce9,Kilifi,budget,1480636,KES,2026-03-22,2026-06-28,ml_recommended,rejected,71.4,Optio iste eos nulla ipsum dignissimos.
+ALLOC-5e046b2c,PROG-7703bce9,Kilifi,field_officer,2,officers,2026-03-30,2026-07-06,ml_recommended,rejected,74.94,Error recusandae perspiciatis ullam vel quaerat totam voluptatibus.
+ALLOC-b7a13f59,PROG-7703bce9,Kilifi,budget,1144224,KES,2026-03-30,2026-07-06,ml_recommended,approved,67.11,Ab voluptates illo consectetur eos fuga molestias amet provident reprehenderit.
+ALLOC-dfe5a6d7,PROG-0cf61d24,Kilifi,field_officer,1,officers,2025-10-26,2026-02-20,manual,approved,,
+ALLOC-cf737eed,PROG-0cf61d24,Kilifi,training_capacity,51,seats,2025-10-26,2026-02-20,manual,approved,,
+ALLOC-10b77835,PROG-0cf61d24,Kilifi,field_officer,4,officers,2026-02-28,2026-06-12,ml_recommended,pending,85.03,Autem eligendi adipisci inventore nihil numquam quae illo.
+ALLOC-ea710b7f,PROG-0cf61d24,Kilifi,training_capacity,69,seats,2026-02-28,2026-06-12,ml_recommended,pending,38.03,Molestias optio labore deleniti fugit unde saepe culpa voluptatum.
+ALLOC-e6888916,PROG-0cf61d24,Kilifi,budget,1982216,KES,2026-02-28,2026-06-12,manual,approved,,
+ALLOC-a5f791f5,PROG-0cf61d24,Kilifi,training_capacity,82,seats,2026-03-02,2026-05-09,manual,approved,,
+ALLOC-a0049f43,PROG-0cf61d24,Kilifi,budget,1928591,KES,2026-03-02,2026-05-09,manual,approved,,
+ALLOC-2293a2eb,PROG-0cf61d24,Kilifi,training_capacity,63,seats,2026-02-07,2026-05-27,manual,approved,,
+ALLOC-b9111ec2,PROG-0cf61d24,Kilifi,field_officer,5,officers,2026-03-20,2026-07-04,ml_recommended,approved,36.34,Consequatur asperiores accusamus quam laborum ipsa.
+ALLOC-ed60be0d,PROG-0cf61d24,Kilifi,training_capacity,57,seats,2026-03-20,2026-07-04,manual,approved,,
+ALLOC-b41232cb,PROG-0cf61d24,Kilifi,budget,1653111,KES,2026-03-20,2026-07-04,manual,approved,,
+ALLOC-de5dd3a8,PROG-9e35f4b7,Kakamega,field_officer,3,officers,2026-05-07,2026-09-04,manual,approved,,
+ALLOC-7fe69fc6,PROG-9e35f4b7,Kakamega,training_capacity,68,seats,2026-05-07,2026-09-04,manual,approved,,
+ALLOC-916200d4,PROG-9e35f4b7,Kakamega,budget,229782,KES,2026-05-07,2026-09-04,manual,approved,,
+ALLOC-82d068e3,PROG-9e35f4b7,Kakamega,field_officer,4,officers,2025-07-27,2025-11-18,manual,approved,,
+ALLOC-420d3652,PROG-9e35f4b7,Kakamega,training_capacity,36,seats,2025-07-27,2025-11-18,manual,approved,,
+ALLOC-93596c38,PROG-9e35f4b7,Kakamega,budget,565864,KES,2025-07-27,2025-11-18,manual,approved,,
+ALLOC-d7252429,PROG-9e35f4b7,Kakamega,training_capacity,57,seats,2025-04-25,2025-07-28,ml_recommended,approved,51.9,Assumenda odit impedit iste ratione non.
+ALLOC-63c2e72d,PROG-9e35f4b7,Kakamega,budget,405913,KES,2025-04-25,2025-07-28,manual,approved,,
+ALLOC-44916462,PROG-4d021f8b,Kakamega,field_officer,1,officers,2026-05-15,2026-08-03,manual,approved,,
+ALLOC-e5ca59b5,PROG-4d021f8b,Kakamega,budget,1423464,KES,2026-05-15,2026-08-03,ml_recommended,approved,69.29,Numquam iste incidunt reprehenderit harum dolorem incidunt ab libero.
+ALLOC-48ce36d4,PROG-4d021f8b,Kakamega,training_capacity,46,seats,2026-05-01,2026-07-03,ml_recommended,rejected,35.76,Quae earum unde nemo alias alias laboriosam.
+ALLOC-76c504c2,PROG-7bd3b262,Kakamega,training_capacity,40,seats,2026-05-07,2026-08-06,ml_recommended,approved,43.62,Beatae laboriosam porro consequuntur quasi voluptates voluptates quod.
+ALLOC-110c401e,PROG-7bd3b262,Kakamega,budget,830453,KES,2026-05-07,2026-08-06,ml_recommended,approved,56.95,Maxime minima nostrum doloribus occaecati optio pariatur placeat molestiae.
+ALLOC-3e26922f,PROG-7bd3b262,Kakamega,field_officer,2,officers,2025-12-11,2026-02-27,manual,approved,,
+ALLOC-950deff5,PROG-7bd3b262,Kakamega,training_capacity,32,seats,2025-12-11,2026-02-27,manual,approved,,
+ALLOC-843b13a7,PROG-71e8d7cd,Kakamega,field_officer,4,officers,2025-03-01,2025-06-05,manual,approved,,
+ALLOC-7410346b,PROG-71e8d7cd,Kakamega,training_capacity,47,seats,2025-03-01,2025-06-05,ml_recommended,pending,65.59,Est amet exercitationem quod iusto maiores iusto quasi in vero.
+ALLOC-996dab3f,PROG-71e8d7cd,Kakamega,budget,1895458,KES,2025-03-01,2025-06-05,manual,approved,,
+ALLOC-211a9621,PROG-71e8d7cd,Kakamega,training_capacity,41,seats,2025-02-13,2025-05-08,ml_recommended,pending,88.19,Enim alias ullam quibusdam quas natus aperiam.
+ALLOC-e659c6d9,PROG-71e8d7cd,Kakamega,budget,210042,KES,2025-02-13,2025-05-08,manual,approved,,
+ALLOC-1498d671,PROG-71e8d7cd,Kakamega,field_officer,4,officers,2026-02-24,2026-06-05,ml_recommended,approved,48.28,Neque nemo omnis eos qui ad laborum consectetur asperiores.
+ALLOC-c687ea96,PROG-71e8d7cd,Kakamega,training_capacity,50,seats,2026-02-24,2026-06-05,manual,approved,,
+ALLOC-c6d0f0fb,PROG-71e8d7cd,Kakamega,budget,1350228,KES,2026-02-24,2026-06-05,ml_recommended,approved,46.28,Dolorum nulla eius ducimus qui nobis tenetur.
+ALLOC-d089f907,PROG-71e8d7cd,Kakamega,field_officer,4,officers,2024-12-15,2025-04-03,manual,approved,,
+ALLOC-1e686fac,PROG-71e8d7cd,Kakamega,training_capacity,67,seats,2024-12-15,2025-04-03,manual,approved,,
+ALLOC-6462e263,PROG-71e8d7cd,Kakamega,budget,355960,KES,2024-12-15,2025-04-03,manual,approved,,
+ALLOC-02a97909,PROG-71e8d7cd,Kakamega,field_officer,5,officers,2026-02-18,2026-05-03,ml_recommended,approved,68.56,Omnis fuga cupiditate quos doloremque debitis.
+ALLOC-052f180e,PROG-71e8d7cd,Kakamega,training_capacity,95,seats,2026-02-18,2026-05-03,manual,approved,,
+ALLOC-62301016,PROG-71e8d7cd,Kakamega,budget,1451817,KES,2026-02-18,2026-05-03,manual,approved,,
+ALLOC-85c16807,PROG-b9945a45,Kakamega,field_officer,1,officers,2026-02-26,2026-05-05,manual,approved,,
+ALLOC-f784e1b0,PROG-b9945a45,Kakamega,budget,950039,KES,2026-02-26,2026-05-05,ml_recommended,pending,58.92,Similique exercitationem assumenda corporis ut culpa libero voluptatibus quo dolores.
+ALLOC-f6eefeba,PROG-b9945a45,Kakamega,training_capacity,86,seats,2026-01-21,2026-05-11,ml_recommended,approved,77.32,Quas cumque neque sapiente amet eaque reprehenderit amet iure.
+ALLOC-bbbf08fa,PROG-b9945a45,Kakamega,budget,1680221,KES,2026-01-21,2026-05-11,ml_recommended,rejected,82.83,Error quia quibusdam minus fugit provident labore corporis sit.
+ALLOC-012ff2c4,PROG-b9945a45,Kakamega,field_officer,2,officers,2025-01-22,2025-05-17,manual,approved,,
+ALLOC-30704d63,PROG-b9945a45,Kakamega,training_capacity,60,seats,2025-01-22,2025-05-17,manual,approved,,
+ALLOC-2ad8b271,PROG-b9945a45,Kakamega,budget,532495,KES,2025-01-22,2025-05-17,manual,approved,,
+ALLOC-80104be8,PROG-b9945a45,Kakamega,field_officer,1,officers,2024-10-18,2025-01-21,manual,approved,,
+ALLOC-e1f8e1c3,PROG-b9945a45,Kakamega,training_capacity,58,seats,2024-10-18,2025-01-21,manual,approved,,
+ALLOC-43524205,PROG-b9945a45,Kakamega,budget,987202,KES,2024-10-18,2025-01-21,ml_recommended,approved,37.38,Enim reiciendis fugit et.
+ALLOC-dbb765c7,PROG-0a0324fa,Kakamega,training_capacity,76,seats,2026-03-29,2026-07-24,manual,approved,,
+ALLOC-4b89ab82,PROG-0a0324fa,Kakamega,budget,756274,KES,2026-03-29,2026-07-24,manual,approved,,
+ALLOC-a5fc32c5,PROG-0a0324fa,Kakamega,field_officer,2,officers,2026-02-15,2026-05-24,manual,approved,,
+ALLOC-8e3df341,PROG-0a0324fa,Kakamega,training_capacity,25,seats,2026-02-15,2026-05-24,manual,approved,,
+ALLOC-4daf2a90,PROG-0a0324fa,Kakamega,budget,728535,KES,2026-02-15,2026-05-24,ml_recommended,pending,29.39,Placeat aliquam ullam odit vero inventore ullam similique ex eaque.
+ALLOC-398c659b,PROG-a56e19fd,Nairobi,field_officer,5,officers,2026-02-10,2026-04-28,manual,approved,,
+ALLOC-2486ceee,PROG-a56e19fd,Nairobi,training_capacity,53,seats,2026-02-10,2026-04-28,manual,approved,,
+ALLOC-9fade1b7,PROG-a56e19fd,Nairobi,field_officer,3,officers,2026-03-03,2026-05-31,manual,approved,,
+ALLOC-3d509aa6,PROG-a56e19fd,Nairobi,budget,527321,KES,2026-03-03,2026-05-31,manual,approved,,
+ALLOC-3b4237ed,PROG-a56e19fd,Nairobi,field_officer,2,officers,2025-12-26,2026-04-05,manual,approved,,
+ALLOC-4b03dbaa,PROG-a56e19fd,Nairobi,training_capacity,85,seats,2025-12-26,2026-04-05,manual,approved,,
+ALLOC-7725b61d,PROG-a56e19fd,Nairobi,budget,421894,KES,2025-12-26,2026-04-05,manual,approved,,
+ALLOC-0018ca15,PROG-0dfc281b,Nairobi,training_capacity,54,seats,2026-05-14,2026-07-14,manual,approved,,
+ALLOC-053ad0fb,PROG-0dfc281b,Nairobi,budget,1250012,KES,2026-05-14,2026-07-14,manual,approved,,
+ALLOC-ffa2a1e4,PROG-0dfc281b,Nairobi,field_officer,3,officers,2026-05-11,2026-08-19,ml_recommended,pending,75.87,Ducimus nesciunt itaque perferendis doloribus.
+ALLOC-8309fd69,PROG-0dfc281b,Nairobi,training_capacity,32,seats,2026-05-11,2026-08-19,manual,approved,,
+ALLOC-85ec6e22,PROG-0dfc281b,Nairobi,field_officer,1,officers,2026-05-14,2026-09-11,manual,approved,,
+ALLOC-a9480d5c,PROG-0dfc281b,Nairobi,budget,1822481,KES,2026-05-14,2026-09-11,ml_recommended,pending,44.42,Quo maxime perspiciatis voluptatibus et ab ab architecto illum minima.
+ALLOC-df5dfa2a,PROG-0dfc281b,Nairobi,field_officer,1,officers,2026-05-08,2026-08-11,ml_recommended,pending,86.26,Expedita quam dolorum alias nulla animi nisi tempora dolor.
+ALLOC-2f8dee0b,PROG-0dfc281b,Nairobi,training_capacity,64,seats,2026-05-08,2026-08-11,ml_recommended,approved,75.21,Odit provident blanditiis sequi consectetur omnis tempore necessitatibus voluptas tempore.
+ALLOC-8b9fc59d,PROG-0dfc281b,Nairobi,budget,1949732,KES,2026-05-08,2026-08-11,ml_recommended,approved,28.93,Ducimus iure vel odit ullam eius.
+ALLOC-79cbe7bb,PROG-0dfc281b,Nairobi,field_officer,2,officers,2026-04-20,2026-08-01,manual,approved,,
+ALLOC-5ddfb60b,PROG-0dfc281b,Nairobi,training_capacity,92,seats,2026-04-20,2026-08-01,manual,approved,,
+ALLOC-d20b0225,PROG-0dfc281b,Nairobi,budget,1621314,KES,2026-04-20,2026-08-01,manual,approved,,
+ALLOC-a24e6e42,PROG-5dd1e686,Nairobi,field_officer,4,officers,2025-06-25,2025-10-06,manual,approved,,
+ALLOC-5d3d0f24,PROG-5dd1e686,Nairobi,field_officer,4,officers,2026-03-11,2026-05-28,manual,approved,,
+ALLOC-29b75089,PROG-5dd1e686,Nairobi,field_officer,1,officers,2025-06-04,2025-08-22,ml_recommended,approved,41.89,Porro pariatur quo ducimus quos eius aperiam harum voluptatum.
+ALLOC-eaa7f47c,PROG-5dd1e686,Nairobi,training_capacity,30,seats,2025-06-04,2025-08-22,manual,approved,,
+ALLOC-e2e143ac,PROG-5dd1e686,Nairobi,budget,296363,KES,2025-06-04,2025-08-22,manual,approved,,
+ALLOC-969185ae,PROG-5dd1e686,Nairobi,training_capacity,83,seats,2024-12-10,2025-02-13,ml_recommended,pending,86.39,Veritatis eaque ipsam laudantium ut nostrum debitis.
+ALLOC-3d852770,PROG-5dd1e686,Nairobi,budget,1632593,KES,2024-12-10,2025-02-13,manual,approved,,
+ALLOC-3e88641b,PROG-babac9c2,Nairobi,field_officer,2,officers,2025-04-29,2025-07-23,ml_recommended,approved,69.99,Autem molestiae inventore nostrum autem ipsam ea alias architecto.
+ALLOC-e6388694,PROG-babac9c2,Nairobi,field_officer,5,officers,2025-08-30,2025-12-15,manual,approved,,
+ALLOC-2371d268,PROG-babac9c2,Nairobi,training_capacity,77,seats,2025-08-30,2025-12-15,ml_recommended,approved,81.74,Quod accusantium libero officiis a alias hic.
+ALLOC-b91e994c,PROG-babac9c2,Nairobi,budget,572003,KES,2025-08-30,2025-12-15,manual,approved,,
+ALLOC-98be4a59,PROG-babac9c2,Nairobi,field_officer,3,officers,2026-01-02,2026-04-25,ml_recommended,approved,46.54,Praesentium temporibus nemo maiores velit laudantium.
+ALLOC-5fadaa0f,PROG-babac9c2,Nairobi,training_capacity,34,seats,2026-01-02,2026-04-25,manual,approved,,
+ALLOC-99a0dec3,PROG-babac9c2,Nairobi,budget,1844256,KES,2026-01-02,2026-04-25,manual,approved,,
+ALLOC-569dd51f,PROG-babac9c2,Nairobi,field_officer,3,officers,2025-04-22,2025-07-09,manual,approved,,
+ALLOC-adbe0f71,PROG-babac9c2,Nairobi,training_capacity,100,seats,2025-04-22,2025-07-09,manual,approved,,
+ALLOC-96edfdbb,PROG-babac9c2,Nairobi,budget,739253,KES,2025-04-22,2025-07-09,ml_recommended,rejected,56.09,Illo quas repellat architecto dolorem fugit porro quod commodi.
+ALLOC-c14553eb,PROG-babac9c2,Nairobi,field_officer,5,officers,2025-01-28,2025-05-27,ml_recommended,pending,20.41,Vel facere placeat id odio vero at modi vero aspernatur.
+ALLOC-9ab7f71a,PROG-babac9c2,Nairobi,training_capacity,58,seats,2025-01-28,2025-05-27,manual,approved,,
+ALLOC-9394e734,PROG-babac9c2,Nairobi,budget,1966876,KES,2025-01-28,2025-05-27,manual,approved,,
+ALLOC-fa523a0f,PROG-10beab49,Nairobi,field_officer,4,officers,2026-02-10,2026-04-11,manual,approved,,
+ALLOC-70e18aa2,PROG-10beab49,Nairobi,training_capacity,39,seats,2026-02-10,2026-04-11,manual,approved,,
+ALLOC-fe04a0ad,PROG-10beab49,Nairobi,training_capacity,80,seats,2025-11-13,2026-01-21,manual,approved,,
+ALLOC-53c42e45,PROG-10beab49,Nairobi,budget,998297,KES,2025-11-13,2026-01-21,ml_recommended,approved,38.86,Quis enim dicta mollitia voluptas optio error harum autem.
+ALLOC-2ac77d2d,PROG-10beab49,Nairobi,training_capacity,65,seats,2026-03-04,2026-06-14,manual,approved,,
+ALLOC-218ad3d9,PROG-10beab49,Nairobi,budget,1952993,KES,2026-03-04,2026-06-14,ml_recommended,pending,33.27,Laborum suscipit ipsa deleniti alias ad voluptatum dolores.
+ALLOC-fbfc3a46,PROG-10beab49,Nairobi,field_officer,3,officers,2025-11-22,2026-01-29,ml_recommended,pending,33.93,Aperiam molestiae est modi rerum ipsum voluptatum alias.
+ALLOC-11d687b4,PROG-10beab49,Nairobi,training_capacity,54,seats,2025-11-22,2026-01-29,manual,approved,,
+ALLOC-569c59f9,PROG-10beab49,Nairobi,budget,1139280,KES,2025-11-22,2026-01-29,ml_recommended,approved,42.74,Excepturi quam illo distinctio omnis.
+ALLOC-a293a7b6,PROG-286aec03,Nairobi,training_capacity,64,seats,2025-01-31,2025-04-07,manual,approved,,
+ALLOC-4d23b140,PROG-286aec03,Nairobi,field_officer,3,officers,2025-06-10,2025-08-12,manual,approved,,
+ALLOC-b44c6d26,PROG-286aec03,Nairobi,training_capacity,21,seats,2025-06-10,2025-08-12,manual,approved,,
+ALLOC-a894997c,PROG-286aec03,Nairobi,budget,1119067,KES,2025-06-10,2025-08-12,manual,approved,,
+ALLOC-42bf8007,PROG-286aec03,Nairobi,field_officer,5,officers,2025-12-24,2026-03-09,manual,approved,,
+ALLOC-11f619fb,PROG-286aec03,Nairobi,training_capacity,34,seats,2025-12-24,2026-03-09,ml_recommended,rejected,37.31,Itaque perspiciatis soluta corrupti neque unde alias consequuntur officiis iusto.
+ALLOC-85fb0e44,PROG-4013e47a,Mombasa,training_capacity,84,seats,2025-11-09,2026-02-22,manual,approved,,
+ALLOC-1b752622,PROG-4013e47a,Mombasa,budget,1892796,KES,2025-11-09,2026-02-22,manual,approved,,
+ALLOC-a022da20,PROG-4013e47a,Mombasa,field_officer,2,officers,2026-01-30,2026-04-09,manual,approved,,
+ALLOC-7f5aa85c,PROG-4013e47a,Mombasa,training_capacity,44,seats,2026-01-30,2026-04-09,ml_recommended,approved,63.15,Aliquid praesentium consectetur cupiditate amet esse recusandae itaque cupiditate nihil repellendus.
+ALLOC-e93266cd,PROG-4013e47a,Mombasa,budget,206861,KES,2026-01-30,2026-04-09,manual,approved,,
+ALLOC-f6ad0c0d,PROG-4013e47a,Mombasa,budget,993545,KES,2025-12-05,2026-02-22,manual,approved,,
+ALLOC-78b4f6fb,PROG-a32525f7,Mombasa,field_officer,3,officers,2026-02-01,2026-04-05,manual,approved,,
+ALLOC-6013ea05,PROG-a32525f7,Mombasa,training_capacity,20,seats,2025-07-13,2025-10-01,manual,approved,,
+ALLOC-c5462d9c,PROG-a32525f7,Mombasa,field_officer,5,officers,2025-06-25,2025-09-11,manual,approved,,
+ALLOC-dd259b5f,PROG-a32525f7,Mombasa,training_capacity,82,seats,2025-06-25,2025-09-11,manual,approved,,
+ALLOC-b7499b20,PROG-a32525f7,Mombasa,budget,303187,KES,2025-06-25,2025-09-11,manual,approved,,
+ALLOC-f17816c7,PROG-a32525f7,Mombasa,training_capacity,66,seats,2026-02-21,2026-05-27,manual,approved,,
+ALLOC-8032e75d,PROG-a32525f7,Mombasa,budget,1733279,KES,2026-02-21,2026-05-27,manual,approved,,
+ALLOC-69fe75ff,PROG-a32525f7,Mombasa,field_officer,3,officers,2026-01-12,2026-04-05,manual,approved,,
+ALLOC-66affe68,PROG-a32525f7,Mombasa,training_capacity,33,seats,2026-01-12,2026-04-05,manual,approved,,
+ALLOC-316418e8,PROG-5acee121,Mombasa,field_officer,1,officers,2025-01-15,2025-04-30,manual,approved,,
+ALLOC-e51bd752,PROG-5acee121,Mombasa,training_capacity,63,seats,2025-01-15,2025-04-30,manual,approved,,
+ALLOC-0f9038b1,PROG-5acee121,Mombasa,budget,1695907,KES,2025-01-15,2025-04-30,manual,approved,,
+ALLOC-d7c7f1b8,PROG-e72db8da,Mombasa,field_officer,5,officers,2024-04-21,2024-06-28,manual,approved,,
+ALLOC-b59ee930,PROG-e72db8da,Mombasa,training_capacity,35,seats,2025-10-02,2025-12-23,ml_recommended,pending,49.33,Beatae nisi nulla aperiam dicta.
+ALLOC-65167b02,PROG-e72db8da,Mombasa,field_officer,5,officers,2025-08-05,2025-11-23,manual,approved,,
+ALLOC-32615ca4,PROG-e72db8da,Mombasa,budget,1287354,KES,2025-08-05,2025-11-23,manual,approved,,
+ALLOC-a83083e0,PROG-fa593e31,Mombasa,field_officer,5,officers,2026-04-19,2026-08-09,ml_recommended,rejected,31.59,Repellat voluptatem perspiciatis eveniet voluptate nemo consequatur saepe.
+ALLOC-168e239a,PROG-fa593e31,Mombasa,budget,1734461,KES,2026-04-19,2026-08-09,manual,approved,,
+ALLOC-793d11f4,PROG-fa593e31,Mombasa,field_officer,1,officers,2026-03-16,2026-06-01,manual,approved,,
+ALLOC-8ecf33ef,PROG-fa593e31,Mombasa,training_capacity,21,seats,2026-03-16,2026-06-01,ml_recommended,approved,51.88,Quisquam nihil excepturi blanditiis consequuntur impedit.
+ALLOC-72ff5513,PROG-fa593e31,Mombasa,field_officer,2,officers,2026-02-23,2026-05-10,manual,approved,,
+ALLOC-2bfe9a05,PROG-fa593e31,Mombasa,training_capacity,35,seats,2026-02-23,2026-05-10,manual,approved,,
+ALLOC-713e3d15,PROG-fa593e31,Mombasa,budget,599576,KES,2026-02-23,2026-05-10,manual,approved,,
+ALLOC-8807bdaf,PROG-ab8ae865,Nakuru,field_officer,1,officers,2025-03-13,2025-07-10,manual,approved,,
+ALLOC-ce45c872,PROG-ab8ae865,Nakuru,training_capacity,46,seats,2025-03-13,2025-07-10,manual,approved,,
+ALLOC-f3e0e238,PROG-ab8ae865,Nakuru,budget,828680,KES,2025-03-13,2025-07-10,manual,approved,,
+ALLOC-aab62428,PROG-ab8ae865,Nakuru,field_officer,5,officers,2025-06-14,2025-09-02,manual,approved,,
+ALLOC-52a5ac9a,PROG-ab8ae865,Nakuru,training_capacity,98,seats,2025-06-14,2025-09-02,manual,approved,,
+ALLOC-812f39ac,PROG-ab8ae865,Nakuru,field_officer,3,officers,2026-03-04,2026-06-24,manual,approved,,
+ALLOC-403db634,PROG-ab8ae865,Nakuru,budget,132796,KES,2026-03-04,2026-06-24,manual,approved,,
+ALLOC-a7226538,PROG-abe72372,Nakuru,field_officer,5,officers,2026-05-25,2026-09-22,manual,approved,,
+ALLOC-c161e7a5,PROG-abe72372,Nakuru,budget,663700,KES,2026-05-25,2026-09-22,manual,approved,,
+ALLOC-2f2b851e,PROG-abe72372,Nakuru,field_officer,4,officers,2026-05-25,2026-08-02,manual,approved,,
+ALLOC-101f894e,PROG-abe72372,Nakuru,budget,480661,KES,2026-05-25,2026-08-02,manual,approved,,
+ALLOC-6b686bff,PROG-324998e2,Nakuru,field_officer,2,officers,2024-10-22,2025-01-26,manual,approved,,
+ALLOC-7b14ae15,PROG-324998e2,Nakuru,training_capacity,40,seats,2024-10-22,2025-01-26,ml_recommended,approved,68.12,Mollitia ipsa unde aliquam aut sed nostrum quod.
+ALLOC-d57b744d,PROG-324998e2,Nakuru,budget,400988,KES,2024-10-22,2025-01-26,manual,approved,,
+ALLOC-ae9f60cb,PROG-324998e2,Nakuru,budget,1204734,KES,2024-12-19,2025-03-18,manual,approved,,
+ALLOC-e0da485c,PROG-324998e2,Nakuru,field_officer,1,officers,2026-05-20,2026-09-08,manual,approved,,
+ALLOC-5c139ca7,PROG-324998e2,Nakuru,training_capacity,21,seats,2026-05-20,2026-09-08,ml_recommended,approved,23.06,Sunt aspernatur ab unde.
+ALLOC-f28323b8,PROG-324998e2,Nakuru,budget,275312,KES,2026-05-20,2026-09-08,manual,approved,,
+ALLOC-5ba3ee84,PROG-d0d45b7a,Nakuru,field_officer,3,officers,2025-08-22,2025-12-10,ml_recommended,pending,29.75,Suscipit impedit rem quo possimus dignissimos odit minima illum vel.
+ALLOC-6f7a92cb,PROG-d0d45b7a,Nakuru,field_officer,2,officers,2025-11-09,2026-01-27,manual,approved,,
+ALLOC-4e900620,PROG-d0d45b7a,Nakuru,training_capacity,54,seats,2025-11-09,2026-01-27,manual,approved,,
+ALLOC-46024952,PROG-d0d45b7a,Nakuru,budget,1829992,KES,2025-11-09,2026-01-27,manual,approved,,
+ALLOC-d23fdca4,PROG-08aa2569,Nakuru,training_capacity,20,seats,2026-05-18,2026-08-18,ml_recommended,pending,49.9,Porro nisi quaerat nostrum at repudiandae error in nam deleniti voluptates.
+ALLOC-74f92d5d,PROG-08aa2569,Nakuru,budget,1474399,KES,2026-05-18,2026-08-18,manual,approved,,
+ALLOC-ddbe1590,PROG-08aa2569,Nakuru,budget,455591,KES,2026-05-23,2026-09-03,ml_recommended,pending,86.95,Nulla sint voluptates magni iure.
+ALLOC-37b03721,PROG-08aa2569,Nakuru,field_officer,3,officers,2026-05-21,2026-08-11,manual,approved,,
+ALLOC-f8e03dbe,PROG-08aa2569,Nakuru,field_officer,4,officers,2026-05-17,2026-08-23,manual,approved,,
+ALLOC-6b498836,PROG-08aa2569,Nakuru,training_capacity,74,seats,2026-05-17,2026-08-23,manual,approved,,
+ALLOC-b521570a,PROG-08aa2569,Nakuru,budget,732425,KES,2026-05-17,2026-08-23,manual,approved,,
+ALLOC-38b07038,PROG-db4ffd29,Kisumu,field_officer,4,officers,2025-12-02,2026-03-28,manual,approved,,
+ALLOC-e494ecd1,PROG-db4ffd29,Kisumu,field_officer,2,officers,2025-07-16,2025-11-03,ml_recommended,pending,30.34,Omnis eius deserunt recusandae placeat voluptas labore debitis pariatur aliquam officia.
+ALLOC-a5e0925d,PROG-db4ffd29,Kisumu,training_capacity,81,seats,2025-07-16,2025-11-03,ml_recommended,pending,49.92,Distinctio dolorum nulla suscipit iste autem amet.
+ALLOC-4b3203f1,PROG-db4ffd29,Kisumu,field_officer,2,officers,2025-08-20,2025-10-24,manual,approved,,
+ALLOC-f65bcf50,PROG-db4ffd29,Kisumu,training_capacity,60,seats,2025-08-20,2025-10-24,manual,approved,,
+ALLOC-048e6167,PROG-db4ffd29,Kisumu,budget,968104,KES,2025-08-20,2025-10-24,manual,approved,,
+ALLOC-5f2bcd7b,PROG-db4ffd29,Kisumu,field_officer,2,officers,2026-04-28,2026-07-18,manual,approved,,
+ALLOC-6cdd6222,PROG-db4ffd29,Kisumu,training_capacity,88,seats,2026-04-28,2026-07-18,manual,approved,,
+ALLOC-c6e845d5,PROG-db4ffd29,Kisumu,budget,1822609,KES,2026-04-28,2026-07-18,manual,approved,,
+ALLOC-a75072b7,PROG-dbcb96bd,Kisumu,field_officer,5,officers,2025-04-21,2025-08-04,ml_recommended,approved,35.35,Debitis quos laborum blanditiis tempora quam nihil eveniet dicta perspiciatis.
+ALLOC-badecf1f,PROG-dbcb96bd,Kisumu,training_capacity,66,seats,2025-04-21,2025-08-04,manual,approved,,
+ALLOC-6689e837,PROG-dbcb96bd,Kisumu,field_officer,2,officers,2023-09-22,2023-12-14,ml_recommended,pending,44.45,Dolorem beatae dolorem dolores impedit dicta tempora asperiores.
+ALLOC-f8dda52d,PROG-915b15d8,Kisumu,field_officer,5,officers,2025-09-14,2025-12-12,ml_recommended,rejected,36.97,Laborum tempora corporis unde iste harum consequatur quam odio voluptate.
+ALLOC-1c35a39f,PROG-915b15d8,Kisumu,budget,388990,KES,2025-09-14,2025-12-12,manual,approved,,
+ALLOC-1d1d0f71,PROG-915b15d8,Kisumu,training_capacity,74,seats,2025-04-12,2025-07-05,manual,approved,,
+ALLOC-8740146d,PROG-915b15d8,Kisumu,budget,865972,KES,2025-01-31,2025-05-01,manual,approved,,
+ALLOC-bd19a257,PROG-4432776f,Kisumu,field_officer,4,officers,2026-04-17,2026-06-16,manual,approved,,
+ALLOC-d7d77b99,PROG-4432776f,Kisumu,training_capacity,37,seats,2026-04-17,2026-06-16,manual,approved,,
+ALLOC-3761e54a,PROG-4432776f,Kisumu,budget,728113,KES,2026-04-17,2026-06-16,manual,approved,,
+ALLOC-1194e2d9,PROG-4432776f,Kisumu,training_capacity,56,seats,2026-05-04,2026-07-31,manual,approved,,
+ALLOC-7b08bfec,PROG-4432776f,Kisumu,budget,1447324,KES,2026-05-04,2026-07-31,manual,approved,,
+ALLOC-4e066481,PROG-4432776f,Kisumu,field_officer,4,officers,2026-04-24,2026-07-25,ml_recommended,approved,81.32,Excepturi adipisci necessitatibus eligendi beatae iure.
+ALLOC-dcc8c5b3,PROG-4432776f,Kisumu,training_capacity,53,seats,2026-04-24,2026-07-25,ml_recommended,approved,69.65,Cupiditate exercitationem suscipit nobis ratione odit nostrum cumque voluptas.
+ALLOC-ea029c95,PROG-4432776f,Kisumu,budget,428834,KES,2026-04-24,2026-07-25,manual,approved,,
+ALLOC-7ac7d9fd,PROG-56db292e,Eldoret,training_capacity,47,seats,2025-04-24,2025-07-17,manual,approved,,
+ALLOC-868bcc19,PROG-56db292e,Eldoret,budget,922693,KES,2025-04-24,2025-07-17,manual,approved,,
+ALLOC-b2d7b4f6,PROG-56db292e,Eldoret,field_officer,1,officers,2025-12-09,2026-03-14,ml_recommended,approved,41.92,Assumenda sequi laudantium voluptatum nihil saepe eius.
+ALLOC-ddc4819a,PROG-56db292e,Eldoret,training_capacity,68,seats,2025-12-09,2026-03-14,manual,approved,,
+ALLOC-dc685b39,PROG-0d758df2,Eldoret,field_officer,1,officers,2024-08-09,2024-10-25,manual,approved,,
+ALLOC-0326afc6,PROG-0d758df2,Eldoret,budget,602330,KES,2024-08-09,2024-10-25,manual,approved,,
+ALLOC-563b95fe,PROG-0d758df2,Eldoret,field_officer,5,officers,2025-07-30,2025-10-04,manual,approved,,
+ALLOC-59385e92,PROG-0d758df2,Eldoret,budget,523049,KES,2025-07-30,2025-10-04,manual,approved,,
+ALLOC-6921575e,PROG-0d758df2,Eldoret,field_officer,5,officers,2024-02-25,2024-05-10,manual,approved,,
+ALLOC-47143ee6,PROG-0d758df2,Eldoret,training_capacity,81,seats,2024-02-25,2024-05-10,manual,approved,,
+ALLOC-670a7d4b,PROG-0d758df2,Eldoret,budget,747191,KES,2024-02-25,2024-05-10,manual,approved,,
+ALLOC-aefd9a18,PROG-0d758df2,Eldoret,field_officer,4,officers,2025-01-22,2025-05-10,manual,approved,,
+ALLOC-da8684ed,PROG-0d758df2,Eldoret,training_capacity,70,seats,2025-01-22,2025-05-10,manual,approved,,
+ALLOC-0e83a4fd,PROG-0d758df2,Eldoret,field_officer,4,officers,2026-01-11,2026-04-24,ml_recommended,approved,55.15,Quasi doloribus eveniet neque tempora nihil corrupti nemo a.
+ALLOC-000c40a9,PROG-0d758df2,Eldoret,budget,1769478,KES,2026-01-11,2026-04-24,manual,approved,,
+ALLOC-d1b8c665,PROG-faff3389,Eldoret,field_officer,4,officers,2024-10-15,2024-12-24,manual,approved,,
+ALLOC-0d13b05f,PROG-faff3389,Eldoret,training_capacity,49,seats,2024-10-15,2024-12-24,ml_recommended,approved,65.8,Aliquam iusto quisquam alias minus.
+ALLOC-c1fc4dfa,PROG-faff3389,Eldoret,field_officer,5,officers,2024-06-04,2024-09-04,manual,approved,,
+ALLOC-98c0d5d7,PROG-faff3389,Eldoret,budget,1747002,KES,2024-06-04,2024-09-04,manual,approved,,
+ALLOC-ad68cc15,PROG-9c31bb5a,Eldoret,training_capacity,69,seats,2025-10-26,2026-02-02,manual,approved,,
+ALLOC-997d1df6,PROG-9c31bb5a,Eldoret,training_capacity,83,seats,2026-03-01,2026-05-04,manual,approved,,
+ALLOC-093f5f52,PROG-9c31bb5a,Eldoret,budget,1707083,KES,2026-03-01,2026-05-04,ml_recommended,approved,87.83,Repellat possimus atque libero assumenda quidem possimus illum dolor.
+ALLOC-3d69b86c,PROG-9c31bb5a,Eldoret,field_officer,3,officers,2025-06-08,2025-09-07,manual,approved,,
+ALLOC-71a27615,PROG-9c31bb5a,Eldoret,training_capacity,28,seats,2025-06-08,2025-09-07,manual,approved,,
+ALLOC-bec168a7,PROG-9c31bb5a,Eldoret,budget,287127,KES,2025-06-08,2025-09-07,manual,approved,,
+ALLOC-c5c6ae8b,PROG-9c31bb5a,Eldoret,field_officer,4,officers,2026-04-23,2026-08-10,ml_recommended,approved,50.94,Eos officia at laboriosam esse provident similique quibusdam.
+ALLOC-4cec07c5,PROG-3f636f97,Kiambu,training_capacity,99,seats,2025-04-17,2025-07-09,ml_recommended,pending,45.67,Voluptate iure consequuntur praesentium delectus.
+ALLOC-e5bf5ca3,PROG-3f636f97,Kiambu,field_officer,4,officers,2025-09-04,2025-11-26,manual,approved,,
+ALLOC-eec0d823,PROG-3f636f97,Kiambu,training_capacity,25,seats,2025-09-04,2025-11-26,manual,approved,,
+ALLOC-ebba2a13,PROG-3f636f97,Kiambu,budget,1654078,KES,2025-09-04,2025-11-26,ml_recommended,approved,59.26,Occaecati provident a occaecati harum porro minus eos.
+ALLOC-a3c486d6,PROG-3f636f97,Kiambu,field_officer,4,officers,2025-06-15,2025-10-07,manual,approved,,
+ALLOC-0193a4cb,PROG-3f636f97,Kiambu,training_capacity,29,seats,2025-06-15,2025-10-07,manual,approved,,
+ALLOC-55cd4c02,PROG-3f636f97,Kiambu,field_officer,4,officers,2026-03-05,2026-05-09,manual,approved,,
+ALLOC-920050e5,PROG-3f636f97,Kiambu,budget,279982,KES,2026-03-05,2026-05-09,manual,approved,,
+ALLOC-c872cd6b,PROG-3f636f97,Kiambu,training_capacity,75,seats,2025-05-22,2025-09-17,manual,approved,,
+ALLOC-017c8441,PROG-3f636f97,Kiambu,budget,765394,KES,2025-05-22,2025-09-17,manual,approved,,
+ALLOC-f8c5858a,PROG-3efe6266,Kiambu,training_capacity,78,seats,2025-11-12,2026-02-24,manual,approved,,
+ALLOC-1c7eb50c,PROG-3efe6266,Kiambu,budget,1085593,KES,2025-11-12,2026-02-24,manual,approved,,
+ALLOC-cb9a4f02,PROG-3efe6266,Kiambu,field_officer,5,officers,2025-11-12,2026-01-31,ml_recommended,pending,76.6,Praesentium nostrum nemo dignissimos placeat nulla excepturi.
+ALLOC-aa0d2298,PROG-3efe6266,Kiambu,field_officer,1,officers,2025-11-12,2026-01-14,ml_recommended,approved,38.89,Maiores tenetur facilis amet fugit.
+ALLOC-1102fcf5,PROG-3efe6266,Kiambu,training_capacity,30,seats,2025-11-12,2026-01-14,manual,approved,,
+ALLOC-bd91eea4,PROG-3efe6266,Kiambu,budget,271356,KES,2025-11-12,2026-01-14,manual,approved,,
+ALLOC-30d29419,PROG-3efe6266,Kiambu,training_capacity,53,seats,2026-03-20,2026-06-16,manual,approved,,
+ALLOC-b248494b,PROG-3efe6266,Kiambu,budget,1976859,KES,2026-03-20,2026-06-16,ml_recommended,approved,72.72,Nulla facilis cupiditate nam architecto quae dignissimos voluptatem dolores.
+ALLOC-63efadfa,PROG-3efe6266,Kiambu,field_officer,4,officers,2025-10-31,2026-01-11,manual,approved,,
+ALLOC-6a7c4433,PROG-3efe6266,Kiambu,training_capacity,40,seats,2025-10-31,2026-01-11,ml_recommended,approved,83.88,Officiis qui quibusdam sit praesentium.
+ALLOC-7433fe40,PROG-3efe6266,Kiambu,budget,1825989,KES,2025-10-31,2026-01-11,manual,approved,,
+ALLOC-f4df08b6,PROG-0e8639f5,Kiambu,field_officer,5,officers,2024-06-14,2024-09-28,manual,approved,,
+ALLOC-4be1b555,PROG-0e8639f5,Kiambu,training_capacity,60,seats,2024-06-14,2024-09-28,manual,approved,,
+ALLOC-e58711d0,PROG-0e8639f5,Kiambu,training_capacity,72,seats,2024-08-25,2024-11-24,manual,approved,,
+ALLOC-59cfa553,PROG-0e8639f5,Kiambu,training_capacity,77,seats,2025-07-01,2025-10-29,manual,approved,,
+ALLOC-514333f5,PROG-0e8639f5,Kiambu,budget,176516,KES,2025-07-01,2025-10-29,manual,approved,,
+ALLOC-fcde5630,PROG-cd1d2009,Kiambu,field_officer,2,officers,2025-06-29,2025-10-11,manual,approved,,
+ALLOC-a95bf716,PROG-cd1d2009,Kiambu,training_capacity,46,seats,2025-06-29,2025-10-11,ml_recommended,rejected,60.38,Eum tempore magnam in amet fuga iste.
+ALLOC-2b15fb7b,PROG-cd1d2009,Kiambu,budget,1806618,KES,2025-06-29,2025-10-11,manual,approved,,
+ALLOC-3f510ae6,PROG-cd1d2009,Kiambu,field_officer,1,officers,2025-02-28,2025-06-25,manual,approved,,
+ALLOC-7963dd40,PROG-cd1d2009,Kiambu,training_capacity,78,seats,2025-02-28,2025-06-25,manual,approved,,
+ALLOC-e280741e,PROG-cd1d2009,Kiambu,budget,1836831,KES,2025-02-28,2025-06-25,manual,approved,,
+ALLOC-a28ddc8d,PROG-cd1d2009,Kiambu,field_officer,2,officers,2025-10-12,2026-01-28,manual,approved,,
+ALLOC-608a4be9,PROG-cd1d2009,Kiambu,training_capacity,90,seats,2025-10-12,2026-01-28,manual,approved,,
+ALLOC-b068d918,PROG-cd1d2009,Kiambu,budget,900196,KES,2025-10-12,2026-01-28,manual,approved,,
+ALLOC-f429447f,PROG-5b970cc8,Kiambu,training_capacity,22,seats,2023-12-05,2024-02-08,manual,approved,,
+ALLOC-8a4def60,PROG-5b970cc8,Kiambu,budget,1141036,KES,2023-12-05,2024-02-08,manual,approved,,
+ALLOC-7aa1ea25,PROG-5b970cc8,Kiambu,field_officer,4,officers,2025-05-25,2025-09-21,manual,approved,,
+ALLOC-a581e76e,PROG-5b970cc8,Kiambu,budget,1886155,KES,2025-05-25,2025-09-21,manual,approved,,
+ALLOC-7ad486ff,PROG-5b970cc8,Kiambu,field_officer,4,officers,2024-04-10,2024-07-28,manual,approved,,
+ALLOC-4f3493f1,PROG-5b970cc8,Kiambu,training_capacity,70,seats,2024-08-19,2024-12-07,manual,approved,,
+ALLOC-4eb1d7d5,PROG-5b970cc8,Kiambu,budget,569629,KES,2024-08-19,2024-12-07,manual,approved,,
+ALLOC-b087bbe0,PROG-ce4fe570,Machakos,field_officer,4,officers,2026-03-14,2026-06-24,manual,approved,,
+ALLOC-f6a1d432,PROG-ce4fe570,Machakos,training_capacity,73,seats,2026-03-14,2026-06-24,manual,approved,,
+ALLOC-12103492,PROG-ce4fe570,Machakos,budget,1757819,KES,2026-03-14,2026-06-24,manual,approved,,
+ALLOC-f790038d,PROG-ce4fe570,Machakos,training_capacity,62,seats,2026-01-09,2026-04-12,manual,approved,,
+ALLOC-422f4e94,PROG-ce4fe570,Machakos,budget,1001816,KES,2026-01-09,2026-04-12,manual,approved,,
+ALLOC-3a5c7457,PROG-ce4fe570,Machakos,field_officer,4,officers,2024-10-30,2025-01-10,ml_recommended,approved,60.45,Minima commodi quae perspiciatis minus eos numquam reiciendis veniam.
+ALLOC-91e2e444,PROG-ce4fe570,Machakos,training_capacity,69,seats,2024-10-30,2025-01-10,ml_recommended,pending,83.29,Deleniti sunt assumenda hic debitis.
+ALLOC-f2a76ebc,PROG-ce4fe570,Machakos,budget,1017297,KES,2024-10-30,2025-01-10,manual,approved,,
+ALLOC-610a85da,PROG-ce4fe570,Machakos,field_officer,1,officers,2025-09-22,2026-01-11,manual,approved,,
+ALLOC-fa6723b2,PROG-055f2cd4,Machakos,field_officer,3,officers,2026-05-07,2026-08-10,manual,approved,,
+ALLOC-44154c51,PROG-055f2cd4,Machakos,training_capacity,75,seats,2026-05-07,2026-08-10,manual,approved,,
+ALLOC-4910c3d5,PROG-055f2cd4,Machakos,field_officer,5,officers,2026-02-08,2026-04-10,ml_recommended,pending,46.77,Autem eius possimus libero soluta.
+ALLOC-b77471cf,PROG-055f2cd4,Machakos,budget,1051490,KES,2026-02-08,2026-04-10,manual,approved,,
+ALLOC-9673bbae,PROG-055f2cd4,Machakos,field_officer,2,officers,2026-04-29,2026-07-20,manual,approved,,
+ALLOC-f79e2bc9,PROG-055f2cd4,Machakos,training_capacity,51,seats,2026-04-29,2026-07-20,manual,approved,,
+ALLOC-15e38468,PROG-055f2cd4,Machakos,field_officer,1,officers,2026-03-09,2026-06-26,manual,approved,,
+ALLOC-11f051f1,PROG-055f2cd4,Machakos,budget,1438793,KES,2026-03-09,2026-06-26,ml_recommended,rejected,27.77,Veritatis ad impedit placeat ut labore in qui accusantium deleniti.
+ALLOC-24997781,PROG-3c01c9e2,Machakos,field_officer,2,officers,2024-09-06,2024-11-14,manual,approved,,
+ALLOC-7d5cd8cf,PROG-3c01c9e2,Machakos,training_capacity,66,seats,2024-09-06,2024-11-14,ml_recommended,pending,27.05,Sit doloremque veniam officia.
+ALLOC-8813e9a3,PROG-3c01c9e2,Machakos,field_officer,1,officers,2025-07-17,2025-09-19,manual,approved,,
+ALLOC-2c45a1ef,PROG-3c01c9e2,Machakos,training_capacity,60,seats,2025-07-17,2025-09-19,manual,approved,,
+ALLOC-1a26f114,PROG-3c01c9e2,Machakos,budget,437858,KES,2025-07-17,2025-09-19,manual,approved,,
+ALLOC-4de11c47,PROG-7509d57a,Machakos,field_officer,5,officers,2024-06-18,2024-09-28,ml_recommended,pending,44.0,Neque omnis ratione laborum pariatur minus molestias itaque.
+ALLOC-a5eaa4aa,PROG-7509d57a,Machakos,training_capacity,98,seats,2024-06-18,2024-09-28,manual,approved,,
+ALLOC-41be0658,PROG-7509d57a,Machakos,budget,1194186,KES,2024-06-18,2024-09-28,manual,approved,,
+ALLOC-b11b758c,PROG-7509d57a,Machakos,field_officer,5,officers,2024-04-21,2024-07-02,manual,approved,,
+ALLOC-7275e449,PROG-7509d57a,Machakos,training_capacity,39,seats,2024-04-21,2024-07-02,manual,approved,,
+ALLOC-4a9fb8f1,PROG-7509d57a,Machakos,budget,1984442,KES,2024-04-21,2024-07-02,manual,approved,,
+ALLOC-5ae8df5c,PROG-5b244900,Machakos,field_officer,2,officers,2024-10-10,2024-12-23,manual,approved,,
+ALLOC-7f273531,PROG-5b244900,Machakos,training_capacity,31,seats,2024-10-10,2024-12-23,manual,approved,,
+ALLOC-6ea7e554,PROG-5b244900,Machakos,budget,717235,KES,2024-10-10,2024-12-23,manual,approved,,
+ALLOC-531bfbe8,PROG-5b244900,Machakos,field_officer,4,officers,2025-10-11,2026-01-06,ml_recommended,pending,33.85,Consequatur ratione cupiditate ea laborum voluptas quo aliquid explicabo iste.
+ALLOC-d5ba1c78,PROG-5b244900,Machakos,field_officer,5,officers,2025-06-28,2025-09-02,manual,approved,,
+ALLOC-82404bf2,PROG-5b244900,Machakos,training_capacity,54,seats,2025-10-03,2025-12-29,ml_recommended,approved,62.51,Nulla cum modi delectus cupiditate provident.
+ALLOC-94259e4e,PROG-5b244900,Machakos,budget,1289383,KES,2025-10-03,2025-12-29,manual,approved,,
+ALLOC-6b8a9f10,PROG-8e0a016e,Kajiado,budget,959430,KES,2025-12-10,2026-02-18,manual,approved,,
+ALLOC-46fbc7b9,PROG-8e0a016e,Kajiado,training_capacity,23,seats,2026-03-20,2026-07-18,manual,approved,,
+ALLOC-335afdc9,PROG-8c0627d6,Kajiado,field_officer,2,officers,2025-06-23,2025-09-13,manual,approved,,
+ALLOC-42b8054e,PROG-8c0627d6,Kajiado,training_capacity,60,seats,2025-06-23,2025-09-13,manual,approved,,
+ALLOC-17185b6f,PROG-8c0627d6,Kajiado,budget,122861,KES,2025-06-23,2025-09-13,manual,approved,,
+ALLOC-5fe45a97,PROG-8c0627d6,Kajiado,field_officer,3,officers,2025-07-21,2025-10-18,ml_recommended,approved,46.99,Cum blanditiis voluptatibus nemo ipsam fuga.
+ALLOC-0cbf9fde,PROG-8c0627d6,Kajiado,training_capacity,87,seats,2025-07-21,2025-10-18,manual,approved,,
+ALLOC-c6cb9377,PROG-8c0627d6,Kajiado,budget,1602117,KES,2025-07-21,2025-10-18,manual,approved,,
+ALLOC-529ba572,PROG-8c0627d6,Kajiado,training_capacity,75,seats,2025-03-01,2025-06-05,manual,approved,,
+ALLOC-6b2eaa01,PROG-8c0627d6,Kajiado,budget,513397,KES,2025-03-01,2025-06-05,manual,approved,,
+ALLOC-744ca6f7,PROG-8c0627d6,Kajiado,field_officer,3,officers,2026-05-04,2026-08-03,manual,approved,,
+ALLOC-23b493c1,PROG-8c0627d6,Kajiado,training_capacity,41,seats,2026-05-04,2026-08-03,manual,approved,,
+ALLOC-9943a981,PROG-8c0627d6,Kajiado,budget,595812,KES,2026-05-04,2026-08-03,manual,approved,,
+ALLOC-1dbf64c3,PROG-8c0627d6,Kajiado,field_officer,5,officers,2025-10-02,2025-12-02,ml_recommended,rejected,39.91,Natus alias et exercitationem fuga molestiae.
+ALLOC-7f51c860,PROG-8c0627d6,Kajiado,budget,1978690,KES,2025-10-02,2025-12-02,manual,approved,,
+ALLOC-87cb9797,PROG-7470f836,Kajiado,field_officer,4,officers,2025-05-08,2025-08-17,manual,approved,,
+ALLOC-df27dd2a,PROG-7470f836,Kajiado,training_capacity,91,seats,2025-03-05,2025-05-24,ml_recommended,approved,23.3,Modi commodi ad ut quisquam veniam.
+ALLOC-0993162e,PROG-7470f836,Kajiado,budget,1053327,KES,2025-03-05,2025-05-24,manual,approved,,
+ALLOC-fedcd68f,PROG-d34f4cec,Kajiado,training_capacity,48,seats,2026-03-26,2026-06-17,manual,approved,,
+ALLOC-1e9d83d9,PROG-d34f4cec,Kajiado,budget,320485,KES,2026-03-26,2026-06-17,ml_recommended,rejected,70.7,Culpa voluptas molestias magni officia eos tempore voluptas.
+ALLOC-8e480644,PROG-d34f4cec,Kajiado,field_officer,3,officers,2024-07-02,2024-09-10,ml_recommended,approved,20.35,Pariatur reiciendis quas ullam excepturi beatae laboriosam aliquam perspiciatis blanditiis.
+ALLOC-87cfe819,PROG-d34f4cec,Kajiado,training_capacity,26,seats,2024-07-02,2024-09-10,manual,approved,,
+ALLOC-d31bd333,PROG-520100dc,Kajiado,field_officer,3,officers,2024-09-06,2025-01-04,manual,approved,,
+ALLOC-e0f37061,PROG-520100dc,Kajiado,training_capacity,68,seats,2024-09-06,2025-01-04,manual,approved,,
+ALLOC-3f227263,PROG-520100dc,Kajiado,budget,388910,KES,2024-09-06,2025-01-04,manual,approved,,
+ALLOC-7296f6ac,PROG-520100dc,Kajiado,field_officer,2,officers,2024-11-18,2025-01-25,ml_recommended,rejected,87.61,Illo sapiente ipsum at animi.
+ALLOC-b258ca36,PROG-520100dc,Kajiado,training_capacity,77,seats,2024-11-18,2025-01-25,manual,approved,,
+ALLOC-abaf7820,PROG-520100dc,Kajiado,budget,604414,KES,2024-11-18,2025-01-25,manual,approved,,
+ALLOC-cc4330aa,PROG-dfe287ef,Meru,training_capacity,31,seats,2026-05-12,2026-07-31,manual,approved,,
+ALLOC-26e9156f,PROG-dfe287ef,Meru,budget,273632,KES,2026-05-12,2026-07-31,manual,approved,,
+ALLOC-8c9a0ce9,PROG-dfe287ef,Meru,field_officer,2,officers,2026-05-11,2026-08-21,manual,approved,,
+ALLOC-b4d5fc84,PROG-dfe287ef,Meru,training_capacity,83,seats,2026-05-11,2026-08-21,manual,approved,,
+ALLOC-7cd42ecc,PROG-dfe287ef,Meru,budget,553268,KES,2026-05-11,2026-08-21,manual,approved,,
+ALLOC-35690f13,PROG-dfe287ef,Meru,field_officer,3,officers,2026-05-16,2026-07-27,manual,approved,,
+ALLOC-27be662d,PROG-dfe287ef,Meru,training_capacity,87,seats,2026-05-16,2026-07-27,manual,approved,,
+ALLOC-77dbb4c7,PROG-dfe287ef,Meru,budget,753945,KES,2026-05-16,2026-07-27,manual,approved,,
+ALLOC-9b5003f7,PROG-dfe287ef,Meru,training_capacity,36,seats,2026-05-24,2026-08-01,manual,approved,,
+ALLOC-cd04ec2b,PROG-dfe287ef,Meru,budget,1048818,KES,2026-05-24,2026-08-01,ml_recommended,approved,74.6,Nesciunt dolore vel eius ad modi.
+ALLOC-dfd3eb87,PROG-dfe287ef,Meru,field_officer,2,officers,2026-05-10,2026-07-13,manual,approved,,
+ALLOC-cbec7cf5,PROG-dfe287ef,Meru,budget,314044,KES,2026-05-10,2026-07-13,manual,approved,,
+ALLOC-3f0ccb86,PROG-990634d9,Meru,field_officer,4,officers,2025-11-04,2026-01-10,manual,approved,,
+ALLOC-cb380ff5,PROG-990634d9,Meru,training_capacity,87,seats,2025-11-04,2026-01-10,manual,approved,,
+ALLOC-3013b779,PROG-990634d9,Meru,budget,1254071,KES,2025-11-04,2026-01-10,manual,approved,,
+ALLOC-685fa897,PROG-990634d9,Meru,field_officer,5,officers,2024-12-18,2025-03-01,manual,approved,,
+ALLOC-f8b83a82,PROG-990634d9,Meru,training_capacity,76,seats,2024-12-18,2025-03-01,manual,approved,,
+ALLOC-ad65b198,PROG-990634d9,Meru,budget,1460258,KES,2024-12-18,2025-03-01,manual,approved,,
+ALLOC-bab2d6ae,PROG-5e55f4d1,Meru,field_officer,2,officers,2025-09-28,2025-12-15,manual,approved,,
+ALLOC-3f2b348e,PROG-5e55f4d1,Meru,training_capacity,83,seats,2025-09-28,2025-12-15,manual,approved,,
+ALLOC-c3f1a642,PROG-5e55f4d1,Meru,budget,204588,KES,2025-09-28,2025-12-15,manual,approved,,
+ALLOC-215b34ed,PROG-5e55f4d1,Meru,field_officer,1,officers,2025-08-16,2025-10-29,manual,approved,,
+ALLOC-7b14a7da,PROG-5e55f4d1,Meru,training_capacity,88,seats,2025-08-16,2025-10-29,manual,approved,,
+ALLOC-4aa7ea36,PROG-5e55f4d1,Meru,budget,1400697,KES,2025-08-16,2025-10-29,manual,approved,,
+ALLOC-0a5ba3cf,PROG-5e55f4d1,Meru,field_officer,2,officers,2026-01-14,2026-04-09,manual,approved,,
+ALLOC-eefc3e05,PROG-5e55f4d1,Meru,budget,531395,KES,2026-01-14,2026-04-09,manual,approved,,
+ALLOC-e7abd88c,PROG-5e55f4d1,Meru,field_officer,5,officers,2025-10-03,2025-12-24,manual,approved,,
+ALLOC-031204d0,PROG-5e55f4d1,Meru,training_capacity,43,seats,2025-10-03,2025-12-24,manual,approved,,
+ALLOC-906a5e10,PROG-5e55f4d1,Meru,field_officer,2,officers,2026-02-20,2026-06-07,manual,approved,,
+ALLOC-b9a83ab8,PROG-5e55f4d1,Meru,training_capacity,41,seats,2026-02-20,2026-06-07,manual,approved,,
+ALLOC-1f78b706,PROG-d64ed648,Meru,field_officer,3,officers,2025-04-20,2025-07-31,manual,approved,,
+ALLOC-69e78eb8,PROG-d64ed648,Meru,training_capacity,65,seats,2025-07-10,2025-10-21,ml_recommended,approved,54.18,Perspiciatis vero voluptate hic laudantium nobis maiores animi pariatur.
+ALLOC-b253331e,PROG-d64ed648,Meru,budget,329399,KES,2025-07-10,2025-10-21,manual,approved,,
+ALLOC-a0610f7d,PROG-d64ed648,Meru,field_officer,3,officers,2025-04-22,2025-07-27,ml_recommended,approved,31.71,Corporis sequi fuga fuga eligendi expedita voluptate soluta.
+ALLOC-e11abea1,PROG-d64ed648,Meru,training_capacity,32,seats,2025-04-22,2025-07-27,manual,approved,,
+ALLOC-e741ab06,PROG-5b5b04ab,Nyeri,budget,1120250,KES,2026-03-25,2026-06-24,manual,approved,,
+ALLOC-072e706e,PROG-5b5b04ab,Nyeri,training_capacity,62,seats,2026-03-31,2026-05-30,ml_recommended,approved,79.99,Dolor suscipit qui impedit ipsam.
+ALLOC-171a59dd,PROG-5b5b04ab,Nyeri,field_officer,5,officers,2026-04-26,2026-07-02,manual,approved,,
+ALLOC-57470bd1,PROG-5b5b04ab,Nyeri,training_capacity,72,seats,2026-04-26,2026-07-02,ml_recommended,approved,29.91,Rem voluptas incidunt tempore consequuntur nesciunt.
+ALLOC-fd7927fb,PROG-5b5b04ab,Nyeri,budget,612476,KES,2026-04-26,2026-07-02,manual,approved,,
+ALLOC-ebad6ee4,PROG-5b5b04ab,Nyeri,field_officer,1,officers,2026-03-03,2026-05-25,manual,approved,,
+ALLOC-45bed6e0,PROG-5b5b04ab,Nyeri,budget,674460,KES,2026-03-03,2026-05-25,ml_recommended,approved,82.95,Corporis esse voluptates minima excepturi.
+ALLOC-abfd8f64,PROG-f6c7609c,Nyeri,field_officer,3,officers,2026-04-05,2026-06-15,ml_recommended,approved,49.21,Quidem at illum totam impedit nam quae quidem consequatur delectus.
+ALLOC-22a7e4fe,PROG-f6c7609c,Nyeri,budget,186192,KES,2026-04-05,2026-06-15,manual,approved,,
+ALLOC-f1ad1fb3,PROG-f6c7609c,Nyeri,field_officer,4,officers,2026-01-01,2026-04-24,ml_recommended,approved,75.48,Enim laudantium reprehenderit error nesciunt laudantium qui dolore.
+ALLOC-4bbaad0a,PROG-f6c7609c,Nyeri,training_capacity,34,seats,2026-01-01,2026-04-24,ml_recommended,approved,67.99,Culpa error odit odio.
+ALLOC-a9971a38,PROG-f6c7609c,Nyeri,budget,415050,KES,2026-01-01,2026-04-24,manual,approved,,
+ALLOC-c9720364,PROG-f6c7609c,Nyeri,field_officer,2,officers,2025-12-05,2026-03-14,manual,approved,,
+ALLOC-a69a0cac,PROG-f6c7609c,Nyeri,training_capacity,57,seats,2025-12-05,2026-03-14,manual,approved,,
+ALLOC-275283d8,PROG-f6c7609c,Nyeri,budget,693530,KES,2025-12-05,2026-03-14,ml_recommended,pending,54.19,Officiis tempora impedit laudantium porro doloribus.
+ALLOC-beaf7a60,PROG-f6c7609c,Nyeri,field_officer,1,officers,2025-07-12,2025-10-07,manual,approved,,
+ALLOC-5d9604dc,PROG-f6c7609c,Nyeri,training_capacity,56,seats,2025-07-12,2025-10-07,ml_recommended,approved,87.1,Quisquam laudantium voluptas nisi facere laboriosam.
+ALLOC-36da6506,PROG-f6c7609c,Nyeri,budget,280362,KES,2025-07-12,2025-10-07,manual,approved,,
+ALLOC-c0e40419,PROG-f6c7609c,Nyeri,field_officer,5,officers,2025-09-21,2026-01-05,ml_recommended,pending,22.25,Sit occaecati labore possimus blanditiis maiores nemo sapiente cum.
+ALLOC-ca11be47,PROG-f6c7609c,Nyeri,budget,1522918,KES,2025-09-21,2026-01-05,manual,approved,,
+ALLOC-8cc1df12,PROG-43b7f932,Nyeri,field_officer,3,officers,2025-11-30,2026-03-27,ml_recommended,approved,32.13,Corporis itaque possimus facere amet.
+ALLOC-18a3385f,PROG-43b7f932,Nyeri,training_capacity,61,seats,2025-11-30,2026-03-27,ml_recommended,pending,73.74,In totam explicabo enim minus vel maiores quisquam.
+ALLOC-87d95c0b,PROG-43b7f932,Nyeri,budget,973070,KES,2025-11-30,2026-03-27,manual,approved,,
+ALLOC-2b3dbfc1,PROG-43b7f932,Nyeri,field_officer,5,officers,2025-08-22,2025-11-09,ml_recommended,approved,32.84,Quisquam nisi cumque eum et sapiente.
+ALLOC-2729098b,PROG-43b7f932,Nyeri,field_officer,3,officers,2025-01-24,2025-04-02,manual,approved,,
+ALLOC-b93f6ce3,PROG-43b7f932,Nyeri,training_capacity,65,seats,2025-01-24,2025-04-02,manual,approved,,
+ALLOC-fb9d89f6,PROG-43b7f932,Nyeri,budget,981864,KES,2025-01-24,2025-04-02,ml_recommended,approved,83.88,Earum praesentium facere modi expedita corporis consequatur.
+ALLOC-3196f7c6,PROG-43b7f932,Nyeri,field_officer,2,officers,2024-11-14,2025-03-03,manual,approved,,
+ALLOC-b8e58ec7,PROG-43b7f932,Nyeri,training_capacity,51,seats,2024-11-14,2025-03-03,manual,approved,,
+ALLOC-b0ad5928,PROG-43b7f932,Nyeri,budget,1402100,KES,2024-11-14,2025-03-03,manual,approved,,
+ALLOC-1279e1dc,PROG-43b7f932,Nyeri,field_officer,4,officers,2026-05-20,2026-09-13,manual,approved,,
+ALLOC-2f67b46c,PROG-43b7f932,Nyeri,training_capacity,79,seats,2026-05-20,2026-09-13,ml_recommended,rejected,52.22,Fuga laborum excepturi tenetur aut culpa dolore.
+ALLOC-9c2e2426,PROG-43b7f932,Nyeri,budget,214699,KES,2026-05-20,2026-09-13,manual,approved,,
+ALLOC-6514694b,PROG-3a17d4bd,Nyeri,field_officer,3,officers,2026-01-03,2026-04-11,manual,approved,,
+ALLOC-661ca0bb,PROG-3a17d4bd,Nyeri,training_capacity,27,seats,2026-01-03,2026-04-11,manual,approved,,
+ALLOC-0397c593,PROG-3a17d4bd,Nyeri,budget,1171269,KES,2026-01-03,2026-04-11,manual,approved,,
+ALLOC-7baeeefa,PROG-3a17d4bd,Nyeri,field_officer,2,officers,2025-10-23,2026-02-04,manual,approved,,
+ALLOC-bfc989aa,PROG-3a17d4bd,Nyeri,budget,1977060,KES,2025-10-23,2026-02-04,manual,approved,,
+ALLOC-83eb94a6,PROG-dc32c3e9,Kilifi,field_officer,1,officers,2025-03-12,2025-06-20,ml_recommended,approved,34.05,Recusandae nam porro veritatis sapiente quae.
+ALLOC-38be96a9,PROG-dc32c3e9,Kilifi,training_capacity,39,seats,2025-03-12,2025-06-20,manual,approved,,
+ALLOC-31bd1703,PROG-dc32c3e9,Kilifi,budget,303137,KES,2025-03-12,2025-06-20,manual,approved,,
+ALLOC-66b572cc,PROG-dc32c3e9,Kilifi,field_officer,5,officers,2024-08-22,2024-11-20,manual,approved,,
+ALLOC-aa91ac13,PROG-dc32c3e9,Kilifi,training_capacity,35,seats,2024-08-22,2024-11-20,manual,approved,,
+ALLOC-22bd76ec,PROG-dc32c3e9,Kilifi,budget,485968,KES,2024-08-22,2024-11-20,ml_recommended,approved,58.27,Impedit totam blanditiis consectetur accusantium.
+ALLOC-345b0b16,PROG-dc32c3e9,Kilifi,field_officer,5,officers,2026-01-25,2026-05-08,manual,approved,,
+ALLOC-b3d23cd6,PROG-dc32c3e9,Kilifi,training_capacity,22,seats,2026-01-25,2026-05-08,manual,approved,,
+ALLOC-684352dc,PROG-7694a7c4,Kilifi,training_capacity,80,seats,2025-04-28,2025-07-29,manual,approved,,
+ALLOC-cade24ab,PROG-7694a7c4,Kilifi,budget,309756,KES,2025-04-28,2025-07-29,ml_recommended,approved,66.74,Est facere repellendus suscipit nisi quis exercitationem quae.
+ALLOC-6c9ba75b,PROG-7694a7c4,Kilifi,field_officer,1,officers,2025-08-19,2025-11-11,manual,approved,,
+ALLOC-a6399197,PROG-7694a7c4,Kilifi,budget,694379,KES,2025-08-19,2025-11-11,manual,approved,,
+ALLOC-b57f3b7c,PROG-7694a7c4,Kilifi,field_officer,3,officers,2025-11-15,2026-02-07,manual,approved,,
+ALLOC-9d710cfe,PROG-7694a7c4,Kilifi,training_capacity,99,seats,2025-11-15,2026-02-07,manual,approved,,
+ALLOC-ca7572c0,PROG-4f7dd3ef,Kilifi,training_capacity,21,seats,2025-03-11,2025-06-08,ml_recommended,approved,79.91,Quia blanditiis consectetur possimus porro.
+ALLOC-3eab6cb7,PROG-4f7dd3ef,Kilifi,budget,831558,KES,2025-03-11,2025-06-08,ml_recommended,approved,55.91,Commodi consectetur aspernatur porro quos aspernatur quo.
+ALLOC-60d1185a,PROG-4f7dd3ef,Kilifi,field_officer,5,officers,2025-04-16,2025-07-26,manual,approved,,
+ALLOC-d056fe14,PROG-4f7dd3ef,Kilifi,training_capacity,70,seats,2025-08-01,2025-11-19,manual,approved,,
+ALLOC-6337ebdf,PROG-4f7dd3ef,Kilifi,training_capacity,43,seats,2026-02-27,2026-05-22,manual,approved,,
+ALLOC-fde0ac32,PROG-7156722f,Kilifi,field_officer,5,officers,2025-07-27,2025-11-08,manual,approved,,
+ALLOC-f60386d8,PROG-7156722f,Kilifi,training_capacity,71,seats,2025-07-27,2025-11-08,manual,approved,,
+ALLOC-36ab9fa8,PROG-7156722f,Kilifi,budget,1636955,KES,2025-07-27,2025-11-08,manual,approved,,
+ALLOC-802628b9,PROG-7156722f,Kilifi,field_officer,4,officers,2025-07-10,2025-10-20,manual,approved,,
+ALLOC-3786bbdf,PROG-7156722f,Kilifi,training_capacity,50,seats,2025-07-10,2025-10-20,manual,approved,,
+ALLOC-445a376e,PROG-7156722f,Kilifi,budget,625302,KES,2025-12-04,2026-03-22,manual,approved,,
+ALLOC-b73eed00,PROG-7156722f,Kilifi,training_capacity,23,seats,2025-06-28,2025-09-24,ml_recommended,approved,68.91,Aliquam autem recusandae maiores animi blanditiis ducimus architecto pariatur.
+ALLOC-c38101dc,PROG-7156722f,Kilifi,budget,1436715,KES,2025-06-28,2025-09-24,manual,approved,,
+ALLOC-5c58980a,PROG-8abb3b37,Kilifi,field_officer,3,officers,2024-05-02,2024-07-17,manual,approved,,
+ALLOC-f4984e32,PROG-8abb3b37,Kilifi,budget,1208406,KES,2024-05-02,2024-07-17,ml_recommended,pending,60.75,Quos ullam dignissimos temporibus delectus.
+ALLOC-db422f65,PROG-8abb3b37,Kilifi,field_officer,1,officers,2025-07-20,2025-10-30,ml_recommended,rejected,45.17,Adipisci corporis quia eius neque explicabo sequi quos.
+ALLOC-6c400e71,PROG-8abb3b37,Kilifi,training_capacity,89,seats,2025-07-20,2025-10-30,ml_recommended,approved,67.77,Doloribus necessitatibus aut neque accusamus dolor deleniti eligendi temporibus modi voluptate.
+ALLOC-fce3ba30,PROG-8abb3b37,Kilifi,field_officer,2,officers,2025-10-29,2026-02-07,ml_recommended,approved,53.16,Unde ullam sed labore praesentium.
+ALLOC-cf98ffa0,PROG-8abb3b37,Kilifi,training_capacity,99,seats,2025-10-29,2026-02-07,ml_recommended,rejected,76.11,Ipsam vero debitis explicabo fugit distinctio.
+ALLOC-69758e02,PROG-8abb3b37,Kilifi,budget,1411707,KES,2025-10-29,2026-02-07,manual,approved,,
+ALLOC-aaaf76ae,PROG-ced96c40,Kakamega,training_capacity,35,seats,2025-02-02,2025-04-11,manual,approved,,
+ALLOC-4fe8af71,PROG-ced96c40,Kakamega,budget,1233590,KES,2025-02-02,2025-04-11,manual,approved,,
+ALLOC-2cfbfcd0,PROG-ced96c40,Kakamega,budget,1574871,KES,2025-07-01,2025-10-21,manual,approved,,
+ALLOC-7ccdbb3a,PROG-edd8baa9,Kakamega,field_officer,2,officers,2026-05-20,2026-07-23,ml_recommended,rejected,55.0,Illum quis et iure maxime libero facere.
+ALLOC-f9129476,PROG-edd8baa9,Kakamega,training_capacity,27,seats,2026-05-20,2026-07-23,manual,approved,,
+ALLOC-0d93dbab,PROG-edd8baa9,Kakamega,budget,167685,KES,2026-05-25,2026-08-23,manual,approved,,
+ALLOC-b1a9c911,PROG-edd8baa9,Kakamega,field_officer,1,officers,2026-05-20,2026-07-31,manual,approved,,
+ALLOC-b6dd2b51,PROG-edd8baa9,Kakamega,training_capacity,62,seats,2026-05-20,2026-07-31,ml_recommended,approved,81.48,Nam aliquam eveniet blanditiis eligendi nobis est.
+ALLOC-f7993a5b,PROG-edd8baa9,Kakamega,budget,252907,KES,2026-05-20,2026-07-31,ml_recommended,approved,62.7,Dolorem illum voluptates incidunt sequi tempora rem vel facilis.
+ALLOC-a3938728,PROG-2c35e0c6,Kakamega,training_capacity,98,seats,2025-01-21,2025-03-26,ml_recommended,rejected,53.51,Voluptatum laudantium autem ipsa.
+ALLOC-ebfadb85,PROG-2c35e0c6,Kakamega,budget,1616932,KES,2025-01-21,2025-03-26,manual,approved,,
+ALLOC-07cc7d1c,PROG-2c35e0c6,Kakamega,field_officer,3,officers,2024-03-09,2024-06-08,manual,approved,,
+ALLOC-45a8ab57,PROG-2c35e0c6,Kakamega,training_capacity,49,seats,2024-03-09,2024-06-08,manual,approved,,
+ALLOC-3e57260a,PROG-2c35e0c6,Kakamega,budget,1722384,KES,2024-03-09,2024-06-08,ml_recommended,pending,62.57,Blanditiis hic possimus voluptate qui.
+ALLOC-5061e1be,PROG-21c51332,Kakamega,field_officer,4,officers,2024-11-01,2025-02-04,ml_recommended,approved,50.08,Aperiam voluptate excepturi nisi voluptatibus commodi.
+ALLOC-157c869c,PROG-21c51332,Kakamega,training_capacity,37,seats,2024-11-01,2025-02-04,manual,approved,,
+ALLOC-e77f4b52,PROG-21c51332,Kakamega,budget,1391118,KES,2024-11-01,2025-02-04,ml_recommended,approved,33.56,Quam eius quae neque earum ratione officia id labore.
+ALLOC-eab866c2,PROG-21c51332,Kakamega,field_officer,2,officers,2026-01-04,2026-05-02,manual,approved,,
+ALLOC-2dfa8d86,PROG-21c51332,Kakamega,training_capacity,72,seats,2026-01-04,2026-05-02,manual,approved,,
+ALLOC-780cfdef,PROG-21c51332,Kakamega,field_officer,1,officers,2026-04-16,2026-07-21,ml_recommended,pending,23.98,Veniam voluptates maiores corporis iste commodi laudantium doloremque velit adipisci.
+ALLOC-d182594f,PROG-21c51332,Kakamega,training_capacity,76,seats,2026-04-16,2026-07-21,manual,approved,,
+ALLOC-1bae9ed5,PROG-21c51332,Kakamega,budget,833305,KES,2026-04-16,2026-07-21,manual,approved,,
+ALLOC-c8f516bf,PROG-21c51332,Kakamega,field_officer,4,officers,2025-06-21,2025-09-07,manual,approved,,
+ALLOC-f67c6e85,PROG-21c51332,Kakamega,training_capacity,29,seats,2025-06-21,2025-09-07,manual,approved,,
+ALLOC-56cd3ea3,PROG-f2a7fde1,Kakamega,field_officer,3,officers,2026-05-17,2026-08-30,ml_recommended,pending,65.76,Rerum libero ad debitis non.
+ALLOC-5ee75161,PROG-f2a7fde1,Kakamega,training_capacity,54,seats,2026-05-17,2026-08-30,manual,approved,,
+ALLOC-7e180c24,PROG-f2a7fde1,Kakamega,budget,318896,KES,2026-05-17,2026-08-30,manual,approved,,
+ALLOC-b72f1b39,PROG-f2a7fde1,Kakamega,training_capacity,30,seats,2026-05-15,2026-08-28,manual,approved,,
+ALLOC-f7a6ac4f,PROG-f2a7fde1,Kakamega,budget,1192605,KES,2026-05-15,2026-08-28,manual,approved,,
+ALLOC-6cdb8ecb,PROG-f2a7fde1,Kakamega,field_officer,2,officers,2026-05-24,2026-08-05,manual,approved,,
+ALLOC-2be2d6ef,PROG-f2a7fde1,Kakamega,training_capacity,76,seats,2026-05-24,2026-08-05,manual,approved,,
+ALLOC-59130ed0,PROG-f2a7fde1,Kakamega,budget,339575,KES,2026-05-24,2026-08-05,manual,approved,,

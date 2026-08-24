@@ -1,0 +1,31 @@
+indicator_id,name,category,unit,definition,version,is_active
+IND-2d7898a7,total_enrolled,output,count,Total beneficiaries ever enrolled in the program,1,True
+IND-a34e000c,active_enrolled,output,count,Currently active enrollments,1,True
+IND-1f3b15f0,sessions_delivered,output,count,Total training sessions completed,1,True
+IND-7836a6b4,attendance_rate,output,percentage,Average attendance across all sessions,1,True
+IND-1821951f,field_visits_completed,output,count,Field officer verification visits completed,1,True
+IND-3e9edc99,disbursements_made,output,count,Total stipend disbursements processed,1,True
+IND-0a7bf2e3,disbursement_amount,output,KES,Total disbursement amount in KES,1,True
+IND-1b520112,assessments_conducted,output,count,Total assessments administered,1,True
+IND-e281a46a,training_hours,output,hours,Total training hours delivered,1,True
+IND-ce295f83,mentorship_sessions,output,count,One-on-one mentorship sessions held,1,True
+IND-3c218f3e,completion_rate,outcome,percentage,Beneficiaries who completed program vs enrolled,1,True
+IND-1461376c,employment_rate,outcome,percentage,Completers who gained employment within 6 months,1,True
+IND-a04bb220,retention_rate_90d,outcome,percentage,Beneficiaries still active after 90 days,1,True
+IND-5522634a,retention_rate_180d,outcome,percentage,Beneficiaries still active after 180 days,1,True
+IND-f988d18a,dropout_rate,outcome,percentage,Beneficiaries who disengaged before completion,1,True
+IND-a1e02516,avg_assessment_score,outcome,percentage,Average assessment score across all beneficiaries,1,True
+IND-d12b29c3,score_improvement,outcome,percentage_points,Average improvement from first to last assessment,1,True
+IND-a69c48c2,business_startup_rate,outcome,percentage,Completers who started a business,1,True
+IND-53cb4197,further_education_rate,outcome,percentage,Completers who enrolled in further education,1,True
+IND-68c657c7,skill_certification_rate,outcome,percentage,Beneficiaries who obtained skill certifications,1,True
+IND-bac47fbd,cost_per_beneficiary,impact,KES,Total program cost / beneficiaries served,1,True
+IND-4c8339bc,cost_per_outcome,impact,KES,Total cost / positive outcomes achieved,1,True
+IND-cb779da7,roi_ratio,impact,ratio,Estimated economic return / program investment,1,True
+IND-96777408,income_increase_pct,impact,percentage,Average income increase for employed completers,1,True
+IND-58c61bcd,family_members_impacted,impact,count,Estimated family members benefiting indirectly,1,True
+IND-0c503f68,community_projects,impact,count,Community projects initiated by beneficiaries,1,True
+IND-d1f975cc,peer_mentors_trained,impact,count,Beneficiaries who became peer mentors,1,True
+IND-08ffbe04,employer_satisfaction,impact,percentage,Employer satisfaction with program graduates,1,True
+IND-54bda2cf,savings_rate,impact,percentage,Completers with active savings accounts,1,True
+IND-4a03005f,loan_access_rate,impact,percentage,Completers who accessed formal credit,1,True
