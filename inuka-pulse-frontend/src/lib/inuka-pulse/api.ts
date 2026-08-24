@@ -650,16 +650,20 @@ export async function fetchBeneficiaryDetail(beneficiaryId: string): Promise<Ben
 // ─── Analytics: Model Backtest Report ────────────────────────────────────────
 
 export interface BacktestReport {
+  model?: string;
   model_type?: string;
+  label_definition?: string;
+  label_rationale?: string;
   precision?: number;
   recall?: number;
   f1?: number;
   train_rows?: number;
   test_rows?: number;
-  train_positive_rate?: number;
-  test_positive_rate?: number;
+  positive_rate_train?: number;
+  positive_rate_test?: number;
   split_date?: string;
   threshold?: number;
+  features?: string[];
   // allow any additional fields the pipeline may add
   [key: string]: unknown;
 }
