@@ -92,6 +92,13 @@ public class SecurityConfig {
                 // V1 ANALYTICS API — Requires auth, role-scoped via @PreAuthorize
                 // ══════════════════════════════════════════════════════════════
                 .requestMatchers("/api/v1/analytics/**").authenticated()
+
+                // ══════════════════════════════════════════════════════════════
+                // BENEFICIARY PREDICTIONS — Role-scoped (fine-grained via @PreAuthorize)
+                // All /api/beneficiaries/** require authentication at minimum.
+                // Role enforcement is layered on top via @PreAuthorize in each controller.
+                // ══════════════════════════════════════════════════════════════
+                .requestMatchers("/api/beneficiaries/**").authenticated()
                 
                 // ══════════════════════════════════════════════════════════════
                 // PROGRAM & DONOR MANAGEMENT

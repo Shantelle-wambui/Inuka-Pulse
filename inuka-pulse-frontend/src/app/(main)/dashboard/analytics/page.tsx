@@ -10,9 +10,10 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { fetchBacktestReport, fetchFeatureImportance, fetchBeneficiarySummary } from "@/lib/inuka-pulse/api";
+import { fetchBacktestReport, fetchFeatureImportance, fetchBeneficiarySummary, fetchBeneficiaryList } from "@/lib/inuka-pulse/api";
 import { FeatureImportanceChart } from "@/components/feature-importance-chart";
 import { RiskDonutChart } from "@/components/risk-distribution-chart";
+import { BeneficiaryTable } from "./_components/beneficiary-table";
 import type { FeatureImportanceEntry } from "@/components/feature-importance-chart";
 
 /**
@@ -23,15 +24,17 @@ import type { FeatureImportanceEntry } from "@/components/feature-importance-cha
  */
 export default async function AnalyticsDashboardPage() {
   // ── Parallel fetches ───────────────────────────────────────────────────────
-  const [backtestResult, featureResult, summaryResult] = await Promise.allSettled([
+  const [backtestResult, featureResult, summaryResult, listResult] = await Promise.allSettled([
     fetchBacktestReport(),
     fetchFeatureImportance(),
     fetchBeneficiarySummary(),
+    fetchBeneficiaryList({ page: 0, size: 50 }),
   ]);
 
-  const backtest = backtestResult.status === "fulfilled" ? backtestResult.value : null;
+  const backtest    = backtestResult.status === "fulfilled" ? backtestResult.value : null;
   const featureData = featureResult.status  === "fulfilled" ? featureResult.value  : null;
-  const summary    = summaryResult.status   === "fulfilled" ? summaryResult.value   : null;
+  const summary     = summaryResult.status  === "fulfilled" ? summaryResult.value  : null;
+  const listData    = listResult.status     === "fulfilled" ? listResult.value     : null;
 
   // Feature importance: the endpoint returns an array directly
   const features: FeatureImportanceEntry[] = Array.isArray(featureData)
@@ -275,6 +278,15 @@ export default async function AnalyticsDashboardPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* ── Full beneficiary prediction table ──────────────────────────────── */}
+      {listData && (
+        <BeneficiaryTable
+          initialData={listData}
+          counties={summary?.counties ?? []}
+          pillars={summary?.pillars ?? []}
+        />
+      )}
 
       {/* ── Model notes ────────────────────────────────────────────────────── */}
       {backtest?.label_rationale && (
