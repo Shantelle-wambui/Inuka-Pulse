@@ -616,6 +616,44 @@ export async function fetchTopRisk(band = "At-Risk", n = 20): Promise<Beneficiar
   return res.json();
 }
 
+export interface CaseloadSummary {
+  total: number;
+  needsAttention: number;   // Dropout + Disengaged
+  atRisk: number;
+  active: number;
+  cohorts: string[];
+  lastUpdated: string | null;
+}
+
+/**
+ * GET /api/beneficiaries/predictions/my-caseload
+ *
+ * Returns the calling Case Manager's assigned beneficiaries, high-risk first.
+ * Scoped to the officer's cohort assignments via JWT userId.
+ */
+export async function fetchMyCaseload(): Promise<BeneficiaryPrediction[]> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/my-caseload`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/my-caseload/summary
+ *
+ * KPI summary for the Case Manager: total, needsAttention, atRisk, active, cohorts.
+ */
+export async function fetchMyCaseloadSummary(): Promise<CaseloadSummary> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/my-caseload/summary`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
 /**
  * GET /api/beneficiaries/predictions/cohort/{cohortId}
  *
