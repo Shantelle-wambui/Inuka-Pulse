@@ -15,6 +15,25 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function SurvivalCurveChart({ data }: SurvivalCurveChartProps) {
+  // Guard: the Inuka pipeline outputs a different shape (series[]) vs the
+  // original HSE shape (curves.fleet / curves.high_risk). Show a fallback
+  // rather than crashing if the expected fields are missing.
+  if (!data?.curves?.fleet || !data?.curves?.high_risk) {
+    return (
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-sm font-medium">Audit Closure Time — Fleet vs High-Risk Sites</CardTitle>
+          <CardDescription className="text-xs">
+            Kaplan-Meier survival curve. Y-axis = fraction of findings still open.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex items-center justify-center h-40 text-muted-foreground text-sm">
+          Survival curve data not available for this pipeline configuration.
+        </CardContent>
+      </Card>
+    );
+  }
+
   // Merge the two curve arrays into [{t, fleet, high_risk}]
   const chartData = data.curves.fleet.map((pt, i) => ({
     t: pt.t,

@@ -44,6 +44,9 @@ public class AnalyticsService {
     private static final String ROI_REFERENCE_FILE    = "inuka_roi_reference.json";
     private static final String ROI_SIMULATION_FILE   = "roi_simulation_result.json";
     private static final String ROI_REFERENCE_DIR     = "data/reference";
+    // Phase 5 — Analyst deeper views
+    private static final String OUTCOME_METRICS_FILE  = "outcome_model_metrics.json";
+    private static final String OUTCOME_PREDS_FILE    = "outcome_predictions.json";
 
     private final DashboardMetricsRepository metricsRepository;
     private final ProgramRepository programRepository;
@@ -196,6 +199,24 @@ public class AnalyticsService {
      */
     public ResponseEntity<String> getBacktest() {
         return readJson(BACKTEST_FILE);
+    }
+
+    /**
+     * Outcome model metrics — accuracy, precision, recall, F1, AUC-ROC,
+     * feature importance from the GradientBoosting outcome predictor.
+     * Sourced from outcome_model_metrics.json (pipeline output).
+     */
+    public ResponseEntity<String> getOutcomeMetrics() {
+        return readJson(OUTCOME_METRICS_FILE);
+    }
+
+    /**
+     * Outcome predictions summary — completion probability by pillar,
+     * beneficiary-level predictions, summary stats.
+     * Sourced from outcome_predictions.json (pipeline output).
+     */
+    public ResponseEntity<String> getOutcomePredictions() {
+        return readJson(OUTCOME_PREDS_FILE);
     }
 
     public ResponseEntity<String> getRoiReferenceCase() {

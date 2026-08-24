@@ -867,3 +867,84 @@ export async function fetchWelfareSummary(): Promise<WelfareSummary> {
   if (!res.ok) throw new Error(await parseErrorMessage(res));
   return res.json();
 }
+
+// ─── Phase 5: Analyst Deeper Views ───────────────────────────────────────────
+// fetchSurvivalCurves + SurvivalCurveData already exist above.
+// Only the new outcome model types and fetch functions are added here.
+
+export interface OutcomeFeatureImportance {
+  feature: string;
+  importance: number;
+}
+
+export interface OutcomeModelMetrics {
+  accuracy?: number;
+  precision?: number;
+  recall?: number;
+  f1?: number;
+  auc_roc?: number;
+  model_type?: string;
+  trained_at?: string;
+  n_samples?: number;
+  n_features?: number;
+  positive_rate?: number;
+  feature_importance?: OutcomeFeatureImportance[];
+}
+
+export interface OutcomePillarSummary {
+  avg_probability: number;
+  count: number;
+}
+
+export interface OutcomePredictions {
+  generated_at?: string;
+  model_type?: string;
+  summary?: {
+    total_predictions: number;
+    likely_to_complete: number;
+    moderate: number;
+    at_risk: number;
+    avg_completion_probability: number;
+  };
+  by_pillar?: Record<string, OutcomePillarSummary>;
+}
+
+/**
+ * GET /api/analytics/outcome-metrics
+ * GradientBoosting outcome model performance metrics.
+ */
+export async function fetchOutcomeMetrics(): Promise<OutcomeModelMetrics> {
+  const res = await fetch(
+    `${requireApiBase()}/api/analytics/outcome-metrics`,
+    { cache: "no-store", signal: makeTimeoutSignal() },
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/analytics/outcome-predictions
+ * Outcome forecast: completion probability summary and by-pillar breakdown.
+ */
+export async function fetchOutcomePredictions(): Promise<OutcomePredictions> {
+  const res = await fetch(
+    `${requireApiBase()}/api/analytics/outcome-predictions`,
+    { cache: "no-store", signal: makeTimeoutSignal() },
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/analytics/survival-curves (Inuka shape)
+ * Returns { series: [{ label, timeline, survival_prob }] }
+ * Distinct from the old HSE fetchSurvivalCurves which returns fleet/high_risk curves.
+ */
+export async function fetchInukaSurvivalCurves(): Promise<import("@/components/survival-curve-chart").InukaSurvivalCurveData> {
+  const res = await fetch(
+    `${requireApiBase()}/api/analytics/survival-curves`,
+    { cache: "no-store", signal: makeTimeoutSignal() },
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}

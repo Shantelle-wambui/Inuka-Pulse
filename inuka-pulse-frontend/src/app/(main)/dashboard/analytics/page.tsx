@@ -7,34 +7,46 @@ import {
   Target,
   Layers,
   CalendarDays,
+  Activity,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { fetchBacktestReport, fetchFeatureImportance, fetchBeneficiarySummary, fetchBeneficiaryList } from "@/lib/inuka-pulse/api";
+import {
+  fetchBacktestReport, fetchFeatureImportance, fetchBeneficiarySummary,
+  fetchBeneficiaryList, fetchInukaSurvivalCurves, fetchOutcomeMetrics, fetchOutcomePredictions,
+} from "@/lib/inuka-pulse/api";
 import { FeatureImportanceChart } from "@/components/feature-importance-chart";
 import { RiskDonutChart } from "@/components/risk-distribution-chart";
 import { BeneficiaryTable } from "./_components/beneficiary-table";
+import { SurvivalCurveChart } from "@/components/survival-curve-chart";
+import { OutcomeModelPanel } from "@/components/outcome-model-panel";
 import type { FeatureImportanceEntry } from "@/components/feature-importance-chart";
 
 /**
  * Analyst Dashboard — /dashboard/analytics
  *
- * Server Component: fetches backtest metrics, feature importance, and
- * beneficiary summary in parallel. Shows the technical ML view.
+ * Server Component: fetches backtest metrics, feature importance, beneficiary
+ * summary, survival curves, and outcome model data in parallel.
  */
 export default async function AnalyticsDashboardPage() {
   // ── Parallel fetches ───────────────────────────────────────────────────────
-  const [backtestResult, featureResult, summaryResult, listResult] = await Promise.allSettled([
+  const [backtestResult, featureResult, summaryResult, listResult, survivalResult, outcomeMetricsResult, outcomePredResult] = await Promise.allSettled([
     fetchBacktestReport(),
     fetchFeatureImportance(),
     fetchBeneficiarySummary(),
     fetchBeneficiaryList({ page: 0, size: 50 }),
+    fetchInukaSurvivalCurves(),
+    fetchOutcomeMetrics(),
+    fetchOutcomePredictions(),
   ]);
 
-  const backtest    = backtestResult.status === "fulfilled" ? backtestResult.value : null;
-  const featureData = featureResult.status  === "fulfilled" ? featureResult.value  : null;
-  const summary     = summaryResult.status  === "fulfilled" ? summaryResult.value  : null;
-  const listData    = listResult.status     === "fulfilled" ? listResult.value     : null;
+  const backtest        = backtestResult.status      === "fulfilled" ? backtestResult.value      : null;
+  const featureData     = featureResult.status       === "fulfilled" ? featureResult.value       : null;
+  const summary         = summaryResult.status       === "fulfilled" ? summaryResult.value       : null;
+  const listData        = listResult.status          === "fulfilled" ? listResult.value          : null;
+  const survivalData    = survivalResult.status      === "fulfilled" ? survivalResult.value      : null;
+  const outcomeMetrics  = outcomeMetricsResult.status === "fulfilled" ? outcomeMetricsResult.value : null;
+  const outcomePreds    = outcomePredResult.status   === "fulfilled" ? outcomePredResult.value   : null;
 
   // Feature importance: the endpoint returns an array directly
   const features: FeatureImportanceEntry[] = Array.isArray(featureData)
@@ -277,6 +289,35 @@ export default async function AnalyticsDashboardPage() {
             )}
           </CardContent>
         </Card>
+      </div>
+
+      {/* ── Survival Curves ─────────────────────────────────────────────────── */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base flex items-center gap-2">
+            <Activity className="size-4" />
+            Retention Survival Curves
+          </CardTitle>
+          <CardDescription className="text-xs">
+            Kaplan-Meier curves showing what percentage of beneficiaries remain
+            enrolled over time. Dashed line marks the 50% retention point.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          {survivalData ? (
+            <SurvivalCurveChart data={survivalData} />
+          ) : (
+            <div className="flex items-center justify-center h-48 text-muted-foreground text-sm">
+              No survival data — run <code className="font-mono text-xs ml-1">python -m src.diagnostics</code>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* ── Outcome Model ───────────────────────────────────────────────────── */}
+      <div className="space-y-2">
+        <h2 className="text-sm font-medium text-muted-foreground">Outcome Model — Completion Probability</h2>
+        <OutcomeModelPanel metrics={outcomeMetrics} predictions={outcomePreds} />
       </div>
 
       {/* ── Full beneficiary prediction table ──────────────────────────────── */}
