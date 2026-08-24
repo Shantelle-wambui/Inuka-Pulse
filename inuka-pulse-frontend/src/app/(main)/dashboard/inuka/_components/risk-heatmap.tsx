@@ -98,7 +98,7 @@ export function RiskHeatmap({ sites, fullView = false }: RiskHeatmapProps) {
                       {site.pressureSpikeCount > 0 && (
                         <span
                           className="absolute top-1 left-1.5 text-[10px] text-red-600 dark:text-red-400"
-                          title="Pressure spikes"
+                          title="Missed disbursements"
                         >
                           ⚡
                         </span>

@@ -60,12 +60,12 @@ function TopFeatureMiniBar({ topFeatures }: { topFeatures: string | null }) {
 
   const FEATURE_LABELS: Record<string, string> = {
     audit_finding_open_count:    "Open audit findings",
-    incident_severity_score_30d: "Severity score (30d)",
-    incident_count_30d:          "Incident count (30d)",
-    days_since_last_audit:       "Days since audit",
-    rejection_rate_30d:          "Rejection rate (30d)",
-    rejection_rate_7d:           "Rejection rate (7d)",
-    pressure_anomaly_count_14d:  "Pressure anomalies",
+    incident_severity_score_30d: "Concern severity score (30d)",
+    incident_count_30d:          "Concern count (30d)",
+    days_since_last_audit:       "Days since last review",
+    rejection_rate_30d:          "Missed session rate (30d)",
+    rejection_rate_7d:           "Missed session rate (7d)",
+    pressure_anomaly_count_14d:  "Missed disbursements",
   };
 
   const maxAbs = Math.max(...features.map((f) => Math.abs(f.contribution)));
@@ -134,7 +134,7 @@ export function ModelPredictionCard({ prediction }: ModelPredictionCardProps) {
         <div className="space-y-1">
           <p className="text-xs text-muted-foreground flex items-center gap-1">
             <TrendingUp className="size-3" />
-            Critical incident probability (next 7 days)
+            Critical concern probability (next 7 days)
           </p>
           <ProbabilityBar prob={prediction.probability} band={band} />
         </div>

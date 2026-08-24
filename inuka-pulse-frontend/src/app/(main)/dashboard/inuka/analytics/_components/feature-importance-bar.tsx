@@ -12,12 +12,12 @@ interface FeatureImportanceBarProps {
 // Human-readable feature name mapping
 const FEATURE_LABELS: Record<string, string> = {
   audit_finding_open_count:       "Open Audit Findings",
-  incident_severity_score_30d:    "Severity Score (30d)",
-  incident_count_30d:             "Incident Count (30d)",
-  days_since_last_audit:          "Days Since Last Audit",
-  rejection_rate_30d:             "Rejection Rate (30d)",
-  rejection_rate_7d:              "Rejection Rate (7d)",
-  pressure_anomaly_count_14d:     "Pressure Anomalies (14d)",
+  incident_severity_score_30d:    "Concern Severity Score (30d)",
+  incident_count_30d:             "Concern Count (30d)",
+  days_since_last_audit:          "Days Since Last Review",
+  rejection_rate_30d:             "Missed Sessions (30d)",
+  rejection_rate_7d:              "Missed Sessions (7d)",
+  pressure_anomaly_count_14d:     "Missed Disbursements (14d)",
 };
 
 const chartConfig = {

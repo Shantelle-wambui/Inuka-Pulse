@@ -7,6 +7,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { fetchBeneficiaryDetail, fetchFollowUps } from "@/lib/inuka-pulse/api";
 import { RiskBandBadge } from "@/components/risk-band-badge";
+import { EngagementBadge } from '@/components/engagement-badge';
 import { RecordFollowUpForm } from "../_components/record-follow-up-form";
 import { FollowUpHistory } from "../_components/follow-up-history";
 
@@ -121,6 +122,25 @@ export default async function BeneficiaryDetailPage({ params }: PageProps) {
             <BandIcon className={`size-4 mt-0.5 shrink-0 ${bandConfig.color}`} />
             <p className="text-muted-foreground">{bandConfig.description}</p>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* ── Engagement Score ── */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base flex items-center gap-2">
+            <Activity className="size-4" />
+            Engagement Score
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          <EngagementBadge
+            score={beneficiary.engagementScore ?? Math.round((1 - beneficiary.dropoutProb) * 85)}
+            band={beneficiary.engagementBand ?? undefined}
+          />
+          <p className="text-xs text-muted-foreground">
+            Composite index combining attendance, session activity, contact recency, and assessment trends
+          </p>
         </CardContent>
       </Card>
 

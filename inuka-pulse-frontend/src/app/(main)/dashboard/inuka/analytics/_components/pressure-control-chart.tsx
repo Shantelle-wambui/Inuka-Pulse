@@ -14,9 +14,9 @@ interface PressureControlChartProps {
 }
 
 const chartConfig = {
-  pressure: { color: "var(--color-slate-400)", label: "Pressure (PSI)" },
+  pressure: { color: "var(--color-slate-400)", label: "Risk signal" },
   ewma: { color: "var(--color-blue-500)", label: "EWMA" },
-  spike: { color: "var(--color-red-500)", label: "Spike (>1000 PSI)" },
+  spike: { color: "var(--color-red-500)", label: "Critical threshold breach" },
 } satisfies ChartConfig;
 
 const SITE_LABELS: Record<string, string> = {
@@ -61,7 +61,7 @@ export function PressureControlChart({ data }: PressureControlChartProps) {
       <CardHeader className="pb-2">
         <div className="flex items-start justify-between gap-2">
           <div>
-            <CardTitle className="text-sm font-medium">EWMA Pressure Control Chart</CardTitle>
+            <CardTitle className="text-sm font-medium">EWMA Engagement Drift Monitor</CardTitle>
             <CardDescription className="text-xs">
               Statistical drift detectable before hard breach (λ={data.ewma_lambda}, L={data.ewma_L}σ)
             </CardDescription>
@@ -99,7 +99,7 @@ export function PressureControlChart({ data }: PressureControlChartProps) {
               tickLine={false}
               tick={{ fontSize: 11 }}
               width={40}
-              label={{ value: "PSI", angle: -90, position: "insideLeft", fontSize: 11 }}
+              label={{ value: "Score", angle: -90, position: "insideLeft", fontSize: 11 }}
             />
             <ChartTooltip
               content={
@@ -114,7 +114,7 @@ export function PressureControlChart({ data }: PressureControlChartProps) {
                     }
                   }}
                   formatter={(val, name) => [
-                    typeof val === "number" ? `${val.toFixed(1)} PSI` : val,
+                    typeof val === "number" ? `${val.toFixed(1)}` : val,
                     name,
                   ]}
                 />
@@ -125,7 +125,7 @@ export function PressureControlChart({ data }: PressureControlChartProps) {
             <ReferenceLine y={ucl} stroke="var(--color-orange-400)" strokeDasharray="4 2" strokeWidth={1.5} label={{ value: "UCL", fontSize: 10, fill: "var(--color-orange-400)" }} />
             <ReferenceLine y={lcl} stroke="var(--color-orange-400)" strokeDasharray="4 2" strokeWidth={1.5} label={{ value: "LCL", fontSize: 10, fill: "var(--color-orange-400)" }} />
             {/* Hard spike threshold */}
-            <ReferenceLine y={1000} stroke="var(--color-red-500)" strokeDasharray="6 3" strokeWidth={1.5} label={{ value: "1000 PSI", fontSize: 10, fill: "var(--color-red-500)" }} />
+            <ReferenceLine y={1000} stroke="var(--color-red-500)" strokeDasharray="6 3" strokeWidth={1.5} label={{ value: "Critical", fontSize: 10, fill: "var(--color-red-500)" }} />
 
             {/* Raw pressure — thin, muted */}
             <Line
@@ -155,7 +155,7 @@ export function PressureControlChart({ data }: PressureControlChartProps) {
         {/* Stats row */}
         <div className="rounded-md bg-muted px-3 py-2 text-xs grid grid-cols-3 gap-2">
           <div>
-            <p className="text-muted-foreground">Spikes detected</p>
+            <p className="text-muted-foreground">Breaches detected</p>
             <p className="font-semibold text-red-600 dark:text-red-400 tabular-nums">{chart.n_spikes}</p>
           </div>
           <div>
@@ -170,7 +170,7 @@ export function PressureControlChart({ data }: PressureControlChartProps) {
           </div>
         </div>
         <p className="text-xs text-muted-foreground">
-          Fleet average: drift detectable{" "}
+          Programme-wide average: drift detectable{" "}
           <span className="font-medium text-foreground">{data.fleet_avg_lead_time_days} days</span>{" "}
           before a hard breach
         </p>

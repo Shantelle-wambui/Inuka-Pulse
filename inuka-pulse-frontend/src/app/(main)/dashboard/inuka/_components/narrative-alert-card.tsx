@@ -125,7 +125,7 @@ const STATUS_CONFIG: Record<string, { label: string; dot: string; text: string }
 const SEGMENT_LABELS: Record<string, string> = {
   "⚠":  "Risk Signal",
   "🚨": "Incident Alert",
-  "🔴": "Critical Incident",
+  "🔴": "Critical Concern",
   "📋": "Compliance Status",
   "⚑":  "Legal / Watch List",
   "⚡": "Telemetry Corroboration",

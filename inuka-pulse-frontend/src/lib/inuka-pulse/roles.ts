@@ -54,28 +54,91 @@ export function getRoleLabel(role: string): string {
 /**
  * Route access control — which roles can access each protected route prefix.
  * RouteGuard uses this to redirect unauthorised users.
+ *
+ * Rules:
+ *   - More specific paths are checked first (startsWith matching)
+ *   - Paths not listed here are accessible to all authenticated users
+ *   - Admin always has access (included in every rule)
  */
 export const ROUTE_ROLES: { path: string; roles: string[] }[] = [
+  // Executive views — Director + Admin only
   {
     path: "/dashboard/director",
     roles: [ROLES.PROGRAMME_DIRECTOR, ROLES.ADMIN],
   },
+  // Field operations — Case Manager + Coordinator + Admin
   {
     path: "/dashboard/case-manager",
     roles: [ROLES.CASE_MANAGER, ROLES.ADMIN],
   },
   {
+    path: "/dashboard/field",
+    roles: [ROLES.CASE_MANAGER, ROLES.ADMIN],
+  },
+  // Analytics — Analyst + ML Admin + Admin (Director gets specific pages via Command Center)
+  {
+    path: "/dashboard/analytics/disbursement-compliance",
+    roles: [ROLES.ANALYST, ROLES.ML_ADMIN, ROLES.ADMIN, ROLES.PROGRAMME_DIRECTOR],
+  },
+  {
     path: "/dashboard/analytics",
     roles: [ROLES.ANALYST, ROLES.ML_ADMIN, ROLES.ADMIN],
   },
+  // ML Intelligence — Analyst + ML Admin + Admin
   {
     path: "/dashboard/ml-admin",
     roles: [ROLES.ANALYST, ROLES.ML_ADMIN, ROLES.ADMIN],
   },
+  // Resource Allocations — Analyst + Director + Admin (Director approves)
+  {
+    path: "/dashboard/allocations",
+    roles: [ROLES.ANALYST, ROLES.ML_ADMIN, ROLES.ADMIN, ROLES.PROGRAMME_DIRECTOR],
+  },
+  // Early Warning — Director + Case Manager + Analyst + Coordinator + Admin
+  {
+    path: "/dashboard/early-warning",
+    roles: [ROLES.PROGRAMME_DIRECTOR, ROLES.ADMIN, ROLES.CASE_MANAGER, ROLES.ANALYST],
+  },
+  // Programme Operations — Director + Case Manager + Coordinator + Admin
+  {
+    path: "/dashboard/operations",
+    roles: [ROLES.PROGRAMME_DIRECTOR, ROLES.ADMIN, ROLES.CASE_MANAGER],
+  },
+  // Workforce — Director + Coordinator + Admin
+  {
+    path: "/dashboard/workforce",
+    roles: [ROLES.PROGRAMME_DIRECTOR, ROLES.ADMIN],
+  },
+  // Admin pages — Admin only
+  {
+    path: "/dashboard/users",
+    roles: [ROLES.ADMIN],
+  },
+  {
+    path: "/dashboard/roles",
+    roles: [ROLES.ADMIN],
+  },
+  {
+    path: "/dashboard/admin",
+    roles: [ROLES.ADMIN],
+  },
   // Shared sections accessible to all authenticated users
   {
     path: "/dashboard/inuka",
-    roles: [ROLES.PROGRAMME_DIRECTOR, ROLES.ADMIN, ROLES.ANALYST, ROLES.ML_ADMIN, ROLES.VIEWER],
+    roles: [ROLES.PROGRAMME_DIRECTOR, ROLES.ADMIN, ROLES.ANALYST, ROLES.ML_ADMIN, ROLES.CASE_MANAGER, ROLES.VIEWER],
+  },
+  // Programs, Impact, Reports, Donor — accessible to Director + Admin + Donor
+  {
+    path: "/dashboard/programs",
+    roles: [ROLES.PROGRAMME_DIRECTOR, ROLES.ADMIN],
+  },
+  {
+    path: "/dashboard/impact",
+    roles: [ROLES.PROGRAMME_DIRECTOR, ROLES.ADMIN],
+  },
+  {
+    path: "/dashboard/donor-portal",
+    roles: [ROLES.PROGRAMME_DIRECTOR, ROLES.ADMIN],
   },
 ];
 
