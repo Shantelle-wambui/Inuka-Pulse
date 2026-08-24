@@ -779,3 +779,91 @@ export async function fetchBacktestReport(): Promise<BacktestReport> {
   if (!res.ok) throw new Error(await parseErrorMessage(res));
   return res.json();
 }
+
+// ─── Director Deeper Views ────────────────────────────────────────────────────
+
+export interface RiskTrendSeries {
+  band: "Active" | "At-Risk" | "Disengaged" | "Dropout";
+  data: number[];
+}
+
+export interface RiskTrend {
+  dates: string[];          // ["2026-08-01", "2026-08-08", ...]
+  snapshotCount: number;
+  series: RiskTrendSeries[];
+  hasMultipleSnapshots: boolean;
+}
+
+export interface InterventionSummary {
+  totalFollowUps: number;
+  uniqueBeneficiariesContacted: number;
+  last30Days: number;
+  byOutcome: Record<string, number>;
+  byContactType: Record<string, number>;
+  escalatedCount: number;
+}
+
+export interface WelfareSummary {
+  totalOpen: number;
+  totalClosed: number;
+  total: number;
+  openRate: string;
+}
+
+export interface DirectorOverview {
+  riskTrend: RiskTrend;
+  interventions: InterventionSummary;
+  welfareConcerns: WelfareSummary;
+}
+
+/**
+ * GET /api/director/overview
+ * All Phase 4 Director data in one call.
+ */
+export async function fetchDirectorOverview(): Promise<DirectorOverview> {
+  const res = await fetch(
+    `${requireApiBase()}/api/director/overview`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/director/risk-trend
+ * Band counts per prediction snapshot date.
+ */
+export async function fetchRiskTrend(): Promise<RiskTrend> {
+  const res = await fetch(
+    `${requireApiBase()}/api/director/risk-trend`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/director/interventions
+ * Programme-level follow-up statistics.
+ */
+export async function fetchInterventionSummary(): Promise<InterventionSummary> {
+  const res = await fetch(
+    `${requireApiBase()}/api/director/interventions`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/director/welfare-concerns
+ * Open/closed welfare concern counts.
+ */
+export async function fetchWelfareSummary(): Promise<WelfareSummary> {
+  const res = await fetch(
+    `${requireApiBase()}/api/director/welfare-concerns`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}

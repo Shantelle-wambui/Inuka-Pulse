@@ -99,6 +99,11 @@ public class SecurityConfig {
                 // Role enforcement is layered on top via @PreAuthorize in each controller.
                 // ══════════════════════════════════════════════════════════════
                 .requestMatchers("/api/beneficiaries/**").authenticated()
+
+                // ══════════════════════════════════════════════════════════════
+                // DIRECTOR DEEPER VIEWS — authenticated; role checks via @PreAuthorize
+                // ══════════════════════════════════════════════════════════════
+                .requestMatchers("/api/director/**").authenticated()
                 
                 // ══════════════════════════════════════════════════════════════
                 // PROGRAM & DONOR MANAGEMENT
