@@ -4,25 +4,26 @@ import {
   fetchBeneficiarySummary,
   fetchBreakdownByCounty,
   fetchBreakdownByPillar,
+  fetchTopRisk,
   type BeneficiarySummary,
 } from "@/lib/inuka-pulse/api";
 import { RiskGroupedBarChart, RiskDonutChart } from "@/components/risk-distribution-chart";
+import { DirectorAtRiskPanel } from "./_components/at-risk-panel";
 
 /**
  * Programme Director Dashboard — /dashboard/director
  *
- * Server Component: fetches KPI summary, county breakdown, and pillar
- * breakdown in parallel from the Spring Boot API, then renders the page.
- *
- * If the backend is unreachable or the ETL has not seeded data yet,
- * graceful fallbacks are shown so the page never hard-crashes.
+ * Server Component: fetches KPI summary, county/pillar breakdowns, and
+ * top at-risk + dropout beneficiaries in parallel.
  */
 export default async function DirectorDashboardPage() {
   // ── Parallel data fetches ──────────────────────────────────────────────────
-  const [summaryResult, countyResult, pillarResult] = await Promise.allSettled([
+  const [summaryResult, countyResult, pillarResult, dropoutResult, atRiskResult] = await Promise.allSettled([
     fetchBeneficiarySummary(),
     fetchBreakdownByCounty(),
     fetchBreakdownByPillar(),
+    fetchTopRisk("Dropout", 10),
+    fetchTopRisk("At-Risk", 10),
   ]);
 
   const summary: BeneficiarySummary | null =
@@ -33,6 +34,9 @@ export default async function DirectorDashboardPage() {
 
   const pillarData: Record<string, Record<string, number>> =
     pillarResult.status === "fulfilled" ? pillarResult.value : {};
+
+  const topDropout = dropoutResult.status === "fulfilled" ? dropoutResult.value : [];
+  const topAtRisk  = atRiskResult.status  === "fulfilled" ? atRiskResult.value  : [];
 
   const hasData = summary !== null && summary.total > 0;
 
@@ -235,6 +239,14 @@ export default async function DirectorDashboardPage() {
           )}
         </CardContent>
       </Card>
+
+      {/* ── Top at-risk beneficiaries ───────────────────────────────────────── */}
+      <div className="space-y-2">
+        <h2 className="text-sm font-medium text-muted-foreground">
+          Beneficiaries needing attention
+        </h2>
+        <DirectorAtRiskPanel atRisk={topAtRisk} dropout={topDropout} />
+      </div>
 
       {/* ── Available filters info ──────────────────────────────────────────── */}
       {hasData && (summary!.counties.length > 0 || summary!.pillars.length > 0) && (
