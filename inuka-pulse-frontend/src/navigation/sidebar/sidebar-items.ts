@@ -25,6 +25,8 @@ import {
   Layers,
   DollarSign,
   TrendingUp,
+  Settings,
+  FileText,
 } from "lucide-react";
 
 export type NavBadge = "new" | "soon";
@@ -122,6 +124,13 @@ export const sidebarItems: NavGroup[] = [
         title: "Impact & Reach",
         url: "/dashboard/impact",
         icon: Target,
+        badge: "new",
+      },
+      {
+        id: "reports",
+        title: "Reports",
+        url: "/dashboard/reports",
+        icon: FileText,
         badge: "new",
       },
     ],
@@ -311,6 +320,13 @@ export const sidebarItems: NavGroup[] = [
         title: "Roles & Permissions",
         url: "/dashboard/roles",
         icon: ShieldCheck,
+        roles: ["Admin"],
+      },
+      {
+        id: "admin-utilities",
+        title: "Admin Utilities",
+        url: "/dashboard/admin",
+        icon: Settings,
         roles: ["Admin"],
       },
     ],
