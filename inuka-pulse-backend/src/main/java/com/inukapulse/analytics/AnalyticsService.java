@@ -40,6 +40,7 @@ public class AnalyticsService {
     private static final String CONTROL_CHART_FILE    = "inuka_control_chart_data.json";
     private static final String CORRELATION_FILE      = "inuka_correlation_data.json";
     private static final String FEATURE_IMPORT_FILE   = "inuka_feature_importance.json";
+    private static final String BACKTEST_FILE         = "inuka_backtest_report.json";
     private static final String ROI_REFERENCE_FILE    = "inuka_roi_reference.json";
     private static final String ROI_SIMULATION_FILE   = "roi_simulation_result.json";
     private static final String ROI_REFERENCE_DIR     = "data/reference";
@@ -186,6 +187,15 @@ public class AnalyticsService {
 
     public ResponseEntity<String> getFeatureImportance() {
         return readJson(FEATURE_IMPORT_FILE);
+    }
+
+    /**
+     * Model backtest report — precision, recall, F1, train/test split info.
+     * Sourced from inuka_backtest_report.json (pipeline output).
+     * Used by the Analyst dashboard model performance card.
+     */
+    public ResponseEntity<String> getBacktest() {
+        return readJson(BACKTEST_FILE);
     }
 
     public ResponseEntity<String> getRoiReferenceCase() {

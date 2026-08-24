@@ -158,4 +158,13 @@ public class AnalyticsController {
     public ResponseEntity<String> getFeatureImportance() {
         return analyticsService.getFeatureImportance();
     }
+
+    /**
+     * Model backtest report — precision, recall, F1, train/test split,
+     * positive rate, and split date. Used by the Analyst dashboard.
+     */
+    @GetMapping("/backtest")
+    public ResponseEntity<String> getBacktest() {
+        return analyticsService.getBacktest();
+    }
 }

@@ -44,14 +44,18 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         try {
             var claims = jwtUtil.parseToken(token);
-            String email = claims.getSubject();
-            String role  = claims.get("role", String.class);
+            String email  = claims.getSubject();
+            String role   = claims.get("role", String.class);
+            Long   userId = claims.get("userId", Long.class);
 
             var auth = new UsernamePasswordAuthenticationToken(
                     email,
                     null,
                     List.of(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase().replace(" ", "_")))
             );
+            // Store userId as details so controllers can retrieve it via
+            // ((UsernamePasswordAuthenticationToken) auth).getDetails()
+            auth.setDetails(userId);
             SecurityContextHolder.getContext().setAuthentication(auth);
         } catch (Exception ignored) {
             // Invalid token — continue unauthenticated

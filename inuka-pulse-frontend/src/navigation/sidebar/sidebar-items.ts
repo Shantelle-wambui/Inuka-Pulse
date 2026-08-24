@@ -27,6 +27,10 @@ import {
   TrendingUp,
   Settings,
   FileText,
+  LayoutDashboard,
+  UserCircle,
+  FlaskConical,
+  Database,
 } from "lucide-react";
 
 export type NavBadge = "new" | "soon";
@@ -71,19 +75,27 @@ export interface NavGroup {
 }
 
 export const sidebarItems: NavGroup[] = [
-  // ── 1. Inuka Pulse — Command Center ─────────────────────────────────────────
+
+  // ── 1. Programme Director — Executive Dashboard ───────────────────────────
   {
     id: 1,
-    label: "Command Center",
+    label: "Programme Overview",
+    requiredRoles: ["Programme Director", "Admin"],
     items: [
       {
-        id: "inuka",
-        title: "Program Overview",
+        id: "director-dashboard",
+        title: "Executive Dashboard",
+        url: "/dashboard/director",
+        icon: LayoutDashboard,
+      },
+      {
+        id: "inuka-overview",
+        title: "Programme Intelligence",
         icon: ShieldAlert,
         subItems: [
           {
-            id: "inuka-overview",
-            title: "Dashboard",
+            id: "inuka-main",
+            title: "Programme Dashboard",
             url: "/dashboard/inuka",
           },
           {
@@ -136,10 +148,65 @@ export const sidebarItems: NavGroup[] = [
     ],
   },
 
-  // ── 2. Program Operations ────────────────────────────────────────────────────
+  // ── 2. Case Manager — Operational Caseload ────────────────────────────────
   {
     id: 2,
-    label: "Program Operations",
+    label: "My Caseload",
+    requiredRoles: ["Case Manager", "Admin"],
+    items: [
+      {
+        id: "case-manager-dashboard",
+        title: "My Dashboard",
+        url: "/dashboard/case-manager",
+        icon: UserCircle,
+      },
+      {
+        id: "field-ops",
+        title: "Field Operations",
+        icon: MapPin,
+        subItems: [
+          {
+            id: "inuka-tasks",
+            title: "My Visit Tasks",
+            url: "/dashboard/inuka/my-tasks",
+            icon: ListTodo,
+          },
+          {
+            id: "nearby-alerts",
+            title: "Nearby At-Risk",
+            url: "/dashboard/field/nearby-alerts",
+            icon: AlertTriangle,
+            badge: "new",
+          },
+        ],
+      },
+      {
+        id: "beneficiary-mgmt",
+        title: "Beneficiary Management",
+        icon: ShieldCheck,
+        subItems: [
+          {
+            id: "inuka-hazards",
+            title: "Welfare Concerns",
+            url: "/dashboard/inuka/hazards",
+            icon: TriangleAlert,
+          },
+          {
+            id: "inuka-capas",
+            title: "Follow-up Actions",
+            url: "/dashboard/inuka/capas",
+            icon: ClipboardCheck,
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── 3. Programme Operations — shared for Director + Admin ─────────────────
+  {
+    id: 3,
+    label: "Programme Operations",
+    requiredRoles: ["Programme Director", "Admin", "Coordinator"],
     items: [
       {
         id: "hse-ops",
@@ -147,23 +214,21 @@ export const sidebarItems: NavGroup[] = [
         icon: ShieldCheck,
         subItems: [
           {
-            id: "inuka-hazards",
-            title: "Escalation Reports",
+            id: "dir-hazards",
+            title: "Welfare Concerns",
             url: "/dashboard/inuka/hazards",
             icon: TriangleAlert,
-            roles: ["Admin", "Program Director", "Field Officer", "Analyst", "Coordinator"],
           },
           {
-            id: "inuka-capas",
+            id: "dir-capas",
             title: "Intervention Plans",
             url: "/dashboard/inuka/capas",
             icon: ClipboardCheck,
-            roles: ["Admin", "Program Director", "Field Officer", "Analyst", "Coordinator"],
           },
         ],
       },
       {
-        id: "maintenance",
+        id: "disbursements",
         title: "Disbursements",
         icon: Wrench,
         subItems: [
@@ -182,40 +247,18 @@ export const sidebarItems: NavGroup[] = [
           },
         ],
       },
-      {
-        id: "field-ops",
-        title: "Field Operations",
-        icon: MapPin,
-        subItems: [
-          {
-            id: "inuka-tasks",
-            title: "My Visit Tasks",
-            url: "/dashboard/inuka/my-tasks",
-            icon: ListTodo,
-            roles: ["Field Officer"],
-          },
-          {
-            id: "nearby-alerts",
-            title: "Nearby At-Risk",
-            url: "/dashboard/field/nearby-alerts",
-            icon: AlertTriangle,
-            badge: "new",
-            roles: ["Field Officer", "Coordinator"],
-          },
-        ],
-      },
     ],
   },
 
-  // ── 3. Program Staff ─────────────────────────────────────────────────────────
+  // ── 4. Programme Staff — Director + Admin only ────────────────────────────
   {
-    id: 3,
-    label: "Program Staff",
-    requiredRoles: ["Admin", "Program Director", "Coordinator"],
+    id: 4,
+    label: "Programme Staff",
+    requiredRoles: ["Admin", "Programme Director", "Coordinator"],
     items: [
       {
         id: "technicians",
-        title: "Field Officers",
+        title: "Case Managers",
         url: "/dashboard/workforce/technicians",
         icon: UserCog,
         badge: "new",
@@ -230,12 +273,18 @@ export const sidebarItems: NavGroup[] = [
     ],
   },
 
-  // ── 4. Predictive Intelligence ───────────────────────────────────────────────
+  // ── 5. Analyst — ML & Data Analytics ─────────────────────────────────────
   {
-    id: 4,
-    label: "Predictive Intelligence",
-    requiredRoles: ["Admin", "ML Admin", "Analyst"],
+    id: 5,
+    label: "ML & Analytics",
+    requiredRoles: ["Analyst", "ML Admin", "Admin"],
     items: [
+      {
+        id: "analytics-dashboard",
+        title: "Analytics Dashboard",
+        url: "/dashboard/analytics",
+        icon: BarChart2,
+      },
       {
         id: "ml-admin",
         title: "Dropout Model",
@@ -278,6 +327,25 @@ export const sidebarItems: NavGroup[] = [
         ],
       },
       {
+        id: "analytics-data",
+        title: "Data & Features",
+        icon: Database,
+        subItems: [
+          {
+            id: "analytics-survival",
+            title: "Survival Curves",
+            url: "/dashboard/inuka/analytics",
+            icon: FlaskConical,
+          },
+          {
+            id: "analytics-correlation",
+            title: "Feature Correlation",
+            url: "/dashboard/inuka/analytics",
+            icon: BarChart2,
+          },
+        ],
+      },
+      {
         id: "allocations",
         title: "Resource Allocations",
         url: "/dashboard/allocations",
@@ -287,11 +355,11 @@ export const sidebarItems: NavGroup[] = [
     ],
   },
 
-  // ── 5. Donor Portal ──────────────────────────────────────────────────────────
+  // ── 6. Donor Portal ──────────────────────────────────────────────────────────
   {
-    id: 5,
+    id: 6,
     label: "Donor Portal",
-    requiredRoles: ["Admin", "Program Director", "Donor"],
+    requiredRoles: ["Admin", "Programme Director"],
     items: [
       {
         id: "donor-portal",
@@ -303,31 +371,29 @@ export const sidebarItems: NavGroup[] = [
     ],
   },
 
-  // ── 6. Accounts ──────────────────────────────────────────────────────────────
+  // ── 7. Accounts — Admin only ──────────────────────────────────────────────
   {
-    id: 6,
+    id: 7,
     label: "Accounts",
+    requiredRoles: ["Admin"],
     items: [
       {
         id: "users",
         title: "Users",
         url: "/dashboard/users",
         icon: Users,
-        roles: ["Admin"],
       },
       {
         id: "roles",
         title: "Roles & Permissions",
         url: "/dashboard/roles",
         icon: ShieldCheck,
-        roles: ["Admin"],
       },
       {
         id: "admin-utilities",
         title: "Admin Utilities",
         url: "/dashboard/admin",
         icon: Settings,
-        roles: ["Admin"],
       },
     ],
   },

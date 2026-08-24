@@ -123,11 +123,12 @@ public class SecurityConfig {
                 .requestMatchers("/api/capas/**").authenticated()
                 
                 // Work Orders (Field Visit Scheduling)
-                .requestMatchers(HttpMethod.POST, "/api/work-orders").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR", "COORDINATOR", "FIELD_OFFICER")
+                .requestMatchers(HttpMethod.POST, "/api/work-orders").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR", "COORDINATOR", "CASE_MANAGER")
                 .requestMatchers(HttpMethod.PATCH, "/api/work-orders/**").authenticated()
                 .requestMatchers(HttpMethod.GET, "/api/work-orders/**").authenticated()
                 
                 // Field Officers
+                // Case Manager profiles (formerly Field Officers — kept for structural compatibility)
                 .requestMatchers("/api/technicians/**").hasAnyRole("ADMIN", "PROGRAMME_DIRECTOR", "COORDINATOR")
                 
                 // ML Admin
