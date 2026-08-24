@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,15 +14,15 @@ import java.util.Map;
 /**
  * REST endpoints for beneficiary-level dropout risk predictions.
  *
- * Security:
- *   /summary      → Programme Director, Admin (programme-level overview)
- *   /breakdown/*  → Programme Director, Admin
- *   /list         → Programme Director, Analyst, Admin (full population view)
- *   /{id}         → Any authenticated user (individual lookup)
- *   /cohort/{id}  → Case Manager, Programme Director, Admin (caseload view)
- *
- * Field-level security (e.g. limiting Case Managers to their assigned cohort)
- * will be enforced in Phase 3 once officer-beneficiary assignment is built.
+ * Security model:
+ *   /summary             → Programme Director, Admin, Analyst, ML Admin
+ *   /breakdown/*         → Programme Director, Admin, Analyst, ML Admin
+ *   /list                → Programme Director, Analyst, Admin, ML Admin
+ *   /top-risk            → Programme Director, Admin, Analyst, ML Admin
+ *   /my-caseload         → Case Manager only (scoped to their cohort assignments)
+ *   /my-caseload/summary → Case Manager only
+ *   /cohort/{id}         → Authenticated (Case Manager assignment check inside)
+ *   /{id}                → Authenticated
  */
 @RestController
 @RequestMapping("/api/beneficiaries/predictions")
@@ -28,39 +30,22 @@ import java.util.Map;
 public class BeneficiaryPredictionController {
 
     private final BeneficiaryPredictionService service;
+    private final CaseloadService              caseloadService;
 
-    // ── Programme Director / Admin endpoints ─────────────────────────────────
+    // ── Programme Director / Admin / Analyst endpoints ────────────────────────
 
-    /**
-     * GET /api/beneficiaries/predictions/summary
-     *
-     * Returns band counts (total, active, atRisk, disengaged, dropout),
-     * last updated date, and available county/pillar filter values.
-     *
-     * Used by: Director KPI strip, Analyst overview.
-     */
     @GetMapping("/summary")
     @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'ADMIN', 'ANALYST', 'ML_ADMIN')")
     public ResponseEntity<Map<String, Object>> getSummary() {
         return ResponseEntity.ok(service.getSummary());
     }
 
-    /**
-     * GET /api/beneficiaries/predictions/breakdown/county
-     *
-     * Band breakdown per county — used by Director county comparison chart.
-     */
     @GetMapping("/breakdown/county")
     @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'ADMIN', 'ANALYST', 'ML_ADMIN')")
     public ResponseEntity<Map<String, Map<String, Long>>> getBreakdownByCounty() {
         return ResponseEntity.ok(service.getBreakdownByCounty());
     }
 
-    /**
-     * GET /api/beneficiaries/predictions/breakdown/pillar
-     *
-     * Band breakdown per pillar — used by Director pillar comparison chart.
-     */
     @GetMapping("/breakdown/pillar")
     @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'ADMIN', 'ANALYST', 'ML_ADMIN')")
     public ResponseEntity<Map<String, Map<String, Long>>> getBreakdownByPillar() {
@@ -69,9 +54,6 @@ public class BeneficiaryPredictionController {
 
     /**
      * GET /api/beneficiaries/predictions/top-risk?band=At-Risk&n=20
-     *
-     * Top N highest-risk beneficiaries for a given band.
-     * Used by Director "most at-risk" and "predicted dropout" panels.
      */
     @GetMapping("/top-risk")
     @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'ADMIN', 'ANALYST', 'ML_ADMIN')")
@@ -84,15 +66,9 @@ public class BeneficiaryPredictionController {
         return ResponseEntity.ok(results);
     }
 
-    // ── Full list (Analyst / Director) ────────────────────────────────────────
-
     /**
      * GET /api/beneficiaries/predictions/list
-     *      ?band=At-Risk&county=Nairobi&pillar=Scholarship&cohort=COHORT-SC-001
-     *      &page=0&size=50
-     *
-     * Paginated, filterable list of all beneficiary predictions.
-     * All query params are optional.
+     *      ?band=&county=&pillar=&cohort=&page=0&size=50
      */
     @GetMapping("/list")
     @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'ADMIN', 'ANALYST', 'ML_ADMIN')")
@@ -101,26 +77,70 @@ public class BeneficiaryPredictionController {
             @RequestParam(required = false) String county,
             @RequestParam(required = false) String pillar,
             @RequestParam(required = false) String cohort,
-            @RequestParam(defaultValue = "0")   int page,
-            @RequestParam(defaultValue = "50")  int size) {
+            @RequestParam(defaultValue = "0")  int page,
+            @RequestParam(defaultValue = "50") int size) {
         return ResponseEntity.ok(service.getList(band, county, pillar, cohort, page, size));
     }
 
-    // ── Case Manager caseload ─────────────────────────────────────────────────
+    // ── Case Manager: my caseload ─────────────────────────────────────────────
+
+    /**
+     * GET /api/beneficiaries/predictions/my-caseload
+     *
+     * Returns all beneficiaries in the cohorts assigned to the calling
+     * Case Manager, sorted by dropout probability (highest risk first).
+     *
+     * The userId is read from the JWT via the auth token's details field
+     * (set by JwtAuthFilter). This enforces field-level data scoping —
+     * a Case Manager can never see beneficiaries outside their assignments.
+     */
+    @GetMapping("/my-caseload")
+    @PreAuthorize("hasAnyRole('CASE_MANAGER', 'ADMIN')")
+    public ResponseEntity<List<BeneficiaryPredictionDto>> getMyCaseload(Authentication auth) {
+        Long userId = extractUserId(auth);
+        if (userId == null) return ResponseEntity.status(401).build();
+        return ResponseEntity.ok(caseloadService.getMyCaseload(userId));
+    }
+
+    /**
+     * GET /api/beneficiaries/predictions/my-caseload/summary
+     *
+     * KPI summary for the Case Manager's caseload:
+     * total, needsAttention, atRisk, active, cohorts, lastUpdated.
+     */
+    @GetMapping("/my-caseload/summary")
+    @PreAuthorize("hasAnyRole('CASE_MANAGER', 'ADMIN')")
+    public ResponseEntity<Map<String, Object>> getMyCaseloadSummary(Authentication auth) {
+        Long userId = extractUserId(auth);
+        if (userId == null) return ResponseEntity.status(401).build();
+        return ResponseEntity.ok(caseloadService.getMyCaseloadSummary(userId));
+    }
+
+    // ── Cohort view (with Case Manager assignment check) ──────────────────────
 
     /**
      * GET /api/beneficiaries/predictions/cohort/{cohortId}
      *
-     * All beneficiaries in a specific cohort, sorted high-risk first.
-     * Used by Case Manager dashboard caseload view.
-     *
-     * TODO Phase 3: enforce that the requesting Case Manager is assigned
-     * to this cohort. Currently any authenticated user can access any cohort.
+     * All beneficiaries in a cohort, sorted high-risk first.
+     * Case Managers are restricted to their assigned cohorts.
+     * Directors, Analysts, and Admins can access any cohort.
      */
     @GetMapping("/cohort/{cohortId}")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<List<BeneficiaryPredictionDto>> getByCohort(
-            @PathVariable String cohortId) {
+            @PathVariable String cohortId,
+            Authentication auth) {
+
+        // Case Managers: enforce cohort assignment
+        boolean isCaseManager = auth.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_CASE_MANAGER"));
+        if (isCaseManager) {
+            Long userId = extractUserId(auth);
+            if (userId == null || !caseloadService.isAssignedToCohort(userId, cohortId)) {
+                return ResponseEntity.status(403).build();
+            }
+        }
+
         return ResponseEntity.ok(service.getByCohort(cohortId));
     }
 
@@ -130,7 +150,7 @@ public class BeneficiaryPredictionController {
      * GET /api/beneficiaries/predictions/{beneficiaryId}
      *
      * Latest prediction for one beneficiary.
-     * Used by Case Manager beneficiary detail page.
+     * Used by the beneficiary detail page.
      */
     @GetMapping("/{beneficiaryId}")
     @PreAuthorize("isAuthenticated()")
@@ -139,5 +159,21 @@ public class BeneficiaryPredictionController {
         return service.getByBeneficiaryId(beneficiaryId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+
+    /**
+     * Extracts the userId stored in the JWT details by JwtAuthFilter.
+     * Returns null if the token doesn't carry a userId (shouldn't happen
+     * for tokens issued by this backend, but safe to handle).
+     */
+    private Long extractUserId(Authentication auth) {
+        if (auth instanceof UsernamePasswordAuthenticationToken token) {
+            Object details = token.getDetails();
+            if (details instanceof Long l) return l;
+            if (details instanceof Integer i) return i.longValue();
+        }
+        return null;
     }
 }
