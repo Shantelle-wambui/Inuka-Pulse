@@ -23,9 +23,10 @@ WORKDIR /app
 # Copy only the fat JAR from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Render injects PORT at runtime; default to 8080 for local docker run
-ENV PORT=8080
+# Railway/Docker injects SPRING_PROFILES_ACTIVE at runtime.
+# Shell form is used so the variable is evaluated when the container starts.
+ENV SPRING_PROFILES_ACTIVE=docker
 
-EXPOSE ${PORT}
+EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT java -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE} -jar app.jar

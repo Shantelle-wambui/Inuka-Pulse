@@ -1,7 +1,7 @@
 -- V4: Inuka Foundation default user accounts
 --
 -- All accounts use BCrypt password: sentinel@admin (cost 12)
--- Hash: $2a$12$KIx4bGEwAGCsz5qgmJXyuuNrphvYVrLpz8v2WJZeipLxpyaKxrRYi
+-- Hash: $2b$12$gzoLrXb6t2OKhgrIIc5LMOpkZF3ctPUPWBi2Q1YBS6rY4pXVIUcSq
 --
 -- Rotate passwords after first login in production.
 --
@@ -12,7 +12,7 @@ INSERT INTO app_user (name, email, password_hash, status, joined_at, role_id)
 SELECT
     u.name,
     u.email,
-    '$2a$12$KIx4bGEwAGCsz5qgmJXyuuNrphvYVrLpz8v2WJZeipLxpyaKxrRYi',
+    '$2b$12$gzoLrXb6t2OKhgrIIc5LMOpkZF3ctPUPWBi2Q1YBS6rY4pXVIUcSq',
     'Active',
     NOW(),
     r.id

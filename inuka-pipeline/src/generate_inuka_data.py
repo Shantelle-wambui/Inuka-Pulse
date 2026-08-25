@@ -56,7 +56,7 @@ DOCS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── Anchor date ───────────────────────────────────────────────────────────────
 TODAY = datetime(2026, 8, 21)
-START = TODAY - timedelta(days=180)   # 6-month window
+START = TODAY - timedelta(days=364)   # 12-month window (~52 weeks)
 
 # ── Domain constants ──────────────────────────────────────────────────────────
 PILLARS = ["Scholarship", "Plus", "Vocational", "Tech"]
@@ -118,6 +118,87 @@ KE_SURNAMES = [
     "Onyango", "Wangari", "Simiyu", "Musyoka", "Auma", "Mugo", "Nyambura",
     "Owino", "Kiprotich", "Chebet", "Mutinda", "Kiplagat", "Rotich",
 ]
+
+# ── Trajectory types for time-varying engagement ──────────────────────────────
+TRAJECTORY_TYPES = ["stable_active", "gradual_decline", "sudden_dropout",
+                    "chronic_at_risk", "recovering"]
+
+BAND_ORDER = ["Active", "At-Risk", "Disengaged", "Dropout"]
+
+
+def _build_trajectory_by_type(ttype: str, n_weeks: int = 52) -> list[str]:
+    """
+    Build a specific trajectory type. Called by build_trajectory after
+    the type is randomly selected.
+    """
+    if ttype == "stable_active":
+        return ["Active"] * n_weeks
+
+    if ttype == "chronic_at_risk":
+        settle = random.randint(3, 6)
+        return ["Active"] * settle + ["At-Risk"] * (n_weeks - settle)
+
+    if ttype == "recovering":
+        d1 = random.randint(3, 6)
+        d2 = random.randint(3, 6)
+        remaining = n_weeks - d1 - d2
+        if remaining < 0:
+            remaining = 0
+            d2 = n_weeks - d1
+        return ["Active"] * d1 + ["At-Risk"] * d2 + ["Active"] * remaining
+
+    if ttype == "sudden_dropout":
+        pre = n_weeks - random.randint(2, 4)
+        at_risk_weeks = n_weeks - pre - 1
+        if at_risk_weeks < 1:
+            at_risk_weeks = 1
+            pre = n_weeks - 2
+        return ["Active"] * pre + ["At-Risk"] * at_risk_weeks + ["Dropout"]
+
+    if ttype == "gradual_decline":
+        dwell = [random.randint(8, 16), random.randint(6, 12), random.randint(4, 8)]
+        bands = []
+        for band, d in zip(BAND_ORDER[:3], dwell):
+            bands += [band] * d
+            if len(bands) >= n_weeks:
+                return bands[:n_weeks]
+        bands += ["Dropout"] * (n_weeks - len(bands))
+        return bands[:n_weeks]
+
+    # Fallback
+    return ["Active"] * n_weeks
+
+
+def build_trajectory(is_high_risk: bool, n_weeks: int = 52) -> list[str]:
+    """
+    Generate a per-beneficiary weekly engagement trajectory.
+    High-risk cohorts have higher probability of decline/dropout trajectories.
+    """
+    weights = ([0.30, 0.35, 0.18, 0.12, 0.05] if is_high_risk
+               else [0.60, 0.15, 0.08, 0.12, 0.05])
+    ttype = random.choices(TRAJECTORY_TYPES, weights=weights)[0]
+    return _build_trajectory_by_type(ttype, n_weeks)
+
+
+def build_engagement_history(beneficiaries: list[dict]) -> list[dict]:
+    """
+    Expand each beneficiary's trajectory into weekly (beneficiary_id, week_start, band) records.
+    This is the ground-truth table the escalation label will be built from.
+    """
+    history = []
+    for ben in beneficiaries:
+        enroll_date = datetime.strptime(ben["enrollment_date"], "%Y-%m-%d").date()
+        trajectory = ben["trajectory"]
+        
+        for week_idx, band in enumerate(trajectory):
+            week_start = enroll_date + timedelta(weeks=week_idx)
+            history.append({
+                "beneficiary_id": ben["beneficiary_id"],
+                "week_start": week_start.strftime("%Y-%m-%d"),
+                "band": band,
+            })
+    
+    return history
 
 
 # ============================================================================
@@ -238,29 +319,21 @@ def build_beneficiaries(cohorts: list[dict]) -> list[dict]:
     for cohort in cohorts:
         is_high_risk = cohort["cohort_id"] in HIGH_RISK_COHORTS
         # High-risk cohorts get slightly smaller intake
-        n = random.randint(70, 110) if is_high_risk else random.randint(90, 130)
+        n = random.randint(220, 320) if is_high_risk else random.randint(260, 380)
         for _ in range(n):
             bid = f"BEN-{idx:05d}"
             enroll_date = rand_date(START, START + timedelta(days=30))
-            # Status distribution: high-risk cohorts have more dropouts/at-risk
-            if is_high_risk:
-                status = random.choices(
-                    ENGAGEMENT_LEVELS,
-                    weights=[0.35, 0.30, 0.20, 0.15]
-                )[0]
-            else:
-                status = random.choices(
-                    ENGAGEMENT_LEVELS,
-                    weights=[0.60, 0.22, 0.12, 0.06]
-                )[0]
+
+            # Generate trajectory; current_status = final week's band
+            trajectory = build_trajectory(is_high_risk, n_weeks=52)
+            status = trajectory[-1]
 
             dropout_date = None
             dropout_reason = None
             if status == "Dropout":
-                dropout_date = rand_date(
-                    enroll_date + timedelta(days=30),
-                    TODAY - timedelta(days=7),
-                ).strftime("%Y-%m-%d")
+                # Find first week where band became Dropout
+                dropout_week = next((i for i, b in enumerate(trajectory) if b == "Dropout"), len(trajectory) - 1)
+                dropout_date = enroll_date + timedelta(weeks=dropout_week)
                 dropout_reason = random.choice(DROPOUT_REASONS)
 
             beneficiaries.append({
@@ -273,9 +346,10 @@ def build_beneficiaries(cohorts: list[dict]) -> list[dict]:
                 "age":              random.randint(16, 28),
                 "enrollment_date":  enroll_date.strftime("%Y-%m-%d"),
                 "current_status":   status,
-                "dropout_date":     dropout_date,
+                "dropout_date":     dropout_date.strftime("%Y-%m-%d") if dropout_date else None,
                 "dropout_reason":   dropout_reason,
                 "phone":            f"+2547{random.randint(10000000, 99999999)}",
+                "trajectory":       trajectory,
             })
             idx += 1
     return beneficiaries
@@ -288,23 +362,44 @@ def build_beneficiaries(cohorts: list[dict]) -> list[dict]:
 def build_sessions(beneficiaries: list[dict]) -> list[dict]:
     sessions = []
     sid = 1
+
+    # Band-based attendance probabilities
+    BAND_ATTEND_RATES = {
+        "Active": 0.88,
+        "At-Risk": 0.65,
+        "Disengaged": 0.35,
+        "Dropout": 0.05,
+    }
+
     for ben in beneficiaries:
         enroll = datetime.strptime(ben["enrollment_date"], "%Y-%m-%d")
+        enroll_date = enroll.date()
         end_date = TODAY
         if ben["dropout_date"]:
             end_date = datetime.strptime(ben["dropout_date"], "%Y-%m-%d")
 
+        # Get trajectory (fallback to static status if missing)
+        trajectory = ben.get("trajectory", [ben["current_status"]] * 26)
+        is_high_risk = ben["cohort_id"] in HIGH_RISK_COHORTS
+
         # Generate weekly session slots
         cursor = enroll
-        is_high_risk = ben["cohort_id"] in HIGH_RISK_COHORTS
         while cursor <= end_date:
             session_id = f"SES-{sid:07d}"
-            # Attendance probability: high-risk cohorts skip more
-            base_attend = 0.55 if is_high_risk else 0.82
-            if ben["current_status"] == "Disengaged":
-                base_attend *= 0.5
-            elif ben["current_status"] == "At-Risk":
-                base_attend *= 0.7
+            session_date = cursor.date()
+
+            # Determine which week this session falls in
+            weeks_since_enroll = (session_date - enroll_date).days // 7
+            week_idx = min(weeks_since_enroll, len(trajectory) - 1)
+            week_idx = max(0, week_idx)
+            current_band = trajectory[week_idx]
+
+            # Attendance probability based on current band
+            base_attend = BAND_ATTEND_RATES.get(current_band, 0.50)
+
+            # High-risk cohorts have slightly lower baseline
+            if is_high_risk:
+                base_attend *= 0.92
 
             attended = random.random() < base_attend
             attendance_val = "Present" if attended else "Absent"
@@ -342,26 +437,73 @@ def build_sessions(beneficiaries: list[dict]) -> list[dict]:
 def build_field_visits(beneficiaries: list[dict]) -> list[dict]:
     visits = []
     vid = 1
-    # One or two visits per active/at-risk beneficiary over 6 months
+
+    # Outcome weights by band
+    BAND_OUTCOME_WEIGHTS = {
+        "Active":     [0.70, 0.18, 0.07, 0.05],  # Verified, Partial, No Contact, Referred
+        "At-Risk":    [0.45, 0.25, 0.20, 0.10],
+        "Disengaged": [0.25, 0.25, 0.35, 0.15],
+        "Dropout":    [0.10, 0.15, 0.60, 0.15],
+    }
+
+    # Visit count weights by band
+    BAND_VISIT_WEIGHTS = {
+        "Active":     [0.10, 0.45, 0.35, 0.10],
+        "At-Risk":    [0.15, 0.40, 0.30, 0.15],
+        "Disengaged": [0.30, 0.40, 0.20, 0.10],
+        "Dropout":    [0.50, 0.35, 0.10, 0.05],
+    }
+
     for ben in beneficiaries:
-        if ben["current_status"] == "Dropout":
+        trajectory = ben.get("trajectory", [ben["current_status"]] * 26)
+        enroll_date = datetime.strptime(ben["enrollment_date"], "%Y-%m-%d").date()
+        is_high_risk = ben["cohort_id"] in HIGH_RISK_COHORTS
+
+        # Find last engaged week (before Dropout)
+        last_engaged_week = len(trajectory)
+        for i, band in enumerate(trajectory):
+            if band == "Dropout":
+                last_engaged_week = i
+                break
+
+        # Skip if they dropped out immediately
+        if last_engaged_week == 0:
             continue
 
-        is_high_risk = ben["cohort_id"] in HIGH_RISK_COHORTS
-        n_visits = random.choices(
-            [0, 1, 2, 3],
-            weights=[0.30, 0.40, 0.20, 0.10] if is_high_risk
-                    else [0.10, 0.45, 0.35, 0.10]
-        )[0]
+        # Calculate the date range for visits
+        end_visit_date = min(TODAY.date(), enroll_date + timedelta(weeks=last_engaged_week))
+        if end_visit_date <= START.date():
+            continue
+
+        # Use average band over their engaged period for visit count
+        engaged_bands = trajectory[:last_engaged_week] if last_engaged_week > 0 else trajectory[:1]
+        avg_band = max(set(engaged_bands), key=engaged_bands.count)  # Mode of bands
+
+        visit_weights = BAND_VISIT_WEIGHTS.get(avg_band, [0.20, 0.40, 0.25, 0.15])
+        if is_high_risk:
+            # Shift weights toward fewer visits for high-risk
+            visit_weights = [w * 1.2 if i < 2 else w * 0.8 for i, w in enumerate(visit_weights)]
+
+        n_visits = random.choices([0, 1, 2, 3], weights=visit_weights)[0]
 
         for _ in range(n_visits):
             fvid = f"FV-{vid:06d}"
-            visit_date = rand_date(START, TODAY - timedelta(days=1))
-            outcome_val = random.choices(
-                VISIT_OUTCOMES,
-                weights=[0.30, 0.25, 0.30, 0.15] if is_high_risk
-                        else [0.65, 0.20, 0.10, 0.05]
-            )[0]
+            visit_date_dt = rand_date(START, datetime.combine(end_visit_date, datetime.min.time()) - timedelta(days=1))
+            visit_date = visit_date_dt.date()
+
+            # Determine the band at visit time
+            weeks_since_enroll = (visit_date - enroll_date).days // 7
+            week_idx = min(weeks_since_enroll, len(trajectory) - 1)
+            week_idx = max(0, week_idx)
+            current_band = trajectory[week_idx]
+
+            outcome_weights = BAND_OUTCOME_WEIGHTS.get(current_band, [0.45, 0.25, 0.20, 0.10])
+            if is_high_risk:
+                # Shift toward worse outcomes for high-risk
+                outcome_weights = [outcome_weights[0] * 0.7, outcome_weights[1],
+                                   outcome_weights[2] * 1.3, outcome_weights[3] * 1.2]
+
+            outcome_val = random.choices(VISIT_OUTCOMES, weights=outcome_weights)[0]
 
             outcome_label = dirty_label(
                 outcome_val,
@@ -374,7 +516,7 @@ def build_field_visits(beneficiaries: list[dict]) -> list[dict]:
                 "visit_id":          fvid,
                 "beneficiary_id":    ben["beneficiary_id"],
                 "cohort_id":         ben["cohort_id"],
-                "visit_date":        dirty_date(visit_date, fvid,
+                "visit_date":        dirty_date(visit_date_dt, fvid,
                                                 "fact_field_visits", "visit_date"),
                 "officer_name":      ke_name(),
                 "visit_outcome":     outcome_label,
@@ -473,19 +615,52 @@ def build_assessments(beneficiaries: list[dict]) -> list[dict]:
     aid = 1
     # Two assessment windows per beneficiary (~3 months apart)
     for ben in beneficiaries:
-        if ben["current_status"] == "Dropout":
-            continue
-
-        is_high_risk = ben["cohort_id"] in HIGH_RISK_COHORTS
+        trajectory = ben.get("trajectory", [ben["current_status"]] * 26)
         enroll = datetime.strptime(ben["enrollment_date"], "%Y-%m-%d")
+        enroll_date = enroll.date()
+        is_high_risk = ben["cohort_id"] in HIGH_RISK_COHORTS
+
+        # Find last week before dropout (or all weeks if never dropped)
+        last_engaged_week = len(trajectory)
+        for i, band in enumerate(trajectory):
+            if band == "Dropout":
+                last_engaged_week = i
+                break
+
+        # Skip if they dropped out immediately (no time for assessment)
+        if last_engaged_week == 0:
+            continue
 
         for wave in range(2):
             assess_date = enroll + timedelta(days=90 * (wave + 1))
             if assess_date > TODAY:
                 continue
 
+            # Check if assessment falls before dropout
+            weeks_since_enroll = (assess_date.date() - enroll_date).days // 7
+            if weeks_since_enroll >= last_engaged_week:
+                # Beneficiary had already dropped out by assessment time
+                continue
+
             assmt_id = f"ASMT-{aid:06d}"
-            base = random.gauss(55 if is_high_risk else 72, 15)
+
+            # Score influenced by band at assessment time
+            week_idx = min(weeks_since_enroll, len(trajectory) - 1)
+            week_idx = max(0, week_idx)
+            current_band = trajectory[week_idx]
+
+            # Base score varies by band
+            BAND_SCORE_MEAN = {
+                "Active": 75,
+                "At-Risk": 60,
+                "Disengaged": 45,
+                "Dropout": 35,
+            }
+            base_mean = BAND_SCORE_MEAN.get(current_band, 55)
+            if is_high_risk:
+                base_mean -= 8
+
+            base = random.gauss(base_mean, 15)
             score = round(max(0, min(100, base)), 1)
 
             # Inject out-of-range
@@ -562,6 +737,13 @@ def main():
 
     print("Building beneficiaries…")
     beneficiaries = build_beneficiaries(cohorts)
+
+    # 2a. fact_engagement_history — weekly band snapshots per beneficiary
+    engagement_history = build_engagement_history(beneficiaries)
+    pd.DataFrame(engagement_history).to_csv(
+        OUT_DIR / "fact_engagement_history.csv", index=False
+    )
+    print(f"  fact_engagement_history.csv: {len(engagement_history):,} rows")
 
     print(f"Building sessions for {len(beneficiaries)} beneficiaries…")
     sessions = build_sessions(beneficiaries)

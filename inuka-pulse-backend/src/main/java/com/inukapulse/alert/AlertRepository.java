@@ -14,6 +14,11 @@ public interface AlertRepository extends JpaRepository<AlertEntity, String> {
     List<AlertEntity> findByStatusOrderByCreatedAtDesc(String status);
 
     /**
+     * Count alerts by status - used for KPI metrics.
+     */
+    long countByStatus(String status);
+
+    /**
      * Deduplication check — used by AlertRulesEngine to avoid creating a
      * duplicate active alert for the same site + rule combination.
      */

@@ -32,8 +32,23 @@ spring:
     console:
       enabled: false
 
-# ETL requires the Python pipeline to be co-located on disk.
-# On Render only the JAR runs, so ETL must be off.
-sentinel:
+inuka:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-ms: 86400000
   etl:
-    enabled: false
+    enabled: true
+    # R2 public URLs — set in Render environment variables dashboard
+    live-batch-url: ${ETL_LIVE_BATCH_URL}
+    predictions-url: ${ETL_PREDICTIONS_URL}
+    poll-interval-ms: 120000
+    rows-per-cycle: 200
+    frontend-refresh-ms: 125000
+    api-key: ${ETL_API_KEY:}
+  llm:
+    groq-api-key: ${GROQ_API_KEY:}
+    model: llama-3.1-8b-instant
+    timeout-ms: 3000
+    enabled: ${LLM_ENABLED:true}

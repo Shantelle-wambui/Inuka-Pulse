@@ -33,4 +33,7 @@ public interface PredictionRepository extends JpaRepository<PredictionEntity, Lo
             LIMIT 1
             """)
     Optional<PredictionEntity> findLatestBySiteId(String siteId);
+
+    /** Count predictions with probability above a threshold (at-risk metric). */
+    long countByProbabilityGreaterThan(double threshold);
 }

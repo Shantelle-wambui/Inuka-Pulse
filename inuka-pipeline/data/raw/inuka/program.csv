@@ -1,0 +1,244 @@
+program_id,pillar,name,county,start_date,end_date,target_capacity,status,description
+PROG-0c478853,Scholarship,Nairobi Academic Excellence Scholarship,Nairobi,2023-12-16,,112,active,Ad eius dolore qui perspiciatis tempora assumenda in.
+PROG-325861d4,Scholarship,Nairobi Secondary School Scholarship Program,Nairobi,2024-04-08,,223,active,Atque doloremque nobis natus quaerat praesentium in.
+PROG-3f035d32,Scholarship,Nairobi University Preparatory Program,Nairobi,2025-09-20,2026-04-10,158,completed,Nihil repellat ab rem praesentium excepturi culpa vero excepturi at atque sed nobis rem.
+PROG-ae109715,Scholarship,Nairobi Girls Education Initiative,Nairobi,2023-09-25,,109,active,Modi voluptate fugiat mollitia repudiandae nulla similique neque provident aliquid dolorem enim aspernatur doloremque.
+PROG-e109788d,Scholarship,Nairobi University Preparatory Program,Nairobi,2025-01-22,,100,active,Fugit iste rerum cum explicabo pariatur praesentium placeat.
+PROG-7bc39a8c,Scholarship,Nairobi University Preparatory Program,Nairobi,2025-08-26,,157,active,Non cupiditate quas cum fugit voluptatibus odit nam.
+PROG-1619daa0,Scholarship,Mombasa Secondary School Scholarship Program,Mombasa,2024-11-25,,244,active,Sapiente quod dolorem adipisci et eaque distinctio velit soluta et omnis id.
+PROG-aaa510cb,Scholarship,STEM Scholarship Mombasa,Mombasa,2025-11-26,,137,active,Corporis consequuntur quia molestiae quia incidunt nesciunt facere voluptatum consequuntur laudantium quidem similique corrupti.
+PROG-54f8ce8a,Scholarship,Mombasa Academic Excellence Scholarship,Mombasa,2024-06-03,,76,active,Recusandae in aperiam fugit voluptatum minus voluptas similique accusamus.
+PROG-324887b3,Scholarship,Mombasa Academic Excellence Scholarship,Mombasa,2023-11-26,,266,active,Placeat modi eaque odit beatae ipsa iste veritatis.
+PROG-05bef3b8,Scholarship,Nakuru Secondary School Scholarship Program,Nakuru,2025-05-03,,236,active,Voluptas quis magni autem numquam sapiente magni dicta fugiat cum veritatis.
+PROG-a17817bc,Scholarship,STEM Scholarship Nakuru,Nakuru,2024-12-06,,70,active,Ullam nobis laborum beatae facilis voluptates rem dolores dolores necessitatibus aspernatur quasi repellendus voluptate minus.
+PROG-bf6f2447,Scholarship,Nakuru University Preparatory Program,Nakuru,2025-03-11,,276,active,Consectetur labore mollitia eaque sit incidunt distinctio molestiae quas.
+PROG-a46ac700,Scholarship,Nakuru Girls Education Initiative,Nakuru,2026-01-22,,230,active,Quae id perferendis fuga tempore iste dolorum aperiam accusantium mollitia.
+PROG-2f07ec2b,Scholarship,Nakuru Girls Education Initiative,Nakuru,2023-11-03,,247,active,Dolore architecto occaecati dolorem temporibus similique architecto dolores pariatur distinctio consequatur vel necessitatibus labore quos rem.
+PROG-cd46d603,Scholarship,STEM Scholarship Kisumu,Kisumu,2023-11-13,2024-08-22,121,completed,Atque omnis explicabo illum sint amet officiis officia aperiam quas.
+PROG-3cc79871,Scholarship,Kisumu Academic Excellence Scholarship,Kisumu,2024-11-30,,91,active,Dolorum deleniti ipsum in eius dolorum unde ipsam.
+PROG-c34cc69a,Scholarship,Kisumu Academic Excellence Scholarship,Kisumu,2024-09-06,,229,active,Atque officiis molestiae accusamus at quidem dolores illo laboriosam sint temporibus cum a hic unde.
+PROG-1f06b575,Scholarship,Kisumu University Preparatory Program,Kisumu,2026-04-09,2026-10-06,212,completed,Eligendi possimus quas quos optio laborum deleniti dolor animi quasi aperiam et amet labore.
+PROG-c254e45c,Scholarship,Kisumu Girls Education Initiative,Kisumu,2024-02-15,,91,active,Culpa vero aspernatur delectus nisi perferendis doloremque blanditiis tempora doloribus nisi nulla in nesciunt minima.
+PROG-34646677,Scholarship,Eldoret University Preparatory Program,Eldoret,2024-09-15,,106,active,Dignissimos quaerat dolores id perferendis error et quibusdam asperiores itaque voluptatum.
+PROG-9e60e575,Scholarship,Eldoret Secondary School Scholarship Program,Eldoret,2025-07-25,,108,active,Asperiores distinctio eaque ut sunt sunt fuga culpa.
+PROG-3704be03,Scholarship,Eldoret Academic Excellence Scholarship,Eldoret,2025-12-12,,152,active,Provident nostrum voluptates omnis ab repellendus error optio vel consequatur blanditiis autem mollitia earum non.
+PROG-c63f7e98,Scholarship,Eldoret University Preparatory Program,Eldoret,2024-05-24,,274,active,Dignissimos odio eaque laborum temporibus sapiente at incidunt eius a quo odio.
+PROG-fc8539a4,Scholarship,STEM Scholarship Eldoret,Eldoret,2025-08-28,,151,active,Cum ipsam provident natus beatae velit porro corrupti alias fuga mollitia.
+PROG-da199d8b,Scholarship,Kiambu Girls Education Initiative,Kiambu,2024-12-05,,113,active,Consectetur est tempore recusandae similique tempore distinctio dolorum aut quod sunt illo nulla.
+PROG-e2877dc7,Scholarship,Kiambu Academic Excellence Scholarship,Kiambu,2025-09-24,,241,active,Unde dolores cum reiciendis debitis impedit debitis unde quos.
+PROG-29aab137,Scholarship,Kiambu University Preparatory Program,Kiambu,2025-04-13,,152,active,Rem sint repellat eaque ratione autem sit similique dolore repellendus itaque esse recusandae.
+PROG-5c00be57,Scholarship,Kiambu Girls Education Initiative,Kiambu,2024-08-28,,180,active,Dolore optio id eius architecto quo expedita magni perspiciatis sapiente.
+PROG-a24f96d3,Scholarship,Kiambu Secondary School Scholarship Program,Kiambu,2025-01-10,,270,active,Vel beatae voluptas debitis vitae eaque autem ipsa quas et non maiores.
+PROG-40c80781,Scholarship,Kiambu Girls Education Initiative,Kiambu,2023-12-14,,252,active,Tempore deleniti aliquid ipsa maxime rem porro velit qui deserunt inventore veniam ullam.
+PROG-c46cb3c8,Scholarship,STEM Scholarship Machakos,Machakos,2024-10-29,,147,active,Et sed quaerat error est illum illo eos consectetur in velit perspiciatis temporibus nulla error molestias.
+PROG-fb737e33,Scholarship,Machakos Academic Excellence Scholarship,Machakos,2027-02-04,,298,planned,Esse distinctio ratione non eum ipsam perferendis.
+PROG-6ac30dd4,Scholarship,Machakos Secondary School Scholarship Program,Machakos,2025-03-12,2025-09-13,224,completed,Labore temporibus recusandae cumque assumenda maiores odio excepturi repellendus quibusdam perferendis dolore dicta ad doloribus.
+PROG-4931b340,Scholarship,Machakos Academic Excellence Scholarship,Machakos,2026-02-15,,246,active,Nostrum quisquam iste suscipit nemo quaerat fugit id corporis porro tempora similique suscipit quod.
+PROG-2ffb615d,Scholarship,Machakos Academic Excellence Scholarship,Machakos,2025-06-10,,161,active,Debitis vero maxime amet dolorum sed itaque reiciendis pariatur voluptates.
+PROG-e80397c9,Scholarship,Machakos Academic Excellence Scholarship,Machakos,2024-02-01,,298,active,Et quidem ipsam repellendus tempora incidunt tenetur ipsum culpa similique ipsum quibusdam saepe eius quod laborum.
+PROG-7610ad3c,Scholarship,Kajiado Secondary School Scholarship Program,Kajiado,2025-10-12,,272,active,Earum aspernatur enim earum eum molestiae consequuntur doloremque possimus provident.
+PROG-5fb95eae,Scholarship,Kajiado University Preparatory Program,Kajiado,2025-05-25,,205,active,Impedit ex iure aperiam rerum harum quo veniam.
+PROG-988b5125,Scholarship,Kajiado Girls Education Initiative,Kajiado,2024-03-14,,188,active,Sequi quisquam fugit ab explicabo quidem sequi.
+PROG-ced265e0,Scholarship,Kajiado University Preparatory Program,Kajiado,2026-04-26,2026-10-23,132,completed,Modi quasi reiciendis tempore laborum earum laborum harum pariatur reiciendis quam saepe ullam.
+PROG-42717d6d,Scholarship,Kajiado Academic Excellence Scholarship,Kajiado,2025-01-05,,274,active,Modi tenetur nihil optio assumenda inventore sint delectus ea eveniet iste excepturi sunt eius veritatis in.
+PROG-6a19579e,Scholarship,Kajiado Secondary School Scholarship Program,Kajiado,2025-12-22,2026-07-05,111,completed,Iusto quibusdam amet veritatis dolore architecto vero aliquam.
+PROG-35ca5dbf,Scholarship,STEM Scholarship Meru,Meru,2026-04-19,,258,active,Veniam dicta accusantium corrupti commodi pariatur natus.
+PROG-af20e065,Scholarship,Meru Girls Education Initiative,Meru,2027-02-05,,82,planned,Iure ducimus fuga non vitae quaerat quod cum est neque.
+PROG-1253c3ea,Scholarship,Meru University Preparatory Program,Meru,2025-06-29,,92,active,Nemo tenetur fugiat velit dicta nihil rerum doloribus possimus error placeat.
+PROG-eb03aa49,Scholarship,Meru University Preparatory Program,Meru,2024-05-21,,158,active,Recusandae natus aliquam minus optio architecto officia accusamus in.
+PROG-0634a90b,Scholarship,Meru University Preparatory Program,Meru,2026-05-07,,243,active,Autem vero odio repudiandae provident ipsa quasi vitae earum repellat modi laboriosam ipsa quasi.
+PROG-8659089c,Scholarship,STEM Scholarship Meru,Meru,2025-09-09,2026-05-26,221,completed,Eum doloribus vel eius iste quibusdam necessitatibus pariatur excepturi laudantium eveniet.
+PROG-ca19d900,Scholarship,Nyeri University Preparatory Program,Nyeri,2024-09-09,,165,active,Distinctio reiciendis excepturi sunt praesentium eius ab veniam assumenda quam laborum quidem porro officia.
+PROG-8b682305,Scholarship,Nyeri Secondary School Scholarship Program,Nyeri,2023-12-25,,136,active,Ipsum accusantium eos illo doloribus optio fuga mollitia exercitationem voluptatum mollitia explicabo iste esse.
+PROG-65ef44bf,Scholarship,Nyeri Girls Education Initiative,Nyeri,2023-09-14,,200,active,Blanditiis deserunt blanditiis modi quis delectus dolor laborum quam voluptate.
+PROG-9847dded,Scholarship,Nyeri Secondary School Scholarship Program,Nyeri,2024-04-05,,108,active,Nisi voluptatem rerum eos facere esse provident consectetur aliquid amet eos velit odit quidem aut.
+PROG-c79012a6,Scholarship,Nyeri Secondary School Scholarship Program,Nyeri,2026-12-15,,181,planned,Nemo iusto ipsam delectus amet velit labore.
+PROG-4c6bd4fc,Scholarship,STEM Scholarship Nyeri,Nyeri,2024-04-23,,104,active,Id asperiores occaecati amet corrupti natus esse voluptatibus.
+PROG-4569954c,Scholarship,Kilifi University Preparatory Program,Kilifi,2024-01-06,2026-02-08,171,completed,Nam impedit nisi nulla quod fugit tenetur error nihil.
+PROG-c0c76118,Scholarship,Kilifi Girls Education Initiative,Kilifi,2024-04-28,2025-12-15,74,completed,Esse numquam non qui veniam dignissimos distinctio optio culpa cupiditate asperiores a ipsum.
+PROG-e68415d3,Scholarship,STEM Scholarship Kilifi,Kilifi,2023-12-01,2025-05-26,155,completed,Iusto adipisci enim eligendi similique architecto doloremque eaque recusandae nihil rem dicta beatae dolore corrupti eaque.
+PROG-0fbca13e,Scholarship,Kilifi Secondary School Scholarship Program,Kilifi,2024-12-14,2025-07-09,65,completed,Architecto cumque esse quibusdam necessitatibus enim commodi porro praesentium.
+PROG-b8035b07,Scholarship,Kilifi Secondary School Scholarship Program,Kilifi,2024-10-09,2026-05-21,113,completed,Magnam laudantium aspernatur aliquam inventore eum dolorum at vitae saepe nemo.
+PROG-d790e6fd,Scholarship,STEM Scholarship Kilifi,Kilifi,2024-03-07,,85,active,Voluptatum perferendis earum aliquam quidem iusto officiis.
+PROG-f51b3d73,Scholarship,Kakamega Girls Education Initiative,Kakamega,2024-02-27,,273,active,Delectus nesciunt odio laudantium at expedita ex pariatur similique ex possimus.
+PROG-397ae435,Scholarship,Kakamega University Preparatory Program,Kakamega,2026-03-26,,75,active,Optio id quis alias at dolorum blanditiis quo sint repudiandae a.
+PROG-83c20fad,Scholarship,Kakamega Secondary School Scholarship Program,Kakamega,2023-10-14,2025-10-16,298,completed,Iure amet maxime numquam libero ipsam amet eaque consectetur enim sunt laborum adipisci occaecati reiciendis.
+PROG-77574714,Scholarship,Kakamega Girls Education Initiative,Kakamega,2026-11-21,,154,planned,Est accusamus illum dolore sapiente beatae veniam officia culpa.
+PROG-860280ab,Scholarship,STEM Scholarship Kakamega,Kakamega,2025-01-02,,281,active,Magni earum rerum voluptatem doloribus mollitia fugit ullam magni sunt sint.
+PROG-e86bb743,Plus,Nairobi Community Leadership Program,Nairobi,2024-02-08,,117,active,Quo sequi excepturi ratione eaque a quas saepe neque optio sint.
+PROG-7530c51c,Plus,Nairobi Entrepreneurship Plus,Nairobi,2026-03-29,2026-09-25,158,completed,Molestiae exercitationem mollitia molestiae iste eum deleniti possimus nemo doloremque quod aliquam quia provident.
+PROG-9ce19e72,Plus,Nairobi Community Leadership Program,Nairobi,2027-02-11,,89,planned,Harum optio reprehenderit voluptatem libero alias magnam nihil sit soluta ipsam minima.
+PROG-bd4698ac,Plus,Nairobi Youth Leadership Development,Nairobi,2024-03-05,,198,active,Accusamus corporis sit voluptas asperiores quos eaque numquam id aspernatur eveniet perferendis modi veritatis.
+PROG-ff57bf40,Plus,Mombasa Entrepreneurship Plus,Mombasa,2025-03-01,,64,active,Quaerat quis sit alias architecto occaecati ullam voluptatum quia inventore atque odio sit ipsam possimus temporibus.
+PROG-6311eff0,Plus,Plus Mentorship Mombasa,Mombasa,2023-10-14,,285,active,Eveniet animi facere inventore doloribus illum placeat.
+PROG-b11e144c,Plus,Mombasa Youth Leadership Development,Mombasa,2026-01-13,,295,active,Cumque aspernatur sit nulla dolores totam corporis itaque ducimus.
+PROG-bdd0cc6c,Plus,Mombasa Life Skills Enhancement,Mombasa,2025-01-25,,67,active,Pariatur tempore iure enim molestias asperiores veniam voluptates error vitae porro.
+PROG-ac2df7f6,Plus,Mombasa Life Skills Enhancement,Mombasa,2025-04-24,,153,active,Sapiente dicta harum laboriosam dolores nemo nemo voluptatibus eos voluptate omnis earum natus placeat.
+PROG-3c340187,Plus,Mombasa Life Skills Enhancement,Mombasa,2027-02-14,,198,planned,Tenetur quia rerum temporibus quod dolorem reiciendis.
+PROG-4b4a2b9f,Plus,Nakuru Community Leadership Program,Nakuru,2023-10-03,,218,active,Odio numquam perspiciatis quam omnis saepe occaecati temporibus officia est.
+PROG-b4b1c2de,Plus,Nakuru Entrepreneurship Plus,Nakuru,2025-04-12,,289,active,Alias facilis consectetur tenetur eveniet impedit dicta ratione soluta facilis magnam earum cum.
+PROG-7ccb0bcb,Plus,Nakuru Entrepreneurship Plus,Nakuru,2024-05-17,,111,active,Voluptas eos sit rem iusto asperiores quidem dolorem perspiciatis perferendis id sapiente nam at.
+PROG-b38983ba,Plus,Nakuru Entrepreneurship Plus,Nakuru,2024-05-21,,167,active,Accusamus modi iste perferendis perferendis nesciunt reprehenderit velit autem doloremque ad sunt natus.
+PROG-2b1fc634,Plus,Nakuru Youth Leadership Development,Nakuru,2026-10-10,,167,planned,Dolore aperiam reprehenderit tenetur error illum consequuntur veniam esse laudantium atque suscipit consequatur iste perferendis quia.
+PROG-17ca6321,Plus,Nakuru Youth Leadership Development,Nakuru,2026-10-17,,187,planned,In quia culpa impedit aut laudantium illum veritatis adipisci fuga ipsam veritatis sequi aut placeat.
+PROG-7a6e5559,Plus,Kisumu Entrepreneurship Plus,Kisumu,2025-01-23,,275,active,Temporibus officia aperiam eius voluptas veniam repudiandae at distinctio odit voluptas amet ex voluptates ratione.
+PROG-f7b3a2f9,Plus,Kisumu Entrepreneurship Plus,Kisumu,2023-11-02,2025-05-13,90,completed,Architecto quisquam dignissimos dolor sit eveniet corporis tempore a similique.
+PROG-a502bbfb,Plus,Kisumu Entrepreneurship Plus,Kisumu,2024-11-14,2026-05-08,206,completed,Voluptates molestiae reiciendis beatae sint consectetur facere ratione nihil.
+PROG-d08e679f,Plus,Plus Mentorship Kisumu,Kisumu,2025-11-27,2026-05-26,126,completed,Cupiditate amet qui minima quia labore quod.
+PROG-6c9c5478,Plus,Eldoret Entrepreneurship Plus,Eldoret,2026-10-26,,79,planned,Nisi iste dolore nostrum quas tenetur omnis error officia adipisci voluptatum sed incidunt autem quae.
+PROG-e041816d,Plus,Plus Mentorship Eldoret,Eldoret,2026-02-20,,89,active,Asperiores aspernatur non aperiam eius odio molestias eveniet voluptatum minus iste non aut.
+PROG-37d82bff,Plus,Eldoret Life Skills Enhancement,Eldoret,2024-05-28,,233,active,Sequi officiis quisquam quam dolor iste dolorem excepturi.
+PROG-c737ca62,Plus,Eldoret Entrepreneurship Plus,Eldoret,2024-08-09,,179,active,Id quas est est ducimus veritatis porro labore at assumenda inventore quia fuga consectetur.
+PROG-66ed5471,Plus,Eldoret Youth Leadership Development,Eldoret,2025-01-05,,73,active,Nesciunt natus eveniet commodi explicabo pariatur quibusdam sint.
+PROG-4f9acb42,Plus,Eldoret Entrepreneurship Plus,Eldoret,2025-06-03,,61,active,Voluptas nobis expedita neque distinctio omnis dolore.
+PROG-02a826e9,Plus,Kiambu Life Skills Enhancement,Kiambu,2024-07-30,2025-10-21,239,completed,Expedita nam beatae eius dolorem inventore natus quisquam.
+PROG-37fd8080,Plus,Kiambu Community Leadership Program,Kiambu,2024-11-18,,193,active,Nostrum odit ad ut repudiandae eaque debitis praesentium est excepturi ab sit necessitatibus id consequuntur odio.
+PROG-5eed137e,Plus,Kiambu Life Skills Enhancement,Kiambu,2023-09-02,,189,active,At minus fugiat iste culpa est eveniet.
+PROG-e9384c4f,Plus,Plus Mentorship Kiambu,Kiambu,2023-09-29,2025-11-13,87,completed,Nisi sunt culpa quidem amet aspernatur ipsam incidunt non impedit dolor maiores exercitationem beatae perspiciatis.
+PROG-ff2c588f,Plus,Machakos Entrepreneurship Plus,Machakos,2024-01-01,,280,active,Laborum pariatur aliquid hic nobis ab error distinctio consequatur ducimus eveniet ab quia cupiditate fugit provident.
+PROG-1f8ed400,Plus,Machakos Entrepreneurship Plus,Machakos,2026-04-05,2026-10-02,103,completed,Nam pariatur explicabo id quia ipsa itaque aspernatur est inventore illo odit enim illo.
+PROG-483dea91,Plus,Machakos Youth Leadership Development,Machakos,2025-07-22,,140,active,Cupiditate veniam itaque porro facere ipsa autem ipsa id aspernatur sit quia.
+PROG-c518bee3,Plus,Machakos Community Leadership Program,Machakos,2025-10-30,,299,active,Ex cumque magni beatae magni temporibus expedita quas reprehenderit repellendus.
+PROG-4986a661,Plus,Machakos Life Skills Enhancement,Machakos,2025-05-20,2026-07-10,271,completed,Aut ducimus cupiditate corrupti quis asperiores veritatis occaecati iure natus.
+PROG-4132bd2d,Plus,Kajiado Community Leadership Program,Kajiado,2026-05-19,2026-11-15,56,completed,Ipsum unde natus odio numquam sint occaecati corrupti architecto ipsam esse earum animi magni est iste.
+PROG-ddf8fbd0,Plus,Kajiado Community Leadership Program,Kajiado,2024-02-23,2025-07-27,255,completed,Fuga enim officia voluptate at nisi fugit neque.
+PROG-6e13fa05,Plus,Kajiado Entrepreneurship Plus,Kajiado,2025-07-09,2026-03-09,90,completed,Ipsum repellat officiis eum labore corrupti aperiam.
+PROG-de40b141,Plus,Kajiado Youth Leadership Development,Kajiado,2025-11-07,2026-06-23,269,completed,Repellat saepe voluptatem assumenda officia aliquam provident voluptatibus.
+PROG-dd577742,Plus,Meru Community Leadership Program,Meru,2024-04-07,,139,active,Minima culpa fuga eligendi illum excepturi nisi ratione officia aperiam atque perspiciatis eligendi quam omnis.
+PROG-54050097,Plus,Meru Life Skills Enhancement,Meru,2024-07-01,2025-08-18,56,completed,Sit ex nesciunt consequuntur expedita voluptas praesentium hic nisi vel est fugiat recusandae repellat pariatur repudiandae.
+PROG-4cb533cf,Plus,Meru Entrepreneurship Plus,Meru,2025-06-29,,121,active,Atque perferendis magni accusantium est veritatis exercitationem quisquam deleniti voluptatum culpa eos ratione magni molestiae.
+PROG-c61e9529,Plus,Meru Entrepreneurship Plus,Meru,2026-01-25,,139,active,Alias excepturi quisquam consectetur fugiat cum rerum quo repellat cumque ipsa illum perspiciatis dolores ipsam.
+PROG-74e9906c,Plus,Plus Mentorship Meru,Meru,2025-06-10,,134,active,Quibusdam quos doloremque dolores vitae quos temporibus deserunt perspiciatis necessitatibus ipsam.
+PROG-7d9bc9c1,Plus,Nyeri Life Skills Enhancement,Nyeri,2023-12-20,2025-03-11,198,completed,Quod magnam in cum dicta non sit amet laboriosam fuga vel.
+PROG-286937a7,Plus,Nyeri Youth Leadership Development,Nyeri,2026-10-01,,202,planned,Sed eligendi quis earum temporibus corporis ipsa veniam dolore iste expedita ad amet magnam doloremque.
+PROG-a0e0d78d,Plus,Nyeri Entrepreneurship Plus,Nyeri,2024-11-10,,161,active,Fugiat adipisci ut saepe officiis recusandae consequuntur enim.
+PROG-1998575f,Plus,Nyeri Community Leadership Program,Nyeri,2026-10-21,,280,planned,Possimus consequuntur provident ipsum a aspernatur ducimus rerum molestias quas minus beatae enim error.
+PROG-12e377cd,Plus,Kilifi Community Leadership Program,Kilifi,2024-03-05,,50,active,Dolores odit numquam aperiam saepe libero modi.
+PROG-5859e5a5,Plus,Kilifi Life Skills Enhancement,Kilifi,2027-02-06,,143,planned,Maiores doloribus corporis inventore nostrum dolores impedit optio assumenda voluptate architecto minima magni voluptates mollitia hic.
+PROG-ae147777,Plus,Kilifi Entrepreneurship Plus,Kilifi,2024-11-07,,209,active,Aliquam harum fuga quibusdam explicabo architecto dolores omnis aut neque quidem consequatur explicabo excepturi.
+PROG-f051b9cf,Plus,Kilifi Entrepreneurship Plus,Kilifi,2024-07-10,2025-05-13,179,completed,Rerum placeat voluptatem laboriosam delectus consequatur quaerat velit alias.
+PROG-c4a7a0a8,Plus,Kilifi Community Leadership Program,Kilifi,2024-07-05,2025-12-01,228,completed,Aliquam dicta aliquam ut maiores voluptatibus molestiae ducimus quidem deleniti.
+PROG-36f507bd,Plus,Kilifi Life Skills Enhancement,Kilifi,2024-06-21,,157,active,Similique aliquid omnis earum reiciendis ipsa id ipsam vero excepturi deleniti porro.
+PROG-6e2aa30e,Plus,Kakamega Life Skills Enhancement,Kakamega,2026-04-12,,207,active,Unde maxime reiciendis quas aspernatur nobis reprehenderit molestias eum aspernatur optio esse.
+PROG-42104c80,Plus,Plus Mentorship Kakamega,Kakamega,2025-03-28,,263,active,Quaerat cumque ipsam ipsum quas tenetur nostrum ipsa odit recusandae animi perferendis illo maiores quibusdam cum.
+PROG-6787b12e,Plus,Kakamega Life Skills Enhancement,Kakamega,2023-08-24,,160,active,Consequuntur non quos alias architecto quod facilis.
+PROG-5ffcdf85,Plus,Kakamega Entrepreneurship Plus,Kakamega,2025-11-05,,169,active,Veniam adipisci corrupti ipsum fuga ipsam asperiores consequuntur facilis et eius vero ad.
+PROG-e4144baa,Plus,Kakamega Life Skills Enhancement,Kakamega,2024-11-18,,180,active,Libero harum natus ea ea ipsum voluptatum eligendi totam.
+PROG-0cb596de,Plus,Kakamega Life Skills Enhancement,Kakamega,2024-12-20,2026-06-29,218,completed,Dicta consequatur asperiores cupiditate quae voluptatum repellat voluptas voluptates pariatur quae mollitia enim error.
+PROG-40a38dca,Vocational,Nairobi Hands-On Skills Academy,Nairobi,2024-06-09,,135,active,Quae unde odit recusandae magni commodi dicta consequuntur ratione.
+PROG-feed88eb,Vocational,Nairobi Artisan Development Program,Nairobi,2023-11-27,2026-07-03,222,completed,Facere nemo iusto voluptatem consectetur sunt aperiam.
+PROG-8cf15bc4,Vocational,Nairobi Artisan Development Program,Nairobi,2024-07-06,,87,active,Voluptatum quaerat minima quisquam reprehenderit asperiores voluptas odit ipsum perspiciatis exercitationem soluta quos.
+PROG-4055f3fe,Vocational,Nairobi Trade Skills Initiative,Nairobi,2023-09-18,,206,active,Delectus vitae inventore tenetur animi commodi corrupti cum eum quae exercitationem velit tempora sapiente dolorum odio.
+PROG-7463bbcd,Vocational,Mombasa Hands-On Skills Academy,Mombasa,2024-12-02,,99,active,Earum numquam nostrum atque odit nihil neque cupiditate numquam temporibus excepturi unde aliquam sint aspernatur.
+PROG-b3c8c997,Vocational,Mombasa Trade Skills Initiative,Mombasa,2025-08-28,2026-06-30,112,completed,Eaque distinctio nemo nulla adipisci suscipit molestias odit error doloribus rem illo iste porro culpa.
+PROG-2baf66ee,Vocational,Mombasa Technical Skills Training,Mombasa,2024-01-22,2024-07-25,249,completed,Laborum dignissimos non est quaerat quasi similique voluptate consectetur fuga natus eum iure.
+PROG-d3069c0f,Vocational,Mombasa Hands-On Skills Academy,Mombasa,2024-11-01,,168,active,Ipsum consequuntur amet veniam sint in vitae temporibus repellendus ut quam.
+PROG-0c3fbd28,Vocational,Nakuru Technical Skills Training,Nakuru,2025-03-16,,166,active,Quis libero maiores libero est ad veniam magnam vitae dolor.
+PROG-fc7b354b,Vocational,Nakuru Hands-On Skills Academy,Nakuru,2024-01-07,2026-05-19,193,completed,Aliquid eligendi nisi sapiente perferendis enim ab autem consequatur eaque facilis illo.
+PROG-154089d9,Vocational,Nakuru Trade Skills Initiative,Nakuru,2025-04-24,,206,active,Id necessitatibus deserunt mollitia asperiores magnam quisquam.
+PROG-3ff19543,Vocational,Nakuru Trade Skills Initiative,Nakuru,2025-12-05,2026-07-05,262,completed,Repudiandae numquam nostrum consectetur atque fuga voluptates nam facilis corporis nobis.
+PROG-f5f07ba4,Vocational,Kisumu Trade Skills Initiative,Kisumu,2024-11-22,2026-06-05,165,completed,Magnam aliquid consequatur ex labore itaque non maiores eveniet nostrum cum voluptatibus qui.
+PROG-4b1a75a8,Vocational,Kisumu Hands-On Skills Academy,Kisumu,2024-05-15,2025-08-21,174,completed,Nisi magni magni laudantium natus labore accusantium ex autem impedit esse.
+PROG-4984651e,Vocational,Kisumu Trade Skills Initiative,Kisumu,2025-05-26,,69,active,Ad labore voluptas quos quod neque quam nesciunt cupiditate occaecati nulla sapiente corporis perspiciatis adipisci veniam.
+PROG-9e2ec2fe,Vocational,Vocational Excellence Kisumu,Kisumu,2025-08-23,,135,active,Deleniti ipsam in impedit dignissimos magnam nostrum iusto.
+PROG-dd95776f,Vocational,Kisumu Artisan Development Program,Kisumu,2024-07-16,2025-04-04,88,completed,Provident maxime natus voluptatum laboriosam fugiat vero itaque.
+PROG-62cc2bca,Vocational,Kisumu Artisan Development Program,Kisumu,2024-04-16,,230,active,Exercitationem explicabo quo quam officia possimus nostrum deleniti doloribus nam dolore voluptate error enim dignissimos.
+PROG-bca78c91,Vocational,Vocational Excellence Eldoret,Eldoret,2023-10-28,,188,active,Et expedita ut recusandae earum commodi perspiciatis fugit voluptatem repellendus veritatis rem enim enim.
+PROG-676845a5,Vocational,Eldoret Artisan Development Program,Eldoret,2024-12-13,,263,active,Expedita ipsam ducimus laboriosam dicta molestiae ut possimus.
+PROG-a2191006,Vocational,Eldoret Hands-On Skills Academy,Eldoret,2024-10-27,,292,active,Autem qui dolores amet temporibus dolorem doloremque aut ex.
+PROG-adb8dd55,Vocational,Eldoret Hands-On Skills Academy,Eldoret,2025-08-05,,147,active,Aut quo a mollitia ut illum vel soluta labore dicta vitae eum officia tenetur.
+PROG-cc1e0da1,Vocational,Kiambu Trade Skills Initiative,Kiambu,2026-12-07,,268,planned,Officiis doloremque qui sed alias ullam in saepe.
+PROG-13c8fa5d,Vocational,Kiambu Hands-On Skills Academy,Kiambu,2027-01-07,,241,planned,Voluptatum id libero vel vitae unde soluta.
+PROG-c0a36c24,Vocational,Kiambu Hands-On Skills Academy,Kiambu,2025-09-14,,279,active,Error nobis unde ex iste odit minima.
+PROG-f6167614,Vocational,Vocational Excellence Kiambu,Kiambu,2024-04-05,,161,active,Sed iusto deserunt beatae cum itaque ducimus delectus qui.
+PROG-9fe90568,Vocational,Vocational Excellence Kiambu,Kiambu,2025-01-02,,221,active,Necessitatibus quidem cupiditate sequi tempore repudiandae maiores assumenda pariatur delectus consequuntur.
+PROG-5af62ded,Vocational,Machakos Artisan Development Program,Machakos,2025-11-18,,265,active,Vel ab fugit ipsum eaque eveniet nesciunt nemo ea facere dolores pariatur.
+PROG-be2f87c2,Vocational,Machakos Technical Skills Training,Machakos,2027-02-05,,282,planned,Esse illo magnam tempora provident est blanditiis totam eos nostrum dolor consequatur corrupti quibusdam.
+PROG-c14cbf07,Vocational,Machakos Technical Skills Training,Machakos,2024-09-30,,71,active,Fuga praesentium totam quidem reiciendis repudiandae quis perspiciatis nisi ratione minima minus facere totam beatae repudiandae.
+PROG-9c0f6edb,Vocational,Machakos Trade Skills Initiative,Machakos,2025-06-12,,96,active,Dicta modi cum sequi ipsam perspiciatis quaerat laborum tempore ipsum animi consequatur impedit natus.
+PROG-828a29a3,Vocational,Vocational Excellence Machakos,Machakos,2023-10-14,,104,active,Iure rem quam id repellendus quia neque aliquid exercitationem aperiam voluptatibus vel architecto ut adipisci.
+PROG-3d5ab23d,Vocational,Machakos Trade Skills Initiative,Machakos,2024-12-01,,121,active,Debitis consequatur odit quas vitae fugiat tempora ipsum totam fugiat aspernatur vitae soluta.
+PROG-e7819a11,Vocational,Kajiado Technical Skills Training,Kajiado,2024-05-08,2026-02-28,241,completed,Officiis expedita debitis modi minus quas dolore a ad.
+PROG-95ef02ad,Vocational,Vocational Excellence Kajiado,Kajiado,2025-02-26,,107,active,Iure quaerat incidunt fugit dolorem itaque culpa deleniti soluta quisquam adipisci.
+PROG-1b7c4853,Vocational,Kajiado Technical Skills Training,Kajiado,2025-06-19,,243,active,Nostrum vel suscipit dolores architecto nisi ipsum perferendis sit doloribus aliquid ipsa molestiae.
+PROG-89d68327,Vocational,Kajiado Technical Skills Training,Kajiado,2026-11-12,,209,planned,Consequuntur voluptatibus doloremque totam nemo neque quo repellendus.
+PROG-373263ea,Vocational,Kajiado Trade Skills Initiative,Kajiado,2024-01-27,,221,active,Error corporis optio dolore error aperiam veniam sunt tenetur numquam.
+PROG-f3678757,Vocational,Vocational Excellence Meru,Meru,2027-01-19,,246,planned,Nam aliquid exercitationem officia fugit minima possimus illum error delectus modi dolores dolorem.
+PROG-f5f0c50b,Vocational,Meru Hands-On Skills Academy,Meru,2024-09-04,,296,active,Rem totam natus voluptas nam consequatur doloribus dignissimos officia.
+PROG-961d8d5e,Vocational,Meru Artisan Development Program,Meru,2025-09-27,2026-07-03,296,completed,Sed at quam deleniti eaque perferendis nobis sit deleniti quis quam nam laboriosam sit.
+PROG-ace82afc,Vocational,Meru Technical Skills Training,Meru,2024-07-07,,287,active,Esse tenetur distinctio deleniti qui quia quidem totam possimus provident id dolores.
+PROG-85629e1e,Vocational,Nyeri Trade Skills Initiative,Nyeri,2025-04-04,2026-04-11,291,completed,Quod fugit modi facere ea maiores libero atque voluptatem iusto saepe totam.
+PROG-8b381880,Vocational,Nyeri Hands-On Skills Academy,Nyeri,2025-08-25,,226,active,Est aliquid sint qui accusamus mollitia nesciunt quam eos deserunt dolorem necessitatibus.
+PROG-28089117,Vocational,Nyeri Technical Skills Training,Nyeri,2025-12-21,,228,active,Libero omnis placeat ducimus reprehenderit vitae odit laudantium cumque recusandae.
+PROG-11d48786,Vocational,Nyeri Hands-On Skills Academy,Nyeri,2025-10-23,,256,active,Consequuntur molestias delectus suscipit voluptatibus vero minima saepe asperiores.
+PROG-eb1c24d8,Vocational,Nyeri Technical Skills Training,Nyeri,2023-12-25,2026-01-22,138,completed,Quisquam impedit sapiente doloremque provident ab magni.
+PROG-b8b2bf06,Vocational,Kilifi Hands-On Skills Academy,Kilifi,2024-11-04,2025-06-07,215,completed,Aperiam odit ut totam omnis accusamus minus illum accusantium quam modi enim.
+PROG-68d428ee,Vocational,Kilifi Trade Skills Initiative,Kilifi,2024-08-07,,260,active,Repellat perferendis rem tenetur autem atque corrupti deleniti minima repellendus eaque id fuga illo.
+PROG-12660354,Vocational,Vocational Excellence Kilifi,Kilifi,2025-01-06,,212,active,Doloribus possimus error repudiandae aspernatur voluptatibus officiis adipisci illo fugiat labore odio praesentium assumenda sapiente.
+PROG-7703bce9,Vocational,Kilifi Trade Skills Initiative,Kilifi,2026-02-21,2026-08-20,95,completed,Natus similique atque minus aliquam distinctio sint suscipit labore aliquid asperiores unde.
+PROG-0cf61d24,Vocational,Vocational Excellence Kilifi,Kilifi,2025-09-13,,207,active,Natus adipisci ut et vero nesciunt quibusdam quae id aspernatur cum dolores rerum harum tempore.
+PROG-58440103,Vocational,Kilifi Trade Skills Initiative,Kilifi,2027-01-23,,161,planned,Fugit qui ratione porro aspernatur quia exercitationem atque doloremque asperiores non nostrum.
+PROG-9e35f4b7,Vocational,Kakamega Artisan Development Program,Kakamega,2025-04-21,,262,active,Id quo adipisci earum voluptatibus laudantium explicabo velit inventore perspiciatis optio assumenda nulla reiciendis quae aspernatur.
+PROG-4d021f8b,Vocational,Kakamega Trade Skills Initiative,Kakamega,2026-04-07,,112,active,Fugit quos culpa harum facere at velit ipsam quis.
+PROG-7bd3b262,Vocational,Kakamega Hands-On Skills Academy,Kakamega,2025-09-30,,221,active,Consequatur deleniti ipsum mollitia illum ad explicabo at.
+PROG-71e8d7cd,Vocational,Kakamega Trade Skills Initiative,Kakamega,2024-09-15,,267,active,Quos sint accusamus impedit quod quam nam voluptatibus doloribus maxime placeat cumque eaque eaque corporis cumque.
+PROG-b9945a45,Vocational,Kakamega Artisan Development Program,Kakamega,2024-07-21,,140,active,In laborum asperiores dolorum doloribus numquam nisi deserunt autem esse veniam.
+PROG-0a0324fa,Vocational,Vocational Excellence Kakamega,Kakamega,2025-11-17,,275,active,Sapiente fugit similique ipsam inventore reprehenderit officiis nisi error nobis possimus laboriosam.
+PROG-a56e19fd,Tech,Nairobi Digital Skills Bootcamp,Nairobi,2025-08-11,2026-06-29,182,completed,Vitae voluptas eos possimus laudantium nemo doloribus fugiat repellendus.
+PROG-0dfc281b,Tech,Nairobi Tech Youth Initiative,Nairobi,2026-04-20,,234,active,Facilis ut dicta voluptatum debitis quisquam ad quas velit distinctio reiciendis rerum architecto.
+PROG-5dd1e686,Tech,Nairobi Tech Youth Initiative,Nairobi,2024-10-13,,226,active,Perferendis consequuntur esse dolorum culpa incidunt fugiat ipsum nisi neque modi unde sit.
+PROG-babac9c2,Tech,Nairobi Software Development Program,Nairobi,2024-12-23,,164,active,Molestiae ratione facere tempora modi odit assumenda quisquam omnis explicabo officia aliquid voluptates.
+PROG-10beab49,Tech,Code Nairobi,Nairobi,2025-11-12,,106,active,Vitae ex recusandae autem atque dolore quia nam porro dolore fugiat iure perspiciatis.
+PROG-286aec03,Tech,Nairobi ICT Skills Academy,Nairobi,2024-10-11,2025-09-12,144,completed,Corrupti voluptatum laboriosam eos ullam assumenda rerum quas expedita exercitationem quos maxime expedita atque.
+PROG-4013e47a,Tech,Mombasa Software Development Program,Mombasa,2025-03-12,,240,active,Eum error repellat beatae sed officia perspiciatis cum voluptates doloribus cupiditate cum nam vero.
+PROG-a32525f7,Tech,Mombasa Software Development Program,Mombasa,2025-03-09,,119,active,Reiciendis occaecati delectus omnis hic qui sunt ipsum inventore a.
+PROG-5acee121,Tech,Mombasa Digital Skills Bootcamp,Mombasa,2024-07-02,,234,active,Dignissimos quibusdam repellat aperiam aut sit deleniti eveniet itaque ea.
+PROG-e72db8da,Tech,Mombasa ICT Skills Academy,Mombasa,2024-03-08,,293,active,Minus odit nisi nostrum nesciunt expedita sapiente nulla repellendus provident error nostrum assumenda consequatur.
+PROG-fa593e31,Tech,Mombasa Tech Youth Initiative,Mombasa,2025-10-12,2026-05-04,239,completed,Dolores blanditiis fuga consequuntur harum nisi nemo in laborum.
+PROG-ab8ae865,Tech,Nakuru ICT Skills Academy,Nakuru,2024-06-02,2026-05-20,122,completed,Possimus officia voluptatum mollitia laudantium consequuntur et iste amet facere ab consequatur repellendus vitae magnam.
+PROG-abe72372,Tech,Nakuru Tech Youth Initiative,Nakuru,2026-05-24,,125,active,Illum laudantium quae ipsam cumque natus recusandae dolore adipisci dolore enim quos natus quo.
+PROG-324998e2,Tech,Code Nakuru,Nakuru,2024-04-12,,53,active,Mollitia beatae beatae quod reprehenderit facilis reprehenderit aliquam quaerat molestias voluptatibus aut rerum quibusdam.
+PROG-d0d45b7a,Tech,Code Nakuru,Nakuru,2025-08-18,,61,active,Soluta adipisci ea similique assumenda sint blanditiis repellat distinctio qui porro.
+PROG-08aa2569,Tech,Code Nakuru,Nakuru,2026-05-17,,228,active,Odio cumque consequuntur dignissimos dignissimos animi expedita eligendi molestiae eum provident enim eaque similique voluptates perspiciatis.
+PROG-db4ffd29,Tech,Kisumu Digital Skills Bootcamp,Kisumu,2025-06-07,2026-04-08,273,completed,Consequatur quibusdam illum animi eius omnis praesentium consequatur.
+PROG-dbcb96bd,Tech,Kisumu Software Development Program,Kisumu,2023-09-05,,172,active,Quae repudiandae quis perspiciatis laudantium neque eaque impedit iste.
+PROG-915b15d8,Tech,Kisumu Digital Skills Bootcamp,Kisumu,2024-11-17,,114,active,Illo quibusdam possimus soluta iste laborum neque sit.
+PROG-4432776f,Tech,Kisumu Digital Skills Bootcamp,Kisumu,2026-04-13,2026-10-10,152,completed,Quasi itaque optio facere aperiam modi dolor inventore.
+PROG-56db292e,Tech,Eldoret Digital Skills Bootcamp,Eldoret,2023-11-07,,88,active,Libero eum eligendi molestias consectetur sequi ratione tempora quis aliquid.
+PROG-0d758df2,Tech,Eldoret Digital Skills Bootcamp,Eldoret,2024-01-23,2025-05-28,113,completed,Quos itaque commodi similique ipsam a vero dicta porro consequatur officiis culpa ut earum omnis dolorum.
+PROG-faff3389,Tech,Eldoret Software Development Program,Eldoret,2023-12-23,,205,active,Optio officiis amet numquam quas quidem inventore at atque distinctio aspernatur nisi.
+PROG-9c31bb5a,Tech,Eldoret ICT Skills Academy,Eldoret,2025-04-25,2026-02-14,147,completed,Perspiciatis ab possimus repellendus voluptates in consequatur architecto fugit quas aut et sunt consequatur quo.
+PROG-41f4f9c5,Tech,Eldoret ICT Skills Academy,Eldoret,2026-12-07,,159,planned,Odit perspiciatis architecto natus nostrum cum expedita distinctio quibusdam.
+PROG-3f636f97,Tech,Kiambu ICT Skills Academy,Kiambu,2025-03-28,,295,active,Nulla ipsam dolor tempore consequuntur commodi quas expedita inventore ratione dolorum officia dolorum.
+PROG-3efe6266,Tech,Kiambu Tech Youth Initiative,Kiambu,2025-09-19,,210,active,Nobis non quod porro sed omnis error maxime magni quibusdam eos amet tempore veritatis libero beatae.
+PROG-0e8639f5,Tech,Kiambu Digital Skills Bootcamp,Kiambu,2024-03-27,,90,active,Odit architecto suscipit accusamus facere et harum saepe in molestias cupiditate iusto voluptates asperiores.
+PROG-cd1d2009,Tech,Kiambu Digital Skills Bootcamp,Kiambu,2024-04-25,,90,active,Architecto ea aliquam aperiam ratione magni occaecati magnam impedit praesentium assumenda modi nulla eius est maiores.
+PROG-5b970cc8,Tech,Kiambu ICT Skills Academy,Kiambu,2023-08-26,,170,active,Voluptate culpa eveniet nesciunt quis officiis officia est ipsa veritatis.
+PROG-ce4fe570,Tech,Code Machakos,Machakos,2023-09-26,,229,active,Animi assumenda ipsa iste non est qui qui blanditiis provident.
+PROG-055f2cd4,Tech,Machakos Tech Youth Initiative,Machakos,2026-01-20,,286,active,Cum veritatis minima quos quam cumque consectetur.
+PROG-3c01c9e2,Tech,Machakos Tech Youth Initiative,Machakos,2024-05-20,2026-07-12,158,completed,Quasi blanditiis tempore ex inventore minima ea voluptate occaecati libero magni.
+PROG-7509d57a,Tech,Machakos Tech Youth Initiative,Machakos,2023-12-19,,282,active,Libero necessitatibus facilis ducimus aut nemo quam dolorem.
+PROG-5b244900,Tech,Machakos Digital Skills Bootcamp,Machakos,2024-05-22,2025-01-30,92,completed,A similique accusamus aliquid facilis ullam debitis vero alias rem quae omnis dolore dolorum totam.
+PROG-8e0a016e,Tech,Kajiado Software Development Program,Kajiado,2025-04-24,2026-03-17,81,completed,Earum aspernatur fuga magnam temporibus debitis rem voluptatem veritatis architecto iure eligendi.
+PROG-8c0627d6,Tech,Kajiado Software Development Program,Kajiado,2024-12-15,2026-06-06,291,completed,Eveniet mollitia ab dicta natus esse numquam iure nihil laudantium quo.
+PROG-7470f836,Tech,Kajiado Software Development Program,Kajiado,2024-05-28,,162,active,Quasi molestias recusandae corrupti ut ad molestiae odio possimus ab.
+PROG-d34f4cec,Tech,Kajiado Software Development Program,Kajiado,2023-11-14,,238,active,A omnis sed quas aut minus dolores laudantium animi voluptatum quae at.
+PROG-520100dc,Tech,Kajiado Digital Skills Bootcamp,Kajiado,2024-07-19,,73,active,Tempore maxime praesentium fuga voluptate assumenda atque consequatur reprehenderit asperiores.
+PROG-dfe287ef,Tech,Code Meru,Meru,2026-05-04,2026-10-31,197,completed,Aperiam optio consectetur eos sed unde hic rerum eveniet iste doloremque velit consequatur quo autem.
+PROG-990634d9,Tech,Meru Software Development Program,Meru,2023-10-04,2024-09-27,182,completed,Cum iure illo modi vitae dignissimos est eaque.
+PROG-5e55f4d1,Tech,Code Meru,Meru,2025-06-21,,96,active,At rem esse provident nobis dolor sequi corporis quae.
+PROG-d64ed648,Tech,Meru Software Development Program,Meru,2025-04-14,,298,active,Id aliquid error reprehenderit cupiditate veritatis sequi nam mollitia atque aut recusandae.
+PROG-5b5b04ab,Tech,Code Nyeri,Nyeri,2024-12-17,,132,active,Accusamus rerum voluptatem consectetur reprehenderit fuga occaecati officia neque.
+PROG-f6c7609c,Tech,Nyeri Tech Youth Initiative,Nyeri,2025-07-10,,134,active,Totam asperiores voluptatum deserunt officia repellat at sed repellat commodi velit.
+PROG-43b7f932,Tech,Nyeri Software Development Program,Nyeri,2024-10-18,2025-09-10,258,completed,Cumque nemo reprehenderit hic adipisci placeat cupiditate.
+PROG-3a17d4bd,Tech,Nyeri Software Development Program,Nyeri,2025-10-10,,72,active,Tenetur eius ipsum corrupti nostrum nulla officia libero sunt laboriosam.
+PROG-dc32c3e9,Tech,Kilifi Software Development Program,Kilifi,2024-05-08,,271,active,Eius consequatur dicta suscipit minima occaecati reiciendis recusandae.
+PROG-7694a7c4,Tech,Kilifi ICT Skills Academy,Kilifi,2025-01-31,2025-07-30,168,completed,Quos facere molestias laborum totam magnam harum debitis eum dolor tempore quod.
+PROG-4f7dd3ef,Tech,Kilifi ICT Skills Academy,Kilifi,2024-10-20,,142,active,Repellat iusto facere nesciunt doloremque cum dolorum dolores.
+PROG-7156722f,Tech,Kilifi Software Development Program,Kilifi,2025-05-22,2026-04-27,244,completed,Repellendus totam animi voluptatum dolor sed reiciendis explicabo saepe sapiente debitis nihil rem possimus totam.
+PROG-8abb3b37,Tech,Kilifi ICT Skills Academy,Kilifi,2023-10-15,,83,active,Provident explicabo necessitatibus consequuntur veniam saepe repellat.
+PROG-ced96c40,Tech,Kakamega Digital Skills Bootcamp,Kakamega,2024-11-14,2026-01-16,57,completed,Molestiae cupiditate alias animi nobis accusantium labore ex nostrum rem exercitationem debitis rem sit.
+PROG-edd8baa9,Tech,Kakamega Tech Youth Initiative,Kakamega,2026-05-16,,231,active,Accusantium nesciunt totam quo sed similique vero fuga.
+PROG-2c35e0c6,Tech,Kakamega Digital Skills Bootcamp,Kakamega,2024-02-02,,191,active,Nesciunt excepturi eum voluptate quasi ipsa odit laborum et provident natus suscipit nostrum.
+PROG-21c51332,Tech,Kakamega Digital Skills Bootcamp,Kakamega,2024-10-14,,168,active,Dolore nihil cupiditate esse porro consectetur quas veniam veniam hic voluptatibus vitae.
+PROG-f2a7fde1,Tech,Kakamega Tech Youth Initiative,Kakamega,2026-04-19,,177,active,Delectus et repellat nostrum odit aut libero.

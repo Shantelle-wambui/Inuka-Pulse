@@ -2,38 +2,132 @@ package com.inukapulse.analytics;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
- * Analytics endpoints — serve pre-computed diagnostic JSON to the frontend.
+ * Analytics endpoints — serve KPIs, metrics, and pre-computed diagnostics.
  *
- * All endpoints return raw JSON strings (application/json) produced by
- * src/diagnostics.py and src/predict.py. No additional serialisation happens;
- * the files are written by Python and served verbatim.
+ * New endpoints for M&E scope:
+ *   GET /api/v1/analytics/kpis              → Real-time KPI strip
+ *   GET /api/v1/analytics/pillars           → Pillar-level rollups
+ *   GET /api/v1/analytics/regions           → County/region rollups
+ *   GET /api/v1/analytics/impact            → Impact & Reach metrics
+ *   GET /api/v1/analytics/impact/by-pillar  → Impact metrics by pillar
+ *   GET /api/v1/analytics/impact/trends     → Impact trends over time
+ *   GET /api/v1/analytics/impact/county-reach → Geographic reach data
  *
- * Endpoints:
+ * Existing diagnostic endpoints (file-based):
  *   GET /api/analytics/survival-curves      → survival_curve_data.json
  *   GET /api/analytics/pressure-charts      → control_chart_data.json
  *   GET /api/analytics/correlation          → correlation_data.json
  *   GET /api/analytics/feature-importance   → feature_importance.json
- *
- * Returns 503 if the file doesn't exist yet (diagnostics not yet run).
- * Returns 500 if the file exists but cannot be read.
  */
 @RestController
-@RequestMapping("/api/analytics")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class AnalyticsController {
 
     private final AnalyticsService analyticsService;
 
+    // ══════════════════════════════════════════════════════════════════════════
+    // New M&E Analytics Endpoints (v1)
+    // ══════════════════════════════════════════════════════════════════════════
+
+    /**
+     * Real-time KPI strip for dashboard.
+     * Scoped by org/pillar/county/program/donor.
+     */
+    @GetMapping("/v1/analytics/kpis")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<AnalyticsService.KpiResponse> getKpis(
+            @RequestParam(defaultValue = "org") String scope,
+            @RequestParam(required = false) String scopeId
+    ) {
+        return ResponseEntity.ok(analyticsService.getKpis(scope, scopeId));
+    }
+
+    /**
+     * Pillar-level metrics rollup.
+     */
+    @GetMapping("/v1/analytics/pillars")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<List<AnalyticsService.PillarMetrics>> getPillarMetrics() {
+        return ResponseEntity.ok(analyticsService.getPillarMetrics());
+    }
+
+    /**
+     * County/region metrics rollup.
+     */
+    @GetMapping("/v1/analytics/regions")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<List<AnalyticsService.CountyMetrics>> getCountyMetrics() {
+        return ResponseEntity.ok(analyticsService.getCountyMetrics());
+    }
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // Impact & Reach Endpoints (for Leadership Dashboard)
+    // ══════════════════════════════════════════════════════════════════════════
+
+    /**
+     * Get overall impact metrics for the Impact & Reach page.
+     */
+    @GetMapping("/v1/analytics/impact")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<AnalyticsService.ImpactMetrics> getImpactMetrics(
+            @RequestParam(defaultValue = "12m") String timeRange,
+            @RequestParam(required = false) String pillar
+    ) {
+        return ResponseEntity.ok(analyticsService.getImpactMetrics(timeRange, pillar));
+    }
+
+    /**
+     * Get impact metrics broken down by pillar.
+     */
+    @GetMapping("/v1/analytics/impact/by-pillar")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<List<AnalyticsService.PillarImpactMetrics>> getImpactByPillar(
+            @RequestParam(defaultValue = "12m") String timeRange
+    ) {
+        return ResponseEntity.ok(analyticsService.getImpactByPillar(timeRange));
+    }
+
+    /**
+     * Get impact trends over time.
+     */
+    @GetMapping("/v1/analytics/impact/trends")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<List<AnalyticsService.ImpactTrendData>> getImpactTrends(
+            @RequestParam(defaultValue = "12m") String timeRange,
+            @RequestParam(required = false) String pillar
+    ) {
+        return ResponseEntity.ok(analyticsService.getImpactTrends(timeRange, pillar));
+    }
+
+    /**
+     * Get geographic reach data by county.
+     */
+    @GetMapping("/v1/analytics/impact/county-reach")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<List<AnalyticsService.CountyReachData>> getCountyReach(
+            @RequestParam(defaultValue = "12m") String timeRange,
+            @RequestParam(required = false) String pillar
+    ) {
+        return ResponseEntity.ok(analyticsService.getCountyReach(timeRange, pillar));
+    }
+
+    // ══════════════════════════════════════════════════════════════════════════
+    // Existing Diagnostic Endpoints (file-based)
+    // ══════════════════════════════════════════════════════════════════════════
+
     /**
      * Kaplan-Meier time-to-closure survival curves:
      * fleet vs high-risk sites, medians, and closure rates.
      */
-    @GetMapping("/survival-curves")
+    @GetMapping("/analytics/survival-curves")
     public ResponseEntity<String> getSurvivalCurves() {
         return analyticsService.getSurvivalCurves();
     }
@@ -42,7 +136,7 @@ public class AnalyticsController {
      * EWMA pressure control charts per site:
      * readings, UCL/LCL bands, drift flags, and lead times before spikes.
      */
-    @GetMapping("/pressure-charts")
+    @GetMapping("/analytics/pressure-charts")
     public ResponseEntity<String> getPressureCharts() {
         return analyticsService.getPressureCharts();
     }
@@ -51,7 +145,7 @@ public class AnalyticsController {
      * Rejection rate vs incident count Pearson correlation:
      * scatter points per site and interpretation.
      */
-    @GetMapping("/correlation")
+    @GetMapping("/analytics/correlation")
     public ResponseEntity<String> getCorrelation() {
         return analyticsService.getCorrelation();
     }
@@ -60,8 +154,37 @@ public class AnalyticsController {
      * Logistic regression feature importances:
      * standardised coefficients per feature from the trained model.
      */
-    @GetMapping("/feature-importance")
+    @GetMapping("/analytics/feature-importance")
     public ResponseEntity<String> getFeatureImportance() {
         return analyticsService.getFeatureImportance();
+    }
+
+    /**
+     * Model backtest report — precision, recall, F1, train/test split,
+     * positive rate, and split date. Used by the Analyst dashboard.
+     */
+    @GetMapping("/backtest")
+    public ResponseEntity<String> getBacktest() {
+        return analyticsService.getBacktest();
+    }
+
+    /**
+     * Outcome model metrics — GradientBoosting accuracy, precision, recall,
+     * F1, AUC-ROC, and feature importance.
+     * Used by the Analyst outcome model panel.
+     */
+    @GetMapping("/analytics/outcome-metrics")
+    public ResponseEntity<String> getOutcomeMetrics() {
+        return analyticsService.getOutcomeMetrics();
+    }
+
+    /**
+     * Outcome predictions — completion probability summary and by-pillar
+     * breakdown from the outcome forecast model.
+     * Used by the Analyst outcome prediction panel.
+     */
+    @GetMapping("/analytics/outcome-predictions")
+    public ResponseEntity<String> getOutcomePredictions() {
+        return analyticsService.getOutcomePredictions();
     }
 }

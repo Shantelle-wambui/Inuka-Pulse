@@ -116,6 +116,24 @@ if [ "$SCORE_ONLY" = false ]; then
   log_ok "Diagnostics complete (${ELAPSED}s)"
 fi
 
+# ── Stage 5: Extended data generation ────────────────────────────────────────
+if [ "$SKIP_GEN" = false ] && [ "$SCORE_ONLY" = false ]; then
+  log_step "Stage 5 — Generating extended M&E data (programs, donors, indicators)"
+  START_TS=$(date +%s)
+  python3 -m src.generate_extended_data
+  ELAPSED=$(( $(date +%s) - START_TS ))
+  log_ok "Extended data generation complete (${ELAPSED}s)"
+fi
+
+# ── Stage 6: Extended ETL pipeline ───────────────────────────────────────────
+if [ "$SCORE_ONLY" = false ]; then
+  log_step "Stage 6 — Extended ETL (validate, transform, load)"
+  START_TS=$(date +%s)
+  python3 -m src.extended_etl 2>/dev/null || python3 -m src.extended_etl --skip-validation
+  ELAPSED=$(( $(date +%s) - START_TS ))
+  log_ok "Extended ETL complete (${ELAPSED}s)"
+fi
+
 # ── Summary ───────────────────────────────────────────────────────────────────
 echo ""
 echo -e "${BOLD}${GREEN}════════════════════════════════════════${NC}"
@@ -132,7 +150,13 @@ for f in \
   data/warehouse/inuka_survival_curve_data.json \
   data/warehouse/inuka_control_chart_data.json \
   data/warehouse/inuka_correlation_data.json \
-  data/warehouse/inuka_drift_events.json; do
+  data/warehouse/inuka_drift_events.json \
+  data/warehouse/programs_export.json \
+  data/warehouse/donors_export.json \
+  data/warehouse/funding_export.json \
+  data/warehouse/allocations_export.json \
+  data/warehouse/indicators_export.json \
+  data/warehouse/dashboard_metrics_export.json; do
   if [ -f "$f" ]; then
     SIZE=$(du -sh "$f" 2>/dev/null | cut -f1)
     echo -e "  ${GREEN}✓${NC} $f (${SIZE})"

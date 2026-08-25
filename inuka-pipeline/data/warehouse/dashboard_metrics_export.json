@@ -1,0 +1,2028 @@
+{
+  "generated_at": "2026-08-23T11:37:32.694231",
+  "metrics": [
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 306.2609
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 128.9245
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 69.5385
+    },
+    {
+      "metric_key": "disbursements_made",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 207.4375
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 2426200.0
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 278.6349
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 68.4842
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 73.0664
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 73.9282
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 75.2766
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 70.5446
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 8.7329
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 69.55
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 73.704
+    },
+    {
+      "metric_key": "skill_certification_rate",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 69.47
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 50494.2267
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 66276.4179
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 74.2033
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 51.2881
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "org",
+      "scope_id": "inuka",
+      "period": "current",
+      "value": 72.7368
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 133.5833
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 69.121
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 2271021.5
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 316.6471
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 69.5183
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 72.6018
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 78.6957
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 76.7695
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 8.2981
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 75.8188
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 49411.3158
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 63525.125
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 63.25
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 47.3929
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "pillar",
+      "scope_id": "Plus",
+      "period": "current",
+      "value": 81.125
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 124.6818
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 63.8025
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 2459798.0588
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 278.8333
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 63.9707
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 71.3783
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 72.3626
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 73.0743
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 5.51
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 77.5044
+    },
+    {
+      "metric_key": "skill_certification_rate",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 62.01
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 50756.1765
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 68396.963
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 73.69
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 48.8125
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "pillar",
+      "scope_id": "Tech",
+      "period": "current",
+      "value": 64.4
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 133.2
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 74.5436
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 2484560.3077
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 242.6923
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 69.7218
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 74.2094
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 71.1458
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 75.8682
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 9.0467
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 73.6043
+    },
+    {
+      "metric_key": "skill_certification_rate",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 74.0733
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 50586.96
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 70779.3636
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 58.24
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 57.0
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "pillar",
+      "scope_id": "Vocational",
+      "period": "current",
+      "value": 79.0556
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 128.3333
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 71.8764
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 2407333.9167
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 270.0
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 69.7917
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 74.1189
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 78.1977
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 74.368
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 8.6495
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 69.0795
+    },
+    {
+      "metric_key": "skill_certification_rate",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 70.025
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 51480.2143
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 61448.2308
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 61.8462
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "pillar",
+      "scope_id": "Scholarship",
+      "period": "current",
+      "value": 62.7368
+    },
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 334.0
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 127.25
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 68.0367
+    },
+    {
+      "metric_key": "disbursements_made",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 240.0
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 2805593.75
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 322.0
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 72.69
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 71.47
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 66.08
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 8.29
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 72.56
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 63.8075
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 47772.9333
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 75.6
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 55.8
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "county",
+      "scope_id": "Nairobi",
+      "period": "current",
+      "value": 67.0
+    },
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 308.0
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 143.0
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 63.025
+    },
+    {
+      "metric_key": "disbursements_made",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 278.0
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 3428505.0
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 64.8433
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 71.66
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 77.935
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 80.376
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 63.125
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 6.1422
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 63.91
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 78.2667
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 56209.2
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 82.8
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 41.8
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "county",
+      "scope_id": "Mombasa",
+      "period": "current",
+      "value": 64.5833
+    },
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 386.0
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 152.6
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 65.7475
+    },
+    {
+      "metric_key": "disbursements_made",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 112.0
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 3675217.25
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 336.5
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 69.195
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 76.93
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 76.9
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 69.8817
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 60.94
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 6.288
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 70.135
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 72.0667
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 51746.125
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 68186.3333
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "county",
+      "scope_id": "Nakuru",
+      "period": "current",
+      "value": 63.5
+    },
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 303.0
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 53.0
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 63.13
+    },
+    {
+      "metric_key": "disbursements_made",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 225.3333
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 1041537.0
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 267.1429
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 58.42
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 84.3825
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 65.2225
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 79.6171
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 62.93
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 9.401
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 70.36
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 73.7488
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 48834.5
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 61114.5
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 87.68
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 61.5
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "county",
+      "scope_id": "Kisumu",
+      "period": "current",
+      "value": 77.6667
+    },
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 250.3333
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 159.4
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 72.2267
+    },
+    {
+      "metric_key": "disbursements_made",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 342.0
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 2531191.75
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 206.5
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 64.5762
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 68.14
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 75.6067
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 8.5
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 83.16
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 76.264
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 50740.0
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 68548.5
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 76.24
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 36.2
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "county",
+      "scope_id": "Eldoret",
+      "period": "current",
+      "value": 38.375
+    },
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 320.0
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 109.0
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 70.54
+    },
+    {
+      "metric_key": "disbursements_made",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 126.5
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 3064041.25
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 299.3333
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 65.7967
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 70.46
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 62.92
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 70.05
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 8.043
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 69.0167
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 74.5
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 48544.8571
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 63889.0714
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 63.05
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 55.3333
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "county",
+      "scope_id": "Kiambu",
+      "period": "current",
+      "value": 46.375
+    },
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 186.0
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 144.5
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 71.2075
+    },
+    {
+      "metric_key": "disbursements_made",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 118.0
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 1812794.875
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 286.3333
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 77.9029
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 73.1073
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 71.198
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 79.7136
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 58.825
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 9.8383
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 79.62
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 73.9357
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 49443.2
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 69973.6667
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 74.145
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 67.6
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "county",
+      "scope_id": "Machakos",
+      "period": "current",
+      "value": 55.8333
+    },
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 375.6667
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 98.0
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 71.851
+    },
+    {
+      "metric_key": "disbursements_made",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 137.0
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 223.9
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 67.685
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 73.515
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 74.3709
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 66.5533
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 80.485
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 10.436
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 73.27
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 74.3233
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 60090.0
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 57.59
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 62.6667
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "county",
+      "scope_id": "Meru",
+      "period": "current",
+      "value": 57.4286
+    },
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 298.5
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 122.0
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 68.679
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 2072146.5714
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 290.7778
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 71.3491
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 78.7783
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 77.084
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 86.38
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 13.34
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 65.96
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 72.1617
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 54967.0
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 63976.4
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 100.0
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 51.1111
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "county",
+      "scope_id": "Nyeri",
+      "period": "current",
+      "value": 61.3
+    },
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 200.0
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 152.5
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 72.5875
+    },
+    {
+      "metric_key": "disbursements_made",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 249.0
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 1319092.0
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 336.0
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 68.7225
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 63.11
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 80.446
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 70.679
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 80.645
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 11.24
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 65.95
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 76.2123
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 49812.4444
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 58925.0
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 63.62
+    },
+    {
+      "metric_key": "family_members_impacted",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 46.4444
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "county",
+      "scope_id": "Kilifi",
+      "period": "current",
+      "value": 68.5
+    },
+    {
+      "metric_key": "total_enrolled",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 380.0
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 119.5556
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 64.0029
+    },
+    {
+      "metric_key": "disbursements_made",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 288.0
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 2298910.1429
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 408.0
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 71.13
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 79.5356
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 74.436
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 74.008
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 52.78
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 7.555
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 64.755
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 68.995
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 70637.25
+    },
+    {
+      "metric_key": "community_projects",
+      "scope_type": "county",
+      "scope_id": "Kakamega",
+      "period": "current",
+      "value": 51.125
+    },
+    {
+      "metric_key": "active_enrolled",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 115.5
+    },
+    {
+      "metric_key": "attendance_rate",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 72.3162
+    },
+    {
+      "metric_key": "disbursement_amount",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 1131080.6667
+    },
+    {
+      "metric_key": "training_hours",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 336.1667
+    },
+    {
+      "metric_key": "completion_rate",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 57.64
+    },
+    {
+      "metric_key": "employment_rate",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 68.565
+    },
+    {
+      "metric_key": "retention_rate_90d",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 80.31
+    },
+    {
+      "metric_key": "dropout_rate",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 72.3
+    },
+    {
+      "metric_key": "avg_assessment_score",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 81.35
+    },
+    {
+      "metric_key": "score_improvement",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 9.4473
+    },
+    {
+      "metric_key": "business_startup_rate",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 53.11
+    },
+    {
+      "metric_key": "further_education_rate",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 75.332
+    },
+    {
+      "metric_key": "cost_per_beneficiary",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 50423.875
+    },
+    {
+      "metric_key": "cost_per_outcome",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 66677.7273
+    },
+    {
+      "metric_key": "income_increase_pct",
+      "scope_type": "county",
+      "scope_id": "Kajiado",
+      "period": "current",
+      "value": 86.17
+    }
+  ]
+}

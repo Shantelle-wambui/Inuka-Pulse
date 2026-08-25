@@ -1,0 +1,1159 @@
+{
+  "generated_at": "2026-08-23T12:06:26.013990",
+  "model_type": "demand_forecast",
+  "forecast_count": 144,
+  "forecasts": [
+    {
+      "county": "Nyeri",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 110,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nyeri",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 108,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nyeri",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 108,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Nyeri",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 240,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nyeri",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 227,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nyeri",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 225,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Nyeri",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 509,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nyeri",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 502,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nyeri",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 502,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 275,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 270,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 277,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 338,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 328,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 332,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 70,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 71,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 71,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 264,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 259,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 266,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 451,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 440,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 440,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 571,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 567,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 567,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 820,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 818,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 837,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 264,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 259,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kiambu",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 267,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 781,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 779,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 799,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 556,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 552,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 552,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 381,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 365,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 369,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 455,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 440,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 440,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 367,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 355,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 355,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 335,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 313,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 317,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 617,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 615,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 631,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 76,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 74,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kajiado",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 74,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 602,
+      "confidence": 0.75
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 598,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 598,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 218,
+      "confidence": 0.75
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 210,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 208,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 521,
+      "confidence": 0.75
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 516,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 516,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 443,
+      "confidence": 0.75
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 431,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Eldoret",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 431,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 678,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 675,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kakamega",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 694,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 478,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 473,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kilifi",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 473,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 222,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 215,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 213,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 300,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 295,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 299,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 739,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 737,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 756,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 625,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 620,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 620,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 281,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 275,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 280,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 533,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 530,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 530,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 485,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 484,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 484,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 237,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 230,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nairobi",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 228,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 236,
+      "confidence": 0.75
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 229,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 227,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 624,
+      "confidence": 0.75
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 618,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 618,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 549,
+      "confidence": 0.75
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 546,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 546,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 636,
+      "confidence": 0.75
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 632,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Mombasa",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 632,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Meru",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 431,
+      "confidence": 0.75
+    },
+    {
+      "county": "Meru",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 414,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Meru",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 414,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Meru",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 288,
+      "confidence": 0.75
+    },
+    {
+      "county": "Meru",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 283,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Meru",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 287,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Meru",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 544,
+      "confidence": 0.75
+    },
+    {
+      "county": "Meru",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 541,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Meru",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 541,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Meru",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 420,
+      "confidence": 0.75
+    },
+    {
+      "county": "Meru",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 390,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Meru",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 390,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 459,
+      "confidence": 0.75
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 440,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 440,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 627,
+      "confidence": 0.75
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 622,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 623,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 640,
+      "confidence": 0.75
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 634,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Scholarship",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 634,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Plus",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 541,
+      "confidence": 0.75
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Plus",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 536,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Machakos",
+      "pillar": "Plus",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 536,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Tech",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 229,
+      "confidence": 0.75
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Tech",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 222,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Kisumu",
+      "pillar": "Tech",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 220,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 267,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 254,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nakuru",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 253,
+      "confidence": 0.5499999999999999
+    },
+    {
+      "county": "Nyeri",
+      "pillar": "Vocational",
+      "forecast_month": "2026-08-01",
+      "horizon_months": 1,
+      "forecast_enrollment": 487,
+      "confidence": 0.75
+    },
+    {
+      "county": "Nyeri",
+      "pillar": "Vocational",
+      "forecast_month": "2026-09-01",
+      "horizon_months": 2,
+      "forecast_enrollment": 482,
+      "confidence": 0.6499999999999999
+    },
+    {
+      "county": "Nyeri",
+      "pillar": "Vocational",
+      "forecast_month": "2026-10-01",
+      "horizon_months": 3,
+      "forecast_enrollment": 482,
+      "confidence": 0.5499999999999999
+    }
+  ]
+}

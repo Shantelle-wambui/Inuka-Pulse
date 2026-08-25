@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { loginUser } from "@/lib/inuka-pulse/api";
 import { setClientCookie } from "@/lib/cookie.client";
 import { useAuthStore } from "@/stores/auth/auth-store";
+import { getRoleHomeRoute } from "@/lib/inuka-pulse/roles";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -49,7 +50,7 @@ export function LoginForm() {
       // The Zustand persist store covers client-side; the cookie covers SSR.
       setClientCookie("inuka-token", response.token, 1);
       toast.success(`Welcome back, ${response.name}`);
-      router.push("/dashboard/inuka");
+      router.push(getRoleHomeRoute(response.role));
     } catch (err) {
       const message = err instanceof Error ? err.message : "Login failed. Please try again.";
       toast.error(message);
