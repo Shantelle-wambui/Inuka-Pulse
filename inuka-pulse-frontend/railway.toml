@@ -1,0 +1,18 @@
+# railway.toml — Frontend service configuration for Railway
+# Docs: https://docs.railway.app/reference/config-as-code
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+# Health check
+healthcheckPath = "/"
+healthcheckTimeout = 100
+
+# Keep one instance running
+numReplicas = 1
+
+# Restart on failure
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3

@@ -179,6 +179,16 @@ def build_features(days_back: int = 364) -> pd.DataFrame:
     else:
         engagement_by_ben = {}
 
+    # Load engagement history for band_now lookup
+    history_path = RAW_DIR / "fact_engagement_history.csv"
+    if history_path.exists():
+        engagement_history = pd.read_csv(history_path)
+        engagement_history["week_start"] = pd.to_datetime(engagement_history["week_start"])
+        # Pre-group by beneficiary for efficient lookup
+        engagement_by_ben: dict[str, pd.DataFrame] = dict(tuple(engagement_history.groupby("beneficiary_id")))
+    else:
+        engagement_by_ben = {}
+
     # ── Parse & clean dates ───────────────────────────────────────────────────
     sessions_raw["session_date"]   = _parse_dates(sessions_raw["session_date"])
     visits_raw["visit_date"]       = _parse_dates(visits_raw["visit_date"])
@@ -305,6 +315,20 @@ def build_features(days_back: int = 364) -> pd.DataFrame:
             # that would have been available at that point in time.
             ben_assessments = assessments_by_ben.get(bid, pd.DataFrame())
             score_latest, score_trend = _compute_assessment_score_as_of(ben_assessments, snap)
+
+            # ── band_now lookup from engagement history
+            band_now = None
+            if bid in engagement_by_ben:
+                snap_ts_dt = pd.Timestamp(snap)
+                ben_history = engagement_by_ben[bid]
+                # Find exact match or closest week before snap
+                matches = ben_history[ben_history["week_start"] <= snap_ts_dt]
+                if not matches.empty:
+                    closest = matches.loc[matches["week_start"].idxmax()]
+                    band_now = closest["band"]
+                else:
+                    # If no week before, take the earliest
+                    band_now = ben_history.loc[ben_history["week_start"].idxmin(), "band"]
 
             # ── band_now lookup from engagement history
             band_now = None

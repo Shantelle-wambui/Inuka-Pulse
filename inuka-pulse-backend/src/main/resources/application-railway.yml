@@ -1,14 +1,16 @@
+# application-railway.yml
+# Active when SPRING_PROFILES_ACTIVE=railway (set in Railway service variables)
+# Uses Railway's private network for database connectivity
+
 spring:
   datasource:
-    # Railway injects DATABASE_URL as either:
-    #   postgresql://user:pass@host:port/db   (newer format)
-    #   postgres://user:pass@host:port/db     (legacy format)
-    # Spring Boot requires the jdbc:postgresql:// prefix in all cases.
-    # The replace() call normalises both formats safely.
-    url: jdbc:postgresql://${DATABASE_URL:?DATABASE_URL env var is required}
+    # Railway provides DATABASE_PRIVATE_URL as: postgresql://user:pass@host:port/db
+    # Spring needs JDBC format: jdbc:postgresql://user:pass@host:port/db
+    # The jdbc: prefix is prepended to handle both formats.
+    url: jdbc:${DATABASE_PRIVATE_URL}
     driver-class-name: org.postgresql.Driver
     # Railway also exposes PGUSER / PGPASSWORD — but credentials are already
-    # embedded in DATABASE_URL so we let HikariCP parse them from the URL.
+    # embedded in DATABASE_PRIVATE_URL so we let HikariCP parse them from the URL.
     hikari:
       # Railway Hobby PostgreSQL allows 25 connections max.
       maximum-pool-size: 8
@@ -27,7 +29,8 @@ spring:
       # Let Flyway own the schema — Hibernate must not touch DDL
       ddl-auto: none
     show-sql: false
-    open-in-view: false
+
+  defer-datasource-initialization: false
 
   flyway:
     enabled: true
@@ -35,6 +38,10 @@ spring:
     baseline-on-migrate: true
     out-of-order: true
     validate-on-migrate: false
+
+  sql:
+    init:
+      mode: never
 
   h2:
     console:
@@ -54,20 +61,14 @@ management:
 
 inuka:
   cors:
-    # Set CORS_ALLOWED_ORIGINS in Railway env vars to your Vercel URL
-    # e.g. https://inuka-pulse.vercel.app
-    # Multiple origins: comma-separated, no spaces
     allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
   jwt:
-    # Must be set in Railway env vars — never commit the real secret
     secret: ${JWT_SECRET}
     expiration-ms: 86400000 # 24 hours
   etl:
-    enabled: true
-    # R2 public URLs — set in Railway environment variables
-    # e.g. https://pub-xxx.r2.dev/live_batch.json
-    live-batch-url: ${ETL_LIVE_BATCH_URL}
-    predictions-url: ${ETL_PREDICTIONS_URL}
+    enabled: ${ETL_ENABLED:true}
+    live-batch-url: ${ETL_LIVE_BATCH_URL:}
+    predictions-url: ${ETL_PREDICTIONS_URL:}
     poll-interval-ms: 120000
     rows-per-cycle: 200
     frontend-refresh-ms: 125000
@@ -76,4 +77,4 @@ inuka:
     groq-api-key: ${GROQ_API_KEY:}
     model: llama-3.1-8b-instant
     timeout-ms: 3000
-    enabled: ${LLM_ENABLED:true}
+    enabled: ${LLM_ENABLED:false}

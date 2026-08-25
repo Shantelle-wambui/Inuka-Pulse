@@ -23,9 +23,9 @@ WORKDIR /app
 # Copy only the fat JAR from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Railway/Docker injects SPRING_PROFILES_ACTIVE at runtime.
-# Shell form is used so the variable is evaluated when the container starts.
-ENV SPRING_PROFILES_ACTIVE=docker
+# SPRING_PROFILES_ACTIVE is injected at runtime by Railway/Docker.
+# Default to 'railway' for cloud deployments; override with docker-compose for local.
+ENV SPRING_PROFILES_ACTIVE=railway
 
 EXPOSE 8080
 
