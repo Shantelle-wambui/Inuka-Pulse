@@ -36,6 +36,75 @@ public class MlAdminController {
                 .orElse(ResponseEntity.ok(Map.of("artifactPath", "sentinel/models/logreg_v1.pkl")));
     }
 
+    /**
+     * GET /api/ml/decision-threshold
+     *
+     * Returns the ML model's decision threshold and band definitions.
+     * The frontend uses this to correctly interpret prediction bands
+     * without hardcoding threshold values.
+     *
+     * Reads from: inuka-pipeline/data/warehouse/inuka_decision_threshold.json
+     *             inuka-pipeline/data/warehouse/inuka_backtest_report.json (fallback)
+     */
+    @GetMapping("/decision-threshold")
+    public ResponseEntity<Map<String, Object>> getDecisionThreshold() {
+        Map<String, Object> result = new LinkedHashMap<>();
+
+        // Try to read the threshold from the pipeline's export
+        java.io.File thresholdFile = new java.io.File(
+                System.getProperty("sentinel.data.dir", "inuka-pipeline"),
+                "data/warehouse/inuka_decision_threshold.json");
+
+        java.io.File backtestFile = new java.io.File(
+                System.getProperty("sentinel.data.dir", "inuka-pipeline"),
+                "data/warehouse/inuka_backtest_report.json");
+
+        double optimalThreshold = 0.5;  // fallback default
+        double beta = 2.0;
+
+        try {
+            com.fasterxml.jackson.databind.ObjectMapper mapper =
+                    new com.fasterxml.jackson.databind.ObjectMapper();
+
+            if (thresholdFile.exists()) {
+                @SuppressWarnings("unchecked")
+                Map<String, Object> data = mapper.readValue(thresholdFile, Map.class);
+                if (data.get("optimal_threshold") != null) {
+                    optimalThreshold = ((Number) data.get("optimal_threshold")).doubleValue();
+                }
+                if (data.get("beta") != null) {
+                    beta = ((Number) data.get("beta")).doubleValue();
+                }
+            } else if (backtestFile.exists()) {
+                // Fallback: read from backtest report
+                @SuppressWarnings("unchecked")
+                Map<String, Object> data = mapper.readValue(backtestFile, Map.class);
+                if (data.get("optimal_threshold") != null) {
+                    optimalThreshold = ((Number) data.get("optimal_threshold")).doubleValue();
+                }
+            }
+        } catch (Exception e) {
+            log.warn("Could not read decision threshold from pipeline: {}", e.getMessage());
+        }
+
+        result.put("optimalThreshold", optimalThreshold);
+        result.put("beta", beta);
+
+        // Band definitions matching inuka_predict.py _band() function
+        // These are computed relative to the threshold
+        result.put("bands", Map.of(
+                "Dropout", Map.of("min", 0.70, "description", "High-confidence dropout prediction"),
+                "Disengaged", Map.of("min", optimalThreshold, "max", 0.70, "description", "Above decision threshold"),
+                "At-Risk", Map.of("min", optimalThreshold * 0.55, "max", optimalThreshold, "description", "Early warning zone"),
+                "Active", Map.of("max", optimalThreshold * 0.55, "description", "Below risk threshold")
+        ));
+
+        result.put("note", "Band boundaries are relative to the model's optimal decision threshold. " +
+                "The threshold is optimized for F-" + beta + " score (recall weighted " + beta + "x over precision).");
+
+        return ResponseEntity.ok(result);
+    }
+
     @GetMapping("/overview")
     public ResponseEntity<Map<String, Object>> getOverview() {
         Map<String, Object> result = new LinkedHashMap<>();

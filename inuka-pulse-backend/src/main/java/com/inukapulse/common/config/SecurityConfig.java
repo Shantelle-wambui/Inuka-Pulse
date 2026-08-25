@@ -115,6 +115,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/ingestion/**").authenticated()
                 .requestMatchers("/api/analytics/**").authenticated()
                 .requestMatchers("/api/ml/champion-artifact-path").authenticated()
+                .requestMatchers("/api/ml/decision-threshold").permitAll()
                 
                 // ══════════════════════════════════════════════════════════════
                 // V1 ANALYTICS API — Requires auth, role-scoped via @PreAuthorize

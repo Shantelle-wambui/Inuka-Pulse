@@ -13,6 +13,10 @@
  *   - If no alerts returned, fall back to mockAlerts.
  *   - Real backend data (when the ETL pipeline has seeded Inuka records) takes
  *     full precedence — mocks are only a safety net.
+ *
+ * IMPORTANT: When mock data is returned, the `isMock` flag is set to true.
+ * UI components MUST check this flag and display a warning banner so users
+ * know they're seeing demo data, not real predictions.
  */
 
 import { getAuthToken } from "@/server/server-actions";
@@ -41,6 +45,17 @@ import {
 
 const API_BASE = process.env.NEXT_PUBLIC_INUKA_API_URL ?? "";
 
+// ─── Mock Data Wrapper Types ─────────────────────────────────────────────────
+// These types wrap API responses to indicate whether mock data is being used.
+// UI components should check `isMock` and display a warning banner when true.
+
+export interface WithMockIndicator<T> {
+  data: T;
+  isMock: boolean;
+  /** Human-readable reason why mock data is being used (only set when isMock=true) */
+  mockReason?: string;
+}
+
 /** Throws a clear error if the env var is missing — called inside each fetch function. */
 function requireApiBase(): string {
   if (!API_BASE) {
@@ -55,7 +70,11 @@ function requireApiBase(): string {
 const TIMEOUT_MS = 15_000;
 
 /**
- * Returns an AbortSignal that fires after TIMEOUT_MS.
+ * Creates a timeout controller that can be cleared after successful fetch.
+ * 
+ * Returns both the AbortSignal to pass to fetch() and a clear() function
+ * that should be called after the fetch completes to prevent the timeout
+ * from firing (which would be wasteful, even if harmless).
  *
  * AbortSignal.timeout() is avoided here because it throws a DOMException
  * (TimeoutError) whose .message property is a read-only getter. Turbopack's
@@ -65,20 +84,56 @@ const TIMEOUT_MS = 15_000;
  * Using AbortController + setTimeout throws a plain Error instead, which
  * the error boundary handles cleanly.
  */
-function makeTimeoutSignal(): AbortSignal {
+function makeTimeoutController(): { signal: AbortSignal; clear: () => void } {
   const controller = new AbortController();
-  setTimeout(() => controller.abort(new Error(`Request timed out after ${TIMEOUT_MS}ms`)), TIMEOUT_MS);
-  return controller.signal;
+  const timeoutId = setTimeout(
+    () => controller.abort(new Error(`Request timed out after ${TIMEOUT_MS}ms`)),
+    TIMEOUT_MS
+  );
+  return {
+    signal: controller.signal,
+    clear: () => clearTimeout(timeoutId),
+  };
+}
+
+/**
+ * Legacy function for backward compatibility.
+ * @deprecated Use makeTimeoutController() for new code to enable cleanup.
+ */
+function makeTimeoutSignal(): AbortSignal {
+  return makeTimeoutController().signal;
 }
 
 /** Fetch options that include the JWT Authorization header. */
-async function authedOpts(): Promise<RequestInit> {
+async function authedOpts(): Promise<RequestInit & { _timeoutClear?: () => void }> {
   const token = await getAuthToken();
+  const timeout = makeTimeoutController();
   return {
     cache: "no-store",
-    signal: makeTimeoutSignal(),
+    signal: timeout.signal,
     headers: token ? { Authorization: `Bearer ${token}` } : {},
+    // Store clear function for callers that want to clean up
+    _timeoutClear: timeout.clear,
   };
+}
+
+/**
+ * Helper to perform a fetch with automatic timeout cleanup.
+ * Clears the timeout after fetch completes (success or error).
+ */
+async function fetchWithTimeout(
+  url: string,
+  opts: RequestInit & { _timeoutClear?: () => void }
+): Promise<Response> {
+  const clearFn = opts._timeoutClear;
+  try {
+    const response = await fetch(url, opts);
+    clearFn?.();
+    return response;
+  } catch (error) {
+    clearFn?.();
+    throw error;
+  }
 }
 
 /** Parse a JSON error body from the backend's GlobalExceptionHandler format. */
@@ -93,14 +148,37 @@ async function parseErrorMessage(res: Response): Promise<string> {
 
 // ─── Risk ────────────────────────────────────────────────────────────────────
 
-/** GET /api/sites/risk-summary */
-export async function fetchRiskSummary(): Promise<SiteRiskSummary[]> {
-  const res = await fetch(`${requireApiBase()}/api/sites/risk-summary`, await authedOpts());
+/**
+ * GET /api/sites/risk-summary
+ * 
+ * Returns site risk summaries with mock indicator. Check `isMock` to determine
+ * if real data is being displayed.
+ */
+export async function fetchRiskSummary(): Promise<WithMockIndicator<SiteRiskSummary[]>> {
+  const opts = await authedOpts();
+  const res = await fetchWithTimeout(`${requireApiBase()}/api/sites/risk-summary`, opts);
   if (!res.ok) throw new Error(await parseErrorMessage(res));
   const data: SiteRiskSummary[] = await res.json();
   // If backend has no Inuka cohorts seeded yet, fall back to mock data
-  if (data.length === 0) return mockSites;
-  return data;
+  if (data.length === 0) {
+    return {
+      data: mockSites,
+      isMock: true,
+      mockReason: "No cohort data available from backend — showing demo data",
+    };
+  }
+  return { data, isMock: false };
+}
+
+/**
+ * GET /api/sites/risk-summary (legacy wrapper)
+ * 
+ * @deprecated Use fetchRiskSummary() and check the isMock flag instead.
+ * This function exists for backward compatibility but hides mock status.
+ */
+export async function fetchRiskSummaryLegacy(): Promise<SiteRiskSummary[]> {
+  const result = await fetchRiskSummary();
+  return result.data;
 }
 
 /** GET /api/sites/{siteId} */
@@ -134,14 +212,36 @@ export async function simulateRisk(
 
 // ─── Alerts ──────────────────────────────────────────────────────────────────
 
-/** GET /api/alerts */
-export async function fetchAlerts(): Promise<Alert[]> {
-  const res = await fetch(`${requireApiBase()}/api/alerts`, await authedOpts());
+/**
+ * GET /api/alerts
+ * 
+ * Returns alerts with mock indicator. Check `isMock` to determine
+ * if real alerts are being displayed.
+ */
+export async function fetchAlerts(): Promise<WithMockIndicator<Alert[]>> {
+  const opts = await authedOpts();
+  const res = await fetchWithTimeout(`${requireApiBase()}/api/alerts`, opts);
   if (!res.ok) throw new Error(await parseErrorMessage(res));
   const data: Alert[] = await res.json();
   // Fall back to mock data if backend returns no active Inuka alerts
-  if (data.length === 0) return mockAlerts;
-  return data;
+  if (data.length === 0) {
+    return {
+      data: mockAlerts,
+      isMock: true,
+      mockReason: "No alerts from backend — showing demo alerts",
+    };
+  }
+  return { data, isMock: false };
+}
+
+/**
+ * GET /api/alerts (legacy wrapper)
+ * 
+ * @deprecated Use fetchAlerts() and check the isMock flag instead.
+ */
+export async function fetchAlertsLegacy(): Promise<Alert[]> {
+  const result = await fetchAlerts();
+  return result.data;
 }
 
 /** POST /api/alerts/{id}/ack */
@@ -153,24 +253,46 @@ export async function acknowledgeAlert(id: string): Promise<void> {
 
 // ─── Data Quality ─────────────────────────────────────────────────────────────
 
-/** GET /api/quality/summary */
-export async function fetchQualitySummary(): Promise<DataQualitySummary> {
-  const res = await fetch(`${requireApiBase()}/api/quality/summary`, await authedOpts());
+/**
+ * GET /api/quality/summary
+ * 
+ * Returns quality summary with mock indicator.
+ */
+export async function fetchQualitySummary(): Promise<WithMockIndicator<DataQualitySummary>> {
+  const opts = await authedOpts();
+  const res = await fetchWithTimeout(`${requireApiBase()}/api/quality/summary`, opts);
   if (!res.ok) throw new Error(await parseErrorMessage(res));
   const data: DataQualitySummary = await res.json();
   // If total is 0 the DB has not been seeded — fall back to mock
-  if (data.total === 0) return mockQualitySummary;
-  return data;
+  if (data.total === 0) {
+    return {
+      data: mockQualitySummary,
+      isMock: true,
+      mockReason: "No quality data processed yet — showing demo quality metrics",
+    };
+  }
+  return { data, isMock: false };
 }
 
-/** GET /api/quality/batches */
-export async function fetchBatches(): Promise<IngestBatch[]> {
-  const res = await fetch(`${requireApiBase()}/api/quality/batches`, await authedOpts());
+/**
+ * GET /api/quality/batches
+ * 
+ * Returns batch history with mock indicator.
+ */
+export async function fetchBatches(): Promise<WithMockIndicator<IngestBatch[]>> {
+  const opts = await authedOpts();
+  const res = await fetchWithTimeout(`${requireApiBase()}/api/quality/batches`, opts);
   if (!res.ok) throw new Error(await parseErrorMessage(res));
   const data: IngestBatch[] = await res.json();
   // If backend has no batches, fall back to mock batches
-  if (data.length === 0) return mockBatches;
-  return data;
+  if (data.length === 0) {
+    return {
+      data: mockBatches,
+      isMock: true,
+      mockReason: "No batch history available — showing demo batches",
+    };
+  }
+  return { data, isMock: false };
 }
 
 // ─── Telemetry ────────────────────────────────────────────────────────────────
@@ -398,6 +520,41 @@ export async function updateWorkOrderStatus(id: string, status: string): Promise
     method: "PATCH",
     headers: { ...(opts.headers as Record<string, string>), "Content-Type": "application/json" },
     body: JSON.stringify({ status }),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+// ─── V2: ML — Decision Threshold ─────────────────────────────────────────────
+
+export interface BandDefinition {
+  min?: number;
+  max?: number;
+  description: string;
+}
+
+export interface DecisionThresholdConfig {
+  optimalThreshold: number;
+  beta: number;
+  bands: {
+    Dropout: BandDefinition;
+    Disengaged: BandDefinition;
+    "At-Risk": BandDefinition;
+    Active: BandDefinition;
+  };
+  note: string;
+}
+
+/**
+ * GET /api/ml/decision-threshold
+ *
+ * Fetches the ML model's decision threshold and band definitions.
+ * Use this to correctly interpret prediction bands instead of hardcoding thresholds.
+ */
+export async function fetchDecisionThreshold(): Promise<DecisionThresholdConfig> {
+  const res = await fetch(`${requireApiBase()}/api/ml/decision-threshold`, {
+    cache: "no-store",
+    signal: makeTimeoutSignal(),
   });
   if (!res.ok) throw new Error(await parseErrorMessage(res));
   return res.json();

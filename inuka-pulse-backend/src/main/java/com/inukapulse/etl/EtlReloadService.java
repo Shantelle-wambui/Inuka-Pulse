@@ -259,6 +259,7 @@ public class EtlReloadService {
             IncidentEntity e = new IncidentEntity();
             e.setIncidentId(id);
             e.setSiteId(siteId);
+            e.setBeneficiaryId(str(r, "beneficiary_id"));
             e.setIncidentDate(parseDateTime(str(r, "incident_date")));
             e.setSeverity(str(r, "severity"));
             e.setDescription(str(r, "description"));

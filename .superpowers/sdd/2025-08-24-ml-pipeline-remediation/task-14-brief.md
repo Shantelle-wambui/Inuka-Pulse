@@ -1,3 +1,33 @@
+# Task 14: Enhance RiskBandBadge with Confidence (Phase 7, Part 3)
+
+## Files
+- Modify: `inuka-pulse-frontend/src/components/risk-band-badge.tsx`
+
+## Interfaces
+Current props:
+- `band: string`
+- `className?: string`
+
+New props (add):
+- `confidence?: "High" | "Medium" | "Low"` (optional for backward compatibility)
+- `showProbability?: boolean` (optional)
+- `probability?: number` (0.0-1.0, optional)
+
+## Context
+
+The current RiskBandBadge only shows the band name. With our new escalation model, we have confidence levels and probabilities. This enhancement lets the badge optionally display:
+1. A confidence indicator (dot or icon)
+2. The probability percentage
+
+This is backward compatible — existing usages without confidence props continue to work.
+
+## Steps
+
+### Step 1: Update the component
+
+Replace `risk-band-badge.tsx` with enhanced version:
+
+```tsx
 import { cn } from "@/lib/utils";
 
 /**
@@ -71,3 +101,22 @@ export function RiskBandBadge({
     </span>
   );
 }
+```
+
+### Step 2: Verify TypeScript compiles
+
+```bash
+cd inuka-pulse-frontend && npx tsc --noEmit src/components/risk-band-badge.tsx 2>&1
+```
+
+Or check the whole project (will have pre-existing errors from @react-pdf/renderer):
+```bash
+cd inuka-pulse-frontend && npx tsc --noEmit 2>&1 | grep -E "(risk-band-badge|error TS)" | head -10
+```
+
+### Step 3: Commit
+
+```bash
+git add src/components/risk-band-badge.tsx
+git commit -m "feat(frontend): enhance RiskBandBadge with confidence indicator and probability"
+```

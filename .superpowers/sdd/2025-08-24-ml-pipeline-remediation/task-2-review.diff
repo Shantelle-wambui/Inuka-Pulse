@@ -1,0 +1,98 @@
+ inuka-pipeline/src/generate_inuka_data.py        | 25 +++++++++---------------
+ inuka-pipeline/tests/test_generate_inuka_data.py | 12 ++++++++++++
+ 2 files changed, 21 insertions(+), 16 deletions(-)
+diff --git a/inuka-pipeline/src/generate_inuka_data.py b/inuka-pipeline/src/generate_inuka_data.py
+index 2922e37..0ae7eb8 100644
+--- a/inuka-pipeline/src/generate_inuka_data.py
++++ b/inuka-pipeline/src/generate_inuka_data.py
+@@ -295,54 +295,47 @@ def build_cohorts() -> list[dict]:
+ def build_beneficiaries(cohorts: list[dict]) -> list[dict]:
+     beneficiaries = []
+     idx = 1
+     for cohort in cohorts:
+         is_high_risk = cohort["cohort_id"] in HIGH_RISK_COHORTS
+         # High-risk cohorts get slightly smaller intake
+         n = random.randint(70, 110) if is_high_risk else random.randint(90, 130)
+         for _ in range(n):
+             bid = f"BEN-{idx:05d}"
+             enroll_date = rand_date(START, START + timedelta(days=30))
+-            # Status distribution: high-risk cohorts have more dropouts/at-risk
+-            if is_high_risk:
+-                status = random.choices(
+-                    ENGAGEMENT_LEVELS,
+-                    weights=[0.35, 0.30, 0.20, 0.15]
+-                )[0]
+-            else:
+-                status = random.choices(
+-                    ENGAGEMENT_LEVELS,
+-                    weights=[0.60, 0.22, 0.12, 0.06]
+-                )[0]
++
++            # Generate trajectory; current_status = final week's band
++            trajectory = build_trajectory(is_high_risk, n_weeks=26)
++            status = trajectory[-1]
+ 
+             dropout_date = None
+             dropout_reason = None
+             if status == "Dropout":
+-                dropout_date = rand_date(
+-                    enroll_date + timedelta(days=30),
+-                    TODAY - timedelta(days=7),
+-                ).strftime("%Y-%m-%d")
++                # Find first week where band became Dropout
++                dropout_week = next((i for i, b in enumerate(trajectory) if b == "Dropout"), len(trajectory) - 1)
++                dropout_date = enroll_date + timedelta(weeks=dropout_week)
+                 dropout_reason = random.choice(DROPOUT_REASONS)
+ 
+             beneficiaries.append({
+                 "beneficiary_id":   bid,
+                 "full_name":        ke_name(),
+                 "cohort_id":        cohort["cohort_id"],
+                 "pillar":           cohort["pillar"],
+                 "county":           cohort["county"],
+                 "gender":           random.choice(["Female", "Male", "Prefer not to say"]),
+                 "age":              random.randint(16, 28),
+                 "enrollment_date":  enroll_date.strftime("%Y-%m-%d"),
+                 "current_status":   status,
+-                "dropout_date":     dropout_date,
++                "dropout_date":     dropout_date.strftime("%Y-%m-%d") if dropout_date else None,
+                 "dropout_reason":   dropout_reason,
+                 "phone":            f"+2547{random.randint(10000000, 99999999)}",
++                "trajectory":       trajectory,
+             })
+             idx += 1
+     return beneficiaries
+ 
+ 
+ # ============================================================================
+ # 3. fact_sessions — weekly attendance events
+ # ============================================================================
+ 
+ def build_sessions(beneficiaries: list[dict]) -> list[dict]:
+diff --git a/inuka-pipeline/tests/test_generate_inuka_data.py b/inuka-pipeline/tests/test_generate_inuka_data.py
+index d0c6752..e6fdb4b 100644
+--- a/inuka-pipeline/tests/test_generate_inuka_data.py
++++ b/inuka-pipeline/tests/test_generate_inuka_data.py
+@@ -14,10 +14,22 @@ def test_build_trajectory_gradual_decline_has_progression():
+     # Force gradual_decline by mocking random - for now just check it returns valid bands
+     traj = build_trajectory(is_high_risk=True, n_weeks=26)
+     # At minimum, trajectory should be a list of valid bands
+     valid_bands = {"Active", "At-Risk", "Disengaged", "Dropout"}
+     assert all(b in valid_bands for b in traj)
+ 
+ def test_stable_active_trajectory_stays_active():
+     from generate_inuka_data import _build_trajectory_by_type
+     traj = _build_trajectory_by_type("stable_active", n_weeks=26)
+     assert traj == ["Active"] * 26
++
++
++def test_build_beneficiaries_includes_trajectory():
++    from generate_inuka_data import build_beneficiaries, build_cohorts
++    cohorts = build_cohorts()[:2]  # Just 2 cohorts for speed
++    beneficiaries = build_beneficiaries(cohorts)
++    assert len(beneficiaries) > 0
++    ben = beneficiaries[0]
++    assert "trajectory" in ben
++    assert isinstance(ben["trajectory"], list)
++    assert len(ben["trajectory"]) == 26
++    assert ben["current_status"] == ben["trajectory"][-1]

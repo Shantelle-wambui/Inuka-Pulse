@@ -21,6 +21,9 @@ public class IncidentEntity {
     @Column(name = "site_id", nullable = false)
     private String siteId;
 
+    @Column(name = "beneficiary_id", length = 50)
+    private String beneficiaryId;
+
     @Column(name = "latitude")
     private Double latitude;
 

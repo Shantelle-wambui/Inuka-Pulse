@@ -13,17 +13,37 @@ import {
   PieChart,
   Pie,
 } from "recharts";
+import type { PredictionBand } from "@/lib/inuka-pulse/risk-formula";
 
 // ── Shared colour palette ─────────────────────────────────────────────────────
 
-export const BAND_COLORS: Record<string, string> = {
+/**
+ * Colours for ML prediction bands.
+ * Keys match the PredictionBand type from risk-formula.ts.
+ */
+export const BAND_COLORS: Record<PredictionBand, string> = {
   Active:     "#22c55e",   // green-500
   "At-Risk":  "#f59e0b",   // amber-500
   Disengaged: "#f97316",   // orange-500
   Dropout:    "#ef4444",   // red-500
 };
 
-const BANDS = ["Active", "At-Risk", "Disengaged", "Dropout"];
+/** Tailwind classes for band indicator dots */
+export const BAND_DOT_CLASSES: Record<PredictionBand, string> = {
+  Active:     "bg-green-500",
+  "At-Risk":  "bg-amber-500",
+  Disengaged: "bg-orange-500",
+  Dropout:    "bg-red-500",
+};
+
+/** Ordered list of prediction bands (ascending risk) */
+export const PREDICTION_BANDS: PredictionBand[] = ["Active", "At-Risk", "Disengaged", "Dropout"];
+
+/** Ordered list of prediction bands (ascending risk) */
+export const PREDICTION_BANDS: PredictionBand[] = ["Active", "At-Risk", "Disengaged", "Dropout"];
+
+// Re-export for convenience
+export type { PredictionBand } from "@/lib/inuka-pulse/risk-formula";
 
 // ── Horizontal bar chart — county or pillar breakdown ─────────────────────────
 
@@ -89,7 +109,7 @@ export function RiskGroupedBarChart({
           iconSize={8}
           wrapperStyle={{ fontSize: 11 }}
         />
-        {BANDS.map((band) => (
+        {PREDICTION_BANDS.map((band) => (
           <Bar key={band} dataKey={band} stackId="a" fill={BAND_COLORS[band]} radius={0} />
         ))}
       </BarChart>

@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { RiskBandBadge } from "@/components/risk-band-badge";
 import { EngagementMeter } from '@/components/engagement-badge';
+import { BAND_DOT_CLASSES } from "@/components/risk-distribution-chart";
 import type { BeneficiaryPrediction, CaseloadSummary } from "@/lib/inuka-pulse/api";
 
 interface CaseloadDashboardProps {
@@ -69,14 +70,6 @@ export function CaseloadDashboard({ caseload, summary }: CaseloadDashboardProps)
 
     return list;
   }, [caseload, search, bandFilter, sortBy]);
-
-  // Badge colour for the risk dot
-  const BAND_DOT: Record<string, string> = {
-    Active:     "bg-green-500",
-    "At-Risk":  "bg-amber-500",
-    Disengaged: "bg-orange-500",
-    Dropout:    "bg-red-500",
-  };
 
   return (
     <div className="flex flex-col gap-6">
@@ -244,7 +237,7 @@ export function CaseloadDashboard({ caseload, summary }: CaseloadDashboardProps)
                   {/* Risk dot */}
                   <div className="mt-1 shrink-0">
                     <span
-                      className={`inline-block size-2.5 rounded-full ${BAND_DOT[b.predictedBand] ?? "bg-muted"}`}
+                      className={`inline-block size-2.5 rounded-full ${BAND_DOT_CLASSES[b.predictedBand as keyof typeof BAND_DOT_CLASSES] ?? "bg-muted"}`}
                     />
                   </div>
 

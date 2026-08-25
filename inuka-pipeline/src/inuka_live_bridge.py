@@ -92,6 +92,7 @@ def iso_date(date_str: str) -> str:
 def blank_row_template(batch_id: str, source: str) -> dict:
     """Base template with all live_batch.json fields set to None."""
     return {
+        "beneficiary_id": None,  # explicit field for traceability
         "incident_id": None, "site": None, "latitude": None, "longitude": None,
         "incident_date": None, "incident_type": None, "severity": None,
         "compliance_score": None, "description": None, "root_cause": None,
@@ -140,6 +141,7 @@ def load_predictions_as_incidents(batch_id: str) -> list[dict]:
 
         row = blank_row_template(batch_id, "inuka_predictions_export.json")
         row.update({
+            "beneficiary_id" : ben_id,
             "incident_id"    : f"INC-{ben_id}-{today_tag}",
             "site"           : cohort,
             "latitude"       : coords[0],
