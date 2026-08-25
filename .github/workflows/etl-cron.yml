@@ -1,6 +1,6 @@
 name: ETL Live Cron
 
-# Runs every 2 hours (to stay within GitHub Actions free tier).
+# Runs every 6 hours (4 times/day = ~80 min/month, well under free tier).
 # Generates predictions using the Python ML pipeline and writes directly
 # to Railway PostgreSQL — no intermediate storage, instant updates.
 #
@@ -12,7 +12,7 @@ name: ETL Live Cron
 
 on:
   schedule:
-    - cron: "0 */2 * * *"    # every 2 hours (stays under 2000 min/month limit)
+    - cron: "0 */6 * * *"    # every 6 hours (4 runs/day)
   workflow_dispatch:          # allow manual trigger from GitHub UI
 
 defaults:
@@ -23,7 +23,7 @@ jobs:
   run-etl:
     name: Run ETL Pipeline & Write to Database
     runs-on: ubuntu-latest
-    timeout-minutes: 8        # abort if the pipeline hangs
+    timeout-minutes: 20       # increased from 8 to handle large datasets
 
     steps:
       - name: Checkout repository
@@ -41,9 +41,11 @@ jobs:
 
       - name: Run feature engineering
         run: python -m src.inuka_features
+        timeout-minutes: 12   # give feature engineering more time
 
       - name: Run ML scoring
         run: python -m src.inuka_predict --score
+        timeout-minutes: 5
 
       - name: Run live bridge (generate batch data)
         run: python -m src.inuka_live_bridge
@@ -52,6 +54,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: python -m src.db_writer
+        timeout-minutes: 3
 
       - name: Trigger alert evaluation
         if: ${{ success() }}
@@ -67,7 +70,7 @@ jobs:
             CURL_CMD="$CURL_CMD -H 'X-ETL-Api-Key: $ETL_API_KEY'"
           fi
           CURL_CMD="$CURL_CMD -H 'Content-Type: application/json'"
-          CURL_CMD="$CURL_CMD -d '{\"minutesBack\": 15}'"
+          CURL_CMD="$CURL_CMD -d '{\"minutesBack\": 60}'"
           CURL_CMD="$CURL_CMD $BACKEND_URL/api/alerts/evaluate"
           
           # Execute and capture response
