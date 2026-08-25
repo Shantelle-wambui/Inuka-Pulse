@@ -77,7 +77,7 @@ public class SecurityConfig {
                 // Public API for Foundation website embed — NO PII, cached
                 .requestMatchers("/api/v1/public/**").permitAll()
                 
-                // Read-only dashboard endpoints — no auth required
+                // Read-only dashboard endpoints — no auth required for demo/dev
                 .requestMatchers(
                     "/api/alerts",
                     "/api/sites/**",
@@ -89,6 +89,10 @@ public class SecurityConfig {
                     "/api/ml/decision-threshold"
                 ).permitAll()
                 
+                // Alert evaluation endpoint — called by ETL pipeline via API key header
+                // Authentication handled by X-ETL-Api-Key in the controller
+                .requestMatchers("/api/alerts/evaluate").permitAll()
+
                 // ══════════════════════════════════════════════════════════════
                 // V1 ANALYTICS API — Requires auth, role-scoped via @PreAuthorize
                 // ══════════════════════════════════════════════════════════════
@@ -105,6 +109,12 @@ public class SecurityConfig {
                 // DIRECTOR DEEPER VIEWS — authenticated; role checks via @PreAuthorize
                 // ══════════════════════════════════════════════════════════════
                 .requestMatchers("/api/director/**").authenticated()
+
+                // ══════════════════════════════════════════════════════════════
+                // ADMIN — Assignment management and admin-only ops
+                // Role enforcement via @PreAuthorize(hasRole('ADMIN'))
+                // ══════════════════════════════════════════════════════════════
+                .requestMatchers("/api/admin/**").authenticated()
                 
                 // ══════════════════════════════════════════════════════════════
                 // PROGRAM & DONOR MANAGEMENT

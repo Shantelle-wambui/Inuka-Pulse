@@ -32,6 +32,13 @@ public interface IncidentRepository extends JpaRepository<IncidentEntity, String
     @Query("SELECT COUNT(i) FROM IncidentEntity i WHERE i.siteId = :siteId AND i.incidentDate > :since")
     long countBySiteIdAndIncidentDateAfter(@Param("siteId") String siteId,
                                            @Param("since") LocalDateTime since);
+
+    /**
+     * Find incidents ingested after a given timestamp.
+     * Used by the alert evaluation endpoint to process recently inserted records.
+     */
+    List<IncidentEntity> findByIngestionTimestampAfter(LocalDateTime since);
+
     /** Projection interface for aggregate incident scalars per site. */
     interface SiteIncidentScalars {
         Long getTotal();    // COUNT — never null, but boxed for consistency

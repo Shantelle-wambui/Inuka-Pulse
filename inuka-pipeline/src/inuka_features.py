@@ -24,10 +24,19 @@ Output schema:
   field_visit_gap_days        INT     days since last field visit (999 if never)
   no_contact_visits_90d       INT     "No Contact" field visit outcomes in 90d
 
+Data Sources:
+  - File mode (default): Reads from data/raw/inuka/*.csv
+  - PostgreSQL mode: Reads from Railway PostgreSQL when PIPELINE_MODE=postgres
+
 Usage:
-    cd sentinel
-    python -m src.inuka_features                 # default 180-day window
+    cd inuka-pipeline
+    python -m src.inuka_features                 # default 180-day window (file mode)
     python -m src.inuka_features --days-back 90
+    
+    # With PostgreSQL:
+    export PIPELINE_MODE=postgres
+    export DATABASE_URL=postgresql://...
+    python -m src.inuka_features
 """
 
 import argparse
@@ -38,6 +47,13 @@ from typing import Optional
 
 import numpy as np
 import pandas as pd
+
+# Database module for PostgreSQL support
+try:
+    from src.db import is_postgres_mode, get_engine, print_db_status
+except ImportError:
+    # Fallback if running as script directly
+    from db import is_postgres_mode, get_engine, print_db_status
 
 RAW_DIR       = Path("data/raw/inuka")
 WAREHOUSE_DIR = Path("data/warehouse")
@@ -74,6 +90,106 @@ def _load_csv(path: Path, required: bool = True) -> Optional[pd.DataFrame]:
         return pd.read_csv(path)
     except Exception as e:
         raise RuntimeError(f"Failed to parse {path}: {e}") from e
+
+
+# ── PostgreSQL data loading ───────────────────────────────────────────────────
+
+def _load_beneficiaries_from_db() -> pd.DataFrame:
+    """Load beneficiary dimension data from PostgreSQL."""
+    query = """
+    SELECT DISTINCT ON (bp.beneficiary_id)
+        bp.beneficiary_id,
+        bp.cohort_id,
+        bp.pillar,
+        ds.county,
+        bp.predicted_band AS current_status
+    FROM beneficiary_prediction bp
+    LEFT JOIN dim_site ds ON bp.cohort_id = ds.site_id
+    ORDER BY bp.beneficiary_id, bp.as_of_date DESC
+    """
+    try:
+        return pd.read_sql(query, get_engine())
+    except Exception as e:
+        print(f"  Warning: Could not load beneficiaries from DB: {e}")
+        # Fallback: try simpler query without join
+        simple_query = """
+        SELECT DISTINCT ON (beneficiary_id)
+            beneficiary_id,
+            cohort_id,
+            pillar,
+            county,
+            predicted_band AS current_status
+        FROM beneficiary_prediction
+        ORDER BY beneficiary_id, as_of_date DESC
+        """
+        return pd.read_sql(simple_query, get_engine())
+
+
+def _load_incidents_as_sessions_from_db() -> pd.DataFrame:
+    """
+    Load incidents from PostgreSQL and convert to session-like records.
+    
+    The backend stores incidents (from ML predictions), not raw sessions.
+    We use incident data as a proxy for engagement activity.
+    """
+    query = """
+    SELECT 
+        fi.beneficiary_id,
+        fi.incident_date::date AS session_date,
+        CASE 
+            WHEN fi.status = 'Resolved' THEN 'Present'
+            ELSE 'Absent'
+        END AS attendance_status
+    FROM fact_incidents fi
+    WHERE fi.beneficiary_id IS NOT NULL
+    ORDER BY fi.incident_date
+    """
+    try:
+        return pd.read_sql(query, get_engine())
+    except Exception as e:
+        print(f"  Warning: Could not load incidents as sessions from DB: {e}")
+        return pd.DataFrame(columns=["beneficiary_id", "session_date", "attendance_status"])
+
+
+def _load_audits_as_field_visits_from_db() -> pd.DataFrame:
+    """Load audits from PostgreSQL as field visit records."""
+    query = """
+    SELECT 
+        fa.audit_id AS visit_id,
+        bp.beneficiary_id,
+        fa.site_id AS cohort_id,
+        fa.inspection_date::date AS visit_date,
+        fa.auditor AS officer_name,
+        CASE 
+            WHEN fa.findings LIKE '%No Contact%' THEN 'No Contact'
+            ELSE 'Completed'
+        END AS visit_outcome
+    FROM fact_audits fa
+    LEFT JOIN beneficiary_prediction bp ON fa.site_id = bp.cohort_id
+    ORDER BY fa.inspection_date
+    """
+    try:
+        df = pd.read_sql(query, get_engine())
+        # If no beneficiary join worked, just return site-level audits
+        if df.empty or df["beneficiary_id"].isna().all():
+            simple_query = """
+            SELECT 
+                audit_id AS visit_id,
+                site_id AS cohort_id,
+                inspection_date::date AS visit_date,
+                auditor AS officer_name,
+                CASE 
+                    WHEN findings LIKE '%No Contact%' THEN 'No Contact'
+                    ELSE 'Completed'
+                END AS visit_outcome
+            FROM fact_audits
+            ORDER BY inspection_date
+            """
+            return pd.read_sql(simple_query, get_engine())
+        return df
+    except Exception as e:
+        print(f"  Warning: Could not load audits from DB: {e}")
+        return pd.DataFrame(columns=["visit_id", "beneficiary_id", "cohort_id", "visit_date", "officer_name", "visit_outcome"])
 
 FEATURES = [
     "days_since_last_contact",
@@ -147,12 +263,128 @@ def build_features(days_back: int = 364) -> pd.DataFrame:
     Build a feature snapshot for every (beneficiary, week) in the window.
     Returns a DataFrame ready to be written to Parquet.
     
+    Supports two data source modes:
+      - File mode (default): Reads from data/raw/inuka/*.csv
+      - PostgreSQL mode: Reads from Railway PostgreSQL when PIPELINE_MODE=postgres
+    
     Raises:
-        FileNotFoundError: If required raw data files are missing.
+        FileNotFoundError: If required raw data files are missing (file mode only).
         RuntimeError: If raw data files cannot be parsed.
     """
     today = date.today()
     window_start = today - timedelta(days=days_back)
+    
+    # Check if we're in PostgreSQL mode
+    use_postgres = False
+    try:
+        use_postgres = is_postgres_mode()
+    except Exception:
+        pass
+    
+    if use_postgres:
+        print("  Data source: PostgreSQL (Railway)")
+        return _build_features_from_postgres(days_back, today, window_start)
+    else:
+        print("  Data source: CSV files")
+        return _build_features_from_csv(days_back, today, window_start)
+
+
+def _build_features_from_postgres(days_back: int, today: date, window_start: date) -> pd.DataFrame:
+    """Build features from PostgreSQL data source."""
+    
+    # Load data from PostgreSQL
+    print("  Loading data from PostgreSQL...")
+    beneficiaries = _load_beneficiaries_from_db()
+    
+    if beneficiaries.empty:
+        print("  Warning: No beneficiaries found in database. Falling back to CSV.")
+        return _build_features_from_csv(days_back, today, window_start)
+    
+    print(f"  Loaded {len(beneficiaries):,} beneficiaries from database")
+    
+    # For PostgreSQL mode, we generate simpler features based on available data
+    # The backend stores predictions, not raw engagement data, so we use what's available
+    
+    rows = []
+    weekly_dates = pd.date_range(
+        start=pd.Timestamp(window_start),
+        end=pd.Timestamp(today),
+        freq="W-MON"
+    )
+    
+    # Load audits for field visit features
+    audits = _load_audits_as_field_visits_from_db()
+    if not audits.empty and "visit_date" in audits.columns:
+        audits["visit_date"] = pd.to_datetime(audits["visit_date"]).dt.date
+    
+    for _, ben in beneficiaries.iterrows():
+        bid = ben["beneficiary_id"]
+        cid = ben.get("cohort_id", "")
+        pillar = ben.get("pillar", "Unknown")
+        county = ben.get("county", "Unknown")
+        
+        # Get audits for this beneficiary's cohort
+        if not audits.empty and "cohort_id" in audits.columns:
+            ben_visits = audits[audits["cohort_id"] == cid]
+        else:
+            ben_visits = pd.DataFrame()
+        
+        for snap_ts in weekly_dates:
+            snap = snap_ts.date()
+            
+            # Field visit features from audits
+            if not ben_visits.empty and "visit_date" in ben_visits.columns:
+                past_visits = ben_visits[ben_visits["visit_date"] <= snap]
+                if past_visits.empty:
+                    field_visit_gap_days = 999
+                else:
+                    last_visit = past_visits["visit_date"].max()
+                    field_visit_gap_days = (snap - last_visit).days
+                
+                # No contact visits in 90 days
+                d90_start = snap - timedelta(days=90)
+                v90 = ben_visits[
+                    (ben_visits["visit_date"] >= d90_start) &
+                    (ben_visits["visit_date"] <= snap)
+                ]
+                if "visit_outcome" in v90.columns:
+                    no_contact_visits_90d = int((v90["visit_outcome"] == "No Contact").sum())
+                else:
+                    no_contact_visits_90d = 0
+            else:
+                field_visit_gap_days = 999
+                no_contact_visits_90d = 0
+            
+            # Days since last contact (use field visit gap as proxy)
+            days_since_last_contact = field_visit_gap_days
+            
+            # For PostgreSQL mode, we don't have raw session/disbursement/assessment data
+            # Use neutral defaults that won't skew the model
+            rows.append({
+                "beneficiary_id": bid,
+                "cohort_id": cid,
+                "pillar": pillar,
+                "county": county,
+                "as_of_date": snap,
+                "days_since_last_contact": days_since_last_contact,
+                "sessions_attended_30d": 0,  # Not available from DB
+                "sessions_total_30d": 0,
+                "attendance_rate_30d": np.nan,
+                "missed_sessions_14d": 0,
+                "disbursement_delay_days": 0.0,
+                "missed_disbursements_60d": 0,
+                "assessment_score_latest": np.nan,
+                "assessment_score_trend": np.nan,
+                "field_visit_gap_days": field_visit_gap_days,
+                "no_contact_visits_90d": no_contact_visits_90d,
+                "band_now": ben.get("current_status"),
+            })
+    
+    return pd.DataFrame(rows)
+
+
+def _build_features_from_csv(days_back: int, today: date, window_start: date) -> pd.DataFrame:
+    """Build features from CSV files (original implementation)."""
 
     # ── Load raw tables (with error handling) ─────────────────────────────────
     print("  Loading raw data files...")
@@ -348,6 +580,12 @@ def main():
     parser = argparse.ArgumentParser(description="Inuka Pulse — Feature Engineering")
     parser.add_argument("--days-back", type=int, default=180)
     args = parser.parse_args()
+
+    # Show database configuration status
+    try:
+        print_db_status()
+    except Exception:
+        pass
 
     print(f"Building beneficiary features (window: {args.days_back} days)…")
     df = build_features(days_back=args.days_back)
