@@ -11,4 +11,4 @@ cmds = ["corepack enable", "corepack prepare pnpm@9.15.0 --activate", "pnpm inst
 cmds = ["pnpm run build"]
 
 [start]
-cmd = "pnpm start"
+cmd = "pnpm start -p ${PORT:-3000}"
