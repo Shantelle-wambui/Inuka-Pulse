@@ -1,6 +1,6 @@
 name: ETL Live Cron
 
-# Runs every 6 hours (4 times/day = ~80 min/month, well under free tier).
+# Runs once daily at midnight UTC.
 # Generates predictions using the Python ML pipeline and writes directly
 # to Railway PostgreSQL — no intermediate storage, instant updates.
 #
@@ -12,7 +12,7 @@ name: ETL Live Cron
 
 on:
   schedule:
-    - cron: "0 */6 * * *"    # every 6 hours (4 runs/day)
+    - cron: "0 0 * * *"      # once daily at midnight UTC
   workflow_dispatch:          # allow manual trigger from GitHub UI
 
 defaults:
