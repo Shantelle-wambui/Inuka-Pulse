@@ -184,10 +184,10 @@ export default async function AnalyticsPage() {
                     </Badge>
                   </div>
                   <div className="flex flex-wrap gap-x-3 text-muted-foreground text-xs">
-                    <span>{site.incidentCount} incidents</span>
-                    <span>{site.daysSinceLastAudit}d since audit</span>
+                    <span>{site.incidentCount} concerns</span>
+                    <span>{site.daysSinceLastAudit}d since visit</span>
                     {site.pressureSpikeCount > 0 && (
-                      <span className="text-orange-500">⚡ {site.pressureSpikeCount} spikes</span>
+                      <span className="text-orange-500">⚡ {site.pressureSpikeCount} disruptions</span>
                     )}
                   </div>
                 </div>

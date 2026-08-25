@@ -25,17 +25,17 @@ function ScatterTooltipContent({ active, payload }: { active?: boolean; payload?
     <div className="rounded-md border bg-popover px-3 py-2 text-xs shadow-md">
       <p className="font-medium">{d.site_name}</p>
       <p className="text-muted-foreground">
-        Rejection rate: {((d.rejection_rate_30d ?? 0) * 100).toFixed(1)}%
+        Non-attendance rate: {((d.rejection_rate_30d ?? 0) * 100).toFixed(1)}%
       </p>
       <p className="text-muted-foreground">
-        Incident count (30d avg): {(d.incident_count_30d ?? 0).toFixed(1)}
+        Concern count (30d avg): {(d.incident_count_30d ?? 0).toFixed(1)}
       </p>
     </div>
   );
 }
 
 const chartConfig = {
-  incidents: { label: "Incidents (30d avg)" },
+  incidents: { label: "Concerns (30d avg)" },
 } satisfies ChartConfig;
 
 export function CorrelationScatterChart({ data }: CorrelationScatterChartProps) {
@@ -54,9 +54,9 @@ export function CorrelationScatterChart({ data }: CorrelationScatterChartProps) 
   return (
     <Card>
       <CardHeader className="pb-2">
-        <CardTitle className="text-sm font-medium">Data Quality vs Incident Rate</CardTitle>
+        <CardTitle className="text-sm font-medium">Non-attendance vs Concern Rate</CardTitle>
         <CardDescription className="text-xs">
-          Rejection rate (30d) vs incident count (30d) — one point per site
+          Non-attendance rate (30d) vs concern count (30d) — one point per site
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-3">
@@ -70,7 +70,7 @@ export function CorrelationScatterChart({ data }: CorrelationScatterChartProps) 
               tickLine={false}
               tick={{ fontSize: 11 }}
               tickFormatter={(v) => `${(v * 100).toFixed(0)}%`}
-              label={{ value: "Rejection rate (%)", position: "insideBottom", offset: -10, fontSize: 11 }}
+              label={{ value: "Non-attendance rate (%)", position: "insideBottom", offset: -10, fontSize: 11 }}
             />
             <YAxis
               dataKey="y"
@@ -79,7 +79,7 @@ export function CorrelationScatterChart({ data }: CorrelationScatterChartProps) 
               tickLine={false}
               tick={{ fontSize: 11 }}
               width={32}
-              label={{ value: "Incidents", angle: -90, position: "insideLeft", fontSize: 11 }}
+              label={{ value: "Concerns", angle: -90, position: "insideLeft", fontSize: 11 }}
             />
             <ChartTooltip content={<ScatterTooltipContent />} />
             <Scatter

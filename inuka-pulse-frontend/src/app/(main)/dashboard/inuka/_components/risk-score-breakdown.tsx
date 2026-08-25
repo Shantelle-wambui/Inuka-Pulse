@@ -89,11 +89,11 @@ export function RiskScoreBreakdown({
     },
     {
       icon: Zap,
-      label: "Pressure spikes",
+      label: "Missed disbursements",
       weight: "10%",
       contrib: contribs.pressureSpikes,
       maxWeight: 10,
-      detail: `${pressureSpikeCount} spike event${pressureSpikeCount === 1 ? "" : "s"} detected`,
+      detail: `${pressureSpikeCount} missed disbursement${pressureSpikeCount === 1 ? "" : "s"} detected`,
     },
   ];
 

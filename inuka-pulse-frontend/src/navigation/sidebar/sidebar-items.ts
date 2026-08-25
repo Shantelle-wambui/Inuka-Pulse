@@ -1,6 +1,9 @@
 import {
+  Activity,
   Bell,
   BarChart2,
+  Gauge,
+  History,
   type LucideIcon,
   Map,
   ShieldAlert,
@@ -24,13 +27,14 @@ import {
   Target,
   Layers,
   DollarSign,
-  TrendingUp,
   Settings,
   FileText,
   LayoutDashboard,
   UserCircle,
   FlaskConical,
   Database,
+  GitBranch,
+  Trophy,
 } from "lucide-react";
 
 export type NavBadge = "new" | "soon";
@@ -74,158 +78,177 @@ export interface NavGroup {
   requiredRoles?: string[];
 }
 
+/**
+ * Sidebar Navigation — Inuka Pulse
+ *
+ * Design principles:
+ *   1. Each page appears EXACTLY ONCE
+ *   2. Each role sees only pages relevant to their use case
+ *   3. Admin sees everything
+ *
+ * Role → Groups visible:
+ *   Programme Director → Command Center, Early Warning, Programme Operations, Workforce, (partial) Analytics & ML
+ *   Case Manager       → Early Warning (alerts only), Field Operations, Programme Operations (partial)
+ *   Analyst            → Early Warning, Analytics, ML Intelligence
+ *   ML Admin           → ML Intelligence
+ *   Coordinator        → Early Warning, Field Operations, Programme Operations, Workforce
+ *   Admin              → ALL
+ *   Donor              → Command Center (partial)
+ */
 export const sidebarItems: NavGroup[] = [
 
-  // ── 1. Programme Director — Executive Dashboard ───────────────────────────
+  // ── 1. COMMAND CENTER ─────────────────────────────────────────────────────
+  // Strategic programme-level views for leadership and funders
   {
     id: 1,
-    label: "Programme Overview",
-    requiredRoles: ["Programme Director", "Admin"],
+    label: "Command Center",
+    requiredRoles: ["Programme Director", "Admin", "Donor"],
     items: [
       {
         id: "director-dashboard",
         title: "Executive Dashboard",
         url: "/dashboard/director",
         icon: LayoutDashboard,
+        roles: ["Programme Director", "Admin"],
       },
       {
         id: "inuka-overview",
-        title: "Programme Intelligence",
+        title: "Programme Dashboard",
+        url: "/dashboard/inuka",
         icon: ShieldAlert,
-        subItems: [
-          {
-            id: "inuka-main",
-            title: "Programme Dashboard",
-            url: "/dashboard/inuka",
-          },
-          {
-            id: "inuka-alerts",
-            title: "Alerts",
-            url: "/dashboard/inuka/alerts",
-            icon: Bell,
-          },
-          {
-            id: "inuka-analytics",
-            title: "M&E Analytics",
-            url: "/dashboard/inuka/analytics",
-            icon: BarChart2,
-          },
-          {
-            id: "inuka-roi",
-            title: "Impact & ROI",
-            url: "/dashboard/inuka/roi",
-            icon: Calculator,
-          },
-        ],
+        roles: ["Programme Director", "Admin"],
       },
       {
         id: "sites",
         title: "Cohort Map",
         url: "/dashboard/sites",
         icon: Map,
+        roles: ["Programme Director", "Admin"],
       },
       {
         id: "programs",
         title: "Programs & Funding",
         url: "/dashboard/programs",
         icon: Building2,
-        badge: "new",
       },
       {
         id: "impact",
         title: "Impact & Reach",
         url: "/dashboard/impact",
         icon: Target,
-        badge: "new",
       },
       {
         id: "reports",
         title: "Reports",
         url: "/dashboard/reports",
         icon: FileText,
-        badge: "new",
+      },
+      {
+        id: "donor-portal",
+        title: "Donor Dashboard",
+        url: "/dashboard/donor-portal",
+        icon: Heart,
+        roles: ["Programme Director", "Admin", "Donor"],
+      },
+      {
+        id: "disbursement-compliance",
+        title: "Disbursement Compliance",
+        url: "/dashboard/analytics/disbursement-compliance",
+        icon: DollarSign,
+        roles: ["Programme Director", "Admin", "Donor"],
       },
     ],
   },
 
-  // ── 2. Case Manager — Operational Caseload ────────────────────────────────
+  // ── 2. EARLY WARNING ──────────────────────────────────────────────────────
+  // Alert triage, risk simulation, resolution tracking
   {
     id: 2,
-    label: "My Caseload",
-    requiredRoles: ["Case Manager", "Admin"],
+    label: "Early Warning",
+    requiredRoles: ["Programme Director", "Admin", "Case Manager", "Analyst", "Coordinator"],
+    items: [
+      {
+        id: "ew-alerts",
+        title: "Alert Queue",
+        url: "/dashboard/early-warning/alerts",
+        icon: Bell,
+      },
+      {
+        id: "ew-risk-analysis",
+        title: "Risk Analysis",
+        url: "/dashboard/early-warning/risk-analysis",
+        icon: Gauge,
+        roles: ["Programme Director", "Admin", "Analyst", "Coordinator"],
+      },
+      {
+        id: "ew-history",
+        title: "Alert History",
+        url: "/dashboard/early-warning/history",
+        icon: History,
+        roles: ["Programme Director", "Admin", "Analyst", "Coordinator"],
+      },
+    ],
+  },
+
+  // ── 3. FIELD OPERATIONS ───────────────────────────────────────────────────
+  // Daily operational workflow for frontline staff
+  {
+    id: 3,
+    label: "Field Operations",
+    requiredRoles: ["Case Manager", "Admin", "Coordinator"],
     items: [
       {
         id: "case-manager-dashboard",
-        title: "My Dashboard",
+        title: "My Caseload",
         url: "/dashboard/case-manager",
         icon: UserCircle,
       },
       {
-        id: "field-ops",
-        title: "Field Operations",
-        icon: MapPin,
-        subItems: [
-          {
-            id: "inuka-tasks",
-            title: "My Visit Tasks",
-            url: "/dashboard/inuka/my-tasks",
-            icon: ListTodo,
-          },
-          {
-            id: "nearby-alerts",
-            title: "Nearby At-Risk",
-            url: "/dashboard/field/nearby-alerts",
-            icon: AlertTriangle,
-            badge: "new",
-          },
-        ],
+        id: "inuka-tasks",
+        title: "My Visit Tasks",
+        url: "/dashboard/inuka/my-tasks",
+        icon: ListTodo,
       },
       {
-        id: "beneficiary-mgmt",
-        title: "Beneficiary Management",
-        icon: ShieldCheck,
-        subItems: [
-          {
-            id: "inuka-hazards",
-            title: "Welfare Concerns",
-            url: "/dashboard/inuka/hazards",
-            icon: TriangleAlert,
-          },
-          {
-            id: "inuka-capas",
-            title: "Follow-up Actions",
-            url: "/dashboard/inuka/capas",
-            icon: ClipboardCheck,
-          },
-        ],
+        id: "field-visit-form",
+        title: "Submit Field Visit",
+        url: "/dashboard/field/visit-form",
+        icon: ClipboardList,
+      },
+      {
+        id: "nearby-alerts",
+        title: "Nearby At-Risk",
+        url: "/dashboard/field/nearby-alerts",
+        icon: AlertTriangle,
       },
     ],
   },
 
-  // ── 3. Programme Operations — shared for Director + Admin ─────────────────
+  // ── 4. PROGRAMME OPERATIONS ───────────────────────────────────────────────
+  // Concerns, interventions, disbursements
   {
-    id: 3,
+    id: 4,
     label: "Programme Operations",
-    requiredRoles: ["Programme Director", "Admin", "Coordinator"],
+    requiredRoles: ["Programme Director", "Admin", "Case Manager", "Coordinator"],
     items: [
       {
-        id: "hse-ops",
-        title: "Beneficiary Management",
-        icon: ShieldCheck,
-        subItems: [
-          {
-            id: "dir-hazards",
-            title: "Welfare Concerns",
-            url: "/dashboard/inuka/hazards",
-            icon: TriangleAlert,
-          },
-          {
-            id: "dir-capas",
-            title: "Intervention Plans",
-            url: "/dashboard/inuka/capas",
-            icon: ClipboardCheck,
-          },
-        ],
+        id: "inuka-hazards",
+        title: "Welfare & Concerns",
+        url: "/dashboard/inuka/hazards",
+        icon: TriangleAlert,
+      },
+      {
+        id: "inuka-capas",
+        title: "Interventions",
+        url: "/dashboard/inuka/capas",
+        icon: ClipboardCheck,
+      },
+      {
+        id: "ops-timeline",
+        title: "Intervention Timeline",
+        url: "/dashboard/operations/timeline",
+        icon: Activity,
+        roles: ["Programme Director", "Admin", "Coordinator"],
       },
       {
         id: "disbursements",
@@ -234,66 +257,89 @@ export const sidebarItems: NavGroup[] = [
         subItems: [
           {
             id: "work-orders",
-            title: "Pending Disbursements",
+            title: "Pending",
             url: "/dashboard/maintenance/work-orders",
             icon: ClipboardList,
-            badge: "new",
           },
           {
             id: "maintenance-history",
             title: "Payment History",
             url: "/dashboard/maintenance/history",
-            badge: "new",
+            roles: ["Programme Director", "Admin", "Coordinator"],
           },
         ],
       },
     ],
   },
 
-  // ── 4. Programme Staff — Director + Admin only ────────────────────────────
-  {
-    id: 4,
-    label: "Programme Staff",
-    requiredRoles: ["Admin", "Programme Director", "Coordinator"],
-    items: [
-      {
-        id: "technicians",
-        title: "Case Managers",
-        url: "/dashboard/workforce/technicians",
-        icon: UserCog,
-        badge: "new",
-      },
-      {
-        id: "qualifications",
-        title: "Certifications",
-        url: "/dashboard/workforce/qualifications",
-        icon: Award,
-        badge: "new",
-      },
-    ],
-  },
-
-  // ── 5. Analyst — ML & Data Analytics ─────────────────────────────────────
+  // ── 5. ANALYTICS ──────────────────────────────────────────────────────────
+  // Statistical analysis, trends, benchmarks — technical audience
   {
     id: 5,
-    label: "ML & Analytics",
+    label: "Analytics",
     requiredRoles: ["Analyst", "ML Admin", "Admin"],
     items: [
       {
         id: "analytics-dashboard",
-        title: "Analytics Dashboard",
+        title: "ML Analytics",
         url: "/dashboard/analytics",
         icon: BarChart2,
       },
       {
+        id: "analytics-diagnostics",
+        title: "Statistical Diagnostics",
+        url: "/dashboard/inuka/analytics",
+        icon: FlaskConical,
+      },
+      {
+        id: "analytics-engagement",
+        title: "Engagement Trends",
+        url: "/dashboard/analytics/engagement-trends",
+        icon: Activity,
+      },
+      {
+        id: "analytics-cohort-journey",
+        title: "Cohort Journey",
+        url: "/dashboard/analytics/cohort-journey",
+        icon: GitBranch,
+      },
+      {
+        id: "analytics-benchmarking",
+        title: "Benchmarking",
+        url: "/dashboard/analytics/benchmarking",
+        icon: Trophy,
+      },
+      {
+        id: "inuka-roi",
+        title: "Impact & ROI",
+        url: "/dashboard/inuka/roi",
+        icon: Calculator,
+      },
+    ],
+  },
+
+  // ── 6. ML / INTELLIGENCE ──────────────────────────────────────────────────
+  // Model governance, drift, retraining — technical ML operations
+  {
+    id: 6,
+    label: "ML Intelligence",
+    requiredRoles: ["Analyst", "ML Admin", "Admin"],
+    items: [
+      {
         id: "ml-admin",
-        title: "Dropout Model",
+        title: "Model Governance",
         icon: BrainCircuit,
         subItems: [
           {
             id: "ml-overview",
             title: "Overview",
             url: "/dashboard/ml-admin",
+          },
+          {
+            id: "ml-compare",
+            title: "Model Compare",
+            url: "/dashboard/ml-admin/compare",
+            icon: FlaskConical,
           },
           {
             id: "ml-feedback",
@@ -309,39 +355,20 @@ export const sidebarItems: NavGroup[] = [
             id: "ml-training-runs",
             title: "Training Runs",
             url: "/dashboard/ml-admin/training-runs",
+            roles: ["ML Admin", "Admin"],
           },
           {
             id: "ml-drift",
             title: "Drift Monitor",
             url: "/dashboard/ml-admin/drift",
             icon: TrendingDown,
-            badge: "new",
           },
           {
             id: "ml-retraining-schedule",
             title: "Auto Retrain",
             url: "/dashboard/ml-admin/retraining-schedule",
             icon: Timer,
-            badge: "new",
-          },
-        ],
-      },
-      {
-        id: "analytics-data",
-        title: "Data & Features",
-        icon: Database,
-        subItems: [
-          {
-            id: "analytics-survival",
-            title: "Survival Curves",
-            url: "/dashboard/inuka/analytics",
-            icon: FlaskConical,
-          },
-          {
-            id: "analytics-correlation",
-            title: "Feature Correlation",
-            url: "/dashboard/inuka/analytics",
-            icon: BarChart2,
+            roles: ["ML Admin", "Admin"],
           },
         ],
       },
@@ -350,31 +377,37 @@ export const sidebarItems: NavGroup[] = [
         title: "Resource Allocations",
         url: "/dashboard/allocations",
         icon: Layers,
-        badge: "new",
       },
     ],
   },
 
-  // ── 6. Donor Portal ──────────────────────────────────────────────────────────
-  {
-    id: 6,
-    label: "Donor Portal",
-    requiredRoles: ["Admin", "Programme Director"],
-    items: [
-      {
-        id: "donor-portal",
-        title: "Donor Dashboard",
-        url: "/dashboard/donor-portal",
-        icon: Heart,
-        badge: "new",
-      },
-    ],
-  },
-
-  // ── 7. Accounts — Admin only ──────────────────────────────────────────────
+  // ── 7. WORKFORCE ──────────────────────────────────────────────────────────
+  // Staff management, certifications
   {
     id: 7,
-    label: "Accounts",
+    label: "Workforce",
+    requiredRoles: ["Admin", "Programme Director", "Coordinator"],
+    items: [
+      {
+        id: "technicians",
+        title: "Case Managers & Officers",
+        url: "/dashboard/workforce/technicians",
+        icon: UserCog,
+      },
+      {
+        id: "qualifications",
+        title: "Certifications",
+        url: "/dashboard/workforce/qualifications",
+        icon: Award,
+      },
+    ],
+  },
+
+  // ── 8. ADMINISTRATION ─────────────────────────────────────────────────────
+  // System config — Admin only
+  {
+    id: 8,
+    label: "Administration",
     requiredRoles: ["Admin"],
     items: [
       {
