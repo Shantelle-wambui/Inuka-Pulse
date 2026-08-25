@@ -6,6 +6,14 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: ${PGUSER}
     password: ${PGPASSWORD}
+    hikari:
+      # Railway PostgreSQL (Hobby plan) allows 25 connections max.
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000       # 30 s
+      idle-timeout: 600000            # 10 min
+      max-lifetime: 1800000           # 30 min
+      pool-name: InukaRailwayPool
 
   jpa:
     hibernate:
