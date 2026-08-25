@@ -119,6 +119,66 @@ KE_SURNAMES = [
     "Owino", "Kiprotich", "Chebet", "Mutinda", "Kiplagat", "Rotich",
 ]
 
+# ── Trajectory types for time-varying engagement ──────────────────────────────
+TRAJECTORY_TYPES = ["stable_active", "gradual_decline", "sudden_dropout",
+                    "chronic_at_risk", "recovering"]
+
+BAND_ORDER = ["Active", "At-Risk", "Disengaged", "Dropout"]
+
+
+def _build_trajectory_by_type(ttype: str, n_weeks: int = 26) -> list[str]:
+    """
+    Build a specific trajectory type. Called by build_trajectory after
+    the type is randomly selected.
+    """
+    if ttype == "stable_active":
+        return ["Active"] * n_weeks
+
+    if ttype == "chronic_at_risk":
+        settle = random.randint(3, 6)
+        return ["Active"] * settle + ["At-Risk"] * (n_weeks - settle)
+
+    if ttype == "recovering":
+        d1 = random.randint(3, 6)
+        d2 = random.randint(3, 6)
+        remaining = n_weeks - d1 - d2
+        if remaining < 0:
+            remaining = 0
+            d2 = n_weeks - d1
+        return ["Active"] * d1 + ["At-Risk"] * d2 + ["Active"] * remaining
+
+    if ttype == "sudden_dropout":
+        pre = n_weeks - random.randint(2, 4)
+        at_risk_weeks = n_weeks - pre - 1
+        if at_risk_weeks < 1:
+            at_risk_weeks = 1
+            pre = n_weeks - 2
+        return ["Active"] * pre + ["At-Risk"] * at_risk_weeks + ["Dropout"]
+
+    if ttype == "gradual_decline":
+        dwell = [random.randint(4, 8), random.randint(3, 6), random.randint(2, 4)]
+        bands = []
+        for band, d in zip(BAND_ORDER[:3], dwell):
+            bands += [band] * d
+            if len(bands) >= n_weeks:
+                return bands[:n_weeks]
+        bands += ["Dropout"] * (n_weeks - len(bands))
+        return bands[:n_weeks]
+
+    # Fallback
+    return ["Active"] * n_weeks
+
+
+def build_trajectory(is_high_risk: bool, n_weeks: int = 26) -> list[str]:
+    """
+    Generate a per-beneficiary weekly engagement trajectory.
+    High-risk cohorts have higher probability of decline/dropout trajectories.
+    """
+    weights = ([0.30, 0.35, 0.18, 0.12, 0.05] if is_high_risk
+               else [0.60, 0.15, 0.08, 0.12, 0.05])
+    ttype = random.choices(TRAJECTORY_TYPES, weights=weights)[0]
+    return _build_trajectory_by_type(ttype, n_weeks)
+
 
 # ============================================================================
 # Ground-truth issue tracker
