@@ -17,14 +17,12 @@ spring:
       idle-timeout: 600000 # 10 min
       max-lifetime: 1800000 # 30 min
       pool-name: InukaRailwayPool
-      # Required when the full URL contains credentials (no separate user/pass)
       data-source-properties:
         reWriteBatchedInserts: true
         ApplicationName: inuka-pulse
 
   jpa:
     hibernate:
-      # Let Flyway own the schema — Hibernate must not touch DDL
       ddl-auto: none
     show-sql: false
 
