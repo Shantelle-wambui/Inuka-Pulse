@@ -21,11 +21,12 @@ import { AlertSoundToggle } from "./_components/alert-sound-toggle";
 export default async function Layout({ children }: Readonly<{ children: ReactNode }>) {
   const cookieStore = await cookies();
   const defaultOpen = cookieStore.get("sidebar_state")?.value !== "false";
-  const [variant, collapsible, alerts] = await Promise.all([
+  const [variant, collapsible, alertsResult] = await Promise.all([
     getPreference("sidebar_variant"),
     getPreference("sidebar_collapsible"),
     cachedFetchAlerts(),
   ]);
+  const alerts = alertsResult.data;
 
   return (
     <SidebarProvider

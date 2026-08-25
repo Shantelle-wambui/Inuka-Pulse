@@ -94,7 +94,7 @@ function getMostCommonSeverity(alerts: Alert[]): string {
 
 export default async function AlertHistoryPage() {
   try {
-    const allAlerts: Alert[] = await fetchAlerts();
+    const allAlerts: Alert[] = (await fetchAlerts()).data;
 
     let resolvedAlerts = allAlerts.filter(
       (a) => a.status === "acknowledged" || a.status === "resolved"

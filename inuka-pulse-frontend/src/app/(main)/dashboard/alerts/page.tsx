@@ -14,7 +14,9 @@ export default async function Page() {
   const formattedDate = format(new Date(), "EEEE, do MMMM yyyy");
 
   try {
-    const [alerts, quality] = await Promise.all([cachedFetchAlerts(), cachedFetchQualitySummary()]);
+    const [alertsResult, qualityResult] = await Promise.all([cachedFetchAlerts(), cachedFetchQualitySummary()]);
+    const alerts = alertsResult.data;
+    const quality = qualityResult.data;
 
     const activeAlerts  = alerts.filter((a) => a.status === "active");
     const historyAlerts = alerts.filter((a) => a.status !== "active");
