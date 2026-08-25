@@ -18,7 +18,7 @@ public class ProgramController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'DATA_ANALYST', 'EXECUTIVE', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'DATA_ANALYST', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<List<ProgramDto>> getAllPrograms(
             @RequestParam(required = false) String pillar,
             @RequestParam(required = false) String county,
@@ -40,7 +40,7 @@ public class ProgramController {
     }
 
     @GetMapping("/{programId}")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'DATA_ANALYST', 'EXECUTIVE', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'DATA_ANALYST', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<ProgramDto> getProgram(@PathVariable String programId) {
         return programService.getProgramById(programId)
                 .map(ResponseEntity::ok)
@@ -48,7 +48,7 @@ public class ProgramController {
     }
 
     @GetMapping("/by-donor/{donorId}")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'DATA_ANALYST', 'EXECUTIVE', 'DONOR', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'DATA_ANALYST', 'EXECUTIVE', 'DONOR', 'ADMIN')")
     public ResponseEntity<List<ProgramDto>> getProgramsByDonor(@PathVariable String donorId) {
         return ResponseEntity.ok(programService.getProgramsByDonor(donorId));
     }
@@ -66,14 +66,14 @@ public class ProgramController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'ADMIN')")
     public ResponseEntity<ProgramDto> createProgram(@Valid @RequestBody CreateProgramRequest request) {
         ProgramDto created = programService.createProgram(request);
         return ResponseEntity.status(201).body(created);
     }
 
     @PatchMapping("/{programId}/status")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'ADMIN')")
     public ResponseEntity<ProgramDto> updateProgramStatus(
             @PathVariable String programId,
             @RequestParam String status

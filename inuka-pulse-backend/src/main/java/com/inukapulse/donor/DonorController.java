@@ -17,7 +17,7 @@ public class DonorController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE', 'ADMIN', 'DONOR')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE', 'ADMIN', 'DONOR')")
     public ResponseEntity<List<DonorDto>> getAllDonors(
             @RequestParam(required = false, defaultValue = "false") boolean activeOnly
     ) {
@@ -28,7 +28,7 @@ public class DonorController {
     }
 
     @GetMapping("/{donorId}")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<DonorDto> getDonor(@PathVariable String donorId) {
         return donorService.getDonorById(donorId)
                 .map(ResponseEntity::ok)
@@ -53,7 +53,7 @@ public class DonorController {
 
     @GetMapping("/{donorId}/funding")
     @PreAuthorize("(hasRole('DONOR') and @donorService.canAccessDonor(authentication.name, #donorId)) " +
-                  "or hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE', 'ADMIN')")
+                  "or hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<List<DonorFundingEntity>> getDonorFunding(
             @PathVariable String donorId,
             @RequestParam(required = false, defaultValue = "false") boolean activeOnly,
@@ -75,7 +75,7 @@ public class DonorController {
      * Get all funding records (for aggregate view across all donors).
      */
     @GetMapping("/funding")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<List<DonorService.FundedProgramDto>> getAllFunding(
             @RequestParam(required = false) Integer fiscalYear
     ) {
@@ -99,7 +99,7 @@ public class DonorController {
      * Get aggregate disbursement trends (across all donors).
      */
     @GetMapping("/trends")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<List<DonorService.DisbursementTrend>> getAllDonorTrends(
             @RequestParam(required = false) Integer fiscalYear
     ) {

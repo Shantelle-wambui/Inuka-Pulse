@@ -102,8 +102,8 @@ class AnalyticsIntegrationTest {
     }
 
     @Test
-    @WithMockUser(username = "pm", roles = {"PROGRAM_MANAGER"})
-    @DisplayName("Impact endpoint accessible with PROGRAM_MANAGER role")
+    @WithMockUser(username = "pm", roles = {"PROGRAMME_DIRECTOR"})
+    @DisplayName("Impact endpoint accessible with PROGRAMME_DIRECTOR role")
     void impactEndpoint_withProgramManagerRole_returnsOk() throws Exception {
         mockMvc.perform(get("/api/v1/analytics/impact"))
                 .andExpect(status().isOk())
