@@ -26,7 +26,7 @@ public class AllocationController {
      * These are Model 5 outputs awaiting Leadership approval.
      */
     @GetMapping("/recommendations")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<List<AllocationService.AllocationRecommendation>> getRecommendations(
             @RequestParam(required = false) String resourceType,
             @RequestParam(required = false) String region
@@ -38,7 +38,7 @@ public class AllocationController {
      * Get allocation statistics summary.
      */
     @GetMapping("/stats")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<AllocationService.AllocationStats> getStats() {
         return ResponseEntity.ok(allocationService.getAllocationStats());
     }
@@ -47,7 +47,7 @@ public class AllocationController {
      * Get regional summary for allocations.
      */
     @GetMapping("/region-summary")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<List<AllocationService.RegionSummary>> getRegionSummary() {
         return ResponseEntity.ok(allocationService.getRegionSummary());
     }
@@ -56,7 +56,7 @@ public class AllocationController {
      * Get all allocations for a specific program.
      */
     @GetMapping("/by-program/{programId}")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<List<ResourceAllocationEntity>> getAllocationsByProgram(
             @PathVariable String programId
     ) {
@@ -67,7 +67,7 @@ public class AllocationController {
      * Get currently active allocations.
      */
     @GetMapping("/active")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<List<ResourceAllocationEntity>> getActiveAllocations() {
         return ResponseEntity.ok(allocationService.getActiveAllocations());
     }
@@ -76,7 +76,7 @@ public class AllocationController {
      * Get a specific allocation by ID.
      */
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE', 'ADMIN')")
     public ResponseEntity<ResourceAllocationEntity> getAllocation(@PathVariable String id) {
         return allocationService.getAllocationById(id)
                 .map(ResponseEntity::ok)
@@ -88,7 +88,7 @@ public class AllocationController {
      * Model 5 outputs ALWAYS require human approval - never auto-execute.
      */
     @PostMapping("/{id}/approve")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE')")
     public ResponseEntity<ResourceAllocationEntity> approveAllocation(
             @PathVariable String id,
             @RequestBody(required = false) AllocationService.AllocationApprovalRequest request,
@@ -107,7 +107,7 @@ public class AllocationController {
      * Reject an ML-recommended allocation.
      */
     @PostMapping("/{id}/reject")
-    @PreAuthorize("hasAnyRole('PROGRAM_MANAGER', 'EXECUTIVE')")
+    @PreAuthorize("hasAnyRole('PROGRAMME_DIRECTOR', 'EXECUTIVE')")
     public ResponseEntity<ResourceAllocationEntity> rejectAllocation(
             @PathVariable String id,
             @RequestParam String reason,

@@ -17,7 +17,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { RiskBandBadge } from "@/components/risk-band-badge";
-import { BAND_DOT_CLASSES, PREDICTION_BANDS } from "@/components/risk-distribution-chart";
+import { EngagementMeter } from '@/components/engagement-badge';
+import { BAND_DOT_CLASSES } from "@/components/risk-distribution-chart";
 import type { BeneficiaryPrediction, CaseloadSummary } from "@/lib/inuka-pulse/api";
 
 interface CaseloadDashboardProps {
@@ -42,13 +43,18 @@ function friendlyFeature(raw: string): string {
   return FEATURE_LABELS[raw.trim()] ?? raw.trim().replace(/_/g, " ");
 }
 
+function getEngagementScore(b: BeneficiaryPrediction): number {
+  return b.engagementScore ?? Math.round((1 - b.dropoutProb) * 85);
+}
+
 export function CaseloadDashboard({ caseload, summary }: CaseloadDashboardProps) {
   const router = useRouter();
   const [search, setSearch]   = useState("");
   const [bandFilter, setBand] = useState("all");
+  const [sortBy, setSortBy]   = useState<"risk" | "engagement">("risk");
 
   const filtered = useMemo(() => {
-    return caseload.filter((b) => {
+    const list = caseload.filter((b) => {
       const matchSearch =
         !search ||
         b.beneficiaryId.toLowerCase().includes(search.toLowerCase()) ||
@@ -57,7 +63,13 @@ export function CaseloadDashboard({ caseload, summary }: CaseloadDashboardProps)
       const matchBand = bandFilter === "all" || b.predictedBand === bandFilter;
       return matchSearch && matchBand;
     });
-  }, [caseload, search, bandFilter]);
+
+    if (sortBy === "engagement") {
+      list.sort((a, b) => getEngagementScore(a) - getEngagementScore(b));
+    }
+
+    return list;
+  }, [caseload, search, bandFilter, sortBy]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -191,6 +203,15 @@ export function CaseloadDashboard({ caseload, summary }: CaseloadDashboardProps)
                   <SelectItem value="Active">Active</SelectItem>
                 </SelectContent>
               </Select>
+              <Select value={sortBy} onValueChange={(v) => setSortBy(v as "risk" | "engagement")}>
+                <SelectTrigger className="h-8 text-sm w-40 gap-1">
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="risk">Sort: Risk ↓</SelectItem>
+                  <SelectItem value="engagement">Sort: Engagement ↑</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </CardHeader>
@@ -227,6 +248,7 @@ export function CaseloadDashboard({ caseload, summary }: CaseloadDashboardProps)
                         {b.beneficiaryId}
                       </span>
                       <RiskBandBadge band={b.predictedBand} />
+                      <EngagementMeter score={getEngagementScore(b)} className="ml-1" />
                       <span className="text-xs text-muted-foreground tabular-nums ml-auto shrink-0">
                         {b.dropoutProbPct} dropout risk
                       </span>

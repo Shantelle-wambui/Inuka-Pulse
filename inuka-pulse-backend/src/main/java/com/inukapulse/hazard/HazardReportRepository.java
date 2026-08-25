@@ -11,6 +11,8 @@ public interface HazardReportRepository extends JpaRepository<HazardReportEntity
     List<HazardReportEntity> findByReporterIdOrderByCreatedAtDesc(Long reporterId);
     List<HazardReportEntity> findAllByOrderByCreatedAtDesc();
     List<HazardReportEntity> findByStatusOrderByCreatedAtDesc(String status);
+    /** All welfare concerns linked to a specific beneficiary. */
+    List<HazardReportEntity> findByBeneficiaryIdOrderByCreatedAtDesc(String beneficiaryId);
     @Query("SELECT COUNT(h) FROM HazardReportEntity h WHERE h.createdAt >= :since")
     long countCreatedSince(@org.springframework.data.repository.query.Param("since") java.time.LocalDateTime since);
 }

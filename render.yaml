@@ -10,7 +10,7 @@
 #   - Set JWT_SECRET in Render dashboard (Backend → Environment)
 #   - Update CORS_ALLOWED_ORIGINS with your frontend URL
 #   - Update NEXT_PUBLIC_INUKA_API_URL with your backend URL
-#   - Set up Cloudflare R2 and update ETL URLs
+#   - (Optional) Set up Cloudflare R2 and update ETL URLs
 
 databases:
   - name: inuka-pulse-db
@@ -37,7 +37,22 @@ services:
       - key: DATABASE_URL
         fromDatabase:
           name: inuka-pulse-db
-          property: jdbcConnectionString
+          property: connectionString
+
+      - key: DB_HOST
+        fromDatabase:
+          name: inuka-pulse-db
+          property: host
+
+      - key: DB_PORT
+        fromDatabase:
+          name: inuka-pulse-db
+          property: port
+
+      - key: DB_NAME
+        fromDatabase:
+          name: inuka-pulse-db
+          property: database
 
       - key: DB_USERNAME
         fromDatabase:
@@ -67,6 +82,12 @@ services:
       - key: ETL_PREDICTIONS_URL
         sync: false   # set to R2 URL after setup
 
+      - key: ETL_API_KEY
+        sync: false   # set manually — generate with: openssl rand -hex 32
+
+      - key: GROQ_API_KEY
+        sync: false   # set in Render dashboard; leave blank for template-based narratives
+
   # ── Frontend (Next.js) ────────────────────────────────────────────────────
   - type: web
     name: inuka-pulse-frontend
@@ -78,4 +99,4 @@ services:
 
     envVars:
       - key: NEXT_PUBLIC_INUKA_API_URL
-        sync: false   # set to your backend URL after deploy
+        sync: false   # set to your backend URL after deploy (e.g., https://inuka-pulse-backend.onrender.com)

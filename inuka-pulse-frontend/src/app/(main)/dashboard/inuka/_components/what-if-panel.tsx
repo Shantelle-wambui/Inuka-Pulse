@@ -144,7 +144,7 @@ export function WhatIfPanel({
             <div className="flex items-center justify-between text-sm">
               <span className="flex items-center gap-1.5">
                 <Activity className="size-3.5 text-muted-foreground" />
-                Incident count
+                Concern count
               </span>
               <span className="tabular-nums font-mono text-xs">{incidentCount} / 200</span>
             </div>
@@ -164,7 +164,7 @@ export function WhatIfPanel({
             <div className="flex items-center justify-between text-sm">
               <span className="flex items-center gap-1.5">
                 <ShieldAlert className="size-3.5 text-muted-foreground" />
-                Critical/High severity
+                Disengaged/Dropout %
               </span>
               <span className="tabular-nums font-mono text-xs">{critHighPct}%</span>
             </div>
@@ -184,7 +184,7 @@ export function WhatIfPanel({
             <div className="flex items-center justify-between text-sm">
               <span className="flex items-center gap-1.5">
                 <Calendar className="size-3.5 text-muted-foreground" />
-                Days since last audit
+                Days since last review
               </span>
               <span className="tabular-nums font-mono text-xs">{auditDays}d</span>
             </div>
@@ -195,7 +195,7 @@ export function WhatIfPanel({
               onValueCommit={confirmWithServer}
             />
             <div className="flex justify-between text-muted-foreground text-[10px]">
-              <span>Audited today</span><span>Never (365d)</span>
+              <span>Reviewed today</span><span>Never (365d)</span>
             </div>
           </div>
 
@@ -204,7 +204,7 @@ export function WhatIfPanel({
             <div className="flex items-center justify-between text-sm">
               <span className="flex items-center gap-1.5">
                 <Gauge className="size-3.5 text-muted-foreground" />
-                Data rejection rate
+                Missed session rate
               </span>
               <span className="tabular-nums font-mono text-xs">{rejectionPct}%</span>
             </div>
@@ -224,7 +224,7 @@ export function WhatIfPanel({
             <div className="flex items-center justify-between text-sm">
               <span className="flex items-center gap-1.5">
                 <Zap className="size-3.5 text-muted-foreground" />
-                Pressure spike events
+                Missed Disbursements
               </span>
               <span className="tabular-nums font-mono text-xs">{pressureSpikes}</span>
             </div>
@@ -265,7 +265,7 @@ export function WhatIfPanel({
                 )}
               </p>
               <p className="text-muted-foreground text-xs">
-                Factors: incident freq 30% · severity 30% · audit 20% · rejection 10% · spikes 10%
+                Factors: concern freq 30% · severity 30% · review 20% · missed sessions 10% · disbursements 10%
               </p>
             </div>
           )}
@@ -287,11 +287,11 @@ export function WhatIfPanel({
               <div className="space-y-2">
                 {(
                   [
-                    ["Incident freq",   displayContribs.incidentFrequency, 30],
+                    ["Concern freq",   displayContribs.incidentFrequency, 30],
                     ["Severity mix",    displayContribs.severityMix,       30],
-                    ["Audit recency",   displayContribs.auditRecency,      20],
-                    ["Rejection rate",  displayContribs.rejectionRate,     10],
-                    ["Pressure spikes", displayContribs.pressureSpikes,    10],
+                    ["Review recency",   displayContribs.auditRecency,      20],
+                    ["Missed session rate",  displayContribs.rejectionRate,     10],
+                    ["Missed Disbursements", displayContribs.pressureSpikes,    10],
                   ] as [string, number, number][]
                 ).map(([label, contrib, max]) => (
                   <div key={label} className="flex items-center gap-2 text-xs">

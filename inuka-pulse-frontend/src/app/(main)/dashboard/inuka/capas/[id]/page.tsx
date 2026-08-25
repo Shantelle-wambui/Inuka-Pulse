@@ -93,7 +93,7 @@ export default function CapaDetailPage({ params }: { params: { id: string } }) {
             <Row label="Due date" value={capa.dueDate} />
             <Row label="Status" value={<CapaStatusBadge status={capa.status} />} />
             {capa.sourceAlertId && <Row label="Source alert" value={capa.sourceAlertId} />}
-            {capa.sourceHazardId && <Row label="Source hazard" value={capa.sourceHazardId} />}
+            {capa.sourceHazardId && <Row label="Source concern" value={capa.sourceHazardId} />}
             {capa.evidenceUrl && <Row label="Evidence" value={<a href={capa.evidenceUrl} className="text-primary underline" target="_blank">{capa.evidenceUrl}</a>} />}
             {capa.verifiedByEmail && <Row label="Verified by" value={capa.verifiedByEmail} />}
             {capa.closedAt && <Row label="Closed at" value={new Date(capa.closedAt).toLocaleString()} />}

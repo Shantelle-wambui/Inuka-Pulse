@@ -69,7 +69,7 @@ export default async function QualificationsPage() {
           <Award className="size-6" /> Qualifications
         </h1>
         <p className="text-sm text-muted-foreground mt-0.5">
-          All technician qualifications — certificate types, expiry status, and holders.
+          All officer qualifications — certificate types, expiry status, and holders.
         </p>
       </div>
 
@@ -101,7 +101,7 @@ export default async function QualificationsPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Technician</TableHead>
+                <TableHead>Officer</TableHead>
                 <TableHead>Qualification Type</TableHead>
               </TableRow>
             </TableHeader>
