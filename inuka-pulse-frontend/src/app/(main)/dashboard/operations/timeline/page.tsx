@@ -47,7 +47,7 @@ export default async function InterventionTimelinePage() {
     const overview =
       overviewResult.status === 'fulfilled' ? overviewResult.value : null
     const alerts =
-      alertsResult.status === 'fulfilled' ? alertsResult.value : []
+      alertsResult.status === 'fulfilled' ? alertsResult.value.data : []
 
     if (!overview) {
       return <BackendError message="Failed to load data" />

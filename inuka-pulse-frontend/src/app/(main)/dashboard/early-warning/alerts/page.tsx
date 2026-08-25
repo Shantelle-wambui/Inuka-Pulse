@@ -13,7 +13,7 @@ export default async function EarlyWarningAlertsPage() {
   let alerts: Alert[];
 
   try {
-    alerts = await fetchAlerts();
+    alerts = (await fetchAlerts()).data;
   } catch {
     return <BackendError message="Unable to load alerts. The backend may be unavailable or the request timed out." />;
   }

@@ -3,7 +3,7 @@ import { fetchAlerts } from "@/lib/inuka-pulse/api";
 import { AlertFeed } from "../_components/alert-feed";
 
 export default async function Page() {
-  const alerts = await fetchAlerts();
+  const alerts = (await fetchAlerts()).data;
 
   return (
     <div className="flex flex-col gap-4">

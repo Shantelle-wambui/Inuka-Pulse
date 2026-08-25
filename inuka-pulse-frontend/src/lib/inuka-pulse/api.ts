@@ -1428,7 +1428,7 @@ export async function fetchAlertHistory(): Promise<ResolvedAlertEntry[]> {
   }
 
   // Fallback: derive from regular alerts endpoint
-  const allAlerts = await fetchAlerts();
+  const allAlerts = (await fetchAlerts()).data;
   return allAlerts
     .filter((a) => a.status === "acknowledged" || a.status === "resolved")
     .map((a) => ({
