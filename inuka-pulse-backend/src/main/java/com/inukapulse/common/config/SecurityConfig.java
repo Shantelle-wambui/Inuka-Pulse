@@ -85,7 +85,8 @@ public class SecurityConfig {
                     "/api/ingestion/**",
                     "/api/config/**",
                     "/api/analytics/**",
-                    "/api/ml/champion-artifact-path"
+                    "/api/ml/champion-artifact-path",
+                    "/api/ml/decision-threshold"
                 ).permitAll()
                 
                 // ══════════════════════════════════════════════════════════════

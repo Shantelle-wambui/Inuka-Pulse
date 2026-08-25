@@ -15,6 +15,7 @@ import {
   SelectTrigger, SelectValue,
 } from "@/components/ui/select";
 import { RiskBandBadge } from "@/components/risk-band-badge";
+import { BAND_DOT_CLASSES, PREDICTION_BANDS } from "@/components/risk-distribution-chart";
 import {
   fetchBeneficiaryList,
   type BeneficiaryPrediction,
@@ -80,13 +81,6 @@ export function BeneficiaryTable({ initialData, counties, pillars }: Beneficiary
       )
     : data.content;
 
-  const BAND_DOT: Record<string, string> = {
-    Active:     "bg-green-500",
-    "At-Risk":  "bg-amber-500",
-    Disengaged: "bg-orange-500",
-    Dropout:    "bg-red-500",
-  };
-
   return (
     <Card>
       <CardHeader>
@@ -116,10 +110,10 @@ export function BeneficiaryTable({ initialData, counties, pillars }: Beneficiary
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All bands</SelectItem>
-                <SelectItem value="Dropout">Dropout</SelectItem>
-                <SelectItem value="Disengaged">Disengaged</SelectItem>
-                <SelectItem value="At-Risk">At-Risk</SelectItem>
-                <SelectItem value="Active">Active</SelectItem>
+                {/* Render in descending risk order */}
+                {[...PREDICTION_BANDS].reverse().map(b => (
+                  <SelectItem key={b} value={b}>{b}</SelectItem>
+                ))}
               </SelectContent>
             </Select>
             <Select value={county} onValueChange={v => handleFilter("county", v)}>
@@ -169,7 +163,7 @@ export function BeneficiaryTable({ initialData, counties, pillars }: Beneficiary
                 className="w-full grid grid-cols-12 gap-2 px-4 py-3 text-sm hover:bg-muted/50 transition-colors text-left group items-center"
               >
                 <div className="col-span-3 flex items-center gap-2 font-mono font-medium truncate">
-                  <span className={`size-2 rounded-full shrink-0 ${BAND_DOT[b.predictedBand] ?? "bg-muted"}`} />
+                  <span className={`size-2 rounded-full shrink-0 ${BAND_DOT_CLASSES[b.predictedBand as keyof typeof BAND_DOT_CLASSES] ?? "bg-muted"}`} />
                   {b.beneficiaryId}
                 </div>
                 <div className="col-span-2">
