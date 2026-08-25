@@ -1,0 +1,139 @@
+ inuka-pipeline/src/inuka_features.py        | 26 ++++++++++++++++++++++++++
+ inuka-pipeline/tests/test_inuka_features.py | 19 +++++++++++++++++++
+ 2 files changed, 45 insertions(+)
+diff --git a/inuka-pipeline/src/inuka_features.py b/inuka-pipeline/src/inuka_features.py
+index 59586f4..55c8b23 100644
+--- a/inuka-pipeline/src/inuka_features.py
++++ b/inuka-pipeline/src/inuka_features.py
+@@ -46,20 +46,21 @@ FEATURES = [
+     "sessions_attended_30d",
+     "sessions_total_30d",
+     "attendance_rate_30d",
+     "missed_sessions_14d",
+     "disbursement_delay_days",
+     "missed_disbursements_60d",
+     "assessment_score_latest",
+     "assessment_score_trend",
+     "field_visit_gap_days",
+     "no_contact_visits_90d",
++    "band_now",
+ ]
+ 
+ 
+ # ── Date parsing ──────────────────────────────────────────────────────────────
+ 
+ def _parse_dates(series: pd.Series) -> pd.Series:
+     """Parse dates tolerantly (ISO, d/m/Y, d-Mon-Y)."""
+     return pd.to_datetime(series, errors="coerce", dayfirst=True)
+ 
+ 
+@@ -73,20 +74,30 @@ def build_features(days_back: int = 364) -> pd.DataFrame:
+     today = date.today()
+     window_start = today - timedelta(days=days_back)
+ 
+     # ── Load raw tables ───────────────────────────────────────────────────────
+     beneficiaries = pd.read_csv(RAW_DIR / "dim_beneficiary.csv")
+     sessions_raw  = pd.read_csv(RAW_DIR / "fact_sessions.csv")
+     visits_raw    = pd.read_csv(RAW_DIR / "fact_field_visits.csv")
+     disbursements_raw = pd.read_csv(RAW_DIR / "fact_disbursements.csv")
+     assessments_raw   = pd.read_csv(RAW_DIR / "fact_assessments.csv")
+ 
++    # Load engagement history for band_now lookup
++    history_path = RAW_DIR / "fact_engagement_history.csv"
++    if history_path.exists():
++        engagement_history = pd.read_csv(history_path)
++        engagement_history["week_start"] = pd.to_datetime(engagement_history["week_start"])
++        # Pre-group by beneficiary for efficient lookup
++        engagement_by_ben: dict[str, pd.DataFrame] = dict(tuple(engagement_history.groupby("beneficiary_id")))
++    else:
++        engagement_by_ben = {}
++
+     # ── Parse & clean dates ───────────────────────────────────────────────────
+     sessions_raw["session_date"]   = _parse_dates(sessions_raw["session_date"])
+     visits_raw["visit_date"]       = _parse_dates(visits_raw["visit_date"])
+     disbursements_raw["expected_date"] = _parse_dates(disbursements_raw["expected_date"])
+     assessments_raw["assessment_date"] = _parse_dates(assessments_raw["assessment_date"])
+ 
+     # Drop rows with unparseable dates
+     sessions      = sessions_raw.dropna(subset=["session_date"]).copy()
+     visits        = visits_raw.dropna(subset=["visit_date"]).copy()
+     disbursements = disbursements_raw.dropna(subset=["expected_date"]).copy()
+@@ -215,38 +226,53 @@ def build_features(days_back: int = 364) -> pd.DataFrame:
+                 (ben_disbursements["expected_date"] >= d60_start) &
+                 (ben_disbursements["expected_date"] <= snap)
+             ]
+             disbursement_delay_days  = round(d60_disb["delay_days"].mean(), 1) if len(d60_disb) > 0 else 0.0
+             missed_disbursements_60d = int(d60_disb["is_missed"].sum())
+ 
+             # ── assessment scores (as-of: use latest before snap)
+             score_latest = assess_latest.get(bid, np.nan)
+             score_trend  = assess_trend.get(bid, np.nan)
+ 
++            # ── band_now lookup from engagement history
++            band_now = None
++            if bid in engagement_by_ben:
++                snap_ts_dt = pd.Timestamp(snap)
++                ben_history = engagement_by_ben[bid]
++                # Find exact match or closest week before snap
++                matches = ben_history[ben_history["week_start"] <= snap_ts_dt]
++                if not matches.empty:
++                    closest = matches.loc[matches["week_start"].idxmax()]
++                    band_now = closest["band"]
++                else:
++                    # If no week before, take the earliest
++                    band_now = ben_history.loc[ben_history["week_start"].idxmin(), "band"]
++
+             rows.append({
+                 "beneficiary_id":           bid,
+                 "cohort_id":                cid,
+                 "pillar":                   pillar,
+                 "county":                   county,
+                 "as_of_date":               snap,
+                 "days_since_last_contact":  days_since_last_contact,
+                 "sessions_attended_30d":    sessions_attended_30d,
+                 "sessions_total_30d":       sessions_total_30d,
+                 "attendance_rate_30d":      round(attendance_rate_30d, 4)
+                                             if not np.isnan(attendance_rate_30d) else np.nan,
+                 "missed_sessions_14d":      missed_sessions_14d,
+                 "disbursement_delay_days":  disbursement_delay_days,
+                 "missed_disbursements_60d": missed_disbursements_60d,
+                 "assessment_score_latest":  score_latest,
+                 "assessment_score_trend":   score_trend,
+                 "field_visit_gap_days":     field_visit_gap_days,
+                 "no_contact_visits_90d":    no_contact_visits_90d,
++                "band_now":                 band_now,
+             })
+ 
+     return pd.DataFrame(rows)
+ 
+ 
+ def main():
+     parser = argparse.ArgumentParser(description="Inuka Pulse — Feature Engineering")
+     parser.add_argument("--days-back", type=int, default=180)
+     args = parser.parse_args()
+ 
+diff --git a/inuka-pipeline/tests/test_inuka_features.py b/inuka-pipeline/tests/test_inuka_features.py
+new file mode 100644
+index 0000000..595f910
+--- /dev/null
++++ b/inuka-pipeline/tests/test_inuka_features.py
+@@ -0,0 +1,19 @@
++"""Tests for inuka_features module."""
++
++import pytest
++import pandas as pd
++from pathlib import Path
++import sys
++
++sys.path.insert(0, "src")
++
++
++def test_features_include_band_now():
++    """Features should include band_now from engagement history."""
++    from inuka_features import build_features
++    
++    # Use a small window to keep test fast
++    features = build_features(days_back=14)
++    assert "band_now" in features.columns
++    valid_bands = {"Active", "At-Risk", "Disengaged", "Dropout"}
++    assert features["band_now"].dropna().isin(valid_bands).all()

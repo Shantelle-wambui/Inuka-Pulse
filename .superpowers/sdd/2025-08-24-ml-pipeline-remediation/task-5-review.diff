@@ -1,0 +1,219 @@
+ inuka-pipeline/src/generate_inuka_data.py        | 12 ++++++------
+ inuka-pipeline/src/inuka_features.py             |  2 +-
+ inuka-pipeline/tests/test_generate_inuka_data.py | 16 ++++++++--------
+ 3 files changed, 15 insertions(+), 15 deletions(-)
+diff --git a/inuka-pipeline/src/generate_inuka_data.py b/inuka-pipeline/src/generate_inuka_data.py
+index 133bed8..ccaf552 100644
+--- a/inuka-pipeline/src/generate_inuka_data.py
++++ b/inuka-pipeline/src/generate_inuka_data.py
+@@ -49,21 +49,21 @@ fake = Faker("en_GB")          # English names — Faker("sw_KE") not available
+ Faker.seed(SEED)
+ 
+ # ── Output directories ────────────────────────────────────────────────────────
+ OUT_DIR     = Path("data/raw/inuka")
+ DOCS_DIR    = Path("docs")
+ OUT_DIR.mkdir(parents=True, exist_ok=True)
+ DOCS_DIR.mkdir(parents=True, exist_ok=True)
+ 
+ # ── Anchor date ───────────────────────────────────────────────────────────────
+ TODAY = datetime(2026, 8, 21)
+-START = TODAY - timedelta(days=180)   # 6-month window
++START = TODAY - timedelta(days=364)   # 12-month window (~52 weeks)
+ 
+ # ── Domain constants ──────────────────────────────────────────────────────────
+ PILLARS = ["Scholarship", "Plus", "Vocational", "Tech"]
+ 
+ PILLAR_CODES = {
+     "Scholarship": "SC",
+     "Plus":        "PL",
+     "Vocational":  "VN",
+     "Tech":        "TC",
+ }
+@@ -119,21 +119,21 @@ KE_SURNAMES = [
+     "Owino", "Kiprotich", "Chebet", "Mutinda", "Kiplagat", "Rotich",
+ ]
+ 
+ # ── Trajectory types for time-varying engagement ──────────────────────────────
+ TRAJECTORY_TYPES = ["stable_active", "gradual_decline", "sudden_dropout",
+                     "chronic_at_risk", "recovering"]
+ 
+ BAND_ORDER = ["Active", "At-Risk", "Disengaged", "Dropout"]
+ 
+ 
+-def _build_trajectory_by_type(ttype: str, n_weeks: int = 26) -> list[str]:
++def _build_trajectory_by_type(ttype: str, n_weeks: int = 52) -> list[str]:
+     """
+     Build a specific trajectory type. Called by build_trajectory after
+     the type is randomly selected.
+     """
+     if ttype == "stable_active":
+         return ["Active"] * n_weeks
+ 
+     if ttype == "chronic_at_risk":
+         settle = random.randint(3, 6)
+         return ["Active"] * settle + ["At-Risk"] * (n_weeks - settle)
+@@ -149,34 +149,34 @@ def _build_trajectory_by_type(ttype: str, n_weeks: int = 26) -> list[str]:
+ 
+     if ttype == "sudden_dropout":
+         pre = n_weeks - random.randint(2, 4)
+         at_risk_weeks = n_weeks - pre - 1
+         if at_risk_weeks < 1:
+             at_risk_weeks = 1
+             pre = n_weeks - 2
+         return ["Active"] * pre + ["At-Risk"] * at_risk_weeks + ["Dropout"]
+ 
+     if ttype == "gradual_decline":
+-        dwell = [random.randint(4, 8), random.randint(3, 6), random.randint(2, 4)]
++        dwell = [random.randint(8, 16), random.randint(6, 12), random.randint(4, 8)]
+         bands = []
+         for band, d in zip(BAND_ORDER[:3], dwell):
+             bands += [band] * d
+             if len(bands) >= n_weeks:
+                 return bands[:n_weeks]
+         bands += ["Dropout"] * (n_weeks - len(bands))
+         return bands[:n_weeks]
+ 
+     # Fallback
+     return ["Active"] * n_weeks
+ 
+ 
+-def build_trajectory(is_high_risk: bool, n_weeks: int = 26) -> list[str]:
++def build_trajectory(is_high_risk: bool, n_weeks: int = 52) -> list[str]:
+     """
+     Generate a per-beneficiary weekly engagement trajectory.
+     High-risk cohorts have higher probability of decline/dropout trajectories.
+     """
+     weights = ([0.30, 0.35, 0.18, 0.12, 0.05] if is_high_risk
+                else [0.60, 0.15, 0.08, 0.12, 0.05])
+     ttype = random.choices(TRAJECTORY_TYPES, weights=weights)[0]
+     return _build_trajectory_by_type(ttype, n_weeks)
+ 
+ 
+@@ -312,27 +312,27 @@ def build_cohorts() -> list[dict]:
+ # ============================================================================
+ # 2. dim_beneficiary — ~2 000 beneficiaries
+ # ============================================================================
+ 
+ def build_beneficiaries(cohorts: list[dict]) -> list[dict]:
+     beneficiaries = []
+     idx = 1
+     for cohort in cohorts:
+         is_high_risk = cohort["cohort_id"] in HIGH_RISK_COHORTS
+         # High-risk cohorts get slightly smaller intake
+-        n = random.randint(70, 110) if is_high_risk else random.randint(90, 130)
++        n = random.randint(220, 320) if is_high_risk else random.randint(260, 380)
+         for _ in range(n):
+             bid = f"BEN-{idx:05d}"
+             enroll_date = rand_date(START, START + timedelta(days=30))
+ 
+             # Generate trajectory; current_status = final week's band
+-            trajectory = build_trajectory(is_high_risk, n_weeks=26)
++            trajectory = build_trajectory(is_high_risk, n_weeks=52)
+             status = trajectory[-1]
+ 
+             dropout_date = None
+             dropout_reason = None
+             if status == "Dropout":
+                 # Find first week where band became Dropout
+                 dropout_week = next((i for i, b in enumerate(trajectory) if b == "Dropout"), len(trajectory) - 1)
+                 dropout_date = enroll_date + timedelta(weeks=dropout_week)
+                 dropout_reason = random.choice(DROPOUT_REASONS)
+ 
+diff --git a/inuka-pipeline/src/inuka_features.py b/inuka-pipeline/src/inuka_features.py
+index 1ccda6b..59586f4 100644
+--- a/inuka-pipeline/src/inuka_features.py
++++ b/inuka-pipeline/src/inuka_features.py
+@@ -58,21 +58,21 @@ FEATURES = [
+ 
+ # ── Date parsing ──────────────────────────────────────────────────────────────
+ 
+ def _parse_dates(series: pd.Series) -> pd.Series:
+     """Parse dates tolerantly (ISO, d/m/Y, d-Mon-Y)."""
+     return pd.to_datetime(series, errors="coerce", dayfirst=True)
+ 
+ 
+ # ── Main feature computation ──────────────────────────────────────────────────
+ 
+-def build_features(days_back: int = 180) -> pd.DataFrame:
++def build_features(days_back: int = 364) -> pd.DataFrame:
+     """
+     Build a feature snapshot for every (beneficiary, week) in the window.
+     Returns a DataFrame ready to be written to Parquet.
+     """
+     today = date.today()
+     window_start = today - timedelta(days=days_back)
+ 
+     # ── Load raw tables ───────────────────────────────────────────────────────
+     beneficiaries = pd.read_csv(RAW_DIR / "dim_beneficiary.csv")
+     sessions_raw  = pd.read_csv(RAW_DIR / "fact_sessions.csv")
+diff --git a/inuka-pipeline/tests/test_generate_inuka_data.py b/inuka-pipeline/tests/test_generate_inuka_data.py
+index ccf78ce..3628178 100644
+--- a/inuka-pipeline/tests/test_generate_inuka_data.py
++++ b/inuka-pipeline/tests/test_generate_inuka_data.py
+@@ -1,58 +1,58 @@
+ # inuka-pipeline/tests/test_generate_inuka_data.py
+ import pytest
+ import sys
+ sys.path.insert(0, "src")
+ 
+ def test_build_trajectory_returns_correct_length():
+     from generate_inuka_data import build_trajectory
+-    traj = build_trajectory(is_high_risk=True, n_weeks=26)
+-    assert len(traj) == 26
++    traj = build_trajectory(is_high_risk=True, n_weeks=52)
++    assert len(traj) == 52
+     assert all(b in ["Active", "At-Risk", "Disengaged", "Dropout"] for b in traj)
+ 
+ def test_build_trajectory_gradual_decline_has_progression():
+     from generate_inuka_data import build_trajectory, TRAJECTORY_TYPES
+     # Force gradual_decline by mocking random - for now just check it returns valid bands
+-    traj = build_trajectory(is_high_risk=True, n_weeks=26)
++    traj = build_trajectory(is_high_risk=True, n_weeks=52)
+     # At minimum, trajectory should be a list of valid bands
+     valid_bands = {"Active", "At-Risk", "Disengaged", "Dropout"}
+     assert all(b in valid_bands for b in traj)
+ 
+ def test_stable_active_trajectory_stays_active():
+     from generate_inuka_data import _build_trajectory_by_type
+-    traj = _build_trajectory_by_type("stable_active", n_weeks=26)
+-    assert traj == ["Active"] * 26
++    traj = _build_trajectory_by_type("stable_active", n_weeks=52)
++    assert traj == ["Active"] * 52
+ 
+ 
+ def test_build_beneficiaries_includes_trajectory():
+     from generate_inuka_data import build_beneficiaries, build_cohorts
+     cohorts = build_cohorts()[:2]  # Just 2 cohorts for speed
+     beneficiaries = build_beneficiaries(cohorts)
+     assert len(beneficiaries) > 0
+     ben = beneficiaries[0]
+     assert "trajectory" in ben
+     assert isinstance(ben["trajectory"], list)
+-    assert len(ben["trajectory"]) == 26
++    assert len(ben["trajectory"]) == 52
+     assert ben["current_status"] == ben["trajectory"][-1]
+ 
+ 
+ def test_build_engagement_history_creates_weekly_records():
+     from generate_inuka_data import build_engagement_history, build_beneficiaries, build_cohorts, START
+     from datetime import timedelta
+     cohorts = build_cohorts()[:1]
+     beneficiaries = build_beneficiaries(cohorts)[:5]  # 5 beneficiaries for speed
+     history = build_engagement_history(beneficiaries)
+     
+-    # Each beneficiary should have 26 weekly records
++    # Each beneficiary should have 52 weekly records
+     ben_id = beneficiaries[0]["beneficiary_id"]
+     ben_records = [h for h in history if h["beneficiary_id"] == ben_id]
+-    assert len(ben_records) == 26
++    assert len(ben_records) == 52
+     
+     # Records should have required columns
+     assert all("week_start" in h and "band" in h for h in history)
+ 
+ 
+ def test_build_sessions_uses_weekly_band():
+     """
+     Sessions attendance should vary based on trajectory band, not static status.
+     A declining beneficiary should have lower attendance in later weeks.
+     """
