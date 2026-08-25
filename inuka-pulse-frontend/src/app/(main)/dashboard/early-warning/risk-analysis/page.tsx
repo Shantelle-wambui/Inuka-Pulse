@@ -12,7 +12,7 @@ export const metadata = {
 export default async function RiskAnalysisPage() {
   let sites;
   try {
-    sites = await fetchRiskSummary();
+    sites = (await fetchRiskSummary()).data;
   } catch (error) {
     return <BackendError message="Failed to load data" />;
   }

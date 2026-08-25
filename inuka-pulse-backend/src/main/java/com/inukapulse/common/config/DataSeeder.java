@@ -48,7 +48,7 @@ public class DataSeeder implements ApplicationRunner {
 
     private static final List<String> ROLE_NAMES = List.of(
         "Admin", "Programme Director", "Case Manager", "Analyst", "Viewer",
-        "Coordinator", "ML Admin"
+        "Coordinator", "ML Admin", "Donor"
     );
 
     @Override
@@ -124,7 +124,9 @@ public class DataSeeder implements ApplicationRunner {
             new SeedAccount("Grace Wanjiku",     "officer@inuka.org",     "Case Manager"),
             new SeedAccount("Brian Omondi",      "analyst@inuka.org",     "Analyst"),
             new SeedAccount("Esther Adhiambo",   "director@inuka.org",    "Programme Director"),
-            new SeedAccount("ML Admin Inuka",    "ml.admin@inuka.org",    "ML Admin")
+            new SeedAccount("ML Admin Inuka",    "ml.admin@inuka.org",    "ML Admin"),
+            new SeedAccount("Amina Coordinator", "coordinator@inuka.org", "Coordinator"),
+            new SeedAccount("Demo Donor",        "donor@inuka.org",       "Donor")
         );
 
         int created = 0;

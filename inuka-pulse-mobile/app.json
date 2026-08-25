@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Inuka Pulse",
+    "slug": "inuka-pulse-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "updates": {
+      "enabled": false,
+      "checkAutomatically": "NEVER"
+    },
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#00999E"
+    },
+    "scheme": "inuka-pulse",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "org.inukafoundation.pulse"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#00999E"
+      },
+      "package": "org.inukafoundation.pulse"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

@@ -23,13 +23,17 @@ async function fetchSpi() {
 
 export default async function Page() {
   try {
-    const [sites, alerts, quality, batches, spi] = await Promise.all([
+    const [sitesResult, alertsResult, qualityResult, batchesResult, spi] = await Promise.all([
       fetchRiskSummary(),
       fetchAlerts(),
       fetchQualitySummary(),
       fetchBatches(),
       fetchSpi(),
     ]);
+    const sites = sitesResult.data;
+    const alerts = alertsResult.data;
+    const quality = qualityResult.data;
+    const batches = batchesResult.data;
 
     return (
       <div className="flex flex-col gap-4">
