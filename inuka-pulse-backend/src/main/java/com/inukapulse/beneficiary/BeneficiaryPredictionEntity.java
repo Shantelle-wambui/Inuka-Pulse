@@ -60,6 +60,22 @@ public class BeneficiaryPredictionEntity {
     @Column(name = "top_features", columnDefinition = "TEXT")
     private String topFeatures;
 
+    /**
+     * Engagement score 0–100.
+     * Higher = more engaged / lower dropout risk.
+     * Formula: (1 - dropoutProb) * 100, adjusted by band weighting.
+     * Populated by EtlReloadService on each load cycle.
+     */
+    @Column(name = "engagement_score", columnDefinition = "NUMERIC(5,2)")
+    private Double engagementScore;
+
+    /**
+     * Engagement band derived from engagement_score.
+     * High (70–100) | Medium (40–69) | Low (0–39)
+     */
+    @Column(name = "engagement_band", length = 20)
+    private String engagementBand;
+
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 

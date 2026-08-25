@@ -1,5 +1,6 @@
 package com.inukapulse.etl;
 
+import com.inukapulse.beneficiary.BeneficiaryPredictionDto;
 import com.inukapulse.beneficiary.BeneficiaryPredictionEntity;
 import com.inukapulse.beneficiary.BeneficiaryPredictionRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -364,6 +365,11 @@ public class EtlReloadService {
                 String predictedBand = str(r, "predicted_band");
                 if (predictedBand == null || predictedBand.isBlank()) continue;
 
+                // Compute engagement score at load time so it's immediately
+                // available to all endpoints without an extra compute step.
+                double engScore = BeneficiaryPredictionDto.computeEngagementScore(dropoutProb, predictedBand);
+                String engBand  = BeneficiaryPredictionDto.toEngagementBand(engScore);
+
                 BeneficiaryPredictionEntity e = new BeneficiaryPredictionEntity();
                 e.setBeneficiaryId(beneficiaryId);
                 e.setCohortId(str(r, "cohort_id"));
@@ -373,6 +379,8 @@ public class EtlReloadService {
                 e.setDropoutProb(dropoutProb);
                 e.setPredictedBand(predictedBand);
                 e.setTopFeatures(str(r, "top_features"));
+                e.setEngagementScore(engScore);
+                e.setEngagementBand(engBand);
                 toSave.add(e);
                 loaded++;
             }

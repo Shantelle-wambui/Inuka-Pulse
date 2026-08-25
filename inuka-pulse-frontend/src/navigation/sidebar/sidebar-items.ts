@@ -428,6 +428,12 @@ export const sidebarItems: NavGroup[] = [
         url: "/dashboard/admin",
         icon: Settings,
       },
+      {
+        id: "assignments",
+        title: "Assign Case Managers",
+        url: "/dashboard/admin/assignments",
+        icon: UserCog,
+      },
     ],
   },
 ];

@@ -10,6 +10,7 @@ import { RiskBandBadge } from "@/components/risk-band-badge";
 import { EngagementBadge } from '@/components/engagement-badge';
 import { RecordFollowUpForm } from "../_components/record-follow-up-form";
 import { FollowUpHistory } from "../_components/follow-up-history";
+import { WelfareConcernForm } from "../_components/welfare-concern-form";
 
 const FEATURE_LABELS: Record<string, { label: string; detail: string }> = {
   attendance_rate_30d:      { label: "Low attendance rate",         detail: "Beneficiary has attended fewer sessions than expected in the past 30 days." },
@@ -177,6 +178,12 @@ export default async function BeneficiaryDetailPage({ params }: PageProps) {
           </CardContent>
         </Card>
       )}
+
+      {/* ── Welfare concern ── */}
+      <WelfareConcernForm
+        beneficiaryId={beneficiaryId}
+        cohortId={beneficiary.cohortId}
+      />
 
       {/* ── Record a follow-up ── */}
       <RecordFollowUpForm

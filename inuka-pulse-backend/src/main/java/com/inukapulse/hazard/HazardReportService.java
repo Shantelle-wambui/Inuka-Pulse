@@ -36,6 +36,7 @@ public class HazardReportService {
         entity.setPhotoUrl(req.getPhotoUrl());
         entity.setStatus("open");
         entity.setReportType(req.getReportType() != null ? req.getReportType() : "hazard");
+        entity.setBeneficiaryId(req.getBeneficiaryId());
         entity.setCreatedAt(LocalDateTime.now());
         hazardRepo.save(entity);
         return toDto(entity);
@@ -94,6 +95,11 @@ public class HazardReportService {
                 .map(this::toDto).collect(Collectors.toList());
     }
 
+    public List<HazardReportDto> listByBeneficiary(String beneficiaryId) {
+        return hazardRepo.findByBeneficiaryIdOrderByCreatedAtDesc(beneficiaryId).stream()
+                .map(this::toDto).collect(Collectors.toList());
+    }
+
     public HazardReportDto getById(String id) {
         return hazardRepo.findById(id).map(this::toDto)
                 .orElseThrow(() -> new NoSuchElementException("Hazard report not found: " + id));
@@ -126,6 +132,7 @@ public class HazardReportService {
                 .mitigationNote(e.getMitigationNote()).assessedBy(e.getAssessedBy())
                 .assessedByEmail(assessedByEmail).assessedAt(e.getAssessedAt())
                 .linkedAlertId(e.getLinkedAlertId()).status(e.getStatus())
-                .createdAt(e.getCreatedAt()).reportType(e.getReportType()).build();
+                .createdAt(e.getCreatedAt()).reportType(e.getReportType())
+                .beneficiaryId(e.getBeneficiaryId()).build();
     }
 }

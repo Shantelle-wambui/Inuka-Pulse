@@ -1376,3 +1376,73 @@ export async function fetchCohortJourney(): Promise<CohortJourneyData> {
     kpis: { completionRate: 45, avgTimeMonths: 8.5, highRiskPhase: "Active → Completing", totalActive: 700 },
   };
 }
+
+// ─── Admin: Assignment Management ────────────────────────────────────────────
+
+export interface CohortAssignment {
+  id: number;
+  userId: number;
+  caseManagerName: string;
+  caseManagerEmail: string;
+  cohortId: string;
+  assignedAt: string | null;
+}
+
+export interface CaseManagerUser {
+  id: number;
+  name: string;
+  email: string;
+}
+
+/** GET /api/admin/assignments — all assignments with officer info */
+export async function fetchAssignments(): Promise<CohortAssignment[]> {
+  const res = await fetch(
+    `${requireApiBase()}/api/admin/assignments`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/admin/assignments/case-managers — all Case Manager users */
+export async function fetchCaseManagers(): Promise<CaseManagerUser[]> {
+  const res = await fetch(
+    `${requireApiBase()}/api/admin/assignments/case-managers`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/admin/assignments/cohorts — all cohort IDs with prediction data */
+export async function fetchAssignableCohorts(): Promise<string[]> {
+  const res = await fetch(
+    `${requireApiBase()}/api/admin/assignments/cohorts`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** POST /api/admin/assignments — assign a Case Manager to a cohort */
+export async function createAssignment(userId: number, cohortId: string): Promise<CohortAssignment> {
+  const opts = await authedOpts();
+  const res = await fetch(`${requireApiBase()}/api/admin/assignments`, {
+    ...opts,
+    method: "POST",
+    headers: { ...(opts.headers as Record<string, string>), "Content-Type": "application/json" },
+    body: JSON.stringify({ userId, cohortId }),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** DELETE /api/admin/assignments?userId=&cohortId= — remove an assignment */
+export async function deleteAssignment(userId: number, cohortId: string): Promise<void> {
+  const opts = await authedOpts();
+  const url = new URL(`${requireApiBase()}/api/admin/assignments`);
+  url.searchParams.set("userId", String(userId));
+  url.searchParams.set("cohortId", cohortId);
+  const res = await fetch(url.toString(), { ...opts, method: "DELETE" });
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+}

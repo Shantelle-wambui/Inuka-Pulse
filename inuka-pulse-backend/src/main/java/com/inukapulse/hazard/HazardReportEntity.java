@@ -65,8 +65,16 @@ public class HazardReportEntity {
 
     /**
      * V18: 'hazard' (default) | 'near_miss'
+     * V35: also supports 'welfare_concern' for beneficiary-level welfare flags.
      * Backwards-compatible — existing rows default to 'hazard' at DB level.
      */
     @Column(name = "report_type", nullable = false, length = 20)
     private String reportType = "hazard";
+
+    /**
+     * V35: beneficiary ID for welfare concerns raised from the beneficiary
+     * detail page. Null for site-level hazard/near-miss reports.
+     */
+    @Column(name = "beneficiary_id", length = 50)
+    private String beneficiaryId;
 }

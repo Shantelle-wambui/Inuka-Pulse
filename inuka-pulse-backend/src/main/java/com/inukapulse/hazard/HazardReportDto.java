@@ -25,6 +25,8 @@ public class HazardReportDto {
     private String linkedAlertId;
     private String status;
     private LocalDateTime createdAt;
-    /** 'hazard' | 'near_miss' */
+    /** 'hazard' | 'near_miss' | 'welfare_concern' */
     private String reportType;
+    /** Populated for welfare_concern reports raised from beneficiary detail page. */
+    private String beneficiaryId;
 }
