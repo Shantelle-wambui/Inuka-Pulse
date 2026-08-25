@@ -39,9 +39,6 @@ export const BAND_DOT_CLASSES: Record<PredictionBand, string> = {
 /** Ordered list of prediction bands (ascending risk) */
 export const PREDICTION_BANDS: PredictionBand[] = ["Active", "At-Risk", "Disengaged", "Dropout"];
 
-/** Ordered list of prediction bands (ascending risk) */
-export const PREDICTION_BANDS: PredictionBand[] = ["Active", "At-Risk", "Disengaged", "Dropout"];
-
 // Re-export for convenience
 export type { PredictionBand } from "@/lib/inuka-pulse/risk-formula";
 

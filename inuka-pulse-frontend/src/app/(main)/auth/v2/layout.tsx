@@ -8,9 +8,9 @@ export default function Layout({ children }: Readonly<{ children: ReactNode }>) 
         <div className="relative order-2 hidden h-full overflow-hidden rounded-3xl lg:flex">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/login-background.svg"
-            alt="Inuka Pulse dashboard — cohort risk map, dropout prediction scores, and live alerts across Kenya"
-            className="absolute inset-0 h-full w-full object-cover object-top"
+            src="/login-bg.jpg"
+            alt="African college students at university campus — Inuka Foundation beneficiaries"
+            className="absolute inset-0 h-full w-full object-cover object-center"
           />
 
           {/* Gradient overlay */}

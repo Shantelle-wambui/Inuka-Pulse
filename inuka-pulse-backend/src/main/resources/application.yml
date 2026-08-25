@@ -32,6 +32,8 @@ spring:
     console:
       enabled: true
       path: /h2-console
+
+server:
   port: ${PORT:8080}
 
 management:

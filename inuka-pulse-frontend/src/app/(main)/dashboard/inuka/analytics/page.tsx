@@ -13,6 +13,7 @@ import {
   fetchRiskSummary,
   fetchSurvivalCurves,
 } from "@/lib/inuka-pulse/api";
+import { cachedFetchSiteNameMap } from "@/lib/inuka-pulse/cached-fetches";
 import type { SeverityBand, SiteRiskSummary } from "@/lib/inuka-pulse/types";
 import { cn } from "@/lib/utils";
 
@@ -53,7 +54,8 @@ function RiskBar({ score, band }: { score: number; band: SeverityBand }) {
 export default async function AnalyticsPage() {
   let sites: SiteRiskSummary[];
   try {
-    sites = await fetchRiskSummary();
+    const result = await fetchRiskSummary();
+    sites = result.data;
   } catch (err) {
     return (
       <div className="flex flex-col gap-4">
@@ -69,18 +71,20 @@ export default async function AnalyticsPage() {
   }
 
   // Fetch analytics data in parallel — each is gracefully optional
-  const [survivalResult, controlResult, correlationResult, featureResult] =
+  const [survivalResult, controlResult, correlationResult, featureResult, siteNamesResult] =
     await Promise.allSettled([
       fetchSurvivalCurves(),
       fetchPressureCharts(),
       fetchCorrelation(),
       fetchFeatureImportance(),
+      cachedFetchSiteNameMap(),
     ]);
 
   const survival    = survivalResult.status    === "fulfilled" ? survivalResult.value    : null;
   const control     = controlResult.status     === "fulfilled" ? controlResult.value     : null;
   const correlation = correlationResult.status === "fulfilled" ? correlationResult.value : null;
   const features    = featureResult.status     === "fulfilled" ? featureResult.value     : null;
+  const siteNames   = siteNamesResult.status   === "fulfilled" ? siteNamesResult.value   : {};
 
   const sorted = [...sites].sort((a, b) => b.riskScore - a.riskScore);
 
@@ -302,7 +306,7 @@ export default async function AnalyticsPage() {
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             {survival && <SurvivalCurveChart data={survival} />}
             {correlation && <CorrelationScatterChart data={correlation} />}
-            {control && <PressureControlChart data={control} />}
+            {control && <PressureControlChart data={control} siteNames={siteNames} />}
             {features && <FeatureImportanceBar data={features} />}
           </div>
         </>

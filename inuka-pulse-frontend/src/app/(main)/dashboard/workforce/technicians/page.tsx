@@ -2,6 +2,7 @@ import { UserCog, AlertCircle } from "lucide-react";
 import { getAuthToken } from "@/server/server-actions";
 import { BackendError } from "@/components/backend-error";
 import { Badge } from "@/components/ui/badge";
+import { cachedFetchSiteNameMap } from "@/lib/inuka-pulse/cached-fetches";
 
 const API_BASE = process.env.NEXT_PUBLIC_INUKA_API_URL ?? "";
 
@@ -23,15 +24,7 @@ async function fetchTechnicians(token: string | undefined): Promise<Technician[]
   return res.json();
 }
 
-const SITE_NAMES: Record<string, string> = {
-  "site-001": "Scholarship — Nairobi",
-  "site-002": "Scholarship — Mombasa",
-  "site-003": "Vocational — Nakuru",
-  "site-004": "Plus — Nairobi",
-  "site-005": "Vocational — Eldoret",
-  "site-006": "Tech — Nairobi",
-  "site-007": "Kisumu Terminal",
-};
+const SITE_NAMES: Record<string, string> = {}; // populated from backend at render time — see TechniciansPage
 
 function QualBadge({ expiresAt }: { expiresAt?: string }) {
   if (!expiresAt) return <Badge variant="outline" className="text-xs">No expiry</Badge>;
@@ -48,9 +41,14 @@ function QualBadge({ expiresAt }: { expiresAt?: string }) {
 export default async function TechniciansPage() {
   let technicians: Technician[] = [];
   let error: string | null = null;
+  let siteNames: Record<string, string> = {};
 
   try {
-    const token = await getAuthToken();
+    const [token, names] = await Promise.all([
+      getAuthToken(),
+      cachedFetchSiteNameMap(),
+    ]);
+    siteNames = names;
     technicians = await fetchTechnicians(token);
   } catch (e: unknown) {
     error = e instanceof Error ? e.message : "Failed to load technicians";
@@ -95,7 +93,7 @@ export default async function TechniciansPage() {
               {tech.stationHomeId && (
                 <div className="flex items-center gap-1 text-xs text-muted-foreground">
                   <span className="font-medium text-foreground">Home station:</span>
-                  {SITE_NAMES[tech.stationHomeId] ?? tech.stationHomeId}
+                  {siteNames[tech.stationHomeId] ?? tech.stationHomeId}
                 </div>
               )}
               {tech.qualifications && tech.qualifications.length > 0 ? (

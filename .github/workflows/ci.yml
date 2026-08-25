@@ -1,33 +1,36 @@
 name: CI
 
-# Runs on every push and pull request to main.
-# Covers the Python ETL pipeline and the Spring Boot backend.
+# Runs on every push to main/development and on all pull requests targeting main.
+# Covers three jobs:
+#   1. etl      — Python pipeline (inuka-pipeline/)
+#   2. backend  — Spring Boot (inuka-pulse-backend/)
+#   3. frontend — Next.js (inuka-pulse-frontend/)
 
 on:
   push:
-    branches: [main, feature/**]
+    branches: [main, development, "feature/**"]
   pull_request:
-    branches: [main]
+    branches: [main, development]
 
 jobs:
-
-  # ── Python ETL ─────────────────────────────────────────────────────────────
+  # ── Python ETL Pipeline ────────────────────────────────────────────────────
   etl:
     name: ETL Pipeline Tests
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: sentinel
+        working-directory: inuka-pipeline
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
-          cache-dependency-path: sentinel/requirements.txt
+          cache-dependency-path: inuka-pipeline/requirements.txt
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -35,18 +38,23 @@ jobs:
       - name: Run unit tests
         run: pytest tests/ -v
 
-      - name: Generate synthetic data
-        run: python3 src/generate_data.py
+      - name: Generate synthetic Inuka data
+        run: python3 src/generate_inuka_data.py
 
-      - name: Run full ETL pipeline
+      - name: Run feature engineering
+        run: python -m src.inuka_features
+
+      - name: Run ML scoring
+        run: python -m src.inuka_predict --score
+
+      - name: Run live bridge (generate live_batch.json)
+        run: python -m src.inuka_live_bridge
+
+      - name: Verify output files exist
         run: |
-          python -m src.ingest
-          python -m src.transform
-          python -m src.decide
-          python -m src.load
-
-      - name: Enforce data-quality gate (≥ 90 % acceptance)
-        run: python -m src.validate --fail-below 0.90
+          test -f data/warehouse/live_batch.json || (echo "live_batch.json missing" && exit 1)
+          test -f data/warehouse/inuka_predictions_export.json || (echo "inuka_predictions_export.json missing" && exit 1)
+          echo "Pipeline output files verified."
 
   # ── Spring Boot Backend ────────────────────────────────────────────────────
   backend:
@@ -54,10 +62,11 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: sentinel-backend
+        working-directory: inuka-pulse-backend
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Java 17
         uses: actions/setup-java@v4
@@ -66,8 +75,49 @@ jobs:
           distribution: "temurin"
           cache: "maven"
 
-      - name: Build and test (H2 in-memory DB)
+      - name: Build and test (H2 in-memory — no external DB needed)
         run: ./mvnw verify -q
 
       - name: Confirm fat JAR was produced
-        run: ls target/*.jar
+        run: |
+          ls target/inuka-pulse-backend-*.jar
+          echo "JAR build verified."
+
+  # ── Next.js Frontend ───────────────────────────────────────────────────────
+  frontend:
+    name: Frontend Build & Lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: inuka-pulse-frontend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Enable corepack (pnpm)
+        run: corepack enable
+
+      - name: Install pnpm 9.15.0
+        run: corepack prepare pnpm@9.15.0 --activate
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint (Biome)
+        run: pnpm lint
+
+      - name: Type-check
+        run: pnpm exec tsc --noEmit
+
+      - name: Build
+        run: pnpm build
+        env:
+          # Dummy value — build must succeed even without a real backend URL.
+          # Real value is injected by Vercel at deploy time.
+          NEXT_PUBLIC_INUKA_API_URL: http://localhost:8080

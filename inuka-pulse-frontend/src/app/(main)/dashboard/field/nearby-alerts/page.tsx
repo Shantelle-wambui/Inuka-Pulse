@@ -3,6 +3,7 @@ import { getAuthToken } from "@/server/server-actions";
 import { BackendError } from "@/components/backend-error";
 import { Badge } from "@/components/ui/badge";
 import type { Alert } from "@/lib/inuka-pulse/types";
+import { cachedFetchSiteNameMap } from "@/lib/inuka-pulse/cached-fetches";
 
 const API_BASE = process.env.NEXT_PUBLIC_INUKA_API_URL ?? "";
 
@@ -23,23 +24,17 @@ const SEVERITY_VARIANTS: Record<string, string> = {
   Low:      "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
 };
 
-// Known Inuka cohort coordinates — mirrors backend COHORT_COORDS
-const SITE_NAMES: Record<string, string> = {
-  "site-001": "Scholarship — Nairobi",
-  "site-002": "Scholarship — Mombasa",
-  "site-003": "Vocational — Nakuru",
-  "site-004": "Plus — Nairobi",
-  "site-005": "Vocational — Eldoret",
-  "site-006": "Tech — Nairobi",
-  "site-007": "Kisumu Terminal",
-};
-
 export default async function NearbyAlertsPage() {
   let alerts: Alert[] = [];
   let error: string | null = null;
+  let siteNames: Record<string, string> = {};
 
   try {
-    const token = await getAuthToken();
+    const [token, names] = await Promise.all([
+      getAuthToken(),
+      cachedFetchSiteNameMap(),
+    ]);
+    siteNames = names;
     alerts = await fetchActiveAlerts(token);
   } catch (e: unknown) {
     error = e instanceof Error ? e.message : "Failed to load alerts";
@@ -109,7 +104,7 @@ export default async function NearbyAlertsPage() {
                 <div className="flex items-center gap-3 mt-2 text-xs text-muted-foreground">
                   <span className="flex items-center gap-1">
                     <MapPin className="size-3" />
-                    {SITE_NAMES[alert.siteId] ?? alert.siteId}
+                    {siteNames[alert.siteId] ?? alert.siteId}
                   </span>
                   <span>
                     {new Date(alert.createdAt).toLocaleDateString("en-GB", {

@@ -1,30 +1,43 @@
+# application-railway.yml
+# Active when SPRING_PROFILES_ACTIVE=railway (set in Railway service variables)
+# Uses Railway's private network for database connectivity
+
 spring:
   datasource:
-    # Railway injects DATABASE_URL as postgresql://user:pass@host:port/db
-    # Spring Boot JDBC needs the jdbc: prefix — we prepend it here
-    url: jdbc:${DATABASE_URL}
+    # Railway provides individual PG* variables when Postgres is linked
+    url: jdbc:postgresql://${PGHOST:localhost}:${PGPORT:5432}/${PGDATABASE:railway}
+    username: ${PGUSER:postgres}
+    password: ${PGPASSWORD:}
     driver-class-name: org.postgresql.Driver
-    username: ${PGUSER}
-    password: ${PGPASSWORD}
     hikari:
-      # Railway PostgreSQL (Hobby plan) allows 25 connections max.
-      maximum-pool-size: 10
+      # Railway Hobby PostgreSQL allows 25 connections max.
+      maximum-pool-size: 8
       minimum-idle: 2
-      connection-timeout: 30000       # 30 s
-      idle-timeout: 600000            # 10 min
-      max-lifetime: 1800000           # 30 min
+      connection-timeout: 30000 # 30 s
+      idle-timeout: 600000 # 10 min
+      max-lifetime: 1800000 # 30 min
       pool-name: InukaRailwayPool
+      data-source-properties:
+        reWriteBatchedInserts: true
+        ApplicationName: inuka-pulse
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
     show-sql: false
-    open-in-view: false
+
+  defer-datasource-initialization: false
 
   flyway:
     enabled: true
     locations: classpath:db/migration
     baseline-on-migrate: true
+    out-of-order: true
+    validate-on-migrate: false
+
+  sql:
+    init:
+      mode: never
 
   h2:
     console:
@@ -44,20 +57,14 @@ management:
 
 inuka:
   cors:
-    # Set CORS_ALLOWED_ORIGINS in Railway env vars to your Vercel URL
-    # e.g. https://inuka-pulse.vercel.app
-    # Multiple origins: comma-separated, no spaces
     allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
   jwt:
-    # Must be set in Railway env vars — never commit the real secret
     secret: ${JWT_SECRET}
-    expiration-ms: 86400000  # 24 hours
+    expiration-ms: 86400000 # 24 hours
   etl:
-    enabled: true
-    # R2 public URLs — set in Railway environment variables
-    # e.g. https://pub-xxx.r2.dev/live_batch.json
-    live-batch-url: ${ETL_LIVE_BATCH_URL}
-    predictions-url: ${ETL_PREDICTIONS_URL}
+    enabled: ${ETL_ENABLED:true}
+    live-batch-url: ${ETL_LIVE_BATCH_URL:}
+    predictions-url: ${ETL_PREDICTIONS_URL:}
     poll-interval-ms: 120000
     rows-per-cycle: 200
     frontend-refresh-ms: 125000
@@ -66,4 +73,4 @@ inuka:
     groq-api-key: ${GROQ_API_KEY:}
     model: llama-3.1-8b-instant
     timeout-ms: 3000
-    enabled: ${LLM_ENABLED:true}
+    enabled: ${LLM_ENABLED:false}

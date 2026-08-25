@@ -2,8 +2,15 @@
 # Docs: https://render.com/docs/blueprint-spec
 #
 # Provisions:
-#   1. inuka-pulse-db      — Managed PostgreSQL 15 database
-#   2. inuka-pulse-backend — Spring Boot web service (Docker build)
+#   1. inuka-pulse-db       — Managed PostgreSQL 15 database
+#   2. inuka-pulse-backend  — Spring Boot web service (Docker build)
+#   3. inuka-pulse-frontend — Next.js frontend (Docker build)
+#
+# After deploy:
+#   - Set JWT_SECRET in Render dashboard (Backend → Environment)
+#   - Update CORS_ALLOWED_ORIGINS with your frontend URL
+#   - Update NEXT_PUBLIC_INUKA_API_URL with your backend URL
+#   - (Optional) Set up Cloudflare R2 and update ETL URLs
 
 databases:
   - name: inuka-pulse-db
@@ -13,6 +20,7 @@ databases:
     region: oregon
 
 services:
+  # ── Backend (Spring Boot) ─────────────────────────────────────────────────
   - type: web
     name: inuka-pulse-backend
     region: oregon
@@ -20,7 +28,6 @@ services:
     runtime: docker
     dockerfilePath: inuka-pulse-backend/Dockerfile
     dockerContext: inuka-pulse-backend
-
     healthCheckPath: /actuator/health
 
     envVars:
@@ -30,7 +37,22 @@ services:
       - key: DATABASE_URL
         fromDatabase:
           name: inuka-pulse-db
-          property: jdbcConnectionString
+          property: connectionString
+
+      - key: DB_HOST
+        fromDatabase:
+          name: inuka-pulse-db
+          property: host
+
+      - key: DB_PORT
+        fromDatabase:
+          name: inuka-pulse-db
+          property: port
+
+      - key: DB_NAME
+        fromDatabase:
+          name: inuka-pulse-db
+          property: database
 
       - key: DB_USERNAME
         fromDatabase:
@@ -43,28 +65,38 @@ services:
           property: password
 
       - key: JWT_SECRET
-        sync: false   # set manually in Render dashboard — never commit the real value
+        sync: false   # set manually in Render dashboard — never commit
 
-      # Update to your Vercel frontend URL after deploy
       - key: CORS_ALLOWED_ORIGINS
-        value: http://localhost:3000
+        sync: false   # set to your frontend URL after deploy
 
-      # ETL — R2 pull model (no push to Render, avoids Cloudflare 403)
       - key: ETL_ENABLED
-        value: "true"
+        value: "false"  # enable after setting up R2
+
+      - key: LLM_ENABLED
+        value: "false"  # enable after adding GROQ_API_KEY
 
       - key: ETL_LIVE_BATCH_URL
-        value: REPLACE_WITH_R2_PUBLIC_URL/live_batch.json
+        sync: false   # set to R2 URL after setup
 
       - key: ETL_PREDICTIONS_URL
-        value: REPLACE_WITH_R2_PUBLIC_URL/inuka_predictions_export.json
+        sync: false   # set to R2 URL after setup
 
       - key: ETL_API_KEY
-        value: REPLACE_WITH_STRONG_RANDOM_KEY   # generate: openssl rand -hex 32
+        sync: false   # set manually — generate with: openssl rand -hex 32
 
-      # LLM narrative enhancement (optional — leave GROQ_API_KEY blank to disable)
       - key: GROQ_API_KEY
         sync: false   # set in Render dashboard; leave blank for template-based narratives
 
-      - key: LLM_ENABLED
-        value: "true"
+  # ── Frontend (Next.js) ────────────────────────────────────────────────────
+  - type: web
+    name: inuka-pulse-frontend
+    region: oregon
+    plan: free
+    runtime: docker
+    dockerfilePath: inuka-pulse-frontend/Dockerfile
+    dockerContext: inuka-pulse-frontend
+
+    envVars:
+      - key: NEXT_PUBLIC_INUKA_API_URL
+        sync: false   # set to your backend URL after deploy (e.g., https://inuka-pulse-backend.onrender.com)
