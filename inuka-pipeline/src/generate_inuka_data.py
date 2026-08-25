@@ -56,7 +56,7 @@ DOCS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── Anchor date ───────────────────────────────────────────────────────────────
 TODAY = datetime(2026, 8, 21)
-START = TODAY - timedelta(days=180)   # 6-month window
+START = TODAY - timedelta(days=364)   # 12-month window (~52 weeks)
 
 # ── Domain constants ──────────────────────────────────────────────────────────
 PILLARS = ["Scholarship", "Plus", "Vocational", "Tech"]
@@ -126,7 +126,7 @@ TRAJECTORY_TYPES = ["stable_active", "gradual_decline", "sudden_dropout",
 BAND_ORDER = ["Active", "At-Risk", "Disengaged", "Dropout"]
 
 
-def _build_trajectory_by_type(ttype: str, n_weeks: int = 26) -> list[str]:
+def _build_trajectory_by_type(ttype: str, n_weeks: int = 52) -> list[str]:
     """
     Build a specific trajectory type. Called by build_trajectory after
     the type is randomly selected.
@@ -156,7 +156,7 @@ def _build_trajectory_by_type(ttype: str, n_weeks: int = 26) -> list[str]:
         return ["Active"] * pre + ["At-Risk"] * at_risk_weeks + ["Dropout"]
 
     if ttype == "gradual_decline":
-        dwell = [random.randint(4, 8), random.randint(3, 6), random.randint(2, 4)]
+        dwell = [random.randint(8, 16), random.randint(6, 12), random.randint(4, 8)]
         bands = []
         for band, d in zip(BAND_ORDER[:3], dwell):
             bands += [band] * d
@@ -169,7 +169,7 @@ def _build_trajectory_by_type(ttype: str, n_weeks: int = 26) -> list[str]:
     return ["Active"] * n_weeks
 
 
-def build_trajectory(is_high_risk: bool, n_weeks: int = 26) -> list[str]:
+def build_trajectory(is_high_risk: bool, n_weeks: int = 52) -> list[str]:
     """
     Generate a per-beneficiary weekly engagement trajectory.
     High-risk cohorts have higher probability of decline/dropout trajectories.
@@ -319,13 +319,13 @@ def build_beneficiaries(cohorts: list[dict]) -> list[dict]:
     for cohort in cohorts:
         is_high_risk = cohort["cohort_id"] in HIGH_RISK_COHORTS
         # High-risk cohorts get slightly smaller intake
-        n = random.randint(70, 110) if is_high_risk else random.randint(90, 130)
+        n = random.randint(220, 320) if is_high_risk else random.randint(260, 380)
         for _ in range(n):
             bid = f"BEN-{idx:05d}"
             enroll_date = rand_date(START, START + timedelta(days=30))
 
             # Generate trajectory; current_status = final week's band
-            trajectory = build_trajectory(is_high_risk, n_weeks=26)
+            trajectory = build_trajectory(is_high_risk, n_weeks=52)
             status = trajectory[-1]
 
             dropout_date = None

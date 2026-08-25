@@ -65,7 +65,7 @@ def _parse_dates(series: pd.Series) -> pd.Series:
 
 # ── Main feature computation ──────────────────────────────────────────────────
 
-def build_features(days_back: int = 180) -> pd.DataFrame:
+def build_features(days_back: int = 364) -> pd.DataFrame:
     """
     Build a feature snapshot for every (beneficiary, week) in the window.
     Returns a DataFrame ready to be written to Parquet.

@@ -5,22 +5,22 @@ sys.path.insert(0, "src")
 
 def test_build_trajectory_returns_correct_length():
     from generate_inuka_data import build_trajectory
-    traj = build_trajectory(is_high_risk=True, n_weeks=26)
-    assert len(traj) == 26
+    traj = build_trajectory(is_high_risk=True, n_weeks=52)
+    assert len(traj) == 52
     assert all(b in ["Active", "At-Risk", "Disengaged", "Dropout"] for b in traj)
 
 def test_build_trajectory_gradual_decline_has_progression():
     from generate_inuka_data import build_trajectory, TRAJECTORY_TYPES
     # Force gradual_decline by mocking random - for now just check it returns valid bands
-    traj = build_trajectory(is_high_risk=True, n_weeks=26)
+    traj = build_trajectory(is_high_risk=True, n_weeks=52)
     # At minimum, trajectory should be a list of valid bands
     valid_bands = {"Active", "At-Risk", "Disengaged", "Dropout"}
     assert all(b in valid_bands for b in traj)
 
 def test_stable_active_trajectory_stays_active():
     from generate_inuka_data import _build_trajectory_by_type
-    traj = _build_trajectory_by_type("stable_active", n_weeks=26)
-    assert traj == ["Active"] * 26
+    traj = _build_trajectory_by_type("stable_active", n_weeks=52)
+    assert traj == ["Active"] * 52
 
 
 def test_build_beneficiaries_includes_trajectory():
@@ -31,7 +31,7 @@ def test_build_beneficiaries_includes_trajectory():
     ben = beneficiaries[0]
     assert "trajectory" in ben
     assert isinstance(ben["trajectory"], list)
-    assert len(ben["trajectory"]) == 26
+    assert len(ben["trajectory"]) == 52
     assert ben["current_status"] == ben["trajectory"][-1]
 
 
@@ -42,10 +42,10 @@ def test_build_engagement_history_creates_weekly_records():
     beneficiaries = build_beneficiaries(cohorts)[:5]  # 5 beneficiaries for speed
     history = build_engagement_history(beneficiaries)
     
-    # Each beneficiary should have 26 weekly records
+    # Each beneficiary should have 52 weekly records
     ben_id = beneficiaries[0]["beneficiary_id"]
     ben_records = [h for h in history if h["beneficiary_id"] == ben_id]
-    assert len(ben_records) == 26
+    assert len(ben_records) == 52
     
     # Records should have required columns
     assert all("week_start" in h and "band" in h for h in history)
