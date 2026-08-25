@@ -145,11 +145,53 @@ public class EtlReloadService {
         }
     }
 
+    /**
+     * Checks if the ETL process is still running and restarts it if dead.
+     * 
+     * This prevents silent ETL failures from causing stale predictions.
+     * If the process crashes, the scheduled reload will detect it and restart.
+     */
+    private void checkAndRestartEtlProcess() {
+        // Skip check if we're in remote/cloud mode (no local process)
+        if (liveBatchUrl != null && !liveBatchUrl.isBlank()) {
+            return;
+        }
+        
+        // Skip if process was never started (e.g., script not found)
+        if (etlProcess == null) {
+            return;
+        }
+        
+        // Check if process died unexpectedly
+        if (!etlProcess.isAlive()) {
+            int exitCode = etlProcess.exitValue();
+            log.warn("ETL process died unexpectedly (exit code: {}) — attempting restart", exitCode);
+            
+            // Clear the old process reference before restarting
+            etlProcess = null;
+            
+            // Attempt restart
+            try {
+                startEtlLoop();
+                if (etlProcess != null && etlProcess.isAlive()) {
+                    log.info("ETL process successfully restarted (new pid={})", etlProcess.pid());
+                } else {
+                    log.error("ETL process restart failed — predictions may become stale");
+                }
+            } catch (Exception e) {
+                log.error("ETL process restart failed: {} — predictions may become stale", e.getMessage());
+            }
+        }
+    }
+
     // ── Scheduled reload ──────────────────────────────────────────────────────
 
     @Scheduled(fixedDelayString = "${inuka.etl.poll-interval-ms:60000}", initialDelay = 5000)
     public void reload() {
         if (!enabled) return;
+
+        // Health check: restart ETL process if it died unexpectedly
+        checkAndRestartEtlProcess();
 
         try {
             LiveBatchRecord batch;

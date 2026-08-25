@@ -31,8 +31,10 @@ Usage:
 """
 
 import argparse
+import sys
 from datetime import date, timedelta
 from pathlib import Path
+from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -40,6 +42,38 @@ import pandas as pd
 RAW_DIR       = Path("data/raw/inuka")
 WAREHOUSE_DIR = Path("data/warehouse")
 WAREHOUSE_DIR.mkdir(parents=True, exist_ok=True)
+
+
+# ── Safe CSV loading with error handling ──────────────────────────────────────
+
+def _load_csv(path: Path, required: bool = True) -> Optional[pd.DataFrame]:
+    """
+    Load a CSV file with existence check and error handling.
+    
+    Args:
+        path: Path to the CSV file.
+        required: If True, raises FileNotFoundError when file is missing.
+                  If False, returns None and logs a warning.
+    
+    Returns:
+        DataFrame or None if file is missing and not required.
+    
+    Raises:
+        FileNotFoundError: If required file is missing.
+        RuntimeError: If file exists but cannot be parsed.
+    """
+    if not path.exists():
+        if required:
+            raise FileNotFoundError(
+                f"Required file missing: {path}\n"
+                f"Ensure the raw data has been loaded before running feature engineering."
+            )
+        print(f"  Warning: optional file missing: {path}")
+        return None
+    try:
+        return pd.read_csv(path)
+    except Exception as e:
+        raise RuntimeError(f"Failed to parse {path}: {e}") from e
 
 FEATURES = [
     "days_since_last_contact",
@@ -64,27 +98,81 @@ def _parse_dates(series: pd.Series) -> pd.Series:
     return pd.to_datetime(series, errors="coerce", dayfirst=True)
 
 
+def _compute_assessment_score_as_of(
+    ben_assessments: pd.DataFrame,
+    as_of_date: date,
+) -> tuple[float, float]:
+    """
+    Compute assessment scores for a beneficiary as of a specific date.
+    
+    CRITICAL: This function only considers assessments taken BEFORE as_of_date
+    to prevent future data leakage into historical snapshots.
+    
+    Args:
+        ben_assessments: DataFrame of assessments for a single beneficiary
+                        with columns ['assessment_date', 'score'].
+        as_of_date: The snapshot date — only assessments before this date count.
+    
+    Returns:
+        Tuple of (score_latest, score_trend):
+        - score_latest: Most recent assessment score before as_of_date (NaN if none)
+        - score_trend: Difference between latest and earliest scores (NaN if < 2 assessments)
+    """
+    if ben_assessments.empty:
+        return np.nan, np.nan
+    
+    # Filter to only assessments taken before the snapshot date
+    past_assessments = ben_assessments[ben_assessments["assessment_date"] <= as_of_date]
+    
+    if past_assessments.empty:
+        return np.nan, np.nan
+    
+    # Sort by date to get chronological order
+    past_sorted = past_assessments.sort_values("assessment_date")
+    scores = past_sorted["score"].dropna().tolist()
+    
+    if not scores:
+        return np.nan, np.nan
+    
+    score_latest = scores[-1]
+    score_trend = scores[-1] - scores[0] if len(scores) >= 2 else np.nan
+    
+    return score_latest, score_trend
+
+
 # ── Main feature computation ──────────────────────────────────────────────────
 
 def build_features(days_back: int = 364) -> pd.DataFrame:
     """
     Build a feature snapshot for every (beneficiary, week) in the window.
     Returns a DataFrame ready to be written to Parquet.
+    
+    Raises:
+        FileNotFoundError: If required raw data files are missing.
+        RuntimeError: If raw data files cannot be parsed.
     """
     today = date.today()
     window_start = today - timedelta(days=days_back)
 
-    # ── Load raw tables ───────────────────────────────────────────────────────
-    beneficiaries = pd.read_csv(RAW_DIR / "dim_beneficiary.csv")
-    sessions_raw  = pd.read_csv(RAW_DIR / "fact_sessions.csv")
-    visits_raw    = pd.read_csv(RAW_DIR / "fact_field_visits.csv")
-    disbursements_raw = pd.read_csv(RAW_DIR / "fact_disbursements.csv")
-    assessments_raw   = pd.read_csv(RAW_DIR / "fact_assessments.csv")
+    # ── Load raw tables (with error handling) ─────────────────────────────────
+    print("  Loading raw data files...")
+    beneficiaries     = _load_csv(RAW_DIR / "dim_beneficiary.csv", required=True)
+    sessions_raw      = _load_csv(RAW_DIR / "fact_sessions.csv", required=True)
+    visits_raw        = _load_csv(RAW_DIR / "fact_field_visits.csv", required=True)
+    disbursements_raw = _load_csv(RAW_DIR / "fact_disbursements.csv", required=True)
+    assessments_raw   = _load_csv(RAW_DIR / "fact_assessments.csv", required=True)
+    
+    # Validate minimum required columns
+    required_ben_cols = {"beneficiary_id", "cohort_id", "pillar", "county"}
+    if not required_ben_cols.issubset(beneficiaries.columns):
+        missing = required_ben_cols - set(beneficiaries.columns)
+        raise RuntimeError(f"dim_beneficiary.csv missing required columns: {missing}")
+    
+    print(f"  Loaded {len(beneficiaries):,} beneficiaries")
 
-    # Load engagement history for band_now lookup
-    history_path = RAW_DIR / "fact_engagement_history.csv"
-    if history_path.exists():
-        engagement_history = pd.read_csv(history_path)
+    # Load engagement history for band_now lookup (optional)
+    engagement_history = _load_csv(RAW_DIR / "fact_engagement_history.csv", required=False)
+    if engagement_history is not None:
         engagement_history["week_start"] = pd.to_datetime(engagement_history["week_start"])
         # Pre-group by beneficiary for efficient lookup
         engagement_by_ben: dict[str, pd.DataFrame] = dict(tuple(engagement_history.groupby("beneficiary_id")))
@@ -124,27 +212,10 @@ def build_features(days_back: int = 364) -> pd.DataFrame:
     MISSED_STATUSES = {"Withheld", "withheld", "Pending", "pending"}
     disbursements["is_missed"] = disbursements["status"].isin(MISSED_STATUSES)
 
-    # Precompute assessment scores per beneficiary
-    assess_sorted = assessments.sort_values(["beneficiary_id", "assessment_date"])
-    assess_latest = (
-        assess_sorted
-        .groupby("beneficiary_id")["score"]
-        .last()
-        .rename("assessment_score_latest")
-    )
-    # Trend = latest - earliest (capped at 2 waves)
-    def _trend(grp):
-        scores = grp["score"].dropna().tolist()
-        if len(scores) < 2:
-            return np.nan
-        return scores[-1] - scores[0]
-
-    assess_trend = (
-        assess_sorted
-        .groupby("beneficiary_id")
-        .apply(_trend)
-        .rename("assessment_score_trend")
-    )
+    # Pre-group assessments by beneficiary for efficient temporal lookups
+    # NOTE: Assessment scores are computed INSIDE the weekly loop to prevent
+    # future data leakage — each snapshot only sees assessments taken before its date.
+    assessments_by_ben: dict[str, pd.DataFrame] = dict(tuple(assessments.groupby("beneficiary_id")))
 
     # ── Weekly snapshot generation ────────────────────────────────────────────
     rows = []
@@ -229,9 +300,11 @@ def build_features(days_back: int = 364) -> pd.DataFrame:
             disbursement_delay_days  = round(d60_disb["delay_days"].mean(), 1) if len(d60_disb) > 0 else 0.0
             missed_disbursements_60d = int(d60_disb["is_missed"].sum())
 
-            # ── assessment scores (as-of: use latest before snap)
-            score_latest = assess_latest.get(bid, np.nan)
-            score_trend  = assess_trend.get(bid, np.nan)
+            # ── assessment scores (TEMPORAL: only considers assessments before snap)
+            # This prevents future data leakage — each snapshot only sees data
+            # that would have been available at that point in time.
+            ben_assessments = assessments_by_ben.get(bid, pd.DataFrame())
+            score_latest, score_trend = _compute_assessment_score_as_of(ben_assessments, snap)
 
             # ── band_now lookup from engagement history
             band_now = None

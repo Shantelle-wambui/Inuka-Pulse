@@ -70,28 +70,25 @@ public class BeneficiaryPredictionService {
     /**
      * Band breakdown by county — used by Director county comparison chart.
      * Returns { "Nairobi": {"Active":300, "At-Risk":120, ...}, "Mombasa": {...} }
+     * 
+     * PERFORMANCE: Uses a single aggregate query instead of N queries (one per county).
+     * With 47 counties in Kenya, this reduces database round-trips from 48 to 1.
      */
     public Map<String, Map<String, Long>> getBreakdownByCounty() {
-        List<String> counties = repository.findDistinctCounties();
-        Map<String, Map<String, Long>> result = new LinkedHashMap<>();
-        for (String county : counties) {
-            List<Object[]> rows = repository.countByBandForCounty(county);
-            result.put(county, toBandMap(rows));
-        }
-        return result;
+        // Single query returns [county, band, count] rows for all counties
+        List<Object[]> aggregateRows = repository.countByBandGroupedByCounty();
+        return aggregateToNestedMap(aggregateRows);
     }
 
     /**
      * Band breakdown by pillar — used by Director pillar comparison chart.
+     * 
+     * PERFORMANCE: Uses a single aggregate query instead of N queries (one per pillar).
      */
     public Map<String, Map<String, Long>> getBreakdownByPillar() {
-        List<String> pillars = repository.findDistinctPillars();
-        Map<String, Map<String, Long>> result = new LinkedHashMap<>();
-        for (String pillar : pillars) {
-            List<Object[]> rows = repository.countByBandForPillar(pillar);
-            result.put(pillar, toBandMap(rows));
-        }
-        return result;
+        // Single query returns [pillar, band, count] rows for all pillars
+        List<Object[]> aggregateRows = repository.countByBandGroupedByPillar();
+        return aggregateToNestedMap(aggregateRows);
     }
 
     // ── Beneficiary lists ─────────────────────────────────────────────────────
@@ -152,6 +149,37 @@ public class BeneficiaryPredictionService {
     }
 
     // ── Helpers ───────────────────────────────────────────────────────────────
+
+    /**
+     * Converts aggregate query results [groupKey, band, count] into nested map.
+     * 
+     * @param rows Query results where row[0] = groupKey (county/pillar), 
+     *             row[1] = band, row[2] = count
+     * @return Map of { groupKey: { band: count, ... }, ... }
+     */
+    private Map<String, Map<String, Long>> aggregateToNestedMap(List<Object[]> rows) {
+        Map<String, Map<String, Long>> result = new LinkedHashMap<>();
+        
+        for (Object[] row : rows) {
+            String groupKey = (String) row[0];
+            String band     = (String) row[1];
+            Long   count    = (Long)   row[2];
+            
+            // Initialize band map for this group if not present
+            result.computeIfAbsent(groupKey, k -> {
+                Map<String, Long> bandMap = new LinkedHashMap<>();
+                bandMap.put("Active", 0L);
+                bandMap.put("At-Risk", 0L);
+                bandMap.put("Disengaged", 0L);
+                bandMap.put("Dropout", 0L);
+                return bandMap;
+            });
+            
+            result.get(groupKey).put(band, count);
+        }
+        
+        return result;
+    }
 
     private Map<String, Long> toBandMap(List<Object[]> rows) {
         Map<String, Long> map = new LinkedHashMap<>();

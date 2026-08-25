@@ -126,6 +126,29 @@ BAND_ORDER = ["Active", "At-Risk", "Disengaged", "Dropout"]
 # is more costly than a false alarm that prompts an unnecessary check-in.
 FBETA_BETA = 2.0
 
+# ── Risk Band Configuration ───────────────────────────────────────────────────
+# These thresholds determine how predicted probabilities map to risk bands.
+# They are configurable so programme managers can adjust sensitivity without
+# code changes.
+#
+# CRITICAL_THRESHOLD: Probability at which a beneficiary is flagged as "Dropout"
+#                     (highest risk). Kept high to ensure Critical alerts are
+#                     only raised for very high-confidence predictions.
+#
+# AT_RISK_RATIO:      Multiplier against the optimal threshold to determine the
+#                     "At-Risk" band lower bound. E.g., if optimal_threshold=0.43
+#                     and ratio=0.55, At-Risk starts at 0.43 * 0.55 = 0.24.
+#
+# These can be overridden via environment variables:
+#   INUKA_CRITICAL_THRESHOLD=0.70
+#   INUKA_AT_RISK_RATIO=0.55
+import os
+
+RISK_BAND_CONFIG = {
+    "critical_threshold": float(os.environ.get("INUKA_CRITICAL_THRESHOLD", "0.70")),
+    "at_risk_ratio": float(os.environ.get("INUKA_AT_RISK_RATIO", "0.55")),
+}
+
 # ── Hyperparameter search space ───────────────────────────────────────────────
 PARAM_GRID = {
     "C":        [0.01, 0.05, 0.1, 0.5, 1.0, 5.0],
@@ -830,16 +853,36 @@ def _score_and_export(
 
     # Map probability to engagement band using the optimized threshold
     def _band(p: float) -> str:
-        # Bands are anchored to the optimized threshold, not hardcoded 0.5.
-        # The high-confidence Dropout band stays at 0.70 regardless of threshold
-        # so Critical alerts are only raised for very high-confidence predictions.
-        if p >= 0.70:               return "Dropout"
-        if p >= threshold:          return "Disengaged"
-        if p >= threshold * 0.55:   return "At-Risk"
+        """
+        Map a dropout probability to a risk band.
+        
+        Thresholds are configurable via RISK_BAND_CONFIG (set by environment
+        variables or defaults). This allows programme managers to adjust
+        sensitivity without code changes.
+        
+        Args:
+            p: Dropout probability (0.0 to 1.0)
+        
+        Returns:
+            Risk band: "Dropout", "Disengaged", "At-Risk", or "Active"
+        """
+        critical_threshold = RISK_BAND_CONFIG["critical_threshold"]
+        at_risk_ratio = RISK_BAND_CONFIG["at_risk_ratio"]
+        
+        if p >= critical_threshold:
+            return "Dropout"
+        if p >= threshold:
+            return "Disengaged"
+        if p >= threshold * at_risk_ratio:
+            return "At-Risk"
         return "Active"
 
     export["predicted_band"] = export["dropout_prob"].map(_band)
     export["decision_threshold"] = round(threshold, 4)
+    
+    # Include risk band config in export for transparency
+    export["critical_threshold"] = RISK_BAND_CONFIG["critical_threshold"]
+    export["at_risk_ratio"] = RISK_BAND_CONFIG["at_risk_ratio"]
 
     records = export.to_dict(orient="records")
     PREDICTIONS_PATH.write_text(json.dumps(records, indent=2))
