@@ -1,0 +1,14 @@
+# nixpacks.toml — Frontend build configuration for Railway
+# Uses Nixpacks if Dockerfile isn't detected
+
+[phases.setup]
+nixPkgs = ["nodejs_22"]
+
+[phases.install]
+cmds = ["corepack enable", "corepack prepare pnpm@9.15.0 --activate", "pnpm install --frozen-lockfile"]
+
+[phases.build]
+cmds = ["pnpm run build"]
+
+[start]
+cmd = "pnpm start"
