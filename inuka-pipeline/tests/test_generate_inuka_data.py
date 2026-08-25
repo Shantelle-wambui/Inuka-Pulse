@@ -33,3 +33,19 @@ def test_build_beneficiaries_includes_trajectory():
     assert isinstance(ben["trajectory"], list)
     assert len(ben["trajectory"]) == 26
     assert ben["current_status"] == ben["trajectory"][-1]
+
+
+def test_build_engagement_history_creates_weekly_records():
+    from generate_inuka_data import build_engagement_history, build_beneficiaries, build_cohorts, START
+    from datetime import timedelta
+    cohorts = build_cohorts()[:1]
+    beneficiaries = build_beneficiaries(cohorts)[:5]  # 5 beneficiaries for speed
+    history = build_engagement_history(beneficiaries)
+    
+    # Each beneficiary should have 26 weekly records
+    ben_id = beneficiaries[0]["beneficiary_id"]
+    ben_records = [h for h in history if h["beneficiary_id"] == ben_id]
+    assert len(ben_records) == 26
+    
+    # Records should have required columns
+    assert all("week_start" in h and "band" in h for h in history)

@@ -180,6 +180,27 @@ def build_trajectory(is_high_risk: bool, n_weeks: int = 26) -> list[str]:
     return _build_trajectory_by_type(ttype, n_weeks)
 
 
+def build_engagement_history(beneficiaries: list[dict]) -> list[dict]:
+    """
+    Expand each beneficiary's trajectory into weekly (beneficiary_id, week_start, band) records.
+    This is the ground-truth table the escalation label will be built from.
+    """
+    history = []
+    for ben in beneficiaries:
+        enroll_date = datetime.strptime(ben["enrollment_date"], "%Y-%m-%d").date()
+        trajectory = ben["trajectory"]
+        
+        for week_idx, band in enumerate(trajectory):
+            week_start = enroll_date + timedelta(weeks=week_idx)
+            history.append({
+                "beneficiary_id": ben["beneficiary_id"],
+                "week_start": week_start.strftime("%Y-%m-%d"),
+                "band": band,
+            })
+    
+    return history
+
+
 # ============================================================================
 # Ground-truth issue tracker
 # ============================================================================
@@ -615,6 +636,13 @@ def main():
 
     print("Building beneficiaries…")
     beneficiaries = build_beneficiaries(cohorts)
+
+    # 2a. fact_engagement_history — weekly band snapshots per beneficiary
+    engagement_history = build_engagement_history(beneficiaries)
+    pd.DataFrame(engagement_history).to_csv(
+        OUT_DIR / "fact_engagement_history.csv", index=False
+    )
+    print(f"  fact_engagement_history.csv: {len(engagement_history):,} rows")
 
     print(f"Building sessions for {len(beneficiaries)} beneficiaries…")
     sessions = build_sessions(beneficiaries)
