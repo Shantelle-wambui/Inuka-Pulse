@@ -4,10 +4,10 @@
 
 spring:
   datasource:
-    # Railway provides DATABASE_PRIVATE_URL as: postgresql://user:pass@host:port/db
-    # Spring needs JDBC format: jdbc:postgresql://user:pass@host:port/db
-    # The jdbc: prefix is prepended to handle both formats.
-    url: jdbc:${DATABASE_PRIVATE_URL}
+    # Railway provides DATABASE_URL as: postgresql://user:pass@host:port/db
+    # Spring needs JDBC format: jdbc:postgresql://...
+    # Use DATABASE_URL (Railway automatically provides this when Postgres is linked)
+    url: jdbc:${DATABASE_URL:postgresql://localhost:5432/railway}
     driver-class-name: org.postgresql.Driver
     # Railway also exposes PGUSER / PGPASSWORD — but credentials are already
     # embedded in DATABASE_PRIVATE_URL so we let HikariCP parse them from the URL.
