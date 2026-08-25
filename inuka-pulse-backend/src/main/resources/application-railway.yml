@@ -4,13 +4,11 @@
 
 spring:
   datasource:
-    # Railway provides DATABASE_URL as: postgresql://user:pass@host:port/db
-    # Spring needs JDBC format: jdbc:postgresql://...
-    # Use DATABASE_URL (Railway automatically provides this when Postgres is linked)
-    url: jdbc:${DATABASE_URL:postgresql://localhost:5432/railway}
+    # Railway provides individual PG* variables when Postgres is linked
+    url: jdbc:postgresql://${PGHOST:localhost}:${PGPORT:5432}/${PGDATABASE:railway}
+    username: ${PGUSER:postgres}
+    password: ${PGPASSWORD:}
     driver-class-name: org.postgresql.Driver
-    # Railway also exposes PGUSER / PGPASSWORD — but credentials are already
-    # embedded in DATABASE_PRIVATE_URL so we let HikariCP parse them from the URL.
     hikari:
       # Railway Hobby PostgreSQL allows 25 connections max.
       maximum-pool-size: 8
