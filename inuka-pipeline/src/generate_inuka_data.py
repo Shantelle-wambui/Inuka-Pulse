@@ -302,25 +302,17 @@ def build_beneficiaries(cohorts: list[dict]) -> list[dict]:
         for _ in range(n):
             bid = f"BEN-{idx:05d}"
             enroll_date = rand_date(START, START + timedelta(days=30))
-            # Status distribution: high-risk cohorts have more dropouts/at-risk
-            if is_high_risk:
-                status = random.choices(
-                    ENGAGEMENT_LEVELS,
-                    weights=[0.35, 0.30, 0.20, 0.15]
-                )[0]
-            else:
-                status = random.choices(
-                    ENGAGEMENT_LEVELS,
-                    weights=[0.60, 0.22, 0.12, 0.06]
-                )[0]
+
+            # Generate trajectory; current_status = final week's band
+            trajectory = build_trajectory(is_high_risk, n_weeks=26)
+            status = trajectory[-1]
 
             dropout_date = None
             dropout_reason = None
             if status == "Dropout":
-                dropout_date = rand_date(
-                    enroll_date + timedelta(days=30),
-                    TODAY - timedelta(days=7),
-                ).strftime("%Y-%m-%d")
+                # Find first week where band became Dropout
+                dropout_week = next((i for i, b in enumerate(trajectory) if b == "Dropout"), len(trajectory) - 1)
+                dropout_date = enroll_date + timedelta(weeks=dropout_week)
                 dropout_reason = random.choice(DROPOUT_REASONS)
 
             beneficiaries.append({
@@ -333,9 +325,10 @@ def build_beneficiaries(cohorts: list[dict]) -> list[dict]:
                 "age":              random.randint(16, 28),
                 "enrollment_date":  enroll_date.strftime("%Y-%m-%d"),
                 "current_status":   status,
-                "dropout_date":     dropout_date,
+                "dropout_date":     dropout_date.strftime("%Y-%m-%d") if dropout_date else None,
                 "dropout_reason":   dropout_reason,
                 "phone":            f"+2547{random.randint(10000000, 99999999)}",
+                "trajectory":       trajectory,
             })
             idx += 1
     return beneficiaries

@@ -21,3 +21,15 @@ def test_stable_active_trajectory_stays_active():
     from generate_inuka_data import _build_trajectory_by_type
     traj = _build_trajectory_by_type("stable_active", n_weeks=26)
     assert traj == ["Active"] * 26
+
+
+def test_build_beneficiaries_includes_trajectory():
+    from generate_inuka_data import build_beneficiaries, build_cohorts
+    cohorts = build_cohorts()[:2]  # Just 2 cohorts for speed
+    beneficiaries = build_beneficiaries(cohorts)
+    assert len(beneficiaries) > 0
+    ben = beneficiaries[0]
+    assert "trajectory" in ben
+    assert isinstance(ben["trajectory"], list)
+    assert len(ben["trajectory"]) == 26
+    assert ben["current_status"] == ben["trajectory"][-1]
