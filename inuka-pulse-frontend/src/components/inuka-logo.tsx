@@ -13,7 +13,7 @@ export function InukaLogo({ className }: InukaLogoProps) {
       alt="Inuka Pulse Logo"
       width={40}
       height={40}
-      className={cn("size-4 object-contain", className)}
+      className={cn("size-8 object-contain", className)}
     />
   );
 }

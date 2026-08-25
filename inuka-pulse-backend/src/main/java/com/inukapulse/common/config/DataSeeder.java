@@ -30,7 +30,7 @@ import java.util.List;
  * Login credentials (all use password: sentinel@admin):
  *   admin@inuka.org          — Admin
  *   director@inuka.org       — Programme Director
- *   officer@inuka.org        — Field Officer
+ *   officer@inuka.org        — Case Manager
  *   analyst@inuka.org        — Analyst
  *   ml.admin@inuka.org       — ML Admin
  */
@@ -47,7 +47,7 @@ public class DataSeeder implements ApplicationRunner {
     private static final String DEFAULT_PASSWORD = "sentinel@admin";
 
     private static final List<String> ROLE_NAMES = List.of(
-        "Admin", "Programme Director", "Field Officer", "Analyst", "Viewer",
+        "Admin", "Programme Director", "Case Manager", "Analyst", "Viewer",
         "Coordinator", "ML Admin"
     );
 
@@ -121,7 +121,7 @@ public class DataSeeder implements ApplicationRunner {
         List<SeedAccount> accounts = List.of(
             // ── Inuka Foundation accounts ─────────────────────────────────────
             new SeedAccount("Inuka Admin",       "admin@inuka.org",       "Admin"),
-            new SeedAccount("Grace Wanjiku",     "officer@inuka.org",     "Field Officer"),
+            new SeedAccount("Grace Wanjiku",     "officer@inuka.org",     "Case Manager"),
             new SeedAccount("Brian Omondi",      "analyst@inuka.org",     "Analyst"),
             new SeedAccount("Esther Adhiambo",   "director@inuka.org",    "Programme Director"),
             new SeedAccount("ML Admin Inuka",    "ml.admin@inuka.org",    "ML Admin")

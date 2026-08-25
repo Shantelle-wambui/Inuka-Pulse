@@ -491,3 +491,460 @@ export async function fetchModelComparison(
   if (!res.ok) throw new Error(await parseErrorMessage(res));
   return res.json();
 }
+
+// ─── Beneficiary Predictions ──────────────────────────────────────────────────
+//
+// These endpoints are backed by the beneficiary_prediction table populated by
+// the Python pipeline's inuka_predictions_export.json via EtlReloadService.
+
+export interface BeneficiaryPrediction {
+  beneficiaryId: string;
+  cohortId: string | null;
+  pillar: string | null;
+  county: string | null;
+  asOfDate: string;
+  dropoutProb: number;
+  dropoutProbPct: string;     // e.g. "78.9%" — formatted by backend
+  predictedBand: "Active" | "At-Risk" | "Disengaged" | "Dropout";
+  riskLevel: string;          // human-friendly label from BeneficiaryPredictionDto
+  topFeatures: string | null; // pipe-delimited raw string
+  topFeaturesList: string[];  // parsed list — ready to render
+}
+
+export interface BeneficiarySummary {
+  total: number;
+  active: number;
+  atRisk: number;
+  disengaged: number;
+  dropout: number;
+  lastUpdated: string | null;
+  counties: string[];
+  pillars: string[];
+}
+
+export interface PagedBeneficiaries {
+  content: BeneficiaryPrediction[];
+  totalElements: number;
+  totalPages: number;
+  number: number;   // current page (0-indexed)
+  size: number;
+}
+
+/**
+ * GET /api/beneficiaries/predictions/summary
+ *
+ * KPI counts (total, active, atRisk, disengaged, dropout) + meta.
+ * Used by: Director KPI strip, Analyst overview.
+ */
+export async function fetchBeneficiarySummary(): Promise<BeneficiarySummary> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/summary`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/breakdown/county
+ *
+ * Band counts per county: { "Nairobi": { "Active": 300, "At-Risk": 120, ... } }
+ * Used by: Director county comparison chart.
+ */
+export async function fetchBreakdownByCounty(): Promise<Record<string, Record<string, number>>> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/breakdown/county`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/breakdown/pillar
+ *
+ * Band counts per pillar: { "Scholarship": { "Active": 500, ... } }
+ * Used by: Director pillar comparison chart.
+ */
+export async function fetchBreakdownByPillar(): Promise<Record<string, Record<string, number>>> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/breakdown/pillar`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/list?band=&county=&pillar=&cohort=&page=0&size=50
+ *
+ * Paginated, filterable list of all beneficiary predictions.
+ * Used by: Analyst beneficiary table, Director at-risk list.
+ */
+export async function fetchBeneficiaryList(params?: {
+  band?: string;
+  county?: string;
+  pillar?: string;
+  cohort?: string;
+  page?: number;
+  size?: number;
+}): Promise<PagedBeneficiaries> {
+  const url = new URL(`${requireApiBase()}/api/beneficiaries/predictions/list`);
+  if (params?.band)   url.searchParams.set("band",   params.band);
+  if (params?.county) url.searchParams.set("county", params.county);
+  if (params?.pillar) url.searchParams.set("pillar", params.pillar);
+  if (params?.cohort) url.searchParams.set("cohort", params.cohort);
+  url.searchParams.set("page", String(params?.page ?? 0));
+  url.searchParams.set("size", String(params?.size ?? 50));
+  const res = await fetch(url.toString(), await authedOpts());
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/top-risk?band=At-Risk&n=20
+ *
+ * Top N highest-risk beneficiaries for a given band.
+ * Used by: Director at-risk / dropout panels.
+ */
+export async function fetchTopRisk(band = "At-Risk", n = 20): Promise<BeneficiaryPrediction[]> {
+  const url = new URL(`${requireApiBase()}/api/beneficiaries/predictions/top-risk`);
+  url.searchParams.set("band", band);
+  url.searchParams.set("n", String(n));
+  const res = await fetch(url.toString(), await authedOpts());
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+export interface CaseloadSummary {
+  total: number;
+  needsAttention: number;   // Dropout + Disengaged
+  atRisk: number;
+  active: number;
+  cohorts: string[];
+  lastUpdated: string | null;
+}
+
+/**
+ * GET /api/beneficiaries/predictions/my-caseload
+ *
+ * Returns the calling Case Manager's assigned beneficiaries, high-risk first.
+ * Scoped to the officer's cohort assignments via JWT userId.
+ */
+export async function fetchMyCaseload(): Promise<BeneficiaryPrediction[]> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/my-caseload`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/my-caseload/summary
+ *
+ * KPI summary for the Case Manager: total, needsAttention, atRisk, active, cohorts.
+ */
+export async function fetchMyCaseloadSummary(): Promise<CaseloadSummary> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/my-caseload/summary`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/cohort/{cohortId}
+ *
+ * All beneficiaries in a cohort, high-risk first.
+ * Used by: Case Manager caseload view.
+ */
+export async function fetchCohortBeneficiaries(cohortId: string): Promise<BeneficiaryPrediction[]> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/cohort/${encodeURIComponent(cohortId)}`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/beneficiaries/predictions/{beneficiaryId}
+ *
+ * Latest prediction for one beneficiary.
+ * Used by: beneficiary detail page.
+ */
+export async function fetchBeneficiaryDetail(beneficiaryId: string): Promise<BeneficiaryPrediction | null> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/predictions/${encodeURIComponent(beneficiaryId)}`,
+    await authedOpts(),
+  );
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+// ─── Beneficiary Follow-ups ───────────────────────────────────────────────────
+
+export interface BeneficiaryFollowUp {
+  id: number;
+  beneficiaryId: string;
+  officerId: number;
+  contactType: string;
+  contactTypeLabel: string;
+  outcome: string;
+  outcomeLabel: string;
+  notes: string | null;
+  followUpDate: string;
+  nextAction: string | null;
+  createdAt: string;
+}
+
+export interface RecordFollowUpPayload {
+  contactType: "phone_call" | "home_visit" | "sms" | "email" | "other";
+  outcome: "reached" | "no_answer" | "left_message" | "escalated";
+  notes?: string;
+  followUpDate?: string;   // yyyy-MM-dd, defaults to today on backend
+  nextAction?: string;
+}
+
+/**
+ * GET /api/beneficiaries/{beneficiaryId}/follow-ups
+ * Full follow-up history for a beneficiary, newest first.
+ */
+export async function fetchFollowUps(beneficiaryId: string): Promise<BeneficiaryFollowUp[]> {
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/${encodeURIComponent(beneficiaryId)}/follow-ups`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * POST /api/beneficiaries/{beneficiaryId}/follow-ups
+ * Record a new follow-up action. Officer ID is set from the JWT on the backend.
+ */
+export async function recordFollowUp(
+  beneficiaryId: string,
+  payload: RecordFollowUpPayload,
+): Promise<BeneficiaryFollowUp> {
+  const opts = await authedOpts();
+  const res = await fetch(
+    `${requireApiBase()}/api/beneficiaries/${encodeURIComponent(beneficiaryId)}/follow-ups`,
+    {
+      ...opts,
+      method: "POST",
+      headers: { ...(opts.headers as Record<string, string>), "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    },
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+// ─── Analytics: Model Backtest Report ────────────────────────────────────────
+
+export interface BacktestReport {
+  model?: string;
+  model_type?: string;
+  label_definition?: string;
+  label_rationale?: string;
+  precision?: number;
+  recall?: number;
+  f1?: number;
+  train_rows?: number;
+  test_rows?: number;
+  positive_rate_train?: number;
+  positive_rate_test?: number;
+  split_date?: string;
+  threshold?: number;
+  features?: string[];
+  // allow any additional fields the pipeline may add
+  [key: string]: unknown;
+}
+
+/**
+ * GET /api/analytics/backtest
+ *
+ * Logistic regression backtest metrics (precision, recall, F1, train/test split).
+ * Used by: Analyst model performance card.
+ */
+export async function fetchBacktestReport(): Promise<BacktestReport> {
+  const res = await fetch(
+    `${requireApiBase()}/api/analytics/backtest`,
+    { cache: "no-store", signal: makeTimeoutSignal() },
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+// ─── Director Deeper Views ────────────────────────────────────────────────────
+
+export interface RiskTrendSeries {
+  band: "Active" | "At-Risk" | "Disengaged" | "Dropout";
+  data: number[];
+}
+
+export interface RiskTrend {
+  dates: string[];          // ["2026-08-01", "2026-08-08", ...]
+  snapshotCount: number;
+  series: RiskTrendSeries[];
+  hasMultipleSnapshots: boolean;
+}
+
+export interface InterventionSummary {
+  totalFollowUps: number;
+  uniqueBeneficiariesContacted: number;
+  last30Days: number;
+  byOutcome: Record<string, number>;
+  byContactType: Record<string, number>;
+  escalatedCount: number;
+}
+
+export interface WelfareSummary {
+  totalOpen: number;
+  totalClosed: number;
+  total: number;
+  openRate: string;
+}
+
+export interface DirectorOverview {
+  riskTrend: RiskTrend;
+  interventions: InterventionSummary;
+  welfareConcerns: WelfareSummary;
+}
+
+/**
+ * GET /api/director/overview
+ * All Phase 4 Director data in one call.
+ */
+export async function fetchDirectorOverview(): Promise<DirectorOverview> {
+  const res = await fetch(
+    `${requireApiBase()}/api/director/overview`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/director/risk-trend
+ * Band counts per prediction snapshot date.
+ */
+export async function fetchRiskTrend(): Promise<RiskTrend> {
+  const res = await fetch(
+    `${requireApiBase()}/api/director/risk-trend`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/director/interventions
+ * Programme-level follow-up statistics.
+ */
+export async function fetchInterventionSummary(): Promise<InterventionSummary> {
+  const res = await fetch(
+    `${requireApiBase()}/api/director/interventions`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/director/welfare-concerns
+ * Open/closed welfare concern counts.
+ */
+export async function fetchWelfareSummary(): Promise<WelfareSummary> {
+  const res = await fetch(
+    `${requireApiBase()}/api/director/welfare-concerns`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+// ─── Phase 5: Analyst Deeper Views ───────────────────────────────────────────
+// fetchSurvivalCurves + SurvivalCurveData already exist above.
+// Only the new outcome model types and fetch functions are added here.
+
+export interface OutcomeFeatureImportance {
+  feature: string;
+  importance: number;
+}
+
+export interface OutcomeModelMetrics {
+  accuracy?: number;
+  precision?: number;
+  recall?: number;
+  f1?: number;
+  auc_roc?: number;
+  model_type?: string;
+  trained_at?: string;
+  n_samples?: number;
+  n_features?: number;
+  positive_rate?: number;
+  feature_importance?: OutcomeFeatureImportance[];
+}
+
+export interface OutcomePillarSummary {
+  avg_probability: number;
+  count: number;
+}
+
+export interface OutcomePredictions {
+  generated_at?: string;
+  model_type?: string;
+  summary?: {
+    total_predictions: number;
+    likely_to_complete: number;
+    moderate: number;
+    at_risk: number;
+    avg_completion_probability: number;
+  };
+  by_pillar?: Record<string, OutcomePillarSummary>;
+}
+
+/**
+ * GET /api/analytics/outcome-metrics
+ * GradientBoosting outcome model performance metrics.
+ */
+export async function fetchOutcomeMetrics(): Promise<OutcomeModelMetrics> {
+  const res = await fetch(
+    `${requireApiBase()}/api/analytics/outcome-metrics`,
+    { cache: "no-store", signal: makeTimeoutSignal() },
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/analytics/outcome-predictions
+ * Outcome forecast: completion probability summary and by-pillar breakdown.
+ */
+export async function fetchOutcomePredictions(): Promise<OutcomePredictions> {
+  const res = await fetch(
+    `${requireApiBase()}/api/analytics/outcome-predictions`,
+    { cache: "no-store", signal: makeTimeoutSignal() },
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/**
+ * GET /api/analytics/survival-curves (Inuka shape)
+ * Returns { series: [{ label, timeline, survival_prob }] }
+ * Distinct from the old HSE fetchSurvivalCurves which returns fleet/high_risk curves.
+ */
+export async function fetchInukaSurvivalCurves(): Promise<import("@/components/survival-curve-chart").InukaSurvivalCurveData> {
+  const res = await fetch(
+    `${requireApiBase()}/api/analytics/survival-curves`,
+    { cache: "no-store", signal: makeTimeoutSignal() },
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}

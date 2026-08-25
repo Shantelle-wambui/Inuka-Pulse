@@ -1,5 +1,7 @@
 package com.inukapulse.etl;
 
+import com.inukapulse.beneficiary.BeneficiaryPredictionEntity;
+import com.inukapulse.beneficiary.BeneficiaryPredictionRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inukapulse.alert.AlertRulesEngine;
 import com.inukapulse.prediction.PredictionEntity;
@@ -43,6 +45,7 @@ public class EtlReloadService {
     private final AuditRepository                auditRepository;
     private final SiteRepository                 siteRepository;
     private final PredictionRepository           predictionRepository;
+    private final BeneficiaryPredictionRepository beneficiaryPredictionRepository;
     private final IngestLogRepository            ingestLogRepository;
     private final ObjectMapper                   objectMapper;
     private final AlertRulesEngine               alertRulesEngine;
@@ -324,81 +327,88 @@ public class EtlReloadService {
     // ── Predictions (ML model scores) ────────────────────────────────────────
 
     /**
-     * Reads the inuka_predictions_export.json from the inuka-pipeline warehouse
-     * and upserts records into fact_predictions DB table.
+     * Reads inuka_predictions_export.json from the pipeline warehouse and
+     * upserts records into the beneficiary_prediction table.
      *
-     * Uses ON CONFLICT DO NOTHING semantics via the unique constraint on
-     * (site_id, as_of_date). Only new date snapshots are added; existing rows
-     * are not overwritten (model artifacts are immutable per date).
+     * JSON fields read:
+     *   beneficiary_id, cohort_id, pillar, county, as_of_date,
+     *   dropout_prob, top_features, predicted_band
+     *
+     * Uses existsByBeneficiaryIdAndAsOfDate for idempotency —
+     * the same (beneficiary, date) pair is never inserted twice.
      *
      * Returns the number of new rows inserted.
      */
     @Transactional(propagation = org.springframework.transaction.annotation.Propagation.REQUIRES_NEW)
     public int loadPredictions() {
+        File jsonFile = new File(sentinelDir, "data/warehouse/inuka_predictions_export.json");
+        if (!jsonFile.exists()) {
+            log.debug("ETL: inuka_predictions_export.json not found at {} — pipeline not yet run",
+                    jsonFile.getAbsolutePath());
+            return 0;
+        }
+
         try {
-            List<Map<String, Object>> records;
-
-            if (predictionsUrl != null && !predictionsUrl.isBlank()) {
-                // Production: fetch from Cloudflare R2 public URL
-                log.debug("ETL: fetching inuka_predictions_export.json from R2 ({})", predictionsUrl);
-                try (InputStream in = URI.create(predictionsUrl).toURL().openStream()) {
-                    @SuppressWarnings("unchecked")
-                    List<Map<String, Object>> r = objectMapper.readValue(in, List.class);
-                    records = r;
-                } catch (IOException e) {
-                    log.warn("ETL: failed to fetch predictions from R2 '{}': {} — skipping", predictionsUrl, e.getMessage());
-                    return 0;
-                }
-            } else {
-                // Local dev: read from file path
-                File jsonFile = new File(sentinelDir, "data/warehouse/inuka_predictions_export.json");
-                if (!jsonFile.exists()) {
-                    log.debug("ETL: inuka_predictions_export.json not found at {} — model not trained yet", jsonFile.getAbsolutePath());
-                    return 0;
-                }
-                @SuppressWarnings("unchecked")
-                List<Map<String, Object>> r = objectMapper.readValue(jsonFile, List.class);
-                records = r;
-            }
-
+            @SuppressWarnings("unchecked")
+            List<Map<String, Object>> records = objectMapper.readValue(jsonFile, List.class);
             if (records == null || records.isEmpty()) return 0;
 
             int loaded = 0;
+            List<BeneficiaryPredictionEntity> toSave = new ArrayList<>();
+
             for (Map<String, Object> r : records) {
-                String siteId = normaliseSiteId(str(r, "site_id"));
-                if (siteId == null || siteId.isBlank()) continue;
+                String beneficiaryId = str(r, "beneficiary_id");
+                if (beneficiaryId == null || beneficiaryId.isBlank()) continue;
 
                 String dateStr = str(r, "as_of_date");
-                LocalDate asOfDate = dateStr != null ? LocalDate.parse(dateStr) : null;
+                LocalDate asOfDate;
+                try {
+                    asOfDate = dateStr != null ? LocalDate.parse(dateStr) : null;
+                } catch (Exception ex) {
+                    log.debug("ETL: skipping prediction {} — invalid date '{}'", beneficiaryId, dateStr);
+                    continue;
+                }
                 if (asOfDate == null) continue;
 
-                Object probObj = r.get("incident_probability_7d");
+                // Skip if this (beneficiary, date) already ingested
+                if (beneficiaryPredictionRepository.existsByBeneficiaryIdAndAsOfDate(beneficiaryId, asOfDate)) {
+                    continue;
+                }
+
+                Object probObj = r.get("dropout_prob");
                 if (probObj == null) continue;
-                double prob;
+                double dropoutProb;
                 try {
-                    prob = Double.parseDouble(probObj.toString());
+                    dropoutProb = Double.parseDouble(probObj.toString());
                 } catch (NumberFormatException ex) {
                     continue;
                 }
 
-                // Skip if this (site, date) already exists
-                boolean exists = predictionRepository.findLatestBySiteId(siteId)
-                        .map(p -> p.getAsOfDate().equals(asOfDate))
-                        .orElse(false);
-                if (exists) continue;
+                String predictedBand = str(r, "predicted_band");
+                if (predictedBand == null || predictedBand.isBlank()) continue;
 
-                PredictionEntity e = new PredictionEntity();
-                e.setSiteId(siteId);
+                BeneficiaryPredictionEntity e = new BeneficiaryPredictionEntity();
+                e.setBeneficiaryId(beneficiaryId);
+                e.setCohortId(str(r, "cohort_id"));
+                e.setPillar(str(r, "pillar"));
+                e.setCounty(str(r, "county"));
                 e.setAsOfDate(asOfDate);
-                e.setProbability(prob);
-                e.setModelVersion(str(r, "model_version"));
+                e.setDropoutProb(dropoutProb);
+                e.setPredictedBand(predictedBand);
                 e.setTopFeatures(str(r, "top_features"));
-                predictionRepository.save(e);
+                toSave.add(e);
                 loaded++;
             }
+
+            if (!toSave.isEmpty()) {
+                beneficiaryPredictionRepository.saveAll(toSave);
+                log.info("ETL: loaded {} new beneficiary predictions (total in file: {})",
+                        loaded, records.size());
+            }
             return loaded;
+
         } catch (Exception ex) {
-            log.warn("ETL: prediction load failed (non-fatal): {}", ex.getMessage());
+            log.warn("ETL: beneficiary prediction load failed (non-fatal): {}", ex.getMessage());
             return 0;
         }
     }

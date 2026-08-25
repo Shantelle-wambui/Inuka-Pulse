@@ -27,6 +27,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useRouter } from "next/navigation";
 import {
   Building2,
   Users,
@@ -73,6 +74,7 @@ const PILLAR_COLORS: Record<string, string> = {
 };
 
 export default function ProgramsPage() {
+  const router = useRouter();
   const [programs, setPrograms] = useState<Program[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -306,6 +308,7 @@ export default function ProgramsPage() {
                   <TableRow
                     key={program.programId}
                     className="cursor-pointer hover:bg-muted/50"
+                    onClick={() => router.push(`/dashboard/programs/${program.programId}`)}
                   >
                     <TableCell>
                       <div>

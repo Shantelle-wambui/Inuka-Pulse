@@ -158,4 +158,33 @@ public class AnalyticsController {
     public ResponseEntity<String> getFeatureImportance() {
         return analyticsService.getFeatureImportance();
     }
+
+    /**
+     * Model backtest report — precision, recall, F1, train/test split,
+     * positive rate, and split date. Used by the Analyst dashboard.
+     */
+    @GetMapping("/backtest")
+    public ResponseEntity<String> getBacktest() {
+        return analyticsService.getBacktest();
+    }
+
+    /**
+     * Outcome model metrics — GradientBoosting accuracy, precision, recall,
+     * F1, AUC-ROC, and feature importance.
+     * Used by the Analyst outcome model panel.
+     */
+    @GetMapping("/analytics/outcome-metrics")
+    public ResponseEntity<String> getOutcomeMetrics() {
+        return analyticsService.getOutcomeMetrics();
+    }
+
+    /**
+     * Outcome predictions — completion probability summary and by-pillar
+     * breakdown from the outcome forecast model.
+     * Used by the Analyst outcome prediction panel.
+     */
+    @GetMapping("/analytics/outcome-predictions")
+    public ResponseEntity<String> getOutcomePredictions() {
+        return analyticsService.getOutcomePredictions();
+    }
 }

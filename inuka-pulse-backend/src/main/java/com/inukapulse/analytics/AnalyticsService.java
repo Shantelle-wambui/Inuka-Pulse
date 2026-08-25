@@ -40,9 +40,13 @@ public class AnalyticsService {
     private static final String CONTROL_CHART_FILE    = "inuka_control_chart_data.json";
     private static final String CORRELATION_FILE      = "inuka_correlation_data.json";
     private static final String FEATURE_IMPORT_FILE   = "inuka_feature_importance.json";
+    private static final String BACKTEST_FILE         = "inuka_backtest_report.json";
     private static final String ROI_REFERENCE_FILE    = "inuka_roi_reference.json";
     private static final String ROI_SIMULATION_FILE   = "roi_simulation_result.json";
     private static final String ROI_REFERENCE_DIR     = "data/reference";
+    // Phase 5 — Analyst deeper views
+    private static final String OUTCOME_METRICS_FILE  = "outcome_model_metrics.json";
+    private static final String OUTCOME_PREDS_FILE    = "outcome_predictions.json";
 
     private final DashboardMetricsRepository metricsRepository;
     private final ProgramRepository programRepository;
@@ -186,6 +190,33 @@ public class AnalyticsService {
 
     public ResponseEntity<String> getFeatureImportance() {
         return readJson(FEATURE_IMPORT_FILE);
+    }
+
+    /**
+     * Model backtest report — precision, recall, F1, train/test split info.
+     * Sourced from inuka_backtest_report.json (pipeline output).
+     * Used by the Analyst dashboard model performance card.
+     */
+    public ResponseEntity<String> getBacktest() {
+        return readJson(BACKTEST_FILE);
+    }
+
+    /**
+     * Outcome model metrics — accuracy, precision, recall, F1, AUC-ROC,
+     * feature importance from the GradientBoosting outcome predictor.
+     * Sourced from outcome_model_metrics.json (pipeline output).
+     */
+    public ResponseEntity<String> getOutcomeMetrics() {
+        return readJson(OUTCOME_METRICS_FILE);
+    }
+
+    /**
+     * Outcome predictions summary — completion probability by pillar,
+     * beneficiary-level predictions, summary stats.
+     * Sourced from outcome_predictions.json (pipeline output).
+     */
+    public ResponseEntity<String> getOutcomePredictions() {
+        return readJson(OUTCOME_PREDS_FILE);
     }
 
     public ResponseEntity<String> getRoiReferenceCase() {
