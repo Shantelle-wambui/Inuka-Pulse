@@ -99,24 +99,23 @@ public class SecurityConfig {
                 // Public API for Foundation website embed — NO PII, aggregated/cached.
                 // Only /api/v1/public/** is intentionally open; no beneficiary data exposed.
                 .requestMatchers("/api/v1/public/**").permitAll()
-
-                // ETL config polling — needed by the frontend to set its refresh interval.
-                // Returns non-sensitive timing values only (no data, no predictions).
-                .requestMatchers("/api/config/**").permitAll()
-
-                // ══════════════════════════════════════════════════════════════
-                // SECURITY HARDENING (Phase 7): previously permitAll endpoints
-                // now require authentication. Role-level enforcement via @PreAuthorize
-                // is layered on top where needed.
-                // ══════════════════════════════════════════════════════════════
-                .requestMatchers("/api/alerts/**", "/api/alerts").authenticated()
-                .requestMatchers("/api/sites/**").authenticated()
-                .requestMatchers("/api/quality/**").authenticated()
-                .requestMatchers("/api/ingestion/**").authenticated()
-                .requestMatchers("/api/analytics/**").authenticated()
-                .requestMatchers("/api/ml/champion-artifact-path").authenticated()
-                .requestMatchers("/api/ml/decision-threshold").permitAll()
                 
+                // Read-only dashboard endpoints — no auth required for demo/dev
+                .requestMatchers(
+                    "/api/alerts",
+                    "/api/sites/**",
+                    "/api/quality/**",
+                    "/api/ingestion/**",
+                    "/api/config/**",
+                    "/api/analytics/**",
+                    "/api/ml/champion-artifact-path",
+                    "/api/ml/decision-threshold"
+                ).permitAll()
+                
+                // Alert evaluation endpoint — called by ETL pipeline via API key header
+                // Authentication handled by X-ETL-Api-Key in the controller
+                .requestMatchers("/api/alerts/evaluate").permitAll()
+
                 // ══════════════════════════════════════════════════════════════
                 // V1 ANALYTICS API — Requires auth, role-scoped via @PreAuthorize
                 // ══════════════════════════════════════════════════════════════
