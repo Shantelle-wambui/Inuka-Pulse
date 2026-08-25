@@ -43,15 +43,21 @@ services:
           property: password
 
       - key: JWT_SECRET
-        value: Gric/GyqJGMk3dwMleaADNDcBGQ3qfOYUmPSDnXSy6lDIfYAG7cY06WPJNJp+Yor
+        sync: false   # set manually in Render dashboard — never commit the real value
 
       # Update to your Vercel frontend URL after deploy
       - key: CORS_ALLOWED_ORIGINS
         value: http://localhost:3000
 
-      # ETL disabled in production (no Python runtime on this service)
+      # ETL — R2 pull model (no push to Render, avoids Cloudflare 403)
       - key: ETL_ENABLED
-        value: "false"
+        value: "true"
+
+      - key: ETL_LIVE_BATCH_URL
+        value: REPLACE_WITH_R2_PUBLIC_URL/live_batch.json
+
+      - key: ETL_PREDICTIONS_URL
+        value: REPLACE_WITH_R2_PUBLIC_URL/inuka_predictions_export.json
 
       - key: ETL_API_KEY
         value: REPLACE_WITH_STRONG_RANDOM_KEY

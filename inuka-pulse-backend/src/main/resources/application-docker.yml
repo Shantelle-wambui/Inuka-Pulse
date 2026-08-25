@@ -1,0 +1,73 @@
+# application-docker.yml
+# Active when SPRING_PROFILES_ACTIVE=docker (set in docker-compose.yml).
+# Uses the PostgreSQL container defined in docker-compose.yml.
+
+spring:
+  datasource:
+    # 'db' is the service name in docker-compose.yml — Docker DNS resolves it automatically.
+    url: jdbc:postgresql://db:5432/${POSTGRES_DB:inuka_pulse}
+    driver-class-name: org.postgresql.Driver
+    username: ${POSTGRES_USER:inuka}
+    password: ${POSTGRES_PASSWORD:inuka}
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    open-in-view: false
+
+  defer-datasource-initialization: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    out-of-order: true
+    validate-on-migrate: false
+
+  sql:
+    init:
+      mode: never
+
+  h2:
+    console:
+      enabled: false
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+
+inuka:
+  cors:
+    # Comma-separated list of allowed origins — set via CORS_ALLOWED_ORIGINS env var.
+    # Default covers the Next.js container running on port 3000.
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
+  jwt:
+    secret: ${JWT_SECRET:changeme-set-a-real-secret-in-env-docker}
+    expiration-ms: 86400000
+  etl:
+    enabled: true
+    # When running locally with Docker Compose, the pipeline container writes
+    # live_batch.json to the shared 'pipeline-data' volume mounted at /pipeline.
+    live-batch-path: ${ETL_LIVE_BATCH_PATH:/pipeline/warehouse/live_batch.json}
+    # R2 URL overrides the file path when set — leave blank for local Docker use.
+    live-batch-url: ${ETL_LIVE_BATCH_URL:}
+    predictions-url: ${ETL_PREDICTIONS_URL:}
+    pipeline-dir: ${ETL_PIPELINE_DIR:/pipeline}
+    poll-interval-ms: 120000
+    rows-per-cycle: 200
+    frontend-refresh-ms: 125000
+    api-key: ${ETL_API_KEY:}
+  llm:
+    groq-api-key: ${GROQ_API_KEY:}
+    model: llama-3.1-8b-instant
+    timeout-ms: 3000
+    enabled: ${LLM_ENABLED:true}
