@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,7 @@ public class BeneficiaryPredictionController {
     private final BeneficiaryPredictionService service;
     private final CaseloadService              caseloadService;
     private final PredictionInterpretationService interpretationService;
+    private final PredictionFeedbackRepository feedbackRepository;
 
     // ── Programme Director / Admin / Analyst endpoints ────────────────────────
 
@@ -181,6 +183,35 @@ public class BeneficiaryPredictionController {
         return interpretationService.getInterpretation(beneficiaryId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    /**
+     * POST /api/beneficiaries/predictions/{beneficiaryId}/feedback
+     *
+     * Submit feedback on a prediction's accuracy.
+     * Allows case managers to indicate whether predictions were accurate,
+     * enabling model calibration monitoring and future retraining.
+     */
+    @PostMapping("/{beneficiaryId}/feedback")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> submitFeedback(
+            @PathVariable String beneficiaryId,
+            @RequestBody Map<String, String> body) {
+
+        String rating = body.get("rating");
+        if (rating == null || !List.of("accurate", "inaccurate", "uncertain").contains(rating)) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Invalid rating"));
+        }
+
+        PredictionFeedbackEntity feedback = new PredictionFeedbackEntity();
+        feedback.setBeneficiaryId(beneficiaryId);
+        feedback.setPredictionDate(LocalDate.now());
+        feedback.setRating(rating);
+        feedback.setComment(body.get("comment"));
+        // submittedBy could come from security context in production
+
+        feedbackRepository.save(feedback);
+        return ResponseEntity.ok(Map.of("status", "saved"));
     }
 
     // ── Helpers ───────────────────────────────────────────────────────────────
