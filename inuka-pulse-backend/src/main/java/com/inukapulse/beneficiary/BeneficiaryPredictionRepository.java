@@ -159,4 +159,45 @@ public interface BeneficiaryPredictionRepository extends JpaRepository<Beneficia
     /** All distinct prediction snapshot dates, ascending. */
     @Query("SELECT DISTINCT b.asOfDate FROM BeneficiaryPredictionEntity b ORDER BY b.asOfDate ASC")
     List<LocalDate> findDistinctDates();
+
+    // ── Performance-optimized aggregate queries ──────────────────────────────
+    // These replace N+1 query patterns with single aggregate queries.
+
+    /**
+     * Band counts grouped by county — single query for all counties.
+     * Returns rows of [county, predicted_band, count].
+     * Replaces the N+1 pattern of calling countByBandForCounty() per county.
+     */
+    @Query("""
+            SELECT b.county, b.predictedBand, COUNT(b)
+            FROM BeneficiaryPredictionEntity b
+            WHERE b.asOfDate = (
+                SELECT MAX(b2.asOfDate)
+                FROM BeneficiaryPredictionEntity b2
+                WHERE b2.beneficiaryId = b.beneficiaryId
+            )
+            AND b.county IS NOT NULL
+            GROUP BY b.county, b.predictedBand
+            ORDER BY b.county, b.predictedBand
+            """)
+    List<Object[]> countByBandGroupedByCounty();
+
+    /**
+     * Band counts grouped by pillar — single query for all pillars.
+     * Returns rows of [pillar, predicted_band, count].
+     * Replaces the N+1 pattern of calling countByBandForPillar() per pillar.
+     */
+    @Query("""
+            SELECT b.pillar, b.predictedBand, COUNT(b)
+            FROM BeneficiaryPredictionEntity b
+            WHERE b.asOfDate = (
+                SELECT MAX(b2.asOfDate)
+                FROM BeneficiaryPredictionEntity b2
+                WHERE b2.beneficiaryId = b.beneficiaryId
+            )
+            AND b.pillar IS NOT NULL
+            GROUP BY b.pillar, b.predictedBand
+            ORDER BY b.pillar, b.predictedBand
+            """)
+    List<Object[]> countByBandGroupedByPillar();
 }

@@ -4,6 +4,8 @@ import com.inukapulse.common.dto.AlertDto;
 import com.inukapulse.site.SiteEntity;
 import com.inukapulse.site.SiteRepository;
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +21,13 @@ import java.util.stream.Collectors;
  * carrying forward Stage 1's "traceable reason" principle.
  *
  * Performance notes:
- * - siteNameCache: The dim_site table is a static 6-row lookup. Loading it once
+ * - siteNameCache: The dim_site table is a small lookup table. Loading it once
  *   on startup eliminates a redundant DB round-trip on every GET /api/alerts call.
  *   The cache is a ConcurrentHashMap so it is safe for concurrent reads.
- *   If sites were ever updated at runtime, call refreshSiteCache() or restart.
+ *   The cache is refreshed every 5 minutes to pick up any site name changes.
  */
 @Service
+@Slf4j
 public class AlertService {
 
     private static final DateTimeFormatter ISO_FORMATTER =
@@ -33,7 +36,7 @@ public class AlertService {
     private final AlertRepository alertRepository;
     private final SiteRepository  siteRepository;
 
-    // Loaded once at startup — 6 rows, never changes in practice.
+    // Cached site names — refreshed every 5 minutes
     private final Map<String, String> siteNameCache = new ConcurrentHashMap<>();
 
     public AlertService(AlertRepository alertRepository, SiteRepository siteRepository) {
@@ -47,9 +50,36 @@ public class AlertService {
      */
     @PostConstruct
     public void loadSiteCache() {
-        siteRepository.findAll().forEach(s ->
-                siteNameCache.put(s.getSiteId(), s.getSiteName())
-        );
+        refreshSiteCache();
+    }
+
+    /**
+     * Refresh the site name cache periodically.
+     * Runs every 5 minutes to pick up any site name changes without requiring restart.
+     * 
+     * This ensures that if a site is renamed in the database, alerts will reflect
+     * the new name within 5 minutes without any service interruption.
+     */
+    @Scheduled(fixedRate = 300_000, initialDelay = 300_000) // 5 minutes
+    public void refreshSiteCache() {
+        try {
+            Map<String, String> newCache = new HashMap<>();
+            siteRepository.findAll().forEach(s ->
+                    newCache.put(s.getSiteId(), s.getSiteName())
+            );
+            
+            // Only log if there were actual changes
+            if (!newCache.equals(new HashMap<>(siteNameCache))) {
+                log.debug("Site cache refreshed: {} sites", newCache.size());
+            }
+            
+            // Atomic update: clear and repopulate
+            siteNameCache.clear();
+            siteNameCache.putAll(newCache);
+        } catch (Exception e) {
+            log.warn("Failed to refresh site cache: {} — using stale cache", e.getMessage());
+            // Keep existing cache on failure — stale data is better than no data
+        }
     }
 
     public List<AlertDto> getAllAlerts() {
@@ -69,10 +99,24 @@ public class AlertService {
                 SecurityContextHolder.getContext().getAuthentication()
         ).map(auth -> auth.getName()).orElse("system");
 
+        LocalDateTime acknowledgedAt = LocalDateTime.now();
+        
         alert.setStatus("acknowledged");
-        alert.setAcknowledgedAt(LocalDateTime.now());
+        alert.setAcknowledgedAt(acknowledgedAt);
         alert.setAcknowledgedBy(acknowledgedBy);
         alertRepository.save(alert);
+        
+        // Audit log: Alert acknowledgment is a significant action that should be traceable.
+        // This log enables accountability for who responded to which at-risk beneficiary alerts.
+        log.info("AUDIT: Alert acknowledged | alertId={} | severity={} | siteId={} | " +
+                 "acknowledgedBy={} | acknowledgedAt={} | title={}",
+                alertId,
+                alert.getSeverity(),
+                alert.getSiteId(),
+                acknowledgedBy,
+                acknowledgedAt.format(ISO_FORMATTER),
+                alert.getTitle()
+        );
     }
 
     private AlertDto toDto(AlertEntity entity) {
