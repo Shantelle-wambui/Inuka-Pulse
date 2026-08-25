@@ -1,21 +1,19 @@
 """
 Inuka Pulse — Predictive Model (Optimized)
 ============================================
-Trains a logistic regression classifier that outputs the probability of a
-beneficiary being at high dropout risk (Dropout or Disengaged status).
+Trains a logistic regression classifier that predicts the probability of a
+beneficiary's engagement band escalating (worsening) within 30 days.
 
 Label definition:
-    label = 1  if beneficiary current_status is "Dropout" or "Disengaged"
-    label = 0  if current_status is "Active" or "At-Risk"
+    label = 1  if beneficiary's band worsens within 30 days (escalation)
+    label = 0  if band stays the same or improves
 
-Why status-based rather than forward-looking 30-day window?
-    With 2 173 beneficiaries × 26 weekly snapshots = 56k rows, only ~136
-    beneficiaries are actual dropouts. A 30-day forward window yields <1%
-    positives — a trivially imbalanced problem. Using the beneficiary's
-    current engagement band as the label gives a meaningful 29% positive
-    rate (Dropout + Disengaged), which is well-calibrated for logistic
-    regression with class_weight='balanced'. This is documented in
-    inuka_backtest_report.json as label_definition.
+Band order (best to worst): Active → At-Risk → Disengaged → Dropout
+
+Why forward-looking escalation labels?
+    Forward-looking labels enable proactive intervention by predicting which
+    beneficiaries will deteriorate, rather than just classifying current state.
+    This allows case workers to act before problems escalate.
 
 Optimizations over the baseline (all additive, no structural changes):
     1. DATA PREP
@@ -117,8 +115,11 @@ FEATURES = [
     "no_contact_visits_90d",
 ]
 
-LABEL_COL          = "dropout_label"
+LABEL_COL          = "escalated_30d"
 HIGH_RISK_STATUSES = {"Dropout", "Disengaged"}
+
+# Band ordering from best to worst engagement state
+BAND_ORDER = ["Active", "At-Risk", "Disengaged", "Dropout"]
 
 # ── Evaluation: F-beta weight (recall twice as important as precision) ─────────
 # In a welfare programme, missing a real at-risk beneficiary (false negative)
@@ -171,11 +172,73 @@ def stable_sigmoid(z: np.ndarray) -> np.ndarray:
 # 1. DATA PREP
 # ══════════════════════════════════════════════════════════════════════════════
 
+def build_escalation_labels(features: pd.DataFrame) -> pd.DataFrame:
+    """Build 30-day escalation labels from engagement history.
+
+    For each (beneficiary_id, as_of_date) snapshot, looks 30 days ahead in
+    engagement history to determine if the beneficiary's band worsened.
+
+    Escalation = band index in BAND_ORDER increased (got worse).
+
+    Rows without future data (censored) get escalated_30d = None and are
+    filtered out before training.
+
+    Args:
+        features: Feature DataFrame with beneficiary_id, as_of_date, and band_now columns.
+
+    Returns:
+        DataFrame with beneficiary_id, as_of_date, and escalated_30d columns.
+    """
+    history = pd.read_csv(RAW_DIR / "fact_engagement_history.csv")
+    history["week_start"] = pd.to_datetime(history["week_start"])
+
+    # Pre-group for efficient lookup
+    history_by_ben: dict[str, pd.DataFrame] = dict(tuple(history.groupby("beneficiary_id")))
+
+    labels: list[dict] = []
+    for _, row in features.iterrows():
+        bid = row["beneficiary_id"]
+        as_of = pd.to_datetime(row["as_of_date"])
+        band_now = row.get("band_now")
+
+        escalated: bool | None = None  # Unknown if can't determine
+
+        if bid in history_by_ben and band_now in BAND_ORDER:
+            ben_history = history_by_ben[bid]
+            now_idx = BAND_ORDER.index(band_now)
+
+            # Look 30 days ahead
+            future_date = as_of + pd.Timedelta(30, unit="D")
+            future_matches = ben_history[
+                (ben_history["week_start"] > as_of) &
+                (ben_history["week_start"] <= future_date)
+            ]
+
+            if not future_matches.empty:
+                # Get the worst band in the 30-day window
+                future_bands = future_matches["band"].tolist()
+                valid_bands = [b for b in future_bands if b in BAND_ORDER]
+                if valid_bands:
+                    worst_future_idx = max(BAND_ORDER.index(b) for b in valid_bands)
+                    escalated = worst_future_idx > now_idx
+            # else: No future data = can't label (censor this row)
+
+        labels.append({
+            "beneficiary_id": bid,
+            "as_of_date": row["as_of_date"],  # Keep original type for merge
+            "escalated_30d": escalated
+        })
+
+    return pd.DataFrame(labels)
+
+
 def build_labels(features: pd.DataFrame) -> pd.DataFrame:
     """
     Attach dropout_label to each snapshot row.
     1 = beneficiary current_status is Dropout or Disengaged
     0 = Active or At-Risk
+
+    DEPRECATED: Use build_escalation_labels() instead for forward-looking labels.
     """
     beneficiaries = pd.read_csv(RAW_DIR / "dim_beneficiary.csv")
     # Vectorized map: avoid iterrows() over potentially large beneficiary table
@@ -183,7 +246,7 @@ def build_labels(features: pd.DataFrame) -> pd.DataFrame:
         lambda s: 1 if s in HIGH_RISK_STATUSES else 0
     )
     features = features.copy()
-    features[LABEL_COL] = features["beneficiary_id"].map(status_map).fillna(0).astype(int)
+    features["dropout_label"] = features["beneficiary_id"].map(status_map).fillna(0).astype(int)
     return features
 
 
@@ -532,6 +595,9 @@ def train(
     Full training run: label → impute → time-split → (optional tune) →
     oversample → fit → threshold optimization → evaluate → export.
 
+    Uses 30-day forward-looking escalation labels: predicts whether a
+    beneficiary's engagement band will worsen within 30 days.
+
     Args:
         features:     Feature DataFrame from fact_beneficiary_features.parquet.
         tune:         If True, run hyperparameter search before fitting.
@@ -540,26 +606,40 @@ def train(
     Returns:
         Fitted sklearn Pipeline (scaler + classifier).
     """
-    features = build_labels(features)
-    features = impute(features)
+    # Build escalation labels and merge with features
+    labels = build_escalation_labels(features)
+    df = features.merge(labels, on=["beneficiary_id", "as_of_date"])
+
+    # Drop censored rows (where escalated_30d is None/NaN)
+    rows_before = len(df)
+    df = df.dropna(subset=["escalated_30d"])
+    rows_after = len(df)
+    print(f"  Censored rows (no future data): {rows_before - rows_after:,}")
+    print(f"  Usable rows after censoring: {rows_after:,}")
+
+    # Assert sufficient rows after censoring
+    assert rows_after >= 10_000, f"Only {rows_after} rows after censoring, need ≥10,000"
+
+    # Apply imputation
+    df = impute(df)
 
     # ── Time split — no shuffle ───────────────────────────────────────────────
-    features   = features.sort_values("as_of_date").reset_index(drop=True)
-    split_idx  = int(len(features) * 0.67)
-    split_date = features["as_of_date"].iloc[split_idx]
+    df = df.sort_values("as_of_date").reset_index(drop=True)
+    split_idx  = int(len(df) * 0.67)
+    split_date = df["as_of_date"].iloc[split_idx]
 
-    train_df = features.iloc[:split_idx]
-    test_df  = features.iloc[split_idx:]
+    train_df = df.iloc[:split_idx]
+    test_df  = df.iloc[split_idx:]
 
     X_train_raw = train_df[FEATURES].values
-    y_train     = train_df[LABEL_COL].values
+    y_train     = train_df[LABEL_COL].astype(int).values
     X_test_raw  = test_df[FEATURES].values
-    y_test      = test_df[LABEL_COL].values
+    y_test      = test_df[LABEL_COL].astype(int).values
 
     pos_rate_train = y_train.mean()
     pos_rate_test  = y_test.mean()
-    print(f"  Train: {len(X_train_raw):,} rows | positive rate: {pos_rate_train:.3f}")
-    print(f"  Test:  {len(X_test_raw):,} rows  | positive rate: {pos_rate_test:.3f}")
+    print(f"  Train: {len(X_train_raw):,} rows | escalation rate: {pos_rate_train:.3f}")
+    print(f"  Test:  {len(X_test_raw):,} rows  | escalation rate: {pos_rate_test:.3f}")
 
     # ── Fit scaler on training data only, transform both splits ──────────────
     # Scaler is fit before oversampling so synthetic rows don't affect the
@@ -653,16 +733,16 @@ def train(
         "model":               "LogisticRegression",
         "regularization":      f"elasticnet (C={C}, l1_ratio={l1_ratio})",
         "scaler":              "RobustScaler",
-        "label_definition":    "status-based: 1 if current_status in {Dropout, Disengaged}, 0 otherwise",
+        "label_definition":    "escalation-based: 1 if beneficiary band worsens within 30 days, 0 otherwise",
         "label_rationale":     (
-            "30-day forward window yields <1% positives across 56k snapshot rows. "
-            "Status-based labelling gives ~29% positives — well-calibrated for balanced LR."
+            "Forward-looking 30-day escalation labels predict which beneficiaries "
+            "will transition to a worse engagement band, enabling proactive intervention."
         ),
         "split_date":          str(split_date),
         "train_rows":          int(len(X_train_raw)),
         "test_rows":           int(len(X_test_raw)),
-        "positive_rate_train": round(float(pos_rate_train), 4),
-        "positive_rate_test":  round(float(pos_rate_test), 4),
+        "escalation_rate_train": round(float(pos_rate_train), 4),
+        "escalation_rate_test":  round(float(pos_rate_test), 4),
         # Metrics at optimized threshold
         "optimal_threshold":   round(float(optimal_threshold), 4),
         "precision":           round(float(prec), 4),
@@ -689,7 +769,7 @@ def train(
     print(f"  Decision threshold → {THRESHOLD_PATH}")
 
     # ── Score full dataset for export ─────────────────────────────────────────
-    _score_and_export(pipeline, features, optimal_threshold)
+    _score_and_export(pipeline, df, optimal_threshold)
 
     # Persist the pipeline artifact with the threshold embedded
     artifact = {
