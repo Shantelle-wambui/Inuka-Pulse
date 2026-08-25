@@ -74,19 +74,25 @@ public class SecurityConfig {
                     "/api/etl/push"        // ETL push — authenticated via X-ETL-Api-Key header
                 ).permitAll()
                 
-                // Public API for Foundation website embed — NO PII, cached
+                // Public API for Foundation website embed — NO PII, aggregated/cached.
+                // Only /api/v1/public/** is intentionally open; no beneficiary data exposed.
                 .requestMatchers("/api/v1/public/**").permitAll()
-                
-                // Read-only dashboard endpoints — no auth required
-                .requestMatchers(
-                    "/api/alerts",
-                    "/api/sites/**",
-                    "/api/quality/**",
-                    "/api/ingestion/**",
-                    "/api/config/**",
-                    "/api/analytics/**",
-                    "/api/ml/champion-artifact-path"
-                ).permitAll()
+
+                // ETL config polling — needed by the frontend to set its refresh interval.
+                // Returns non-sensitive timing values only (no data, no predictions).
+                .requestMatchers("/api/config/**").permitAll()
+
+                // ══════════════════════════════════════════════════════════════
+                // SECURITY HARDENING (Phase 7): previously permitAll endpoints
+                // now require authentication. Role-level enforcement via @PreAuthorize
+                // is layered on top where needed.
+                // ══════════════════════════════════════════════════════════════
+                .requestMatchers("/api/alerts/**", "/api/alerts").authenticated()
+                .requestMatchers("/api/sites/**").authenticated()
+                .requestMatchers("/api/quality/**").authenticated()
+                .requestMatchers("/api/ingestion/**").authenticated()
+                .requestMatchers("/api/analytics/**").authenticated()
+                .requestMatchers("/api/ml/champion-artifact-path").authenticated()
                 
                 // ══════════════════════════════════════════════════════════════
                 // V1 ANALYTICS API — Requires auth, role-scoped via @PreAuthorize

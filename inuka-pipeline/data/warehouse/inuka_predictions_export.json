@@ -427,7 +427,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1914,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00044",
@@ -937,7 +938,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1888,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00095",
@@ -1047,7 +1049,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5546,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00106",
@@ -1067,7 +1070,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.2289,
     "top_features": "field_visit_gap_days|attendance_rate_30d|days_since_last_contact",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00108",
@@ -1127,7 +1131,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.4373,
     "top_features": "assessment_score_trend|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "At-Risk"
+    "predicted_band": "At-Risk",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00114",
@@ -1307,7 +1312,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5673,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00132",
@@ -1637,7 +1643,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1329,
     "top_features": "sessions_attended_30d|field_visit_gap_days|attendance_rate_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00165",
@@ -1657,7 +1664,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.4874,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "At-Risk",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00167",
@@ -1727,7 +1735,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1903,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00174",
@@ -2397,7 +2406,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.524,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00241",
@@ -2427,7 +2437,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.513,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00244",
@@ -3117,7 +3128,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5053,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00313",
@@ -4097,7 +4109,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1904,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00411",
@@ -4417,7 +4430,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1978,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00443",
@@ -4657,7 +4671,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.2,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00467",
@@ -4727,7 +4742,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1808,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00474",
@@ -4737,7 +4753,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5155,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00475",
@@ -5497,7 +5514,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.2164,
     "top_features": "field_visit_gap_days|sessions_attended_30d|attendance_rate_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00551",
@@ -6187,7 +6205,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.2,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00620",
@@ -6367,7 +6386,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1914,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00638",
@@ -7087,7 +7107,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1929,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00710",
@@ -7147,7 +7168,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.2036,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00716",
@@ -7627,7 +7649,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1992,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00764",
@@ -7667,7 +7690,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1389,
     "top_features": "sessions_attended_30d|field_visit_gap_days|attendance_rate_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00768",
@@ -7787,7 +7811,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1283,
     "top_features": "field_visit_gap_days|sessions_attended_30d|attendance_rate_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00780",
@@ -8407,7 +8432,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.2135,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00842",
@@ -8457,7 +8483,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1473,
     "top_features": "sessions_attended_30d|attendance_rate_30d|field_visit_gap_days",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00847",
@@ -8567,7 +8594,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1949,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00858",
@@ -9067,7 +9095,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1918,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00908",
@@ -9367,7 +9396,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.2008,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00938",
@@ -9677,7 +9707,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1956,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-00969",
@@ -10107,7 +10138,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.2009,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01012",
@@ -11607,7 +11639,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1959,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01162",
@@ -12307,7 +12340,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.2991,
     "top_features": "attendance_rate_30d|sessions_attended_30d|assessment_score_latest",
-    "predicted_band": "At-Risk"
+    "predicted_band": "At-Risk",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01232",
@@ -12367,7 +12401,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1907,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01238",
@@ -12477,7 +12512,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1885,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01249",
@@ -12837,7 +12873,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1904,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01285",
@@ -12887,7 +12924,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.504,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01290",
@@ -12937,7 +12975,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1456,
     "top_features": "sessions_attended_30d|attendance_rate_30d|field_visit_gap_days",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01295",
@@ -13357,7 +13396,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5437,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01337",
@@ -13687,7 +13727,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.8192,
     "top_features": "attendance_rate_30d|sessions_attended_30d|missed_sessions_14d",
-    "predicted_band": "Dropout"
+    "predicted_band": "Dropout",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01370",
@@ -13767,7 +13808,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5573,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01378",
@@ -14307,7 +14349,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.6694,
     "top_features": "attendance_rate_30d|field_visit_gap_days|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01432",
@@ -14397,7 +14440,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.4986,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01441",
@@ -14867,7 +14911,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5384,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01488",
@@ -15237,7 +15282,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5197,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01525",
@@ -15457,7 +15503,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5068,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01547",
@@ -16597,7 +16644,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.503,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01661",
@@ -17517,7 +17565,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1996,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01753",
@@ -17527,7 +17576,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.3872,
     "top_features": "field_visit_gap_days|attendance_rate_30d|days_since_last_contact",
-    "predicted_band": "At-Risk"
+    "predicted_band": "At-Risk",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01754",
@@ -17797,7 +17847,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.1985,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01781",
@@ -18037,7 +18088,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.198,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01805",
@@ -18957,7 +19009,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5226,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01897",
@@ -19607,7 +19660,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.6719,
     "top_features": "attendance_rate_30d|field_visit_gap_days|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01962",
@@ -19677,7 +19731,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5394,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01969",
@@ -19767,7 +19822,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5249,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-01978",
@@ -20007,7 +20063,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.8197,
     "top_features": "attendance_rate_30d|sessions_attended_30d|missed_sessions_14d",
-    "predicted_band": "Dropout"
+    "predicted_band": "Dropout",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-02002",
@@ -20297,7 +20354,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5311,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-02031",
@@ -20497,7 +20555,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.5452,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-02051",
@@ -21107,7 +21166,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.4883,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Disengaged"
+    "predicted_band": "Disengaged",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-02112",
@@ -21297,7 +21357,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.191,
     "top_features": "field_visit_gap_days|attendance_rate_30d|sessions_attended_30d",
-    "predicted_band": "Active"
+    "predicted_band": "Active",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-02131",
@@ -21547,7 +21608,8 @@
     "as_of_date": "2026-08-24",
     "dropout_prob": 0.3844,
     "top_features": "field_visit_gap_days|attendance_rate_30d|days_since_last_contact",
-    "predicted_band": "At-Risk"
+    "predicted_band": "At-Risk",
+    "decision_threshold": 0.4336
   },
   {
     "beneficiary_id": "BEN-02156",
