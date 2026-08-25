@@ -31,6 +31,7 @@ public class BeneficiaryPredictionController {
 
     private final BeneficiaryPredictionService service;
     private final CaseloadService              caseloadService;
+    private final PredictionInterpretationService interpretationService;
 
     // ── Programme Director / Admin / Analyst endpoints ────────────────────────
 
@@ -157,6 +158,27 @@ public class BeneficiaryPredictionController {
     public ResponseEntity<BeneficiaryPredictionDto> getByBeneficiaryId(
             @PathVariable String beneficiaryId) {
         return service.getByBeneficiaryId(beneficiaryId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    /**
+     * GET /api/beneficiaries/predictions/{beneficiaryId}/interpretation
+     *
+     * ML prediction interpretation for one beneficiary.
+     * Translates raw ML output into actionable insights:
+     * - Risk band and escalation probability
+     * - Top risk drivers with recommendations
+     * - Human-readable narrative explanation
+     *
+     * Used by case managers to understand why a beneficiary is at risk
+     * and what actions to take.
+     */
+    @GetMapping("/{beneficiaryId}/interpretation")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<PredictionInterpretationDto> getInterpretation(
+            @PathVariable String beneficiaryId) {
+        return interpretationService.getInterpretation(beneficiaryId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
