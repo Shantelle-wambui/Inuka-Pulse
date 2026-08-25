@@ -1,5 +1,6 @@
 package com.inukapulse.etl;
 
+import com.inukapulse.beneficiary.BeneficiaryPredictionDto;
 import com.inukapulse.beneficiary.BeneficiaryPredictionEntity;
 import com.inukapulse.beneficiary.BeneficiaryPredictionRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -144,11 +145,53 @@ public class EtlReloadService {
         }
     }
 
+    /**
+     * Checks if the ETL process is still running and restarts it if dead.
+     * 
+     * This prevents silent ETL failures from causing stale predictions.
+     * If the process crashes, the scheduled reload will detect it and restart.
+     */
+    private void checkAndRestartEtlProcess() {
+        // Skip check if we're in remote/cloud mode (no local process)
+        if (liveBatchUrl != null && !liveBatchUrl.isBlank()) {
+            return;
+        }
+        
+        // Skip if process was never started (e.g., script not found)
+        if (etlProcess == null) {
+            return;
+        }
+        
+        // Check if process died unexpectedly
+        if (!etlProcess.isAlive()) {
+            int exitCode = etlProcess.exitValue();
+            log.warn("ETL process died unexpectedly (exit code: {}) — attempting restart", exitCode);
+            
+            // Clear the old process reference before restarting
+            etlProcess = null;
+            
+            // Attempt restart
+            try {
+                startEtlLoop();
+                if (etlProcess != null && etlProcess.isAlive()) {
+                    log.info("ETL process successfully restarted (new pid={})", etlProcess.pid());
+                } else {
+                    log.error("ETL process restart failed — predictions may become stale");
+                }
+            } catch (Exception e) {
+                log.error("ETL process restart failed: {} — predictions may become stale", e.getMessage());
+            }
+        }
+    }
+
     // ── Scheduled reload ──────────────────────────────────────────────────────
 
     @Scheduled(fixedDelayString = "${inuka.etl.poll-interval-ms:60000}", initialDelay = 5000)
     public void reload() {
         if (!enabled) return;
+
+        // Health check: restart ETL process if it died unexpectedly
+        checkAndRestartEtlProcess();
 
         try {
             LiveBatchRecord batch;
@@ -258,6 +301,7 @@ public class EtlReloadService {
             IncidentEntity e = new IncidentEntity();
             e.setIncidentId(id);
             e.setSiteId(siteId);
+            e.setBeneficiaryId(str(r, "beneficiary_id"));
             e.setIncidentDate(parseDateTime(str(r, "incident_date")));
             e.setSeverity(str(r, "severity"));
             e.setDescription(str(r, "description"));
@@ -387,6 +431,11 @@ public class EtlReloadService {
                 String predictedBand = str(r, "predicted_band");
                 if (predictedBand == null || predictedBand.isBlank()) continue;
 
+                // Compute engagement score at load time so it's immediately
+                // available to all endpoints without an extra compute step.
+                double engScore = BeneficiaryPredictionDto.computeEngagementScore(dropoutProb, predictedBand);
+                String engBand  = BeneficiaryPredictionDto.toEngagementBand(engScore);
+
                 BeneficiaryPredictionEntity e = new BeneficiaryPredictionEntity();
                 e.setBeneficiaryId(beneficiaryId);
                 e.setCohortId(str(r, "cohort_id"));
@@ -396,6 +445,8 @@ public class EtlReloadService {
                 e.setDropoutProb(dropoutProb);
                 e.setPredictedBand(predictedBand);
                 e.setTopFeatures(str(r, "top_features"));
+                e.setEngagementScore(engScore);
+                e.setEngagementBand(engBand);
                 toSave.add(e);
                 loaded++;
             }

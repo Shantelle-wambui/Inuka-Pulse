@@ -9,6 +9,14 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: ${POSTGRES_USER:inuka}
     password: ${POSTGRES_PASSWORD:inuka}
+    hikari:
+      # Keep the pool small — the free/starter Docker host has limited connections.
+      maximum-pool-size: 5
+      minimum-idle: 2
+      connection-timeout: 30000       # 30 s — fail fast if DB is unreachable
+      idle-timeout: 600000            # 10 min — release idle connections
+      max-lifetime: 1800000           # 30 min — recycle connections before DB closes them
+      pool-name: InukaDockerPool
 
   jpa:
     hibernate:

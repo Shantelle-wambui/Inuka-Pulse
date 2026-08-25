@@ -8,6 +8,15 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+    hikari:
+      # Render free PostgreSQL allows max 97 connections total.
+      # With one backend instance, keep the pool modest.
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000       # 30 s
+      idle-timeout: 600000            # 10 min
+      max-lifetime: 1800000           # 30 min — below Render's idle connection timeout
+      pool-name: InukaRenderPool
 
   jpa:
     hibernate:

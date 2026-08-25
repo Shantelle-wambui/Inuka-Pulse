@@ -12,11 +12,20 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: "/dashboard",
-        destination: "/dashboard/default",
-        permanent: false,
-      },
+      // Original redirect
+      { source: "/dashboard/default", destination: "/dashboard", permanent: false },
+      // Early Warning branch (alerts moved from inuka)
+      { source: "/dashboard/inuka/alerts", destination: "/dashboard/early-warning/alerts", permanent: false },
+      // Risk Analysis (what-if extracted from overview)
+      { source: "/dashboard/risk-analysis", destination: "/dashboard/early-warning/risk-analysis", permanent: false },
+      // Analytics routes (moved from inuka)
+      { source: "/dashboard/inuka/analytics", destination: "/dashboard/analytics", permanent: false },
+      { source: "/dashboard/inuka/roi", destination: "/dashboard/analytics/roi", permanent: false },
+      // Sites to Locations (future)
+      { source: "/dashboard/sites", destination: "/dashboard/locations", permanent: false },
+      // Old maintenance routes to disbursements (future)
+      { source: "/dashboard/maintenance/work-orders", destination: "/dashboard/disbursements/pending", permanent: false },
+      { source: "/dashboard/maintenance/history", destination: "/dashboard/disbursements/history", permanent: false },
     ];
   },
 };
