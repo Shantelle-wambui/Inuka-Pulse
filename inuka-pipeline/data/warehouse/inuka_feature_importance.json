@@ -1,52 +1,62 @@
 [
   {
-    "feature": "attendance_rate_30d",
-    "coefficient": -0.4856,
-    "importance": 0.2953
-  },
-  {
-    "feature": "days_since_last_contact",
-    "coefficient": -0.3442,
-    "importance": 0.2093
+    "feature": "missed_disbursements_60d",
+    "coefficient": -1.8952,
+    "importance": 0.2233,
+    "zeroed": false
   },
   {
     "feature": "sessions_attended_30d",
-    "coefficient": -0.3179,
-    "importance": 0.1933
-  },
-  {
-    "feature": "field_visit_gap_days",
-    "coefficient": 0.2577,
-    "importance": 0.1567
-  },
-  {
-    "feature": "disbursement_delay_days",
-    "coefficient": 0.0737,
-    "importance": 0.0448
-  },
-  {
-    "feature": "assessment_score_trend",
-    "coefficient": 0.0542,
-    "importance": 0.0329
-  },
-  {
-    "feature": "missed_disbursements_60d",
-    "coefficient": -0.0413,
-    "importance": 0.0251
-  },
-  {
-    "feature": "missed_sessions_14d",
-    "coefficient": 0.0337,
-    "importance": 0.0205
+    "coefficient": -1.6131,
+    "importance": 0.1901,
+    "zeroed": false
   },
   {
     "feature": "assessment_score_latest",
-    "coefficient": -0.0213,
-    "importance": 0.0129
+    "coefficient": -1.0737,
+    "importance": 0.1265,
+    "zeroed": false
+  },
+  {
+    "feature": "attendance_rate_30d",
+    "coefficient": -1.0668,
+    "importance": 0.1257,
+    "zeroed": false
   },
   {
     "feature": "no_contact_visits_90d",
-    "coefficient": 0.0151,
-    "importance": 0.0092
+    "coefficient": 0.8125,
+    "importance": 0.0957,
+    "zeroed": false
+  },
+  {
+    "feature": "days_since_last_contact",
+    "coefficient": -0.7371,
+    "importance": 0.0869,
+    "zeroed": false
+  },
+  {
+    "feature": "disbursement_delay_days",
+    "coefficient": -0.5864,
+    "importance": 0.0691,
+    "zeroed": false
+  },
+  {
+    "feature": "missed_sessions_14d",
+    "coefficient": 0.4536,
+    "importance": 0.0535,
+    "zeroed": false
+  },
+  {
+    "feature": "assessment_score_trend",
+    "coefficient": -0.247,
+    "importance": 0.0291,
+    "zeroed": false
+  },
+  {
+    "feature": "field_visit_gap_days",
+    "coefficient": -0.0002,
+    "importance": 0.0,
+    "zeroed": false
   }
 ]
