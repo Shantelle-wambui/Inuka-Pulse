@@ -1,5 +1,7 @@
 {
   "model": "LogisticRegression",
+  "regularization": "elasticnet (C=0.5, l1_ratio=0.5)",
+  "scaler": "RobustScaler",
   "label_definition": "status-based: 1 if current_status in {Dropout, Disengaged}, 0 otherwise",
   "label_rationale": "30-day forward window yields <1% positives across 56k snapshot rows. Status-based labelling gives ~29% positives \u2014 well-calibrated for balanced LR.",
   "split_date": "2026-06-29",
@@ -7,9 +9,12 @@
   "test_rows": 18645,
   "positive_rate_train": 0.1809,
   "positive_rate_test": 0.1808,
-  "precision": 0.3585,
-  "recall": 0.698,
-  "f1": 0.4737,
+  "optimal_threshold": 0.4336,
+  "precision": 0.3081,
+  "recall": 0.7876,
+  "f1": 0.443,
+  "auc_roc": 0.7636,
+  "brier_score": 0.1961,
   "features": [
     "days_since_last_contact",
     "sessions_attended_30d",
@@ -21,5 +26,17 @@
     "assessment_score_trend",
     "field_visit_gap_days",
     "no_contact_visits_90d"
-  ]
+  ],
+  "threshold_report": {
+    "optimal_threshold": 0.4336,
+    "beta": 2.0,
+    "fbeta_at_threshold": 0.6007,
+    "precision_at_threshold": 0.3081,
+    "recall_at_threshold": 0.7876,
+    "f1_at_threshold": 0.443,
+    "precision_at_threshold_default05": 0.3531,
+    "recall_at_threshold_default05": 0.6965,
+    "note": "Threshold optimized for F-2.0 (recall weighted 2.0x over precision). Shift beta lower to favour precision over recall."
+  },
+  "tune_results": null
 }

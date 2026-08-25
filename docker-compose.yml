@@ -1,0 +1,106 @@
+services:
+
+  # ── PostgreSQL ──────────────────────────────────────────────────────────────
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-inuka_pulse}
+      POSTGRES_USER: ${POSTGRES_USER:-inuka}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-inuka}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"       # expose for local DB tools (e.g. DBeaver); remove in prod
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-inuka} -d ${POSTGRES_DB:-inuka_pulse}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ── Spring Boot Backend ─────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./inuka-pulse-backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy   # wait for Postgres to accept connections
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      POSTGRES_DB: ${POSTGRES_DB:-inuka_pulse}
+      POSTGRES_USER: ${POSTGRES_USER:-inuka}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-inuka}
+      JWT_SECRET: ${JWT_SECRET:-changeme-replace-this-with-a-real-secret}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost:3000}
+      ETL_LIVE_BATCH_PATH: /pipeline/warehouse/live_batch.json
+      ETL_PIPELINE_DIR: /pipeline
+      ETL_LIVE_BATCH_URL: ${ETL_LIVE_BATCH_URL:-}        # leave blank to use file path
+      ETL_PREDICTIONS_URL: ${ETL_PREDICTIONS_URL:-}      # leave blank to use file path
+      ETL_API_KEY: ${ETL_API_KEY:-}
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      LLM_ENABLED: ${LLM_ENABLED:-true}
+    volumes:
+      - pipeline-data:/pipeline    # shares live_batch.json with the pipeline container
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s            # give Spring Boot time to run Flyway migrations
+
+  # ── Next.js Frontend ────────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./inuka-pulse-frontend
+      dockerfile: Dockerfile
+      args:
+        # Baked into the JS bundle at build time — must be the public-facing URL.
+        # For local Docker use, the browser calls the backend directly on port 8080.
+        NEXT_PUBLIC_INUKA_API_URL: ${NEXT_PUBLIC_INUKA_API_URL:-http://localhost:8080}
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+
+  # ── Python ETL + ML Pipeline ────────────────────────────────────────────────
+  # Runs the full pipeline sequence every 10 minutes in a loop.
+  # Writes output files to the 'pipeline-data' volume which the backend reads.
+  # No HTTP push — no Cloudflare 403 risk.
+  pipeline:
+    build:
+      context: ./inuka-pipeline
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - pipeline-data:/app/data    # output goes here; backend reads from same volume
+    # Override CMD to run in a loop every 10 minutes
+    command: >
+      sh -c "
+        echo 'Pipeline container started. Running initial ETL...' &&
+        python -m src.inuka_features &&
+        python -m src.inuka_predict --score &&
+        python -m src.inuka_live_bridge &&
+        echo 'Initial run complete. Entering 10-minute loop...' &&
+        while true; do
+          sleep 600 &&
+          echo 'Running scheduled ETL...' &&
+          python -m src.inuka_features &&
+          python -m src.inuka_predict --score &&
+          python -m src.inuka_live_bridge &&
+          echo 'Scheduled run complete.';
+        done
+      "
+
+# ── Volumes ──────────────────────────────────────────────────────────────────
+volumes:
+  postgres-data:       # persists PostgreSQL data across container restarts
+  pipeline-data:       # shared between pipeline (writer) and backend (reader)

@@ -25,6 +25,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -51,6 +53,14 @@ public class EtlReloadService {
 
     @Value("${inuka.etl.live-batch-path:../inuka-pipeline/data/warehouse/live_batch.json}")
     private String liveBatchPath;
+
+    /** R2 public URL for live_batch.json — when set, takes priority over liveBatchPath. */
+    @Value("${inuka.etl.live-batch-url:}")
+    private String liveBatchUrl;
+
+    /** R2 public URL for inuka_predictions_export.json — when set, takes priority over local file. */
+    @Value("${inuka.etl.predictions-url:}")
+    private String predictionsUrl;
 
     @Value("${inuka.etl.pipeline-dir:../inuka-pipeline}")
     private String sentinelDir;  // kept as sentinelDir internally to avoid large refactor; points to inuka-pipeline root
@@ -141,14 +151,27 @@ public class EtlReloadService {
     public void reload() {
         if (!enabled) return;
 
-        File batchFile = new File(liveBatchPath);
-        if (!batchFile.exists()) {
-            log.debug("ETL reload: live_batch.json not found at {} — skipping", liveBatchPath);
-            return;
-        }
-
         try {
-            LiveBatchRecord batch = objectMapper.readValue(batchFile, LiveBatchRecord.class);
+            LiveBatchRecord batch;
+
+            if (liveBatchUrl != null && !liveBatchUrl.isBlank()) {
+                // Production: fetch from Cloudflare R2 public URL
+                log.debug("ETL reload: fetching live_batch.json from R2 ({})", liveBatchUrl);
+                try (InputStream in = URI.create(liveBatchUrl).toURL().openStream()) {
+                    batch = objectMapper.readValue(in, LiveBatchRecord.class);
+                } catch (IOException e) {
+                    log.warn("ETL reload: failed to fetch from R2 URL '{}': {} — skipping", liveBatchUrl, e.getMessage());
+                    return;
+                }
+            } else {
+                // Local dev: read from file path
+                File batchFile = new File(liveBatchPath);
+                if (!batchFile.exists()) {
+                    log.debug("ETL reload: live_batch.json not found at {} — skipping", liveBatchPath);
+                    return;
+                }
+                batch = objectMapper.readValue(batchFile, LiveBatchRecord.class);
+            }
 
             if (batch.getBatchId() != null && batch.getBatchId().equals(lastProcessedBatchId)) {
                 log.debug("ETL reload: batch {} already processed — skipping", batch.getBatchId());

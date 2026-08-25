@@ -34,10 +34,10 @@ management:
     health:
       show-details: never
 
-sentinel:
+inuka:
   cors:
     # Set CORS_ALLOWED_ORIGINS in Railway env vars to your Vercel URL
-    # e.g. https://sentinel.vercel.app
+    # e.g. https://inuka-pulse.vercel.app
     # Multiple origins: comma-separated, no spaces
     allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
   jwt:
@@ -45,10 +45,17 @@ sentinel:
     secret: ${JWT_SECRET}
     expiration-ms: 86400000  # 24 hours
   etl:
-    # Live ETL disabled for Phase 1 deployment — re-enable in Phase 2
-    enabled: false
-    live-batch-path: ../sentinel/data/warehouse/live_batch.json
-    sentinel-dir: ../sentinel
+    enabled: true
+    # R2 public URLs — set in Railway environment variables
+    # e.g. https://pub-xxx.r2.dev/live_batch.json
+    live-batch-url: ${ETL_LIVE_BATCH_URL}
+    predictions-url: ${ETL_PREDICTIONS_URL}
     poll-interval-ms: 120000
     rows-per-cycle: 200
     frontend-refresh-ms: 125000
+    api-key: ${ETL_API_KEY:}
+  llm:
+    groq-api-key: ${GROQ_API_KEY:}
+    model: llama-3.1-8b-instant
+    timeout-ms: 3000
+    enabled: ${LLM_ENABLED:true}
