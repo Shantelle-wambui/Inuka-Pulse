@@ -9,10 +9,11 @@
  */
 
 import { cache } from "react";
-import { fetchAlerts, fetchQualitySummary, fetchRiskSummary, fetchTelemetrySummary, fetchBatches } from "./api";
+import { fetchAlerts, fetchQualitySummary, fetchRiskSummary, fetchSiteNameMap, fetchTelemetrySummary, fetchBatches } from "./api";
 
-export const cachedFetchAlerts          = cache(fetchAlerts);
-export const cachedFetchQualitySummary  = cache(fetchQualitySummary);
-export const cachedFetchRiskSummary     = cache(fetchRiskSummary);
+export const cachedFetchAlerts           = cache(fetchAlerts);
+export const cachedFetchQualitySummary   = cache(fetchQualitySummary);
+export const cachedFetchRiskSummary      = cache(fetchRiskSummary);
+export const cachedFetchSiteNameMap      = cache(fetchSiteNameMap);
 export const cachedFetchTelemetrySummary = cache(fetchTelemetrySummary);
-export const cachedFetchBatches         = cache(fetchBatches);
+export const cachedFetchBatches          = cache(fetchBatches);

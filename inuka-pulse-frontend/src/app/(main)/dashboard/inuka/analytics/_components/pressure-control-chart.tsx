@@ -11,6 +11,8 @@ import type { ControlChartData } from "@/lib/inuka-pulse/types";
 
 interface PressureControlChartProps {
   data: ControlChartData;
+  /** siteId → siteName map fetched from /api/sites/risk-summary by the parent Server Component */
+  siteNames?: Record<string, string>;
 }
 
 const chartConfig = {
@@ -19,16 +21,9 @@ const chartConfig = {
   spike: { color: "var(--color-red-500)", label: "Critical threshold breach" },
 } satisfies ChartConfig;
 
-const SITE_LABELS: Record<string, string> = {
-  "SITE-001": "Scholarship — Nairobi",
-  "SITE-002": "Scholarship — Mombasa",
-  "SITE-003": "Vocational — Nakuru",
-  "SITE-004": "Plus — Nairobi",
-  "SITE-005": "Vocational — Eldoret",
-  "SITE-006": "Tech — Nairobi",
-};
+const SITE_LABELS: Record<string, string> = {}; // replaced by siteNames prop — see parent page
 
-export function PressureControlChart({ data }: PressureControlChartProps) {
+export function PressureControlChart({ data, siteNames = {} }: PressureControlChartProps) {
   const availableSites = Object.keys(data.sites).sort();
   const defaultSite = availableSites.includes("SITE-003") ? "SITE-003" : availableSites[0];
   const [selectedSite, setSelectedSite] = useState(defaultSite);
@@ -73,7 +68,7 @@ export function PressureControlChart({ data }: PressureControlChartProps) {
             <SelectContent>
               {availableSites.map((s) => (
                 <SelectItem key={s} value={s} className="text-xs">
-                  {SITE_LABELS[s] ?? s}
+                  {siteNames[s] ?? s}
                 </SelectItem>
               ))}
             </SelectContent>

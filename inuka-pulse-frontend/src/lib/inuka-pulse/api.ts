@@ -181,6 +181,21 @@ export async function fetchRiskSummaryLegacy(): Promise<SiteRiskSummary[]> {
   return result.data;
 }
 
+/**
+ * Derives a siteId → siteName lookup map from the risk-summary endpoint.
+ *
+ * Uses the same backend call as fetchRiskSummary() so no extra round-trip
+ * is made when both are called in the same render (React cache() deduplicates).
+ *
+ * Falls back gracefully to an empty map — callers should use
+ * `siteNameMap[siteId] ?? siteId` so the raw ID is shown when the map
+ * is empty (e.g. backend offline during dev).
+ */
+export async function fetchSiteNameMap(): Promise<Record<string, string>> {
+  const { data } = await fetchRiskSummary();
+  return Object.fromEntries(data.map((s) => [s.siteId, s.siteName]));
+}
+
 /** GET /api/sites/{siteId} */
 export async function fetchSiteDetail(siteId: string): Promise<SiteDetail> {
   const res = await fetch(`${requireApiBase()}/api/sites/${siteId}`, await authedOpts());

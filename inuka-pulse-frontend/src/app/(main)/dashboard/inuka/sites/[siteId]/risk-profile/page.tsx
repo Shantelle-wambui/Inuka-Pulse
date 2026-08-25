@@ -3,21 +3,12 @@ import { ArrowLeft, AlertTriangle, ClipboardCheck, Wrench, Users, Activity } fro
 import { BackendError } from "@/components/backend-error";
 import { getAuthToken } from "@/server/server-actions";
 import { fetchSiteDetail, fetchSitePrediction, fetchAlerts, fetchWorkOrders } from "@/lib/inuka-pulse/api";
+import { cachedFetchSiteNameMap } from "@/lib/inuka-pulse/cached-fetches";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const API_BASE = process.env.NEXT_PUBLIC_INUKA_API_URL ?? "";
-
-const SITE_NAMES: Record<string, string> = {
-  "site-001": "Scholarship — Nairobi",
-  "site-002": "Scholarship — Mombasa",
-  "site-003": "Vocational — Nakuru",
-  "site-004": "Plus — Nairobi",
-  "site-005": "Vocational — Eldoret",
-  "site-006": "Tech — Nairobi",
-  "site-007": "Kisumu Terminal",
-};
 
 const RISK_BAND_STYLES: Record<string, string> = {
   Critical: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 border-red-300",
@@ -63,18 +54,21 @@ interface PageProps {
 
 export default async function StationRiskProfilePage({ params }: PageProps) {
   const { siteId } = await params;
-  const siteName = SITE_NAMES[siteId] ?? siteId;
 
   try {
     const token = await getAuthToken();
 
-    const [site, prediction, allAlerts, workOrders, technicians] = await Promise.all([
+    const [site, prediction, allAlerts, workOrders, technicians, siteNames] = await Promise.all([
       fetchSiteDetail(siteId),
       fetchSitePrediction(siteId).catch(() => null),
-      fetchAlerts().catch(() => []),
+      fetchAlerts().then((r) => r.data).catch(() => []),
       fetchWorkOrders({ siteId }).catch(() => []),
       fetchTechnicians(token),
+      cachedFetchSiteNameMap(),
     ]);
+
+    // Prefer siteName from the detail response (most authoritative); fall back to map then raw ID.
+    const siteName = site.siteName || siteNames[siteId] || siteId;
 
     const siteAlerts = allAlerts.filter((a) => a.siteId === siteId && a.status === "active");
     const openCAPAs  = 0; // best effort — no site-scoped CAPA endpoint yet
