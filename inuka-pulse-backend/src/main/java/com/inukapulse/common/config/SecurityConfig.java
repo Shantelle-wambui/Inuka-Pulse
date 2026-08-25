@@ -104,6 +104,12 @@ public class SecurityConfig {
                 // DIRECTOR DEEPER VIEWS — authenticated; role checks via @PreAuthorize
                 // ══════════════════════════════════════════════════════════════
                 .requestMatchers("/api/director/**").authenticated()
+
+                // ══════════════════════════════════════════════════════════════
+                // ADMIN — Assignment management and admin-only ops
+                // Role enforcement via @PreAuthorize(hasRole('ADMIN'))
+                // ══════════════════════════════════════════════════════════════
+                .requestMatchers("/api/admin/**").authenticated()
                 
                 // ══════════════════════════════════════════════════════════════
                 // PROGRAM & DONOR MANAGEMENT

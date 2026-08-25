@@ -10,7 +10,7 @@ interface SurvivalCurveChartProps {
 }
 
 const chartConfig = {
-  fleet: { color: "var(--color-blue-500)", label: "Fleet (all sites)" },
+  fleet: { color: "var(--color-blue-500)", label: "All beneficiaries" },
   high_risk: { color: "var(--color-red-500)", label: "High-Risk (SITE-003, SITE-006)" },
 } satisfies ChartConfig;
 
@@ -22,7 +22,7 @@ export function SurvivalCurveChart({ data }: SurvivalCurveChartProps) {
     return (
       <Card>
         <CardHeader className="pb-2">
-          <CardTitle className="text-sm font-medium">Audit Closure Time — Fleet vs High-Risk Sites</CardTitle>
+          <CardTitle className="text-sm font-medium">Retention Time — All Beneficiaries vs High-Risk Cohorts</CardTitle>
           <CardDescription className="text-xs">
             Kaplan-Meier survival curve. Y-axis = fraction of findings still open.
           </CardDescription>
@@ -49,7 +49,7 @@ export function SurvivalCurveChart({ data }: SurvivalCurveChartProps) {
   return (
     <Card>
       <CardHeader className="pb-2">
-        <CardTitle className="text-sm font-medium">Audit Closure Time — Fleet vs High-Risk Sites</CardTitle>
+        <CardTitle className="text-sm font-medium">Retention Time — All Beneficiaries vs High-Risk Cohorts</CardTitle>
         <CardDescription className="text-xs">
           Kaplan-Meier survival curve. Y-axis = fraction of findings still open.
         </CardDescription>
@@ -114,7 +114,7 @@ export function SurvivalCurveChart({ data }: SurvivalCurveChartProps) {
         {/* Quotable stat */}
         <div className="rounded-md bg-muted px-3 py-2 text-xs space-y-1">
           <div className="flex justify-between">
-            <span className="text-muted-foreground">Fleet median closure</span>
+            <span className="text-muted-foreground">All beneficiaries median closure</span>
             <span className="font-semibold tabular-nums text-blue-600 dark:text-blue-400">{fleetMedian}d</span>
           </div>
           <div className="flex justify-between">

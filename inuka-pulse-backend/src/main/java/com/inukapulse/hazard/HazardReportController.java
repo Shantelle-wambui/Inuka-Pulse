@@ -27,7 +27,12 @@ public class HazardReportController {
     @GetMapping
     public ResponseEntity<List<HazardReportDto>> list(
             @RequestParam(required = false) String siteId,
+            @RequestParam(required = false) String beneficiaryId,
             Authentication auth) {
+        // Filter by beneficiary — used by the beneficiary detail page
+        if (beneficiaryId != null) {
+            return ResponseEntity.ok(service.listByBeneficiary(beneficiaryId));
+        }
         String role = extractRole(auth);
         // Field Technician sees only their own reports
         if ("FIELD_TECHNICIAN".equals(role)) {

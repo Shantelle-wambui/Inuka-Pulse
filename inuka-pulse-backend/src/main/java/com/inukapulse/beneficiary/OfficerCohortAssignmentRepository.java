@@ -15,6 +15,15 @@ public interface OfficerCohortAssignmentRepository
     @Query("SELECT o.cohortId FROM OfficerCohortAssignmentEntity o WHERE o.userId = :userId")
     List<String> findCohortIdsByUserId(@Param("userId") Long userId);
 
+    /** All assignments for a given officer. */
+    List<OfficerCohortAssignmentEntity> findByUserId(Long userId);
+
+    /** All assignments for a given cohort. */
+    List<OfficerCohortAssignmentEntity> findByCohortId(String cohortId);
+
     /** Check if an officer is assigned to a specific cohort. */
     boolean existsByUserIdAndCohortId(Long userId, String cohortId);
+
+    /** Remove a specific assignment (used by admin delete). */
+    void deleteByUserIdAndCohortId(Long userId, String cohortId);
 }
