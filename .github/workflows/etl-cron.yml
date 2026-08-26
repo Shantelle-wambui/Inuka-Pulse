@@ -1,20 +1,18 @@
 name: ETL Live Cron
 
-# Runs every 10 minutes.
-# Generates a fresh batch using the Python pipeline and uploads the output
-# files to Cloudflare R2. The Railway backend polls R2 every 2 minutes and
-# loads the latest batch into PostgreSQL automatically — no push to Railway,
-# no Cloudflare 403 errors.
+# Runs once daily at midnight UTC.
+# Generates predictions using the Python ML pipeline and writes directly
+# to Railway PostgreSQL — no intermediate storage, instant updates.
 #
 # Secrets required (set in GitHub → Settings → Secrets → Actions):
-#   R2_ACCOUNT_ID        — Cloudflare Account ID
-#   R2_ACCESS_KEY_ID     — R2 API token Access Key ID
-#   R2_SECRET_ACCESS_KEY — R2 API token Secret Access Key
-#   R2_BUCKET            — bucket name, e.g. inuka-pipeline
+#   DATABASE_URL  — Railway PostgreSQL connection string
+#                   e.g. postgresql://postgres:PASSWORD@HOST:PORT/railway
+#   BACKEND_URL   — Railway backend URL (e.g. https://your-app.railway.app)
+#   ETL_API_KEY   — (optional) API key for alert evaluation endpoint
 
 on:
   schedule:
-    - cron: "*/10 * * * *"   # every 10 minutes
+    - cron: "0 0 * * *"      # once daily at midnight UTC
   workflow_dispatch:          # allow manual trigger from GitHub UI
 
 defaults:
@@ -23,9 +21,9 @@ defaults:
 
 jobs:
   run-etl:
-    name: Generate ETL Batch & Upload to R2
+    name: Run ETL Pipeline & Write to Database
     runs-on: ubuntu-latest
-    timeout-minutes: 8        # abort if the pipeline hangs
+    timeout-minutes: 20       # increased from 8 to handle large datasets
 
     steps:
       - name: Checkout repository
@@ -43,20 +41,42 @@ jobs:
 
       - name: Run feature engineering
         run: python -m src.inuka_features
+        timeout-minutes: 12   # give feature engineering more time
 
       - name: Run ML scoring
         run: python -m src.inuka_predict --score
+        timeout-minutes: 5
 
-      - name: Run live bridge (generate live_batch.json)
+      - name: Run live bridge (generate batch data)
         run: python -m src.inuka_live_bridge
 
-      - name: Upload live_batch.json to R2
-        uses: ryand56/r2-upload-action@latest
-        with:
-          r2-account-id: ${{ secrets.R2_ACCOUNT_ID }}
-          r2-access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
-          r2-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          r2-bucket: ${{ secrets.R2_BUCKET }}
-          source-dir: inuka-pipeline/data/warehouse
-          destination-dir: /
-          output-file-url: "true"
+      - name: Write to database
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: python -m src.db_writer
+        timeout-minutes: 3
+
+      - name: Trigger alert evaluation
+        if: ${{ success() }}
+        env:
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
+          ETL_API_KEY: ${{ secrets.ETL_API_KEY }}
+        run: |
+          echo "Triggering alert evaluation at $BACKEND_URL/api/alerts/evaluate"
+          
+          # Build curl command with optional API key header
+          CURL_CMD="curl -sf -X POST"
+          if [ -n "$ETL_API_KEY" ]; then
+            CURL_CMD="$CURL_CMD -H 'X-ETL-Api-Key: $ETL_API_KEY'"
+          fi
+          CURL_CMD="$CURL_CMD -H 'Content-Type: application/json'"
+          CURL_CMD="$CURL_CMD -d '{\"minutesBack\": 60}'"
+          CURL_CMD="$CURL_CMD $BACKEND_URL/api/alerts/evaluate"
+          
+          # Execute and capture response
+          RESPONSE=$(eval $CURL_CMD) || {
+            echo "Warning: Alert evaluation failed (backend may be starting up)"
+            exit 0  # Don't fail the workflow if alerts fail
+          }
+          
+          echo "Alert evaluation response: $RESPONSE"

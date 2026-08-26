@@ -88,6 +88,19 @@ from sklearn.preprocessing import RobustScaler
 
 warnings.filterwarnings("ignore")
 
+# Database module for PostgreSQL support
+try:
+    from src.db import is_postgres_mode, write_predictions_to_db, print_db_status
+except ImportError:
+    # Fallback if running as script directly
+    try:
+        from db import is_postgres_mode, write_predictions_to_db, print_db_status
+    except ImportError:
+        # db module not available, postgres mode disabled
+        def is_postgres_mode(): return False
+        def write_predictions_to_db(df): return 0
+        def print_db_status(): pass
+
 # ── Paths ─────────────────────────────────────────────────────────────────────
 RAW_DIR       = Path("data/raw/inuka")
 WAREHOUSE_DIR = Path("data/warehouse")
@@ -891,6 +904,16 @@ def _score_and_export(
     # Parquet for backend consumption
     parquet_path = WAREHOUSE_DIR / "inuka_fact_predictions.parquet"
     export.to_parquet(parquet_path, index=False)
+    
+    # Write to PostgreSQL if in postgres mode
+    if is_postgres_mode():
+        try:
+            rows_written = write_predictions_to_db(export)
+            print(f"  PostgreSQL → beneficiary_prediction ({rows_written} rows written)")
+        except Exception as e:
+            print(f"  Warning: Failed to write predictions to PostgreSQL: {e}")
+            print("  (Predictions still saved to JSON and Parquet files)")
+    
     return features
 
 
