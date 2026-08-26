@@ -12,7 +12,7 @@
  */
 
 import { cache } from "react";
-import { fetchAlerts, fetchQualitySummary, fetchRiskSummary, fetchTelemetrySummary, fetchBatches } from "./api";
+import { fetchAlerts, fetchQualitySummary, fetchRiskSummary, fetchTelemetrySummary, fetchBatches, fetchSiteNameMap } from "./api";
 
 // These return WithMockIndicator<T> wrappers — check isMock flag!
 export const cachedFetchAlerts          = cache(fetchAlerts);
@@ -22,3 +22,7 @@ export const cachedFetchBatches         = cache(fetchBatches);
 
 // This one doesn't use mock fallback
 export const cachedFetchTelemetrySummary = cache(fetchTelemetrySummary);
+
+// siteId → siteName lookup map (derived from risk-summary); used by
+// technicians, nearby-alerts, diagnostics, and site risk-profile pages.
+export const cachedFetchSiteNameMap = cache(fetchSiteNameMap);

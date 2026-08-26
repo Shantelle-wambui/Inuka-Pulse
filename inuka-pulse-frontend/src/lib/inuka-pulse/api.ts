@@ -1618,3 +1618,363 @@ export async function deleteAssignment(userId: number, cohortId: string): Promis
   const res = await fetch(url.toString(), { ...opts, method: "DELETE" });
   if (!res.ok) throw new Error(await parseErrorMessage(res));
 }
+
+// ─── Programs (GET /api/v1/programs) ─────────────────────────────────────────
+// Backend: ProgramController → ProgramDto. BigDecimal serializes as number,
+// LocalDate as ISO string. capacityUtilization is a 0.0–1.0 fraction.
+
+export interface ProgramDto {
+  programId: string;
+  pillar: string;
+  name: string;
+  county: string;
+  startDate: string;
+  endDate: string | null;
+  targetCapacity: number;
+  status: string;
+  description: string;
+  currentEnrollment: number | null;
+  /** 0.0–1.0 fraction (currentEnrollment / targetCapacity) */
+  capacityUtilization: number | null;
+  totalFunding: number | null;
+  disbursedAmount: number | null;
+  fundingGap: number | null;
+  cohortCount: number | null;
+  donors: string[] | null;
+}
+
+/**
+ * GET /api/v1/programs
+ * Optional filters: pillar, county, or status="active" (backend applies the
+ * first non-null in that precedence order).
+ */
+export async function fetchPrograms(params?: {
+  pillar?: string;
+  county?: string;
+  status?: string;
+}): Promise<ProgramDto[]> {
+  const url = new URL(`${requireApiBase()}/api/v1/programs`);
+  if (params?.pillar) url.searchParams.set("pillar", params.pillar);
+  if (params?.county) url.searchParams.set("county", params.county);
+  if (params?.status) url.searchParams.set("status", params.status);
+  const res = await fetchWithTimeout(url.toString(), await authedOpts());
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/v1/programs/{programId} */
+export async function fetchProgram(programId: string): Promise<ProgramDto | null> {
+  const res = await fetchWithTimeout(
+    `${requireApiBase()}/api/v1/programs/${programId}`,
+    await authedOpts(),
+  );
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/v1/programs/counties — active counties */
+export async function fetchProgramCounties(): Promise<string[]> {
+  const res = await fetchWithTimeout(
+    `${requireApiBase()}/api/v1/programs/counties`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/v1/programs/pillars — active pillars */
+export async function fetchProgramPillars(): Promise<string[]> {
+  const res = await fetchWithTimeout(
+    `${requireApiBase()}/api/v1/programs/pillars`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+// ─── Donors (GET /api/v1/donors) ─────────────────────────────────────────────
+// Backend: DonorController → DonorDto / DonorSummaryDto.
+
+export interface DonorDto {
+  donorId: string;
+  name: string;
+  contactEmail: string | null;
+  contactPhone: string | null;
+  organizationType: string | null;
+  country: string | null;
+  isActive: boolean | null;
+  fundedProgramCount: number | null;
+  totalCommitment: number | null;
+  totalDisbursed: number | null;
+  /** Percentage 0–100 */
+  disbursementRate: number | null;
+}
+
+export interface FundedProgramSummary {
+  programId: string;
+  programName: string;
+  pillar: string;
+  county: string;
+  status: string;
+  fundingAmount: number;
+  disbursedAmount: number;
+  /** Percentage 0–100 */
+  disbursementRate: number;
+  beneficiariesServed: number;
+  /** Percentage 0–100 */
+  completionRate: number;
+}
+
+export interface PillarSummary {
+  pillar: string;
+  programCount: number;
+  totalFunding: number;
+  totalBeneficiaries: number;
+}
+
+export interface DonorSummaryDto {
+  donorId: string;
+  donorName: string;
+  totalFundedPrograms: number;
+  totalCommitment: number;
+  totalDisbursed: number;
+  /** Percentage 0–100 */
+  disbursementRate: number;
+  fundingGap: number;
+  totalBeneficiariesReached: number;
+  activeBeneficiaries: number;
+  /** Percentage 0–100 */
+  averageCompletionRate: number;
+  programs: FundedProgramSummary[];
+  pillarBreakdown: PillarSummary[];
+}
+
+export interface DonorFunding {
+  id: string;
+  donorId: string;
+  programId: string;
+  amountKes: number;
+  currency: string;
+  fiscalYear: number;
+  disbursedToDate: number;
+  fundingStatus: string;
+  commitmentDate: string | null;
+  notes: string | null;
+  disbursementRate: number;
+  fundingGap: number;
+}
+
+export interface DisbursementTrend {
+  fiscalYear: number;
+  quarter: string | null;
+  committed: number;
+  disbursed: number;
+}
+
+/** GET /api/v1/donors — set activeOnly to only return active donors */
+export async function fetchDonors(activeOnly = false): Promise<DonorDto[]> {
+  const url = new URL(`${requireApiBase()}/api/v1/donors`);
+  if (activeOnly) url.searchParams.set("activeOnly", "true");
+  const res = await fetchWithTimeout(url.toString(), await authedOpts());
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/v1/donors/{donorId} */
+export async function fetchDonor(donorId: string): Promise<DonorDto | null> {
+  const res = await fetchWithTimeout(
+    `${requireApiBase()}/api/v1/donors/${donorId}`,
+    await authedOpts(),
+  );
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/v1/donors/{donorId}/summary — aggregated donor-portal view (no PII) */
+export async function fetchDonorSummary(donorId: string): Promise<DonorSummaryDto | null> {
+  const res = await fetchWithTimeout(
+    `${requireApiBase()}/api/v1/donors/${donorId}/summary`,
+    await authedOpts(),
+  );
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/v1/donors/{donorId}/funding?activeOnly=&fiscalYear= */
+export async function fetchDonorFunding(
+  donorId: string,
+  params?: { activeOnly?: boolean; fiscalYear?: number },
+): Promise<DonorFunding[]> {
+  const url = new URL(`${requireApiBase()}/api/v1/donors/${donorId}/funding`);
+  if (params?.activeOnly) url.searchParams.set("activeOnly", "true");
+  if (params?.fiscalYear != null) url.searchParams.set("fiscalYear", String(params.fiscalYear));
+  const res = await fetchWithTimeout(url.toString(), await authedOpts());
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/v1/donors/{donorId}/trends?fiscalYear= */
+export async function fetchDonorTrends(
+  donorId: string,
+  fiscalYear?: number,
+): Promise<DisbursementTrend[]> {
+  const url = new URL(`${requireApiBase()}/api/v1/donors/${donorId}/trends`);
+  if (fiscalYear != null) url.searchParams.set("fiscalYear", String(fiscalYear));
+  const res = await fetchWithTimeout(url.toString(), await authedOpts());
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+// ─── Resource Allocations (Model 5) ──────────────────────────────────────────
+// Backend: AllocationController → /api/v1/allocations.
+
+export interface AllocationRecommendation {
+  id: string | null;
+  county: string;
+  pillar: string | null;
+  priorityScore: number;
+  /** Weighted component breakdown, e.g. demand_contribution, capacity_gap_contribution */
+  components: Record<string, number>;
+  rationale: string;
+  status: string;
+}
+
+export interface AllocationStats {
+  pendingRecommendations: number;
+  approvedThisMonth: number;
+  rejectedThisMonth: number;
+  /** 0.0–1.0 */
+  avgConfidenceScore: number;
+  totalReallocationValue: number;
+}
+
+export interface AllocationRegionSummary {
+  region: string;
+  programs: number;
+  totalBeneficiaries: number;
+  /** 0.0–1.0 */
+  avgDropoutRisk: number;
+  demandGrowth: number;
+  fieldOfficerCoverage: number;
+  budgetUtilization: number;
+}
+
+export interface ResourceAllocation {
+  id: string;
+  programId: string;
+  region: string;
+  resourceType: string;
+  allocatedAmount: number;
+  unit: string | null;
+  periodStart: string;
+  periodEnd: string;
+  source: string;
+  priorityScore: number | null;
+  rationale: string | null;
+  status: string;
+  approvedBy: string | null;
+  approvedAt: string | null;
+}
+
+/** GET /api/v1/allocations/recommendations?resourceType=&region= */
+export async function fetchAllocationRecommendations(params?: {
+  resourceType?: string;
+  region?: string;
+}): Promise<AllocationRecommendation[]> {
+  const url = new URL(`${requireApiBase()}/api/v1/allocations/recommendations`);
+  if (params?.resourceType) url.searchParams.set("resourceType", params.resourceType);
+  if (params?.region) url.searchParams.set("region", params.region);
+  const res = await fetchWithTimeout(url.toString(), await authedOpts());
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/v1/allocations/stats */
+export async function fetchAllocationStats(): Promise<AllocationStats> {
+  const res = await fetchWithTimeout(
+    `${requireApiBase()}/api/v1/allocations/stats`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/v1/allocations/region-summary */
+export async function fetchAllocationRegionSummary(): Promise<AllocationRegionSummary[]> {
+  const res = await fetchWithTimeout(
+    `${requireApiBase()}/api/v1/allocations/region-summary`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/v1/allocations/active */
+export async function fetchActiveAllocations(): Promise<ResourceAllocation[]> {
+  const res = await fetchWithTimeout(
+    `${requireApiBase()}/api/v1/allocations/active`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** POST /api/v1/allocations/{id}/approve */
+export async function approveAllocation(
+  id: string,
+  body?: { adjustedAmount?: number; notes?: string },
+): Promise<ResourceAllocation> {
+  const opts = await authedOpts();
+  const res = await fetch(`${requireApiBase()}/api/v1/allocations/${id}/approve`, {
+    ...opts,
+    method: "POST",
+    headers: { ...(opts.headers as Record<string, string>), "Content-Type": "application/json" },
+    body: JSON.stringify(body ?? {}),
+  });
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** POST /api/v1/allocations/{id}/reject?reason= */
+export async function rejectAllocation(id: string, reason: string): Promise<ResourceAllocation> {
+  const opts = await authedOpts();
+  const url = new URL(`${requireApiBase()}/api/v1/allocations/${id}/reject`);
+  url.searchParams.set("reason", reason);
+  const res = await fetch(url.toString(), { ...opts, method: "POST" });
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+// ─── Technicians / Field Officers (GET /api/technicians) ─────────────────────
+// Backend: TechnicianController → TechnicianDto.
+
+export interface TechnicianDto {
+  id: number;
+  appUserId: number | null;
+  name: string;
+  email: string | null;
+  stationHomeId: string | null;
+  qualifications: string[];
+}
+
+/** GET /api/technicians */
+export async function fetchTechnicians(): Promise<TechnicianDto[]> {
+  const res = await fetchWithTimeout(
+    `${requireApiBase()}/api/technicians`,
+    await authedOpts(),
+  );
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}
+
+/** GET /api/technicians/eligible?qualification= */
+export async function fetchEligibleTechnicians(qualification: string): Promise<TechnicianDto[]> {
+  const url = new URL(`${requireApiBase()}/api/technicians/eligible`);
+  url.searchParams.set("qualification", qualification);
+  const res = await fetchWithTimeout(url.toString(), await authedOpts());
+  if (!res.ok) throw new Error(await parseErrorMessage(res));
+  return res.json();
+}

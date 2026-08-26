@@ -34,7 +34,6 @@ import {
   Download,
   RefreshCw,
   Building2,
-  Target,
   Calendar,
 } from "lucide-react";
 import {
@@ -50,37 +49,15 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-
-interface DonorSummary {
-  donorId: string;
-  name: string;
-  contactEmail: string;
-  isActive: boolean;
-  totalFunding: number;
-  totalDisbursed: number;
-  fundedProgramCount: number;
-  totalBeneficiariesReached: number;
-  avgDisbursementRate: number;
-}
-
-interface FundedProgram {
-  programId: string;
-  programName: string;
-  pillar: string;
-  county: string;
-  amountKes: number;
-  disbursedToDate: number;
-  fiscalYear: number;
-  fundingStatus: string;
-  beneficiariesReached: number;
-  completionRate: number;
-}
-
-interface DisbursementTrend {
-  month: string;
-  disbursed: number;
-  committed: number;
-}
+import {
+  fetchDonors,
+  fetchDonorSummary,
+  fetchDonorTrends,
+  type DonorDto,
+  type DonorSummaryDto,
+  type FundedProgramSummary,
+  type DisbursementTrend,
+} from "@/lib/inuka-pulse/api";
 
 const PILLAR_COLORS: Record<string, string> = {
   Scholarship: "#8b5cf6",
@@ -92,100 +69,103 @@ const PILLAR_COLORS: Record<string, string> = {
 const PIE_COLORS = ["#8b5cf6", "#6366f1", "#f97316", "#06b6d4"];
 
 export default function DonorPortalPage() {
-  const [donors, setDonors] = useState<DonorSummary[]>([]);
+  const [donors, setDonors] = useState<DonorDto[]>([]);
   const [selectedDonor, setSelectedDonor] = useState<string>("all");
-  const [fundedPrograms, setFundedPrograms] = useState<FundedProgram[]>([]);
+  const [summary, setSummary] = useState<DonorSummaryDto | null>(null);
   const [disbursementTrends, setDisbursementTrends] = useState<DisbursementTrend[]>([]);
   const [loading, setLoading] = useState(true);
   const [fiscalYear, setFiscalYear] = useState<string>("2026");
 
   useEffect(() => {
-    fetchDonors();
+    fetchDonorList();
   }, []);
 
   useEffect(() => {
-    if (selectedDonor) {
-      fetchFundedPrograms();
-      fetchDisbursementTrends();
+    if (selectedDonor && selectedDonor !== "all") {
+      fetchSummary();
+      fetchTrends();
+    } else {
+      setSummary(null);
+      setDisbursementTrends([]);
+      setLoading(false);
     }
   }, [selectedDonor, fiscalYear]);
 
-  const fetchDonors = async () => {
+  const fetchDonorList = async () => {
     try {
-      const response = await fetch("/api/v1/donors");
-      if (response.ok) {
-        const data = await response.json();
-        setDonors(data);
-        if (data.length > 0) {
-          setSelectedDonor(data[0].donorId);
-        }
+      const data = await fetchDonors();
+      setDonors(data);
+      if (data.length > 0) {
+        setSelectedDonor(data[0].donorId);
+      } else {
+        setLoading(false);
       }
     } catch (error) {
       console.error("Failed to fetch donors:", error);
+      setDonors([]);
+      setLoading(false);
     }
   };
 
-  const fetchFundedPrograms = async () => {
+  const fetchSummary = async () => {
     setLoading(true);
     try {
-      const url = selectedDonor === "all" 
-        ? `/api/v1/donors/funding?fiscalYear=${fiscalYear}`
-        : `/api/v1/donors/${selectedDonor}/funding?fiscalYear=${fiscalYear}`;
-      const response = await fetch(url);
-      if (response.ok) {
-        const data = await response.json();
-        setFundedPrograms(data);
-      }
+      const data = await fetchDonorSummary(selectedDonor);
+      setSummary(data);
     } catch (error) {
-      console.error("Failed to fetch funded programs:", error);
+      console.error("Failed to fetch donor summary:", error);
+      setSummary(null);
     } finally {
       setLoading(false);
     }
   };
 
-  const fetchDisbursementTrends = async () => {
+  const fetchTrends = async () => {
     try {
-      const url = selectedDonor === "all"
-        ? `/api/v1/donors/trends?fiscalYear=${fiscalYear}`
-        : `/api/v1/donors/${selectedDonor}/trends?fiscalYear=${fiscalYear}`;
-      const response = await fetch(url);
-      if (response.ok) {
-        const data = await response.json();
-        setDisbursementTrends(data);
-      }
+      const data = await fetchDonorTrends(selectedDonor, Number(fiscalYear));
+      setDisbursementTrends(data);
     } catch (error) {
       console.error("Failed to fetch disbursement trends:", error);
+      setDisbursementTrends([]);
     }
   };
 
-  const currentDonor = donors.find(d => d.donorId === selectedDonor);
-  
-  // Calculate aggregated stats
-  const totalFunding = selectedDonor === "all" 
-    ? donors.reduce((sum, d) => sum + (d.totalFunding || 0), 0)
-    : currentDonor?.totalFunding || 0;
-  const totalDisbursed = selectedDonor === "all"
-    ? donors.reduce((sum, d) => sum + (d.totalDisbursed || 0), 0)
-    : currentDonor?.totalDisbursed || 0;
-  const totalBeneficiaries = selectedDonor === "all"
-    ? donors.reduce((sum, d) => sum + (d.totalBeneficiariesReached || 0), 0)
-    : currentDonor?.totalBeneficiariesReached || 0;
-  const programCount = selectedDonor === "all"
-    ? fundedPrograms.length
-    : currentDonor?.fundedProgramCount || 0;
+  const currentDonor = donors.find((d) => d.donorId === selectedDonor);
+  const fundedPrograms: FundedProgramSummary[] = summary?.programs ?? [];
+
+  // Aggregated KPIs. For a selected donor use the summary DTO; for "all" aggregate the donor list.
+  const totalFunding =
+    selectedDonor === "all"
+      ? donors.reduce((sum, d) => sum + (d.totalCommitment || 0), 0)
+      : summary?.totalCommitment ?? currentDonor?.totalCommitment ?? 0;
+  const totalDisbursed =
+    selectedDonor === "all"
+      ? donors.reduce((sum, d) => sum + (d.totalDisbursed || 0), 0)
+      : summary?.totalDisbursed ?? currentDonor?.totalDisbursed ?? 0;
+  const totalBeneficiaries =
+    selectedDonor === "all" ? 0 : summary?.totalBeneficiariesReached ?? 0;
+  const programCount =
+    selectedDonor === "all"
+      ? donors.reduce((sum, d) => sum + (d.fundedProgramCount || 0), 0)
+      : summary?.totalFundedPrograms ?? currentDonor?.fundedProgramCount ?? 0;
 
   const disbursementRate = totalFunding > 0 ? (totalDisbursed / totalFunding) * 100 : 0;
 
-  // Pillar distribution for pie chart
-  const pillarDistribution = fundedPrograms.reduce((acc, p) => {
-    const existing = acc.find(a => a.pillar === p.pillar);
-    if (existing) {
-      existing.value += p.amountKes;
-    } else {
-      acc.push({ pillar: p.pillar, value: p.amountKes });
-    }
-    return acc;
-  }, [] as { pillar: string; value: number }[]);
+  // Pillar distribution for pie chart — prefer the backend's pillarBreakdown
+  const pillarDistribution =
+    summary?.pillarBreakdown?.map((p) => ({ pillar: p.pillar, value: p.totalFunding })) ??
+    fundedPrograms.reduce(
+      (acc, p) => {
+        const existing = acc.find((a) => a.pillar === p.pillar);
+        if (existing) {
+          existing.value += p.fundingAmount;
+        } else {
+          acc.push({ pillar: p.pillar, value: p.fundingAmount });
+        }
+        return acc;
+      },
+      [] as { pillar: string; value: number }[],
+    );
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-KE", {
@@ -352,7 +332,7 @@ export default function DonorPortalPage() {
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={disbursementTrends}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
+                  <XAxis dataKey="quarter" />
                   <YAxis 
                     tickFormatter={(value) => 
                       `${(Number(value) / 1000000).toFixed(0)}M`
@@ -400,23 +380,24 @@ export default function DonorPortalPage() {
               </TableHeader>
               <TableBody>
                 {fundedPrograms.map((program) => {
-                  const utilization = program.amountKes > 0 
-                    ? (program.disbursedToDate / program.amountKes) * 100 
-                    : 0;
+                  const utilization =
+                    program.fundingAmount > 0
+                      ? (program.disbursedAmount / program.fundingAmount) * 100
+                      : 0;
                   return (
-                    <TableRow key={`${program.programId}-${program.fiscalYear}`}>
+                    <TableRow key={program.programId}>
                       <TableCell>
                         <div className="font-medium">{program.programName}</div>
                         <div className="text-xs text-muted-foreground">
-                          FY {program.fiscalYear}
+                          {program.completionRate?.toFixed(0) ?? 0}% completion
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge 
-                          style={{ 
+                        <Badge
+                          style={{
                             backgroundColor: `${PILLAR_COLORS[program.pillar]}20`,
                             color: PILLAR_COLORS[program.pillar],
-                            borderColor: PILLAR_COLORS[program.pillar]
+                            borderColor: PILLAR_COLORS[program.pillar],
                           }}
                           variant="outline"
                         >
@@ -425,10 +406,10 @@ export default function DonorPortalPage() {
                       </TableCell>
                       <TableCell>{program.county}</TableCell>
                       <TableCell className="text-right">
-                        {formatCurrency(program.amountKes)}
+                        {formatCurrency(program.fundingAmount)}
                       </TableCell>
                       <TableCell className="text-right">
-                        {formatCurrency(program.disbursedToDate)}
+                        {formatCurrency(program.disbursedAmount)}
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center gap-2">
@@ -437,13 +418,11 @@ export default function DonorPortalPage() {
                         </div>
                       </TableCell>
                       <TableCell className="text-right">
-                        {program.beneficiariesReached?.toLocaleString() || 0}
+                        {program.beneficiariesServed?.toLocaleString() || 0}
                       </TableCell>
                       <TableCell>
-                        <Badge 
-                          variant={program.fundingStatus === "active" ? "default" : "secondary"}
-                        >
-                          {program.fundingStatus}
+                        <Badge variant={program.status === "active" ? "default" : "secondary"}>
+                          {program.status}
                         </Badge>
                       </TableCell>
                     </TableRow>
