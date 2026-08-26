@@ -22,4 +22,7 @@ export const cachedFetchBatches         = cache(fetchBatches);
 
 // These don't use mock fallback
 export const cachedFetchTelemetrySummary = cache(fetchTelemetrySummary);
-export const cachedFetchSiteNameMap      = cache(fetchSiteNameMap);
+
+// siteId → siteName lookup map (derived from risk-summary); used by
+// technicians, nearby-alerts, diagnostics, and site risk-profile pages.
+export const cachedFetchSiteNameMap = cache(fetchSiteNameMap);

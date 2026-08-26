@@ -38,25 +38,9 @@ import {
   Download,
   RefreshCw,
 } from "lucide-react";
+import { fetchPrograms as fetchProgramsApi, type ProgramDto } from "@/lib/inuka-pulse/api";
 
-interface Program {
-  programId: string;
-  pillar: string;
-  name: string;
-  county: string;
-  startDate: string;
-  endDate: string | null;
-  targetCapacity: number;
-  status: string;
-  description: string;
-  currentEnrollment: number;
-  capacityUtilization: number;
-  totalFunding: number;
-  disbursedAmount: number;
-  fundingGap: number;
-  cohortCount: number;
-  donors: string[];
-}
+type Program = ProgramDto;
 
 const PILLARS = ["Scholarship", "Plus", "Vocational", "Tech"];
 
@@ -77,6 +61,7 @@ export default function ProgramsPage() {
   const router = useRouter();
   const [programs, setPrograms] = useState<Program[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [pillarFilter, setPillarFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("all");
@@ -87,20 +72,17 @@ export default function ProgramsPage() {
 
   const fetchPrograms = async () => {
     setLoading(true);
+    setError(null);
     try {
-      let url = "/api/v1/programs";
-      const params = new URLSearchParams();
-      if (pillarFilter !== "all") params.append("pillar", pillarFilter);
-      if (statusFilter === "active") params.append("status", "active");
-      if (params.toString()) url += `?${params.toString()}`;
-
-      const response = await fetch(url);
-      if (response.ok) {
-        const data = await response.json();
-        setPrograms(data);
-      }
-    } catch (error) {
-      console.error("Failed to fetch programs:", error);
+      const data = await fetchProgramsApi({
+        pillar: pillarFilter !== "all" ? pillarFilter : undefined,
+        status: statusFilter === "active" ? "active" : undefined,
+      });
+      setPrograms(data);
+    } catch (err) {
+      console.error("Failed to fetch programs:", err);
+      setError(err instanceof Error ? err.message : "Failed to load programs");
+      setPrograms([]);
     } finally {
       setLoading(false);
     }
@@ -289,6 +271,15 @@ export default function ProgramsPage() {
             <div className="flex justify-center py-8">
               <RefreshCw className="h-8 w-8 animate-spin text-muted-foreground" />
             </div>
+          ) : error ? (
+            <div className="flex flex-col items-center gap-2 py-8 text-center text-sm text-destructive">
+              <p>Could not load programs from the backend.</p>
+              <p className="text-muted-foreground">{error}</p>
+              <Button variant="outline" size="sm" onClick={fetchPrograms}>
+                <RefreshCw className="h-4 w-4 mr-2" />
+                Retry
+              </Button>
+            </div>
           ) : (
             <Table>
               <TableHeader>
@@ -364,7 +355,7 @@ export default function ProgramsPage() {
                         ))}
                         {(program.donors || []).length > 2 && (
                           <Badge variant="outline" className="text-xs">
-                            +{program.donors.length - 2}
+                            +{(program.donors || []).length - 2}
                           </Badge>
                         )}
                       </div>
