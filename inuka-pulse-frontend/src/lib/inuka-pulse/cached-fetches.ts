@@ -12,7 +12,7 @@
  */
 
 import { cache } from "react";
-import { fetchAlerts, fetchQualitySummary, fetchRiskSummary, fetchTelemetrySummary, fetchBatches } from "./api";
+import { fetchAlerts, fetchQualitySummary, fetchRiskSummary, fetchTelemetrySummary, fetchBatches, fetchSiteNameMap } from "./api";
 
 // These return WithMockIndicator<T> wrappers — check isMock flag!
 export const cachedFetchAlerts          = cache(fetchAlerts);
@@ -20,5 +20,6 @@ export const cachedFetchQualitySummary  = cache(fetchQualitySummary);
 export const cachedFetchRiskSummary     = cache(fetchRiskSummary);
 export const cachedFetchBatches         = cache(fetchBatches);
 
-// This one doesn't use mock fallback
+// These don't use mock fallback
 export const cachedFetchTelemetrySummary = cache(fetchTelemetrySummary);
+export const cachedFetchSiteNameMap      = cache(fetchSiteNameMap);
