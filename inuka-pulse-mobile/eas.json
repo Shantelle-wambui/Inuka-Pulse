@@ -1,22 +1,27 @@
 {
   "cli": {
-    "version": ">= 16.0.0"
+    "version": ">= 16.0.0",
+    "appVersionSource": "local"
   },
   "build": {
     "preview": {
       "android": {
         "buildType": "apk"
       },
+      "node": "22.17.1",
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://inuka-pulse-production-1b54.up.railway.app"
+        "EXPO_PUBLIC_API_URL": "https://inuka-pulse-production-1b54.up.railway.app",
+        "EAS_SKIP_AUTO_FINGERPRINT": "1"
       }
     },
     "production": {
       "android": {
         "buildType": "app-bundle"
       },
+      "node": "22.17.1",
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://inuka-pulse-production-1b54.up.railway.app"
+        "EXPO_PUBLIC_API_URL": "https://inuka-pulse-production-1b54.up.railway.app",
+        "EAS_SKIP_AUTO_FINGERPRINT": "1"
       }
     }
   }
