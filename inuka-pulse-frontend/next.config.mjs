@@ -21,8 +21,7 @@ const nextConfig = {
       // Analytics routes (moved from inuka)
       { source: "/dashboard/inuka/analytics", destination: "/dashboard/analytics", permanent: false },
       { source: "/dashboard/inuka/roi", destination: "/dashboard/analytics/roi", permanent: false },
-      // Sites to Locations (future)
-      { source: "/dashboard/sites", destination: "/dashboard/locations", permanent: false },
+
       // Old maintenance routes to disbursements (future)
       { source: "/dashboard/maintenance/work-orders", destination: "/dashboard/disbursements/pending", permanent: false },
       { source: "/dashboard/maintenance/history", destination: "/dashboard/disbursements/history", permanent: false },
