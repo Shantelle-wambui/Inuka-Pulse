@@ -11,7 +11,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -38,18 +37,13 @@ import {
 } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  Users,
   TrendingUp,
   MapPin,
-  AlertTriangle,
   Check,
   X,
   RefreshCw,
   Brain,
   DollarSign,
-  UserCog,
-  GraduationCap,
-  ArrowRight,
   Sparkles,
 } from "lucide-react";
 import {
@@ -67,56 +61,19 @@ import {
   PolarRadiusAxis,
   Radar,
 } from "recharts";
+import {
+  fetchAllocationRecommendations,
+  fetchAllocationRegionSummary,
+  fetchAllocationStats,
+  approveAllocation,
+  rejectAllocation,
+  type AllocationRecommendation,
+  type AllocationRegionSummary,
+  type AllocationStats,
+} from "@/lib/inuka-pulse/api";
 
-interface AllocationRecommendation {
-  id: string;
-  programId: string;
-  programName: string;
-  pillar: string;
-  region: string;
-  resourceType: "field_officer" | "training_capacity" | "budget";
-  currentAllocation: number;
-  recommendedAllocation: number;
-  changeAmount: number;
-  changePercent: number;
-  confidenceScore: number;
-  rationale: string;
-  demandForecast: number;
-  reachForecast: number;
-  dropoutRisk: number;
-  status: "pending" | "approved" | "rejected";
-  createdAt: string;
-}
-
-interface RegionSummary {
-  region: string;
-  programs: number;
-  totalBeneficiaries: number;
-  avgDropoutRisk: number;
-  demandGrowth: number;
-  fieldOfficerCoverage: number;
-  budgetUtilization: number;
-}
-
-interface AllocationStats {
-  pendingRecommendations: number;
-  approvedThisMonth: number;
-  rejectedThisMonth: number;
-  avgConfidenceScore: number;
-  totalReallocationValue: number;
-}
-
-const RESOURCE_TYPE_LABELS: Record<string, string> = {
-  field_officer: "Field Officers",
-  training_capacity: "Training Capacity",
-  budget: "Budget",
-};
-
-const RESOURCE_TYPE_ICONS: Record<string, typeof Users> = {
-  field_officer: UserCog,
-  training_capacity: GraduationCap,
-  budget: DollarSign,
-};
+// Local UI alias — RegionSummary from the backend
+type RegionSummary = AllocationRegionSummary;
 
 export default function AllocationsPage() {
   const [recommendations, setRecommendations] = useState<AllocationRecommendation[]>([]);
@@ -146,71 +103,58 @@ export default function AllocationsPage() {
 
   const fetchRecommendations = async () => {
     try {
-      const params = new URLSearchParams();
-      if (selectedResourceType !== "all") params.append("resourceType", selectedResourceType);
-      if (selectedRegion !== "all") params.append("region", selectedRegion);
-      
-      const response = await fetch(`/api/v1/allocations/recommendations?${params}`);
-      if (response.ok) {
-        const data = await response.json();
-        setRecommendations(data);
-      }
+      const data = await fetchAllocationRecommendations({
+        resourceType: selectedResourceType !== "all" ? selectedResourceType : undefined,
+        region: selectedRegion !== "all" ? selectedRegion : undefined,
+      });
+      setRecommendations(data);
     } catch (error) {
       console.error("Failed to fetch recommendations:", error);
+      setRecommendations([]);
     }
   };
 
   const fetchRegionSummary = async () => {
     try {
-      const response = await fetch("/api/v1/allocations/region-summary");
-      if (response.ok) {
-        const data = await response.json();
-        setRegionSummary(data);
-      }
+      const data = await fetchAllocationRegionSummary();
+      setRegionSummary(data);
     } catch (error) {
       console.error("Failed to fetch region summary:", error);
+      setRegionSummary([]);
     }
   };
 
   const fetchStats = async () => {
     try {
-      const response = await fetch("/api/v1/allocations/stats");
-      if (response.ok) {
-        const data = await response.json();
-        setStats(data);
-      }
+      const data = await fetchAllocationStats();
+      setStats(data);
     } catch (error) {
       console.error("Failed to fetch stats:", error);
+      setStats(null);
     }
   };
 
   const handleApprove = async (recommendation: AllocationRecommendation) => {
+    if (!recommendation.id) return;
     try {
-      const response = await fetch(`/api/v1/allocations/${recommendation.id}/approve`, {
-        method: "POST",
-      });
-      if (response.ok) {
-        setRecommendations(prev => 
-          prev.map(r => r.id === recommendation.id ? { ...r, status: "approved" } : r)
-        );
-        setApprovalDialog(null);
-      }
+      await approveAllocation(recommendation.id);
+      setRecommendations((prev) =>
+        prev.map((r) => (r.id === recommendation.id ? { ...r, status: "approved" } : r)),
+      );
+      setApprovalDialog(null);
     } catch (error) {
       console.error("Failed to approve recommendation:", error);
     }
   };
 
   const handleReject = async (recommendation: AllocationRecommendation) => {
+    if (!recommendation.id) return;
     try {
-      const response = await fetch(`/api/v1/allocations/${recommendation.id}/reject`, {
-        method: "POST",
-      });
-      if (response.ok) {
-        setRecommendations(prev => 
-          prev.map(r => r.id === recommendation.id ? { ...r, status: "rejected" } : r)
-        );
-        setApprovalDialog(null);
-      }
+      await rejectAllocation(recommendation.id, "Rejected via dashboard review");
+      setRecommendations((prev) =>
+        prev.map((r) => (r.id === recommendation.id ? { ...r, status: "rejected" } : r)),
+      );
+      setApprovalDialog(null);
     } catch (error) {
       console.error("Failed to reject recommendation:", error);
     }
@@ -225,24 +169,20 @@ export default function AllocationsPage() {
     }).format(amount);
   };
 
-  const formatResourceAmount = (type: string, amount: number) => {
-    if (type === "budget") return formatCurrency(amount);
-    if (type === "training_capacity") return `${amount} slots`;
-    return `${amount} officers`;
-  };
-
-  const pendingRecommendations = recommendations.filter(r => r.status === "pending");
-  const uniqueRegions = [...new Set(recommendations.map(r => r.region))];
+  const pendingRecommendations = recommendations.filter((r) => r.status === "pending");
+  const uniqueRegions = [...new Set(recommendations.map((r) => r.county))];
 
   // Prepare radar chart data for selected region
-  const selectedRegionData = regionSummary.find(r => r.region === selectedRegion) || regionSummary[0];
-  const radarData = selectedRegionData ? [
-    { metric: "Demand Growth", value: Math.min(selectedRegionData.demandGrowth * 10, 100) },
-    { metric: "FO Coverage", value: selectedRegionData.fieldOfficerCoverage },
-    { metric: "Budget Util.", value: selectedRegionData.budgetUtilization },
-    { metric: "Dropout Risk", value: 100 - selectedRegionData.avgDropoutRisk * 100 },
-    { metric: "Programs", value: Math.min(selectedRegionData.programs * 5, 100) },
-  ] : [];
+  const selectedRegionData = regionSummary.find((r) => r.region === selectedRegion) || regionSummary[0];
+  const radarData = selectedRegionData
+    ? [
+        { metric: "Demand Growth", value: Math.min(selectedRegionData.demandGrowth * 10, 100) },
+        { metric: "FO Coverage", value: selectedRegionData.fieldOfficerCoverage },
+        { metric: "Budget Util.", value: selectedRegionData.budgetUtilization },
+        { metric: "Dropout Risk", value: 100 - selectedRegionData.avgDropoutRisk * 100 },
+        { metric: "Programs", value: Math.min(selectedRegionData.programs * 5, 100) },
+      ]
+    : [];
 
   return (
     <div className="space-y-6 p-6">
@@ -385,68 +325,50 @@ export default function AllocationsPage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Program</TableHead>
-                      <TableHead>Region</TableHead>
-                      <TableHead>Resource</TableHead>
-                      <TableHead className="text-right">Current</TableHead>
-                      <TableHead className="text-center">Change</TableHead>
-                      <TableHead className="text-right">Recommended</TableHead>
-                      <TableHead>Confidence</TableHead>
+                      <TableHead>County</TableHead>
+                      <TableHead>Pillar</TableHead>
+                      <TableHead>Rationale</TableHead>
+                      <TableHead>Priority</TableHead>
                       <TableHead>Actions</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {pendingRecommendations.map((rec) => {
-                      const Icon = RESOURCE_TYPE_ICONS[rec.resourceType];
-                      const isIncrease = rec.changeAmount > 0;
+                    {pendingRecommendations.map((rec, idx) => {
+                      const priority = rec.priorityScore ?? 0;
                       return (
-                        <TableRow key={rec.id}>
-                          <TableCell>
-                            <div className="font-medium">{rec.programName}</div>
-                            <Badge variant="outline" className="text-xs">
-                              {rec.pillar}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>{rec.region}</TableCell>
+                        <TableRow key={rec.id ?? `${rec.county}-${rec.pillar}-${idx}`}>
                           <TableCell>
                             <div className="flex items-center gap-2">
-                              <Icon className="h-4 w-4 text-muted-foreground" />
-                              <span>{RESOURCE_TYPE_LABELS[rec.resourceType]}</span>
+                              <MapPin className="h-4 w-4 text-muted-foreground" />
+                              <span className="font-medium">{rec.county}</span>
                             </div>
                           </TableCell>
-                          <TableCell className="text-right">
-                            {formatResourceAmount(rec.resourceType, rec.currentAllocation)}
+                          <TableCell>
+                            {rec.pillar ? (
+                              <Badge variant="outline" className="text-xs">
+                                {rec.pillar}
+                              </Badge>
+                            ) : (
+                              <span className="text-muted-foreground text-xs">—</span>
+                            )}
                           </TableCell>
-                          <TableCell className="text-center">
-                            <div className={`flex items-center justify-center gap-1 ${
-                              isIncrease ? "text-green-600" : "text-red-600"
-                            }`}>
-                              <ArrowRight className="h-4 w-4" />
-                              <span>
-                                {isIncrease ? "+" : ""}{rec.changePercent.toFixed(0)}%
-                              </span>
-                            </div>
-                          </TableCell>
-                          <TableCell className="text-right font-medium">
-                            {formatResourceAmount(rec.resourceType, rec.recommendedAllocation)}
+                          <TableCell className="max-w-[280px]">
+                            <span className="text-sm text-muted-foreground line-clamp-2">
+                              {rec.rationale}
+                            </span>
                           </TableCell>
                           <TableCell>
                             <div className="flex items-center gap-2">
-                              <Progress 
-                                value={rec.confidenceScore * 100} 
-                                className="w-16 h-2"
-                              />
-                              <span className="text-sm">
-                                {(rec.confidenceScore * 100).toFixed(0)}%
-                              </span>
+                              <Progress value={Math.min(priority, 100)} className="w-16 h-2" />
+                              <span className="text-sm font-medium">{priority.toFixed(0)}</span>
                             </div>
                           </TableCell>
                           <TableCell>
                             <div className="flex gap-1">
                               <Dialog>
                                 <DialogTrigger asChild>
-                                  <Button 
-                                    variant="outline" 
+                                  <Button
+                                    variant="outline"
                                     size="sm"
                                     onClick={() => setApprovalDialog(rec)}
                                   >
@@ -457,38 +379,27 @@ export default function AllocationsPage() {
                                   <DialogHeader>
                                     <DialogTitle>Review Allocation Recommendation</DialogTitle>
                                     <DialogDescription>
-                                      Approve or reject this ML-generated recommendation
+                                      Approve or reject this Model 5 recommendation
                                     </DialogDescription>
                                   </DialogHeader>
-                                  
+
                                   <div className="space-y-4 py-4">
                                     <div className="grid grid-cols-2 gap-4">
                                       <div>
-                                        <label className="text-sm font-medium">Program</label>
-                                        <p className="text-sm text-muted-foreground">{rec.programName}</p>
+                                        <label className="text-sm font-medium">County</label>
+                                        <p className="text-sm text-muted-foreground">{rec.county}</p>
                                       </div>
                                       <div>
-                                        <label className="text-sm font-medium">Region</label>
-                                        <p className="text-sm text-muted-foreground">{rec.region}</p>
+                                        <label className="text-sm font-medium">Pillar</label>
+                                        <p className="text-sm text-muted-foreground">{rec.pillar ?? "—"}</p>
                                       </div>
                                     </div>
 
                                     <div>
-                                      <label className="text-sm font-medium">Recommendation</label>
-                                      <div className="flex items-center gap-4 mt-1">
-                                        <div className="text-center">
-                                          <p className="text-lg font-medium">
-                                            {formatResourceAmount(rec.resourceType, rec.currentAllocation)}
-                                          </p>
-                                          <p className="text-xs text-muted-foreground">Current</p>
-                                        </div>
-                                        <ArrowRight className="h-5 w-5 text-muted-foreground" />
-                                        <div className="text-center">
-                                          <p className="text-lg font-medium text-primary">
-                                            {formatResourceAmount(rec.resourceType, rec.recommendedAllocation)}
-                                          </p>
-                                          <p className="text-xs text-muted-foreground">Recommended</p>
-                                        </div>
+                                      <label className="text-sm font-medium">Priority Score</label>
+                                      <div className="flex items-center gap-2 mt-1">
+                                        <Progress value={Math.min(priority, 100)} className="h-2" />
+                                        <span className="text-sm font-medium">{priority.toFixed(1)}</span>
                                       </div>
                                     </div>
 
@@ -499,30 +410,25 @@ export default function AllocationsPage() {
                                       </p>
                                     </div>
 
-                                    <div className="grid grid-cols-3 gap-4 pt-2">
-                                      <div className="text-center p-3 bg-muted rounded-lg">
-                                        <TrendingUp className="h-4 w-4 mx-auto mb-1" />
-                                        <p className="text-sm font-medium">{rec.demandForecast}%</p>
-                                        <p className="text-xs text-muted-foreground">Demand Growth</p>
+                                    {rec.components && Object.keys(rec.components).length > 0 && (
+                                      <div>
+                                        <label className="text-sm font-medium">Score Breakdown</label>
+                                        <div className="mt-1 space-y-1">
+                                          {Object.entries(rec.components).map(([key, value]) => (
+                                            <div key={key} className="flex justify-between text-sm">
+                                              <span className="text-muted-foreground capitalize">
+                                                {key.replace(/_/g, " ")}
+                                              </span>
+                                              <span className="font-medium">{value.toFixed(2)}</span>
+                                            </div>
+                                          ))}
+                                        </div>
                                       </div>
-                                      <div className="text-center p-3 bg-muted rounded-lg">
-                                        <Users className="h-4 w-4 mx-auto mb-1" />
-                                        <p className="text-sm font-medium">{rec.reachForecast}</p>
-                                        <p className="text-xs text-muted-foreground">Reach Forecast</p>
-                                      </div>
-                                      <div className="text-center p-3 bg-muted rounded-lg">
-                                        <AlertTriangle className="h-4 w-4 mx-auto mb-1" />
-                                        <p className="text-sm font-medium">{(rec.dropoutRisk * 100).toFixed(0)}%</p>
-                                        <p className="text-xs text-muted-foreground">Dropout Risk</p>
-                                      </div>
-                                    </div>
+                                    )}
                                   </div>
 
                                   <DialogFooter>
-                                    <Button 
-                                      variant="outline" 
-                                      onClick={() => handleReject(rec)}
-                                    >
+                                    <Button variant="outline" onClick={() => handleReject(rec)}>
                                       <X className="h-4 w-4 mr-2" />
                                       Reject
                                     </Button>

@@ -1,55 +1,21 @@
 import { UserCog, AlertCircle } from "lucide-react";
-import { getAuthToken } from "@/server/server-actions";
 import { BackendError } from "@/components/backend-error";
 import { Badge } from "@/components/ui/badge";
 import { cachedFetchSiteNameMap } from "@/lib/inuka-pulse/cached-fetches";
-
-const API_BASE = process.env.NEXT_PUBLIC_INUKA_API_URL ?? "";
-
-interface Technician {
-  id: number;
-  appUserId: number;
-  stationHomeId?: string;
-  name?: string;
-  email?: string;
-  qualifications?: string[]; // just qualification type names from the API
-}
-
-async function fetchTechnicians(token: string | undefined): Promise<Technician[]> {
-  const res = await fetch(`${API_BASE}/api/technicians`, {
-    cache: "no-store",
-    headers: token ? { Authorization: `Bearer ${token}` } : {},
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.json();
-}
-
-const SITE_NAMES: Record<string, string> = {}; // populated from backend at render time — see TechniciansPage
-
-function QualBadge({ expiresAt }: { expiresAt?: string }) {
-  if (!expiresAt) return <Badge variant="outline" className="text-xs">No expiry</Badge>;
-  const exp = new Date(expiresAt);
-  const now = new Date();
-  const daysLeft = Math.floor((exp.getTime() - now.getTime()) / 86_400_000);
-  if (daysLeft < 0)
-    return <Badge variant="destructive" className="text-xs">Expired</Badge>;
-  if (daysLeft < 30)
-    return <Badge className="bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 text-xs">Expires soon</Badge>;
-  return <Badge className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 text-xs">Valid</Badge>;
-}
+import { fetchTechnicians, type TechnicianDto } from "@/lib/inuka-pulse/api";
 
 export default async function TechniciansPage() {
-  let technicians: Technician[] = [];
+  let technicians: TechnicianDto[] = [];
   let error: string | null = null;
   let siteNames: Record<string, string> = {};
 
   try {
-    const [token, names] = await Promise.all([
-      getAuthToken(),
+    const [names, techs] = await Promise.all([
       cachedFetchSiteNameMap(),
+      fetchTechnicians(),
     ]);
     siteNames = names;
-    technicians = await fetchTechnicians(token);
+    technicians = techs;
   } catch (e: unknown) {
     error = e instanceof Error ? e.message : "Failed to load technicians";
   }
