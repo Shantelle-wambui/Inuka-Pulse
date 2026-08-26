@@ -47,6 +47,14 @@ import {
   Bar,
 } from "recharts";
 
+const API_BASE = process.env.NEXT_PUBLIC_INUKA_API_URL ?? "";
+
+function getAuthHeaders(): HeadersInit {
+  if (typeof window === "undefined") return {};
+  const token = localStorage.getItem("token");
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
 interface ImpactMetrics {
   totalBeneficiaries: number;
   activeBeneficiaries: number;
@@ -124,7 +132,9 @@ export default function ImpactPage() {
   const fetchMetrics = async () => {
     try {
       const pillarParam = selectedPillar !== "All" ? `&pillar=${selectedPillar}` : "";
-      const response = await fetch(`/api/v1/analytics/impact?timeRange=${timeRange}${pillarParam}`);
+      const response = await fetch(`${API_BASE}/api/v1/analytics/impact?timeRange=${timeRange}${pillarParam}`, {
+        headers: getAuthHeaders(),
+      });
       if (response.ok) {
         const data = await response.json();
         setMetrics(data);
@@ -136,7 +146,9 @@ export default function ImpactPage() {
 
   const fetchPillarMetrics = async () => {
     try {
-      const response = await fetch(`/api/v1/analytics/impact/by-pillar?timeRange=${timeRange}`);
+      const response = await fetch(`${API_BASE}/api/v1/analytics/impact/by-pillar?timeRange=${timeRange}`, {
+        headers: getAuthHeaders(),
+      });
       if (response.ok) {
         const data = await response.json();
         setPillarMetrics(data);
@@ -149,7 +161,9 @@ export default function ImpactPage() {
   const fetchTrendData = async () => {
     try {
       const pillarParam = selectedPillar !== "All" ? `&pillar=${selectedPillar}` : "";
-      const response = await fetch(`/api/v1/analytics/impact/trends?timeRange=${timeRange}${pillarParam}`);
+      const response = await fetch(`${API_BASE}/api/v1/analytics/impact/trends?timeRange=${timeRange}${pillarParam}`, {
+        headers: getAuthHeaders(),
+      });
       if (response.ok) {
         const data = await response.json();
         setTrendData(data);
@@ -162,7 +176,9 @@ export default function ImpactPage() {
   const fetchCountyReach = async () => {
     try {
       const pillarParam = selectedPillar !== "All" ? `&pillar=${selectedPillar}` : "";
-      const response = await fetch(`/api/v1/analytics/impact/county-reach?timeRange=${timeRange}${pillarParam}`);
+      const response = await fetch(`${API_BASE}/api/v1/analytics/impact/county-reach?timeRange=${timeRange}${pillarParam}`, {
+        headers: getAuthHeaders(),
+      });
       if (response.ok) {
         const data = await response.json();
         setCountyReach(data);

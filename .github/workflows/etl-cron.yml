@@ -39,6 +39,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Generate synthetic data
+        run: python -m src.generate_inuka_data
+        timeout-minutes: 5
+
       - name: Run feature engineering
         run: python -m src.inuka_features
         timeout-minutes: 12   # give feature engineering more time
