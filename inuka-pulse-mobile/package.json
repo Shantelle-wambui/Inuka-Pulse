@@ -4,7 +4,7 @@
   "main": "index.ts",
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
-    "axios": "^1.19.0",
+    "axios": "^1.7.9",
     "expo": "~54.0.0",
     "expo-constants": "~17.0.0",
     "expo-font": "~13.0.0",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
-    "typescript": "~6.0.3"
+    "typescript": "~5.8.3"
   },
   "scripts": {
     "start": "expo start",
