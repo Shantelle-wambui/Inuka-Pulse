@@ -14,11 +14,13 @@
     "expo-secure-store": "~14.2.0",
     "expo-status-bar": "~2.2.3",
     "react": "^19.1.0",
+    "react-dom": "^19.2.8",
     "react-native": "^0.81.5",
     "react-native-gesture-handler": "~2.21.0",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "~5.6.0",
     "react-native-screens": "~4.16.0",
+    "scheduler": "^0.27.0",
     "zustand": "^5.0.15"
   },
   "devDependencies": {
