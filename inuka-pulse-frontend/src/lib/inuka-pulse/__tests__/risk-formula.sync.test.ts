@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 /**
  * Contract tests to verify the risk formula stays in sync with the backend.
  *
@@ -13,6 +14,7 @@
  * The tests are written to be framework-agnostic.
  */
 
+import { describe, it, test, expect } from "vitest";
 import {
   computeRiskScore,
   scoreToBand,

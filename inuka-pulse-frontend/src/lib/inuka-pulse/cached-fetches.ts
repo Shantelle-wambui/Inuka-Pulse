@@ -20,7 +20,7 @@ export const cachedFetchQualitySummary  = cache(fetchQualitySummary);
 export const cachedFetchRiskSummary     = cache(fetchRiskSummary);
 export const cachedFetchBatches         = cache(fetchBatches);
 
-// This one doesn't use mock fallback
+// These don't use mock fallback
 export const cachedFetchTelemetrySummary = cache(fetchTelemetrySummary);
 
 // siteId → siteName lookup map (derived from risk-summary); used by
