@@ -35,14 +35,29 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run unit tests
-        run: pytest tests/ -v
-
       - name: Generate synthetic Inuka data
         run: python3 src/generate_inuka_data.py
 
-      - name: Run feature engineering
+      - name: Run extended ETL (produces dashboard_metrics_export.json)
+        run: python -m src.extended_etl
+
+      - name: Run feature engineering (produces fact_beneficiary_features.parquet)
         run: python -m src.inuka_features
+
+      - name: Train demand forecast model (produces inuka_demand_forecast_v1.pkl)
+        run: python -m src.models.demand_forecast --train
+
+      - name: Train outcome forecast model (produces inuka_outcome_forecast_v1.pkl)
+        run: python -m src.models.outcome_forecast --train
+
+      - name: Generate demand forecasts (produces demand_forecasts.json)
+        run: python -m src.models.demand_forecast --predict
+
+      - name: Generate outcome predictions (produces outcome_predictions.json)
+        run: python -m src.models.outcome_forecast --predict
+
+      - name: Generate allocation recommendations (produces allocation_recommendations.json)
+        run: python -m src.models.allocation_optimizer --generate
 
       - name: Run ML scoring
         run: python -m src.inuka_predict --score
@@ -50,10 +65,15 @@ jobs:
       - name: Run live bridge (generate live_batch.json)
         run: python -m src.inuka_live_bridge
 
+      - name: Run all tests (models and warehouse files now exist)
+        run: pytest tests/ -v
+
       - name: Verify output files exist
         run: |
           test -f data/warehouse/live_batch.json || (echo "live_batch.json missing" && exit 1)
           test -f data/warehouse/inuka_predictions_export.json || (echo "inuka_predictions_export.json missing" && exit 1)
+          test -f models/inuka_demand_forecast_v1.pkl || (echo "demand model missing" && exit 1)
+          test -f models/inuka_outcome_forecast_v1.pkl || (echo "outcome model missing" && exit 1)
           echo "Pipeline output files verified."
 
   # ── Spring Boot Backend ────────────────────────────────────────────────────
