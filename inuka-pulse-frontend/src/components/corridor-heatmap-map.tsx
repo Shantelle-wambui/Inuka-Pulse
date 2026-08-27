@@ -7,25 +7,25 @@ import type { CorridorAsset, HeatPoint } from "@/lib/inuka-pulse/corridor";
 // ── Constants ─────────────────────────────────────────────────────────────────
 
 const BAND_COLOR: Record<HeatPoint["band"], string> = {
-  low:      "#22c55e",
-  medium:   "#eab308",
-  high:     "#f97316",
+  low: "#22c55e",
+  medium: "#eab308",
+  high: "#f97316",
   critical: "#ef4444",
 };
 
 const BAND_RADIUS: Record<HeatPoint["band"], number> = {
-  low:      7,
-  medium:   9,
-  high:     11,
+  low: 7,
+  medium: 9,
+  high: 11,
   critical: 14,
 };
 
 const HEAT_GRADIENT = {
-  0.0:  "#22c55e",
-  0.30: "#22c55e",
+  0.0: "#22c55e",
+  0.3: "#22c55e",
   0.55: "#eab308",
   0.75: "#f97316",
-  1.0:  "#ef4444",
+  1.0: "#ef4444",
 };
 
 // ── Tile layer definitions ─────────────────────────────────────────────────────
@@ -41,8 +41,7 @@ const TILE_LAYERS: Record<TileTheme, { url: string; attribution: string; name: s
   terrain: {
     name: "Terrain",
     url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
-    attribution:
-      "Tiles © <a href='https://www.esri.com/'>Esri</a> &mdash; Esri, USGS, NOAA",
+    attribution: "Tiles © <a href='https://www.esri.com/'>Esri</a> &mdash; Esri, USGS, NOAA",
   },
 };
 
@@ -82,16 +81,18 @@ function buildPopupHtml(p: HeatPoint, meta?: CorridorAsset): string {
   const bandColor = BAND_COLOR[p.band];
 
   // Use meta.segment as county name, meta.nearestSiteCode as cohort ID
-  const county   = meta?.segment  ?? "—";
+  const county = meta?.segment ?? "—";
   const cohortId = meta?.nearestSiteCode ?? p.assetId;
-  const pillar   = pillarFromId(p.assetId);
+  const pillar = pillarFromId(p.assetId);
 
   // meta.chainageKmApprox repurposed → at-risk beneficiary count (from generate_inuka_data.py)
-  const atRisk = meta && meta.chainageKmApprox > 0 ? `${Math.round(meta.chainageKmApprox)} beneficiaries at risk` : null;
+  const atRisk =
+    meta && meta.chainageKmApprox > 0 ? `${Math.round(meta.chainageKmApprox)} beneficiaries at risk` : null;
 
   // meta.floodLandslideRiskZone repurposed → days since last field visit
   const visitDays = meta?.floodLandslideRiskZone
-    ? ({ high_flood: "21+ days", moderate_flood: "8–20 days", low: "Within 7 days" }[meta.floodLandslideRiskZone] ?? "—")
+    ? ({ high_flood: "21+ days", moderate_flood: "8–20 days", low: "Within 7 days" }[meta.floodLandslideRiskZone] ??
+      "—")
     : null;
 
   const siteLink = cohortId
@@ -133,13 +134,15 @@ interface CorridorHeatmapMapProps {
 
 export function CorridorHeatmapMap({ points, assets, selectedAssetId, onSelect }: CorridorHeatmapMapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
-  const mapRef          = useRef<import("leaflet").Map | null>(null);
-  const tileLayerRef    = useRef<import("leaflet").TileLayer | null>(null);
-  const onSelectRef     = useRef(onSelect);
-  useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
+  const mapRef = useRef<import("leaflet").Map | null>(null);
+  const tileLayerRef = useRef<import("leaflet").TileLayer | null>(null);
+  const onSelectRef = useRef(onSelect);
+  useEffect(() => {
+    onSelectRef.current = onSelect;
+  }, [onSelect]);
 
-  const [mapReady, setMapReady]     = useState(false);
-  const [theme, setTheme]           = useState<TileTheme>("light");
+  const [mapReady, setMapReady] = useState(false);
+  const [theme, setTheme] = useState<TileTheme>("light");
 
   // Build assetId → CorridorAsset lookup once
   const assetMap = new Map(assets.map((a) => [a.assetId, a]));
@@ -150,7 +153,7 @@ export function CorridorHeatmapMap({ points, assets, selectedAssetId, onSelect }
 
     let cancelled = false;
 
-    import("leaflet").then((L) => {
+    void import("leaflet").then((L) => {
       if (cancelled || !mapContainerRef.current || mapRef.current) return;
 
       // Fix broken default icon paths under webpack/Next.js
@@ -159,8 +162,8 @@ export function CorridorHeatmapMap({ points, assets, selectedAssetId, onSelect }
       delete IconDefault.prototype._getIconUrl;
       L.Icon.Default.mergeOptions({
         iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-        iconUrl:       "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-        shadowUrl:     "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+        iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+        shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
       });
 
       // Kenya centre-point, zoom 6 to show all counties
@@ -172,7 +175,9 @@ export function CorridorHeatmapMap({ points, assets, selectedAssetId, onSelect }
       }).addTo(map);
       tileLayerRef.current = tl;
 
-      map.on("click", () => { onSelectRef.current(null); });
+      map.on("click", () => {
+        onSelectRef.current(null);
+      });
 
       mapRef.current = map;
       setMapReady(true);
@@ -189,7 +194,7 @@ export function CorridorHeatmapMap({ points, assets, selectedAssetId, onSelect }
   // ── Swap tile layer when theme changes ──────────────────────────────────
   useEffect(() => {
     if (!mapReady || !mapRef.current) return;
-    import("leaflet").then((L) => {
+    void import("leaflet").then((L) => {
       if (!mapRef.current) return;
       tileLayerRef.current?.remove();
       const cfg = TILE_LAYERS[theme];
@@ -222,24 +227,23 @@ export function CorridorHeatmapMap({ points, assets, selectedAssetId, onSelect }
       // leaflet.heat's default export is a factory: (L) => void that attaches
       // heatLayer to L. Some builds expose it as .default, others as the module itself.
       // We call whichever is a function, then use L.heatLayer which it registers.
-      // biome-ignore lint/suspicious/noExplicitAny: leaflet.heat has no type declarations
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const heatAny = heatModule as any;
-      const heatFactory: ((l: unknown) => void) | null =
-        typeof heatAny === "function"
-          ? heatAny
-          : typeof heatAny.default === "function"
-            ? heatAny.default
-            : null;
+      // biome-ignore lint/suspicious/noExplicitAny: leaflet.heat has no TS declarations
+      const heatAny = heatModule as Record<string, unknown>;
+      let heatFactory: ((l: unknown) => void) | null = null;
+      if (typeof heatAny === "function") {
+        heatFactory = heatAny as unknown as (l: unknown) => void;
+      } else if (typeof heatAny.default === "function") {
+        heatFactory = heatAny.default as (l: unknown) => void;
+      }
       if (heatFactory) heatFactory(L);
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const heatFn = (L as any).heatLayer;
+      // leaflet.heat attaches heatLayer to the L instance at runtime — access via record cast
+      const heatFn = (L as Record<string, unknown>).heatLayer;
       if (typeof heatFn === "function") {
         const heatLayer = heatFn(normaliseWeights(points), {
-          radius:   28,
-          blur:     20,
-          maxZoom:  14,
+          radius: 28,
+          blur: 20,
+          maxZoom: 14,
           gradient: HEAT_GRADIENT,
         }) as Removable;
         heatLayer.addTo(map);
@@ -252,15 +256,15 @@ export function CorridorHeatmapMap({ points, assets, selectedAssetId, onSelect }
         const meta = assetMap.get(p.assetId);
 
         const marker = L.circleMarker([p.lat, p.lon] as [number, number], {
-          radius:      BAND_RADIUS[p.band],
-          color:       "#fff",
-          fillColor:   BAND_COLOR[p.band],
+          radius: BAND_RADIUS[p.band],
+          color: "#fff",
+          fillColor: BAND_COLOR[p.band],
           fillOpacity: 0.9,
-          weight:      2,
+          weight: 2,
           interactive: true,
         })
           .bindPopup(buildPopupHtml(p, meta), {
-            maxWidth:  260,
+            maxWidth: 260,
             className: "inuka-popup",
           })
           .on("click", (e) => {
@@ -275,7 +279,9 @@ export function CorridorHeatmapMap({ points, assets, selectedAssetId, onSelect }
 
     return () => {
       cancelled = true;
-      layersToClean.forEach((l) => l.remove());
+      for (const l of layersToClean) {
+        l.remove();
+      }
     };
   }, [mapReady, points, assetMap]);
 
@@ -305,9 +311,7 @@ export function CorridorHeatmapMap({ points, assets, selectedAssetId, onSelect }
             type="button"
             onClick={() => setTheme(t)}
             className={`px-3 py-1.5 text-xs font-medium transition-colors ${
-              theme === t
-                ? "bg-foreground text-background"
-                : "text-muted-foreground hover:bg-muted"
+              theme === t ? "bg-foreground text-background" : "text-muted-foreground hover:bg-muted"
             }`}
           >
             {TILE_LAYERS[t].name}
