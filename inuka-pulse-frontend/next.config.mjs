@@ -4,6 +4,10 @@ const nextConfig = {
   // This keeps the Docker image small — no full node_modules in the runtime stage.
   output: "standalone",
 
+  // Ensure CJS packages like leaflet and leaflet.heat are bundled correctly
+  // by Next.js in production — without this they can fail to resolve in Vercel builds.
+  transpilePackages: ["leaflet", "leaflet.heat"],
+
   // allowedDevOrigins is dev-only — safe to leave but has no effect in production
   allowedDevOrigins: ["*"],
   reactCompiler: true,

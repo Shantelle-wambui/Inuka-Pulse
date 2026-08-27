@@ -1,7 +1,5 @@
 "use client";
 
-import "leaflet/dist/leaflet.css";
-
 import { useEffect, useRef, useState } from "react";
 
 import type { CorridorAsset, HeatPoint } from "@/lib/inuka-pulse/corridor";
@@ -215,13 +213,28 @@ export function CorridorHeatmapMap({ points, assets, selectedAssetId, onSelect }
       if (cancelled) return;
 
       // ── 1. Heat layer ─────────────────────────────────────────────────
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window as any).L = L;
-      await import("leaflet.heat");
+      // leaflet.heat exports a factory function that takes the L instance.
+      // Using the factory directly (rather than the window.L global hack) is
+      // reliable in production builds where modules are tree-shaken / bundled.
+      const heatModule = await import("leaflet.heat");
       if (cancelled) return;
 
+      // leaflet.heat's default export is a factory: (L) => void that attaches
+      // heatLayer to L. Some builds expose it as .default, others as the module itself.
+      // We call whichever is a function, then use L.heatLayer which it registers.
+      // biome-ignore lint/suspicious/noExplicitAny: leaflet.heat has no type declarations
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const heatFn = (window as any).L?.heatLayer;
+      const heatAny = heatModule as any;
+      const heatFactory: ((l: unknown) => void) | null =
+        typeof heatAny === "function"
+          ? heatAny
+          : typeof heatAny.default === "function"
+            ? heatAny.default
+            : null;
+      if (heatFactory) heatFactory(L);
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const heatFn = (L as any).heatLayer;
       if (typeof heatFn === "function") {
         const heatLayer = heatFn(normaliseWeights(points), {
           radius:   28,
